@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cristiano A. Barbosa — Data Science & AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050a0f;
+    --surface: #0d1620;
+    --surface2: #111d2c;
+    --accent: #00d4ff;
+    --accent2: #7b5cfa;
+    --accent3: #00ffaa;
+    --text: #e8f4fd;
+    --muted: #6b8fa8;
+    --border: rgba(0,212,255,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Syne', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    position: relative;
+    padding: 20px;
+  }
+
+  /* Grid de fundo animado */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridMove 20s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes gridMove {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(40px); }
+  }
+
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.18;
+    animation: orbFloat 8s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  .orb-1 { width: 400px; height: 400px; background: var(--accent); top: -100px; left: -100px; }
+  .orb-2 { width: 350px; height: 350px; background: var(--accent2); bottom: -80px; right: -80px; }
+
+  @keyframes orbFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 20px) scale(1.1); }
+  }
+
+  .card {
+    position: relative;
+    width: 880px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    animation: cardReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+    z-index: 10;
+  }
+
+  @keyframes cardReveal {
+    from { opacity: 0; transform: translateY(32px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .left {
+    padding: 40px 24px;
+    background: var(--surface2);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .avatar-wrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+  }
+
+  .avatar-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(var(--accent), var(--accent2), var(--accent3), var(--accent));
+    animation: spin 4s linear infinite;
+    filter: blur(2px);
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .avatar {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--bg);
+    z-index: 1;
+  }
+
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+  .name { font-size: 1.15rem; font-weight: 800; text-align: center; line-height: 1.2; }
+  .name span {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: 'Space Mono', monospace;
+    margin-top: 6px;
+  }
+
+  .social-icons-row { display: flex; gap: 12px; justify-content: center; }
+  .icon-btn { color: var(--muted); transition: 0.3s; }
+  .icon-btn:hover { color: var(--accent); transform: translateY(-2px); }
+  .icon-btn svg { width: 18px; height: 18px; }
+
+  .skills-container-left { width: 100%; display: flex; flex-direction: column; gap: 12px; }
+  .skills-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    text-align: center;
+  }
+
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+  .skill-tag {
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    font-family: 'Space Mono', monospace;
+    border: 1px solid;
+  }
+
+  .tag-blue { color: #58b5f5; border-color: rgba(88,181,245,0.3); background: rgba(88,181,245,0.08); }
+  .tag-purple { color: #d4a0ff; border-color: rgba(212,160,255,0.3); background: rgba(212,160,255,0.08); }
+  .tag-cyan { color: var(--accent); border-color: rgba(0,212,255,0.3); background: rgba(0,212,255,0.08); }
+  .tag-green { color: var(--accent3); border-color: rgba(0,255,170,0.3); background: rgba(0,255,170,0.08); }
+  .tag-orange { color: #ff9f43; border-color: rgba(255,159,67,0.3); background: rgba(255,159,67,0.08); }
+
+  .right { padding: 40px 32px; display: flex; flex-direction: column; gap: 24px; }
+
+  .code-block {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+  }
+
+  .code-header {
+    padding: 8px 16px;
+    background: rgba(0,212,255,0.05);
+    border-bottom: 1px solid var(--border);
+    display: flex; gap: 6px;
+  }
+
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #febc2e; }
+  .dot-g { background: #28c840; }
+  .code-body { padding: 14px 18px; line-height: 1.5; }
+  .kw { color: #7b5cfa; }
+  .str { color: #00d4ff; }
+  .key { color: #00ffaa; }
+
+  .charts-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .chart-widget {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 100px;
+  }
+
+  .chart-title {
+    font-size: 0.5rem;
+    font-family: 'Space Mono', monospace;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Animações dos Gráficos */
+  .pie-chart {
+    width: 35px; height: 35px; border-radius: 50%;
+    background: conic-gradient(var(--accent) 0% 40%, var(--accent2) 40% 70%, var(--accent3) 70% 100%);
+    animation: pieRotate 4s linear infinite;
+  }
+  @keyframes pieRotate { to { transform: rotate(360deg); } }
+
+  .bar-chart { display: flex; align-items: flex-end; gap: 3px; height: 35px; }
+  .bar { width: 6px; background: var(--accent); border-radius: 1px; animation: barGrow 1.5s ease-in-out infinite alternate; }
+  @keyframes barGrow { from { height: 30%; } to { height: 100%; } }
+
+  .line-viz { display: flex; gap: 2px; }
+  .dot-node { width: 5px; height: 5px; background: var(--accent3); border-radius: 50%; animation: dotPulse 1.2s infinite; }
+  @keyframes dotPulse { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); } }
+
+  .boxplot-viz { width: 50px; height: 30px; position: relative; display: flex; align-items: center; justify-content: center; }
+  .box-whisker { position: absolute; width: 40px; height: 1px; background: var(--muted); }
+  .box-main { width: 18px; height: 12px; background: rgba(123, 92, 250, 0.3); border: 1px solid var(--accent2); animation: boxAnim 2s infinite alternate; }
+  @keyframes boxAnim { from { transform: translateX(-8px); } to { transform: translateX(8px); } }
+
+  .trend-path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 100; stroke-dashoffset: 100; animation: trendDraw 3s linear infinite; }
+  @keyframes trendDraw { 0% { stroke-dashoffset: 100; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -100; } }
+
+  .density-viz { width: 35px; height: 35px; border: 1px solid var(--border); border-radius: 50%; position: relative; overflow: hidden; }
+  .radar-sweep { position: absolute; width: 100%; height: 100%; background: conic-gradient(transparent, var(--accent3)); opacity: 0.3; animation: spin 2s linear infinite; }
+
+  .goal {
+    padding: 14px;
+    background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(123,92,250,0.06));
+    border: 1px solid rgba(0,212,255,0.15);
+    border-radius: 12px;
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .card { grid-template-columns: 1fr; width: 100%; }
+    .left { border-right: none; border-bottom: 1px solid var(--border); }
+    .charts-container { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="card">
+  <div class="left">
+    <div class="avatar-wrapper">
+      <div class="avatar-ring"></div>
+      <div class="avatar">
+        <img src="https://github.com/Alvenato.png?v=2" alt="Cristiano Alves">
+      </div>
+    </div>
+
+    <div class="name">
+      Cristiano A. Barbosa
+      <span>Cientista de Dados · IA</span>
+    </div>
+
+    <div class="social-icons-row">
+      <a href="https://github.com/Alvenato" target="_blank" class="icon-btn" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/cristianoalves-ca/" target="_blank" class="icon-btn" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="mailto:analytics.barbosa@gmail.com" class="icon-btn" title="E-mail">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 7 10-7"/></svg>
+      </a>
+      <a href="https://wa.me/5561981830780" target="_blank" class="icon-btn" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="skills-container-left">
+      <p class="skills-label">Ferramentas</p>
+      <div class="skills-grid">
+        <span class="skill-tag tag-blue">Python</span>
+        <span class="skill-tag tag-cyan">SQL</span>
+        <span class="skill-tag tag-orange">Tableau</span>
+        <span class="skill-tag tag-purple">Power BI</span>
+        <span class="skill-tag tag-green">Data Analysis</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="code-block">
+      <div class="code-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+      </div>
+      <div class="code-body">
+        <div><span class="kw">const</span> <span class="key">stack</span> = [<span class="str">"Ciência de Dados"</span>, <span class="str">"Deep Learning"</span>];</div>
+        <div><span class="kw">const</span> <span class="key">missao</span> = <span class="str">"Transformar dados em estratégia"</span>;</div>
+      </div>
+    </div>
+
+    <p class="skills-label" style="text-align: left;">Motor de Analytics</p>
+    <div class="charts-container">
+      <div class="chart-widget">
+        <span class="chart-title">Distribuição</span>
+        <div class="pie-chart"></div>
+      </div>
+      <div class="chart-widget">
+        <span class="chart-title">Desempenho</span>
+        <div class="bar-chart">
+          <div class="bar" style="height:60%; animation-delay:0.1s"></div>
+          <div class="bar" style="height:90%; animation-delay:0.3s"></div>
+          <div class="bar" style="height:40%; animation-delay:0.5s"></div>
+        </div>
+      </div>
+      <div class="chart-widget">
+        <span class="chart-title">Frequência</span>
+        <div class="line-viz">
+           <div class="dot-node" style="animation-delay:0.1s"></div>
+           <div class="dot-node" style="animation-delay:0.2s"></div>
+           <div class="dot-node" style="animation-delay:0.3s"></div>
+        </div>
+      </div>
+      <div class="chart-widget">
+        <span class="chart-title">Outliers</span>
+        <div class="boxplot-viz">
+          <div class="box-whisker"></div>
+          <div class="box-main"></div>
+        </div>
+      </div>
+      <div class="chart-widget">
+        <span class="chart-title">Tendência</span>
+        <svg width="40" height="20" viewBox="0 0 50 25">
+          <path class="trend-path" d="M0,20 Q12,5 25,15 T50,5" />
+        </svg>
+      </div>
+      <div class="chart-widget">
+        <span class="chart-title">Densidade</span>
+        <div class="density-viz">
+          <div class="radar-sweep"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="goal">
+      ▶ <b>Refinando</b> dados, entregando <b>clareza</b>. 💡
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
