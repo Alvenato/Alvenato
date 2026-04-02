@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo | Cristiano A. Barbosa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a2a40; 
+            --secondary-color: #f4f7f9;
+            --accent-color: #004a99;
+            --text-color: #333;
+            --whatsapp-color: #25D366;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 10px solid var(--primary-color);
+        }
+
+        header {
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-text { flex: 1; }
+
+        h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2.2em;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .contact-social-icons {
+            margin-top: 15px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icon {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover { transform: translateY(-3px); }
+        .icon-whatsapp:hover { color: var(--whatsapp-color); }
+        .icon-linkedin:hover { color: #0077b5; }
+        .icon-github:hover { color: #333; }
+        .icon-email:hover { color: #c71610; }
+        
+        .location-info { margin-top: 10px; font-size: 0.9em; }
+        .location-info i { color: var(--accent-color); margin-right: 5px; }
+
+        .profile-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid var(--secondary-color);
+            object-fit: cover;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: block;
+        }
+
+        section { margin-bottom: 25px; }
+
+        h2 {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 8px 15px;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+
+        .exp-item { margin-bottom: 25px; }
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .job-title { font-style: italic; color: var(--accent-color); margin-bottom: 5px; font-weight: 600; }
+        ul { padding-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 5px; }
+
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .badge { background: #eef2f7; padding: 8px; border-radius: 4px; font-size: 0.85em; border-left: 3px solid var(--accent-color); }
+
+        .cert-button {
+            text-decoration: none;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        @media (max-width: 600px) {
+            header { flex-direction: column-reverse; text-align: center; }
+            .contact-social-icons { justify-content: center; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .profile-photo { margin: 0 auto 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-text">
+            <h1>Cristiano A. Barbosa</h1>
+            <p class="subtitle">Graduando em Ciência de Dados e IA</p>
+            
+            <div class="location-info">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Cond. Garden - Valparaiso de Goiás GO</span>
+            </div>
+
+            <div class="contact-social-icons">
+                <a href="https://wa.me/5561981830780" target="_blank" class="social-icon icon-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="mailto:analytics.barbosa@gmail.com" class="social-icon icon-email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/cristianoalves-ca" target="_blank" class="social-icon icon-linkedin">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Alvenato" target="_blank" class="social-icon icon-github">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+        <img src="https://github.com/Alvenato.png" alt="Foto Cristiano A. Barbosa" class="profile-photo">
+    </header>
+
+    <section>
+        <h2>Objetivo Profissional</h2>
+        <p>Graduando em Ciência de Dados, buscando oportunidade de Estágio ou Assistente. Em desenvolvimento continuo em Python, SQL e Visualização de Dados, com interesse especial no tratamento de grandes volumes de informação. Possuo perfil colaborativo, analitico e focado em transformar dados em insights claros que apoiem decisões e agreguem valor ao negócio.</p>
+    </section>
+
+    <section>
+        <h2>Experiência Profissional</h2>
+        
+        <div class="exp-item">
+            <div class="exp-header"><span>IEL - Instituto Euvaldo Lodi</span><span>2024 – 2025</span></div>
+            <div class="job-title">Analista Freelancer de Operações e Processos</div>
+            <ul>
+                <li><strong>Gestão Estratégica de Cobranças:</strong> Implementação de controle de risco financeiro baseado no ciclo de vida das parcelas, otimizando o fluxo de caixa e a recuperação de crédito.</li>
+                <li><strong>Automação de Fluxos Administrativos:</strong> Reestruturação da gestão documental e operacional, integrando processos de assinatura digital (DocuSign) e emissão de faturas para acelerar o ciclo de atendimento.</li>
+                <li><strong>Garantia de Integridade Operacional:</strong> Validação e saneamento de bases cadastrais e financeiras, assegurando a precisão das informações para suporte à tomada de decisão gerencial.</li>
+            </ul>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header"><span>Kandango Transportes e Turismo LTDA</span><span>2024 – 2024</span></div>
+            <div class="job-title">Analista de Operações</div>
+            <ul>
+                <li><strong>Otimização de Recursos Humanos:</strong> Planejamento e ajuste de escalas e turnos de trabalho, garantindo a cobertura total das rotas e prevenindo sobrecargas operacionais.</li>
+                <li><strong>Gestão de Conformidade Regulatória:</strong> Monitoramento rigoroso das normas de transporte (ANTT e Lei 13.103/15), mitigando riscos jurídicos e operacionais para a companhia.</li>
+                <li><strong>Gerenciamento de Crises em Tempo Real:</strong> Resolução de contingências operacionais (faltas, substituições e urgências), mantendo a continuidade e a fluidez do serviço de transporte.</li>
+            </ul>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header"><span>Kandango Transportes e Turismo LTDA</span><span>2023 – 2024</span></div>
+            <div class="job-title">Operador de Controle de Tráfego</div>
+            <ul>
+                <li><strong>Planejamento de Rotas e Logística:</strong> Análise de padrões de tráfego para proposição de alterações em infraestrutura e desenvolvimento de rotas mais eficientes.</li>
+                <li><strong>Monitoramento de Segurança Operacional:</strong> Supervisão em tempo real de fluxos viários, garantindo a segurança das operações e a rápida resposta a incidentes.</li>
+                <li><strong>Coordenação de Emergências:</strong> Atuação direta com órgãos de segurança pública para a gestão de acidentes e crises, minimizando impactos no cronograma operacional.</li>
+            </ul>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header"><span>Americanas S.A.</span><span>2022 – 2023</span></div>
+            <div class="job-title">Analista de Operações PL</div>
+            <ul>
+                <li><strong>Melhoria Contínua (Lean Six Sigma):</strong> Liderança de planos de ação mensais utilizando metodologias DMAIC e PDCA para otimização de processos e redução de gargalos logísticos.</li>
+                <li><strong>Gestão de Logística Last Mile:</strong> Implementação de novos processos em HUBs logísticos e gestão de parceiros regionais para garantir a eficiência da distribuição final.</li>
+                <li><strong>Mapeamento de Processos:</strong> Desenvolvimento de fluxogramas e padronização de procedimentos operacionais para aumentar a produtividade por turno.</li>
+                <li><strong>Controle de Performance Operacional:</strong> Monitoramento de indicadores de entrega (On-Time Delivery) e gerenciamento de grades de carregamento para assegurar o cumprimento de metas.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Habilidades Técnicas</h2>
+        <div class="skills-grid">
+            <div class="badge">Power BI, Tableau Server & Excel Avançado</div>
+            <div class="badge">Python (desenv.) & SQL (desenv.)</div>
+            <div class="badge">Yellow Belt (Lean Six Sigma), DMAIC & PDCA</div>
+            <div class="badge">PARETO, DocuSign & Mapeamento de Processos</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Formação Acadêmica</h2>
+        <ul>
+            <li><strong>IESB</strong> - Graduando em Ciência de Dados e IA (Início: 2025)</li>
+            <li><strong>Descomplica</strong> - Pós-graduação em Análise de Dados (2022 – 2023)</li>
+            <li><strong>Estácio de Sá</strong> - Bacharelado em Sistemas de Informação (2014 – 2018)</li>
+        </ul>
+    </section>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="https://www.flipsnack.com/A9D5BD5EFB5/certificados-barbosa" target="_blank" class="cert-button">
+            <i class="fas fa-certificate" style="margin-right: 8px;"></i> CERTIFICADOS
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
