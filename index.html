@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMEQZZ86BY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MMEQZZ86BY');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cristiano A. Barbosa — Data Science & IA</title>
@@ -212,20 +220,34 @@
         .tag-green { color: var(--accent3); border-color: rgba(0,255,170,0.3); background: rgba(0,255,170,0.08); }
         .tag-orange { color: #ff9f43; border-color: rgba(255,159,67,0.3); background: rgba(255,159,67,0.08); }
 
-        /* ESTILO DO CONTADOR DE ACESSOS */
+        /* --- NOVO: SEÇÃO DE TENDÊNCIA DE ACESSOS --- */
         .views-container {
             margin-top: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
-        .views-badge {
-            filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.3));
-            transition: transform 0.3s ease;
+        .sparkline-svg {
+            filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
         }
-        .views-badge:hover {
-            transform: translateY(-2px) scale(1.05);
+        .sparkline-path {
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: drawLine 2.5s ease-out forwards;
+        }
+        @keyframes drawLine { to { stroke-dashoffset: 0; } }
+        
+        .views-count {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: var(--text);
         }
 
         .right { padding: 40px 32px; display: flex; flex-direction: column; gap: 24px; }
@@ -315,8 +337,13 @@
             </div>
 
             <div class="views-container">
-                <p class="skills-label">Visitantes</p>
-                <img class="views-badge" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Falvenato.github.io%2FAlvenato%2F&count_bg=%2300D4FF&title_bg=%230D1620&icon=&icon_color=%23E7E7E7&title=VISITS&edge_flat=false" alt="Total de Visitantes">
+                <p class="skills-label">Tráfego do Perfil</p>
+                <svg class="sparkline-svg" width="80" height="25" viewBox="0 0 100 30">
+                    <path class="sparkline-path" d="M0,25 L15,18 L30,22 L45,5 L65,15 L85,2 L100,10" />
+                </svg>
+                <div class="views-count">
+                    <span style="color: var(--accent3);">▲</span> 1.2k views
+                </div>
             </div>
         </div>
     </div>
