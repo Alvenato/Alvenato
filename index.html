@@ -37,7 +37,7 @@
     padding: 100px 20px 20px 20px;
   }
 
-  /* --- NOVO MENU ESTILO IMAGEM --- */
+  /* --- MENU --- */
   .navbar {
     position: fixed;
     top: 30px;
@@ -70,7 +70,7 @@
   }
 
   .nav-item.home {
-    color: var(--accent2); /* Roxo como na imagem */
+    color: var(--accent2);
     font-size: 1.3rem;
   }
 
@@ -212,6 +212,22 @@
   .tag-green { color: var(--accent3); border-color: rgba(0,255,170,0.3); background: rgba(0,255,170,0.08); }
   .tag-orange { color: #ff9f43; border-color: rgba(255,159,67,0.3); background: rgba(255,159,67,0.08); }
 
+  /* ESTILO DO CONTADOR DE VIEWS */
+  .views-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .views-badge {
+    filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.3));
+    transition: transform 0.3s ease;
+  }
+  .views-badge:hover {
+    transform: translateY(-2px) scale(1.05);
+  }
+
   .right { padding: 40px 32px; display: flex; flex-direction: column; gap: 24px; }
 
   /* Elementos de código e gráficos */
@@ -297,6 +313,11 @@
         <span class="skill-tag tag-purple">Power BI</span>
         <span class="skill-tag tag-green">Data Analysis</span>
       </div>
+
+      <div class="views-container">
+        <p class="skills-label">Visualizações</p>
+        <img class="views-badge" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Falvenato.github.io%2FAlvenato%2F&count_bg=%2300D4FF&title_bg=%230D1620&icon=&icon_color=%23E7E7E7&title=VIEWS&edge_flat=false" alt="Views">
+      </div>
     </div>
   </div>
 
@@ -359,6 +380,5 @@
     </div>
   </div>
 </div>
-
 </body>
 </html>
