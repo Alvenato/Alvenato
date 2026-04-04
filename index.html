@@ -62,6 +62,9 @@
     transition: 0.3s;
     display: flex;
     align-items: center;
+    border: none;
+    background: none;
+    cursor: pointer;
   }
 
   .nav-item:hover {
@@ -223,6 +226,7 @@
   .views-badge {
     filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.3));
     transition: transform 0.3s ease;
+    cursor: pointer;
   }
   .views-badge:hover {
     transform: translateY(-2px) scale(1.05);
@@ -278,7 +282,7 @@
 <body>
 
 <nav class="navbar">
-  <a href="#" class="nav-item home" title="Home"><i class="fas fa-home"></i></a>
+  <button onclick="loginGoogle()" class="nav-item home" title="Autenticar Visita"><i class="fas fa-user-shield"></i></button>
   <div class="nav-divider"></div>
   <a href="https://github.com/Alvenato" target="_blank" class="nav-item" title="GitHub"><i class="fab fa-github"></i></a>
   <a href="https://www.linkedin.com/in/cristianoalves-ca/" target="_blank" class="nav-item" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -301,7 +305,7 @@
 
     <div class="name">
       Cristiano A. Barbosa
-      <span>Cientista de Dados · IA</span>
+      <span id="user-greeting">Cientista de Dados · IA</span>
     </div>
 
     <div class="skills-container-left">
@@ -316,7 +320,7 @@
 
       <div class="views-container">
         <p class="skills-label">Visualizações</p>
-        <img class="views-badge" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=cristiano-barbosa-ailytics&count_bg=%2300D4FF&title_bg=%230D1620&icon=&icon_color=%23E7E7E7&title=VIEWS&edge_flat=false" alt="Views">
+        <img class="views-badge" id="badge-trigger" onclick="loginGoogle()" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=cristiano-barbosa-ailytics&count_bg=%2300D4FF&title_bg=%230D1620&icon=&icon_color=%23E7E7E7&title=VIEWS&edge_flat=false" alt="Views">
       </div>
     </div>
   </div>
@@ -380,6 +384,62 @@
     </div>
   </div>
 </div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDve3klkIGg0zYFc1a0V3Pt-8n1N1vUT5g",
+        authDomain: "views-portifolio.firebaseapp.com",
+        projectId: "views-portifolio",
+        storageBucket: "views-portifolio.firebasestorage.app",
+        messagingSenderId: "427807534435",
+        appId: "1:427807534435:web:f1220c8a53ed76af9bf756",
+        measurementId: "G-PTZP0WM4WH"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const provider = new GoogleAuthProvider();
+
+    const greetingEl = document.getElementById('user-greeting');
+
+    // Função de Login (Pode ser chamada pelo clique ou automaticamente)
+    window.loginGoogle = async () => {
+        try {
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+            await registrarAcesso(user);
+        } catch (error) {
+            console.error("Erro na autenticação:", error);
+        }
+    };
+
+    // Função para registrar no Firestore e dar boas-vindas
+    const registrarAcesso = async (user) => {
+        await setDoc(doc(db, "visitantes", user.uid), {
+            nome: user.displayName,
+            email: user.email,
+            ultimoAcesso: new Date()
+        });
+        greetingEl.innerText = "Bem-vindo, " + user.displayName.split(' ')[0] + "!";
+        greetingEl.style.color = "var(--accent3)";
+    };
+
+    // VERIFICAÇÃO AUTOMÁTICA AO CARREGAR
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // Se já estiver logado, apenas atualiza a interface
+            registrarAcesso(user);
+        } else {
+            // Se NÃO estiver logado, dispara o popup automaticamente
+            window.loginGoogle();
+        }
+    });
+</script>
 
 </body>
 </html>
