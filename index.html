@@ -1,445 +1,384 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cristiano A. Barbosa — Data Science & IA</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristiano A. Barbosa — Data Science & IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<style>
-  :root {
-    --bg: #050a0f;
-    --surface: #0d1620;
-    --surface2: #111d2c;
-    --accent: #00d4ff;
-    --accent2: #7b5cfa;
-    --accent3: #00ffaa;
-    --text: #e8f4fd;
-    --muted: #6b8fa8;
-    --border: rgba(0,212,255,0.15);
-    --nav-bg: rgba(5, 10, 15, 0.8);
-  }
+    <style>
+        :root {
+            --bg: #050a0f;
+            --surface: #0d1620;
+            --surface2: #111d2c;
+            --accent: #00d4ff;
+            --accent2: #7b5cfa;
+            --accent3: #00ffaa;
+            --text: #e8f4fd;
+            --muted: #6b8fa8;
+            --border: rgba(0,212,255,0.15);
+            --nav-bg: rgba(5, 10, 15, 0.8);
+        }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body {
-    background: var(--bg);
-    font-family: 'Syne', sans-serif;
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow-x: hidden;
-    position: relative;
-    padding: 100px 20px 20px 20px;
-  }
+        body {
+            background: var(--bg);
+            font-family: 'Syne', sans-serif;
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 100px 20px 20px 20px;
+        }
 
-  /* --- MENU --- */
-  .navbar {
-    position: fixed;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--nav-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 212, 255, 0.2);
-    border-radius: 100px;
-    padding: 10px 25px;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    z-index: 1000;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  }
+        /* --- MENU --- */
+        .navbar {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 100px;
+            padding: 10px 25px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
 
-  .nav-item {
-    color: var(--text);
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    border: none;
-    background: none;
-    cursor: pointer;
-  }
+        .nav-item {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+        }
 
-  .nav-item:hover {
-    color: var(--accent);
-    transform: translateY(-2px);
-  }
+        .nav-item:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
 
-  .nav-item.home {
-    color: var(--accent2);
-    font-size: 1.3rem;
-  }
+        .nav-item.home {
+            color: var(--accent2);
+            font-size: 1.3rem;
+        }
 
-  .nav-divider {
-    width: 1px;
-    height: 20px;
-    background: rgba(255,255,255,0.1);
-    margin: 0 5px;
-  }
+        .nav-divider {
+            width: 1px;
+            height: 20px;
+            background: rgba(255,255,255,0.1);
+            margin: 0 5px;
+        }
 
-  /* Fundo Animado */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: gridMove 20s linear infinite;
-    pointer-events: none;
-  }
+        /* Fundo Animado */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+        }
 
-  @keyframes gridMove {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(40px); }
-  }
+        @keyframes gridMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(40px); }
+        }
 
-  .orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.18;
-    animation: orbFloat 8s ease-in-out infinite alternate;
-    pointer-events: none;
-  }
-  .orb-1 { width: 400px; height: 400px; background: var(--accent); top: -100px; left: -100px; }
-  .orb-2 { width: 350px; height: 350px; background: var(--accent2); bottom: -80px; right: -80px; }
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.18;
+            animation: orbFloat 8s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+        .orb-1 { width: 400px; height: 400px; background: var(--accent); top: -100px; left: -100px; }
+        .orb-2 { width: 350px; height: 350px; background: var(--accent2); bottom: -80px; right: -80px; }
 
-  @keyframes orbFloat {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(30px, 20px) scale(1.1); }
-  }
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, 20px) scale(1.1); }
+        }
 
-  /* Card Layout */
-  .card {
-    position: relative;
-    width: 880px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    animation: cardReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-    z-index: 10;
-  }
+        /* Card Layout */
+        .card {
+            position: relative;
+            width: 880px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            animation: cardReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+            z-index: 10;
+        }
 
-  @keyframes cardReveal {
-    from { opacity: 0; transform: translateY(32px) scale(0.96); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
+        @keyframes cardReveal {
+            from { opacity: 0; transform: translateY(32px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
 
-  .left {
-    padding: 60px 24px;
-    background: var(--surface2);
-    border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-  }
+        .left {
+            padding: 60px 24px;
+            background: var(--surface2);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
 
-  .avatar-wrapper {
-    position: relative;
-    width: 130px;
-    height: 130px;
-  }
+        .avatar-wrapper {
+            position: relative;
+            width: 130px;
+            height: 130px;
+        }
 
-  .avatar-ring {
-    position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    background: conic-gradient(var(--accent), var(--accent2), var(--accent3), var(--accent));
-    animation: spin 4s linear infinite;
-    filter: blur(2px);
-  }
+        .avatar-ring {
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent), var(--accent2), var(--accent3), var(--accent));
+            animation: spin 4s linear infinite;
+            filter: blur(2px);
+        }
 
-  @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-  .avatar {
-    position: relative;
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid var(--bg);
-    z-index: 1;
-  }
+        .avatar {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--bg);
+            z-index: 1;
+        }
 
-  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-  .name { font-size: 1.3rem; font-weight: 800; text-align: center; line-height: 1.2; }
-  .name span {
-    display: block;
-    font-size: 0.7rem;
-    color: var(--accent);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-family: 'Space Mono', monospace;
-    margin-top: 8px;
-  }
+        .name { font-size: 1.3rem; font-weight: 800; text-align: center; line-height: 1.2; }
+        .name span {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-family: 'Space Mono', monospace;
+            margin-top: 8px;
+        }
 
-  .skills-container-left { width: 100%; display: flex; flex-direction: column; gap: 15px; }
-  .skills-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-family: 'Space Mono', monospace;
-    text-align: center;
-  }
+        .skills-container-left { width: 100%; display: flex; flex-direction: column; gap: 15px; }
+        .skills-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-family: 'Space Mono', monospace;
+            text-align: center;
+        }
 
-  .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-  .skill-tag {
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.65rem;
-    font-weight: 600;
-    font-family: 'Space Mono', monospace;
-    border: 1px solid;
-  }
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .skill-tag {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            font-family: 'Space Mono', monospace;
+            border: 1px solid;
+        }
 
-  .tag-blue { color: #58b5f5; border-color: rgba(88,181,245,0.3); background: rgba(88,181,245,0.08); }
-  .tag-purple { color: #d4a0ff; border-color: rgba(212,160,255,0.3); background: rgba(212,160,255,0.08); }
-  .tag-cyan { color: var(--accent); border-color: rgba(0,212,255,0.3); background: rgba(0,212,255,0.08); }
-  .tag-green { color: var(--accent3); border-color: rgba(0,255,170,0.3); background: rgba(0,255,170,0.08); }
-  .tag-orange { color: #ff9f43; border-color: rgba(255,159,67,0.3); background: rgba(255,159,67,0.08); }
+        .tag-blue { color: #58b5f5; border-color: rgba(88,181,245,0.3); background: rgba(88,181,245,0.08); }
+        .tag-purple { color: #d4a0ff; border-color: rgba(212,160,255,0.3); background: rgba(212,160,255,0.08); }
+        .tag-cyan { color: var(--accent); border-color: rgba(0,212,255,0.3); background: rgba(0,212,255,0.08); }
+        .tag-green { color: var(--accent3); border-color: rgba(0,255,170,0.3); background: rgba(0,255,170,0.08); }
+        .tag-orange { color: #ff9f43; border-color: rgba(255,159,67,0.3); background: rgba(255,159,67,0.08); }
 
-  /* ESTILO DO CONTADOR DE VIEWS */
-  .views-container {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .views-badge {
-    filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.3));
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-  .views-badge:hover {
-    transform: translateY(-2px) scale(1.05);
-  }
+        /* ESTILO DO CONTADOR DE ACESSOS */
+        .views-container {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .views-badge {
+            filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.3));
+            transition: transform 0.3s ease;
+        }
+        .views-badge:hover {
+            transform: translateY(-2px) scale(1.05);
+        }
 
-  .right { padding: 40px 32px; display: flex; flex-direction: column; gap: 24px; }
+        .right { padding: 40px 32px; display: flex; flex-direction: column; gap: 24px; }
 
-  /* Elementos de código e gráficos */
-  .code-block { background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; font-family: 'Space Mono', monospace; font-size: 0.72rem; }
-  .code-header { padding: 8px 16px; background: rgba(0,212,255,0.05); border-bottom: 1px solid var(--border); display: flex; gap: 6px; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; }
-  .dot-r { background: #ff5f57; }
-  .dot-y { background: #febc2e; }
-  .dot-g { background: #28c840; }
-  .code-body { padding: 14px 18px; line-height: 1.5; }
-  .kw { color: #7b5cfa; }
-  .str { color: #00d4ff; }
-  .key { color: #00ffaa; }
+        /* Elementos de código e gráficos */
+        .code-block { background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; font-family: 'Space Mono', monospace; font-size: 0.72rem; }
+        .code-header { padding: 8px 16px; background: rgba(0,212,255,0.05); border-bottom: 1px solid var(--border); display: flex; gap: 6px; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; }
+        .dot-r { background: #ff5f57; }
+        .dot-y { background: #febc2e; }
+        .dot-g { background: #28c840; }
+        .code-body { padding: 14px 18px; line-height: 1.5; }
+        .kw { color: #7b5cfa; }
+        .str { color: #00d4ff; }
+        .key { color: #00ffaa; }
 
-  .charts-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .chart-widget { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 12px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: 100px; }
-  .chart-title { font-size: 0.5rem; font-family: 'Space Mono', monospace; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
-  .pie-chart { width: 35px; height: 35px; border-radius: 50%; background: conic-gradient(var(--accent) 0% 40%, var(--accent2) 40% 70%, var(--accent3) 70% 100%); animation: pieRotate 4s linear infinite; }
-  @keyframes pieRotate { to { transform: rotate(360deg); } }
+        .charts-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .chart-widget { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 12px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: 100px; }
+        .chart-title { font-size: 0.5rem; font-family: 'Space Mono', monospace; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+        .pie-chart { width: 35px; height: 35px; border-radius: 50%; background: conic-gradient(var(--accent) 0% 40%, var(--accent2) 40% 70%, var(--accent3) 70% 100%); animation: pieRotate 4s linear infinite; }
+        @keyframes pieRotate { to { transform: rotate(360deg); } }
 
-  .bar-chart { display: flex; align-items: flex-end; gap: 3px; height: 35px; }
-  .bar { width: 6px; background: var(--accent); border-radius: 1px; animation: barGrow 1.5s ease-in-out infinite alternate; }
-  @keyframes barGrow { from { height: 30%; } to { height: 100%; } }
+        .bar-chart { display: flex; align-items: flex-end; gap: 3px; height: 35px; }
+        .bar { width: 6px; background: var(--accent); border-radius: 1px; animation: barGrow 1.5s ease-in-out infinite alternate; }
+        @keyframes barGrow { from { height: 30%; } to { height: 100%; } }
 
-  .line-viz { display: flex; gap: 2px; }
-  .dot-node { width: 5px; height: 5px; background: var(--accent3); border-radius: 50%; animation: dotPulse 1.2s infinite; }
-  @keyframes dotPulse { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); } }
+        .line-viz { display: flex; gap: 2px; }
+        .dot-node { width: 5px; height: 5px; background: var(--accent3); border-radius: 50%; animation: dotPulse 1.2s infinite; }
+        @keyframes dotPulse { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); } }
 
-  .boxplot-viz { width: 50px; height: 30px; position: relative; display: flex; align-items: center; justify-content: center; }
-  .box-whisker { position: absolute; width: 40px; height: 1px; background: var(--muted); }
-  .box-main { width: 18px; height: 12px; background: rgba(123, 92, 250, 0.3); border: 1px solid var(--accent2); animation: boxAnim 2s infinite alternate; }
-  @keyframes boxAnim { from { transform: translateX(-8px); } to { transform: translateX(8px); } }
+        .boxplot-viz { width: 50px; height: 30px; position: relative; display: flex; align-items: center; justify-content: center; }
+        .box-whisker { position: absolute; width: 40px; height: 1px; background: var(--muted); }
+        .box-main { width: 18px; height: 12px; background: rgba(123, 92, 250, 0.3); border: 1px solid var(--accent2); animation: boxAnim 2s infinite alternate; }
+        @keyframes boxAnim { from { transform: translateX(-8px); } to { transform: translateX(8px); } }
 
-  .trend-path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 100; stroke-dashoffset: 100; animation: trendDraw 3s linear infinite; }
-  @keyframes trendDraw { 0% { stroke-dashoffset: 100; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -100; } }
+        .trend-path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 100; stroke-dashoffset: 100; animation: trendDraw 3s linear infinite; }
+        @keyframes trendDraw { 0% { stroke-dashoffset: 100; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -100; } }
 
-  .density-viz { width: 35px; height: 35px; border: 1px solid var(--border); border-radius: 50%; position: relative; overflow: hidden; }
-  .radar-sweep { position: absolute; width: 100%; height: 100%; background: conic-gradient(transparent, var(--accent3)); opacity: 0.3; animation: spin 2s linear infinite; }
+        .density-viz { width: 35px; height: 35px; border: 1px solid var(--border); border-radius: 50%; position: relative; overflow: hidden; }
+        .radar-sweep { position: absolute; width: 100%; height: 100%; background: conic-gradient(transparent, var(--accent3)); opacity: 0.3; animation: spin 2s linear infinite; }
 
-  .goal { padding: 14px; background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(123,92,250,0.06)); border: 1px solid rgba(0,212,255,0.15); border-radius: 12px; font-size: 0.75rem; color: var(--accent); font-family: 'Space Mono', monospace; text-align: center; }
+        .goal { padding: 14px; background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(123,92,250,0.06)); border: 1px solid rgba(0,212,255,0.15); border-radius: 12px; font-size: 0.75rem; color: var(--accent); font-family: 'Space Mono', monospace; text-align: center; }
 
-  @media (max-width: 900px) {
-    .card { grid-template-columns: 1fr; width: 100%; }
-    .left { border-right: none; border-bottom: 1px solid var(--border); padding: 40px 20px; }
-  }
-</style>
+        @media (max-width: 900px) {
+            .card { grid-template-columns: 1fr; width: 100%; }
+            .left { border-right: none; border-bottom: 1px solid var(--border); padding: 40px 20px; }
+        }
+    </style>
 </head>
 <body>
 
 <nav class="navbar">
-  <button onclick="loginGoogle()" class="nav-item home" title="Autenticar Visita"><i class="fas fa-user-shield"></i></button>
-  <div class="nav-divider"></div>
-  <a href="https://github.com/Alvenato" target="_blank" class="nav-item" title="GitHub"><i class="fab fa-github"></i></a>
-  <a href="https://www.linkedin.com/in/cristianoalves-ca/" target="_blank" class="nav-item" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-  <a href="https://wa.me/5561981830780" target="_blank" class="nav-item" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-  <a href="mailto:analytics.barbosa@gmail.com" class="nav-item" title="E-mail"><i class="fas fa-envelope"></i></a>
-  <a href="https://alvenato.github.io/curriculo.html" target="_blank" class="nav-item" title="Currículo"><i class="fas fa-file-alt"></i></a>
+    <a href="#" class="nav-item home" title="Home"><i class="fas fa-home"></i></a>
+    <div class="nav-divider"></div>
+    <a href="https://github.com/Alvenato" target="_blank" class="nav-item" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/cristianoalves-ca/" target="_blank" class="nav-item" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://wa.me/5561981830780" target="_blank" class="nav-item" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="mailto:analytics.barbosa@gmail.com" class="nav-item" title="E-mail"><i class="fas fa-envelope"></i></a>
+    <a href="https://alvenato.github.io/curriculo.html" target="_blank" class="nav-item" title="Currículo"><i class="fas fa-file-alt"></i></a>
 </nav>
 
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 
 <div class="card">
-  <div class="left">
-    <div class="avatar-wrapper">
-      <div class="avatar-ring"></div>
-      <div class="avatar">
-        <img src="https://github.com/Alvenato.png" alt="Cristiano Alves Barbosa">
-      </div>
-    </div>
-
-    <div class="name">
-      Cristiano A. Barbosa
-      <span id="user-greeting">Cientista de Dados · IA</span>
-    </div>
-
-    <div class="skills-container-left">
-      <p class="skills-label">Ferramentas</p>
-      <div class="skills-grid">
-        <span class="skill-tag tag-blue">Python</span>
-        <span class="skill-tag tag-cyan">SQL</span>
-        <span class="skill-tag tag-orange">Tableau</span>
-        <span class="skill-tag tag-purple">Power BI</span>
-        <span class="skill-tag tag-green">Data Analysis</span>
-      </div>
-
-      <div class="views-container">
-        <p class="skills-label">Visualizações</p>
-        <img class="views-badge" id="badge-trigger" onclick="loginGoogle()" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=cristiano-barbosa-ailytics&count_bg=%2300D4FF&title_bg=%230D1620&icon=&icon_color=%23E7E7E7&title=VIEWS&edge_flat=false" alt="Views">
-      </div>
-    </div>
-  </div>
-
-  <div class="right">
-    <div class="code-block">
-      <div class="code-header">
-        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
-      </div>
-      <div class="code-body">
-        <div><span class="kw">const</span> <span class="key">stack</span> = [<span class="str">"Ciência de Dados"</span>, <span class="str">"Deep Learning"</span>];</div>
-        <div><span class="kw">const</span> <span class="key">missao</span> = <span class="str">"Transformar dados em estratégia"</span>;</div>
-      </div>
-    </div>
-
-    <p class="skills-label" style="text-align: left;">Motor de Analytics</p>
-    <div class="charts-container">
-      <div class="chart-widget">
-        <span class="chart-title">Distribuição</span>
-        <div class="pie-chart"></div>
-      </div>
-      <div class="chart-widget">
-        <span class="chart-title">Desempenho</span>
-        <div class="bar-chart">
-          <div class="bar" style="height:60%; animation-delay:0.1s"></div>
-          <div class="bar" style="height:90%; animation-delay:0.3s"></div>
-          <div class="bar" style="height:40%; animation-delay:0.5s"></div>
+    <div class="left">
+        <div class="avatar-wrapper">
+            <div class="avatar-ring"></div>
+            <div class="avatar">
+                <img src="https://github.com/Alvenato.png" alt="Cristiano Alves Barbosa">
+            </div>
         </div>
-      </div>
-      <div class="chart-widget">
-        <span class="chart-title">Frequência</span>
-        <div class="line-viz">
-           <div class="dot-node" style="animation-delay:0.1s"></div>
-           <div class="dot-node" style="animation-delay:0.2s"></div>
-           <div class="dot-node" style="animation-delay:0.3s"></div>
+
+        <div class="name">
+            Cristiano A. Barbosa
+            <span>Cientista de Dados · IA</span>
         </div>
-      </div>
-      <div class="chart-widget">
-        <span class="chart-title">Outliers</span>
-        <div class="boxplot-viz">
-          <div class="box-whisker"></div>
-          <div class="box-main"></div>
+
+        <div class="skills-container-left">
+            <p class="skills-label">Ferramentas</p>
+            <div class="skills-grid">
+                <span class="skill-tag tag-blue">Python</span>
+                <span class="skill-tag tag-cyan">SQL</span>
+                <span class="skill-tag tag-orange">Tableau</span>
+                <span class="skill-tag tag-purple">Power BI</span>
+                <span class="skill-tag tag-green">Data Analysis</span>
+            </div>
+
+            <div class="views-container">
+                <p class="skills-label">Visitantes</p>
+                <img class="views-badge" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Falvenato.github.io%2FAlvenato%2F&count_bg=%2300D4FF&title_bg=%230D1620&icon=&icon_color=%23E7E7E7&title=VISITS&edge_flat=false" alt="Total de Visitantes">
+            </div>
         </div>
-      </div>
-      <div class="chart-widget">
-        <span class="chart-title">Tendência</span>
-        <svg width="40" height="20" viewBox="0 0 50 25">
-          <path class="trend-path" d="M0,20 Q12,5 25,15 T50,5" />
-        </svg>
-      </div>
-      <div class="chart-widget">
-        <span class="chart-title">Densidade</span>
-        <div class="density-viz">
-          <div class="radar-sweep"></div>
-        </div>
-      </div>
     </div>
 
-    <div class="goal">
-      ▶ <b>Refinando</b> dados, entregando <b>clareza</b>. 💡
+    <div class="right">
+        <div class="code-block">
+            <div class="code-header">
+                <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+            </div>
+            <div class="code-body">
+                <div><span class="kw">const</span> <span class="key">stack</span> = [<span class="str">"Ciência de Dados"</span>, <span class="str">"Deep Learning"</span>];</div>
+                <div><span class="kw">const</span> <span class="key">missao</span> = <span class="str">"Transformar dados em estratégia"</span>;</div>
+            </div>
+        </div>
+
+        <p class="skills-label" style="text-align: left;">Motor de Analytics</p>
+        <div class="charts-container">
+            <div class="chart-widget">
+                <span class="chart-title">Distribuição</span>
+                <div class="pie-chart"></div>
+            </div>
+            <div class="chart-widget">
+                <span class="chart-title">Desempenho</span>
+                <div class="bar-chart">
+                    <div class="bar" style="height:60%; animation-delay:0.1s"></div>
+                    <div class="bar" style="height:90%; animation-delay:0.3s"></div>
+                    <div class="bar" style="height:40%; animation-delay:0.5s"></div>
+                </div>
+            </div>
+            <div class="chart-widget">
+                <span class="chart-title">Frequência</span>
+                <div class="line-viz">
+                    <div class="dot-node" style="animation-delay:0.1s"></div>
+                    <div class="dot-node" style="animation-delay:0.2s"></div>
+                    <div class="dot-node" style="animation-delay:0.3s"></div>
+                </div>
+            </div>
+            <div class="chart-widget">
+                <span class="chart-title">Outliers</span>
+                <div class="boxplot-viz">
+                    <div class="box-whisker"></div>
+                    <div class="box-main"></div>
+                </div>
+            </div>
+            <div class="chart-widget">
+                <span class="chart-title">Tendência</span>
+                <svg width="40" height="20" viewBox="0 0 50 25">
+                    <path class="trend-path" d="M0,20 Q12,5 25,15 T50,5" />
+                </svg>
+            </div>
+            <div class="chart-widget">
+                <span class="chart-title">Densidade</span>
+                <div class="density-viz">
+                    <div class="radar-sweep"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="goal">
+            ▶ <b>Refinando</b> dados, entregando <b>clareza</b>. 💡
+        </div>
     </div>
-  </div>
 </div>
-
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyDve3klkIGg0zYFc1a0V3Pt-8n1N1vUT5g",
-        authDomain: "views-portifolio.firebaseapp.com",
-        projectId: "views-portifolio",
-        storageBucket: "views-portifolio.firebasestorage.app",
-        messagingSenderId: "427807534435",
-        appId: "1:427807534435:web:f1220c8a53ed76af9bf756",
-        measurementId: "G-PTZP0WM4WH"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-    const provider = new GoogleAuthProvider();
-
-    const greetingEl = document.getElementById('user-greeting');
-
-    // Função de Login (Pode ser chamada pelo clique ou automaticamente)
-    window.loginGoogle = async () => {
-        try {
-            const result = await signInWithPopup(auth, provider);
-            const user = result.user;
-            await registrarAcesso(user);
-        } catch (error) {
-            console.error("Erro na autenticação:", error);
-        }
-    };
-
-    // Função para registrar no Firestore e dar boas-vindas
-    const registrarAcesso = async (user) => {
-        await setDoc(doc(db, "visitantes", user.uid), {
-            nome: user.displayName,
-            email: user.email,
-            ultimoAcesso: new Date()
-        });
-        greetingEl.innerText = "Bem-vindo, " + user.displayName.split(' ')[0] + "!";
-        greetingEl.style.color = "var(--accent3)";
-    };
-
-    // VERIFICAÇÃO AUTOMÁTICA AO CARREGAR
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            // Se já estiver logado, apenas atualiza a interface
-            registrarAcesso(user);
-        } else {
-            // Se NÃO estiver logado, dispara o popup automaticamente
-            window.loginGoogle();
-        }
-    });
-</script>
-
 </body>
 </html>
