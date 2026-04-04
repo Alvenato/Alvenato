@@ -18,6 +18,7 @@
     --text: #e8f4fd;
     --muted: #6b8fa8;
     --border: rgba(0,212,255,0.15);
+    --nav-bg: rgba(5, 10, 15, 0.8);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,14 +29,59 @@
     color: var(--text);
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow-x: hidden;
     position: relative;
-    padding: 20px;
+    padding: 100px 20px 20px 20px;
   }
 
-  /* Grid de fundo animado */
+  /* --- NOVO MENU ESTILO IMAGEM --- */
+  .navbar {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 100px;
+    padding: 10px 25px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  }
+
+  .nav-item {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-item:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .nav-item.home {
+    color: var(--accent2); /* Roxo como na imagem */
+    font-size: 1.3rem;
+  }
+
+  .nav-divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(255,255,255,0.1);
+    margin: 0 5px;
+  }
+
+  /* Fundo Animado */
   body::before {
     content: '';
     position: fixed;
@@ -69,6 +115,7 @@
     100% { transform: translate(30px, 20px) scale(1.1); }
   }
 
+  /* Card Layout */
   .card {
     position: relative;
     width: 880px;
@@ -89,19 +136,20 @@
   }
 
   .left {
-    padding: 40px 24px;
+    padding: 60px 24px;
     background: var(--surface2);
     border-right: 1px solid var(--border);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    justify-content: center;
+    gap: 30px;
   }
 
   .avatar-wrapper {
     position: relative;
-    width: 110px;
-    height: 110px;
+    width: 130px;
+    height: 130px;
   }
 
   .avatar-ring {
@@ -117,8 +165,8 @@
 
   .avatar {
     position: relative;
-    width: 110px;
-    height: 110px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     overflow: hidden;
     border: 3px solid var(--bg);
@@ -127,51 +175,20 @@
 
   .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-  .name { font-size: 1.15rem; font-weight: 800; text-align: center; line-height: 1.2; }
+  .name { font-size: 1.3rem; font-weight: 800; text-align: center; line-height: 1.2; }
   .name span {
     display: block;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     color: var(--accent);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-family: 'Space Mono', monospace;
-    margin-top: 6px;
+    margin-top: 8px;
   }
 
-  .social-icons-row { 
-    display: flex; 
-    gap: 16px; 
-    justify-content: center; 
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
-  .icon-btn { 
-    color: var(--muted); 
-    transition: 0.3s; 
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .icon-btn:hover { 
-    color: var(--accent); 
-    transform: translateY(-2px); 
-  }
-  
-  .icon-btn svg, .icon-btn i { 
-    width: 20px; 
-    height: 20px; 
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .skills-container-left { width: 100%; display: flex; flex-direction: column; gap: 12px; }
+  .skills-container-left { width: 100%; display: flex; flex-direction: column; gap: 15px; }
   .skills-label {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--muted);
@@ -179,11 +196,11 @@
     text-align: center;
   }
 
-  .skills-grid { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
   .skill-tag {
-    padding: 3px 8px;
+    padding: 4px 10px;
     border-radius: 6px;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     font-weight: 600;
     font-family: 'Space Mono', monospace;
     border: 1px solid;
@@ -197,22 +214,9 @@
 
   .right { padding: 40px 32px; display: flex; flex-direction: column; gap: 24px; }
 
-  .code-block {
-    background: rgba(0,0,0,0.4);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-  }
-
-  .code-header {
-    padding: 8px 16px;
-    background: rgba(0,212,255,0.05);
-    border-bottom: 1px solid var(--border);
-    display: flex; gap: 6px;
-  }
-
+  /* Elementos de código e gráficos */
+  .code-block { background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; font-family: 'Space Mono', monospace; font-size: 0.72rem; }
+  .code-header { padding: 8px 16px; background: rgba(0,212,255,0.05); border-bottom: 1px solid var(--border); display: flex; gap: 6px; }
   .dot { width: 8px; height: 8px; border-radius: 50%; }
   .dot-r { background: #ff5f57; }
   .dot-y { background: #febc2e; }
@@ -222,38 +226,10 @@
   .str { color: #00d4ff; }
   .key { color: #00ffaa; }
 
-  .charts-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
-
-  .chart-widget {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    min-height: 100px;
-  }
-
-  .chart-title {
-    font-size: 0.5rem;
-    font-family: 'Space Mono', monospace;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .pie-chart {
-    width: 35px; height: 35px; border-radius: 50%;
-    background: conic-gradient(var(--accent) 0% 40%, var(--accent2) 40% 70%, var(--accent3) 70% 100%);
-    animation: pieRotate 4s linear infinite;
-  }
+  .charts-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .chart-widget { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 12px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: 100px; }
+  .chart-title { font-size: 0.5rem; font-family: 'Space Mono', monospace; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .pie-chart { width: 35px; height: 35px; border-radius: 50%; background: conic-gradient(var(--accent) 0% 40%, var(--accent2) 40% 70%, var(--accent3) 70% 100%); animation: pieRotate 4s linear infinite; }
   @keyframes pieRotate { to { transform: rotate(360deg); } }
 
   .bar-chart { display: flex; align-items: flex-end; gap: 3px; height: 35px; }
@@ -275,25 +251,25 @@
   .density-viz { width: 35px; height: 35px; border: 1px solid var(--border); border-radius: 50%; position: relative; overflow: hidden; }
   .radar-sweep { position: absolute; width: 100%; height: 100%; background: conic-gradient(transparent, var(--accent3)); opacity: 0.3; animation: spin 2s linear infinite; }
 
-  .goal {
-    padding: 14px;
-    background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(123,92,250,0.06));
-    border: 1px solid rgba(0,212,255,0.15);
-    border-radius: 12px;
-    font-size: 0.75rem;
-    color: var(--accent);
-    font-family: 'Space Mono', monospace;
-    text-align: center;
-  }
+  .goal { padding: 14px; background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(123,92,250,0.06)); border: 1px solid rgba(0,212,255,0.15); border-radius: 12px; font-size: 0.75rem; color: var(--accent); font-family: 'Space Mono', monospace; text-align: center; }
 
   @media (max-width: 900px) {
     .card { grid-template-columns: 1fr; width: 100%; }
-    .left { border-right: none; border-bottom: 1px solid var(--border); }
-    .charts-container { grid-template-columns: repeat(2, 1fr); }
+    .left { border-right: none; border-bottom: 1px solid var(--border); padding: 40px 20px; }
   }
 </style>
 </head>
 <body>
+
+<nav class="navbar">
+  <a href="#" class="nav-item home" title="Home"><i class="fas fa-home"></i></a>
+  <div class="nav-divider"></div>
+  <a href="https://github.com/Alvenato" target="_blank" class="nav-item" title="GitHub"><i class="fab fa-github"></i></a>
+  <a href="https://www.linkedin.com/in/cristianoalves-ca/" target="_blank" class="nav-item" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  <a href="https://wa.me/5561981830780" target="_blank" class="nav-item" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="mailto:analytics.barbosa@gmail.com" class="nav-item" title="E-mail"><i class="fas fa-envelope"></i></a>
+  <a href="https://alvenato.github.io/curriculo.html" target="_blank" class="nav-item" title="Currículo"><i class="fas fa-file-alt"></i></a>
+</nav>
 
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
@@ -310,26 +286,6 @@
     <div class="name">
       Cristiano A. Barbosa
       <span>Cientista de Dados · IA</span>
-    </div>
-
-    <div class="social-icons-row">
-      <a href="https://github.com/Alvenato" target="_blank" class="icon-btn" title="GitHub">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-      </a>
-      <a href="https://www.linkedin.com/in/cristianoalves-ca/" target="_blank" class="icon-btn" title="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-      <a href="mailto:analytics.barbosa@gmail.com" class="icon-btn" title="E-mail">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 7 10-7"/></svg>
-      </a>
-      <a href="https://wa.me/5561981830780" target="_blank" class="icon-btn" title="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-      </a>
-      <a href="curriculo.html" target="_blank" class="icon-btn" title="Currículo">
-        <i class="fas fa-file-alt"></i>
-      </a>
     </div>
 
     <div class="skills-container-left">
