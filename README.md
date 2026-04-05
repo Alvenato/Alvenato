@@ -1,73 +1,26 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=00d2ff&height=250&section=header&text=Cristiano%20Barbosa&fontSize=70&animation=fadeIn&fontAlignY=35" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=1e2229&height=280&section=header&text=CRISTIANO%20BARBOSA&fontSize=65&fontColor=fff&animation=fadeIn&fontAlignY=38&desc=Cientista%20de%20Dados%20|%20IA&descAlignY=62&descSize=20" width="100%" />
 
   <p align="center">
-    <a href="https://linkedin.com/in/cristiano-alves-barbosa" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
-    <a href="mailto:analytics.barbosa@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"></a>
-    <a href="https://alvenato.github.io/Alvenato/" target="_blank"><img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=about.me&logoColor=white"></a>
+    <a href="https://linkedin.com/in/cristiano-alves-barbosa" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white"></a>
+    <a href="mailto:analytics.barbosa@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=flat-square&logo=gmail&logoColor=white"></a>
+    <a href="https://alvenato.github.io/Alvenato/" target="_blank"><img src="https://img.shields.io/badge/Portfolio-000000?style=flat-square&logo=about.me&logoColor=white"></a>
   </p>
 </div>
 
 ---
 
-## 🧑‍💻 Sobre Mim
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20and%20Body/Technologist.png" width="35" /> Sobre Mim
 
-<table align="center">
+<table align="center" border="0">
   <tr>
-    <td width="60%">
-      <p>Olá! Sou <b>Cristiano Barbosa</b>, Analista de Dados em transição para Ciência de Dados e IA. Utilizo o poder dos dados para contar histórias e gerar impacto estratégico.</p>
+    <td width="65%" valign="top">
+      <p>Olá! Sou <b>Cristiano Barbosa</b>, um profissional apaixonado por transformar dados complexos em <b>narrativas estratégicas</b>. Com background em Análise de Dados e atualmente graduando em <b>Ciência de Dados e IA (IESB)</b>, foco em criar soluções analíticas que impulsionam o negócio.</p>
       <ul>
-        <li>🎓 Cursando Ciência de Dados e IA no IESB.</li>
-        <li>🎗️ Lean Six Sigma Yellow Belt.</li>
-        <li>🧠 Especialista em extrair valor de bases complexas com SQL e Python.</li>
+        <li>🚀 <b>Foco Atual:</b> Machine Learning Aplicado e Visão Computacional.</li>
+        <li>🎗️ Lean Six Sigma Yellow Belt (Foco em Processos e Qualidade).</li>
+        <li>🧠 Tradutor de "Código" para Insights de Negócio.</li>
       </ul>
     </td>
-    <td width="40%" align="center">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJmZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif" width="200px"/>
-    </td>
-  </tr>
-</table>
-
----
-
-## 🛠️ Tecnologias & Ferramentas
-
-<div align="center">
-  <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" />
-  <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" />
-  <img src="https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=microsoftpowerbi&logoColor=black" />
-  <img src="https://img.shields.io/badge/Tableau-E97627?style=for-the-badge&logo=Tableau&logoColor=white" />
-  <img src="https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white" />
-  <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" />
-</div>
-
----
-
-## 📈 Estatísticas & Performance
-
-<div align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true" />
-  
-  <img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight" />
-</div>
-
-<br/>
-
-<div align="center">
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&area=true&hide_border=true" />
-</div>
-
----
-
-## 🚀 Projetos em Destaque
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=NOME_DO_REPO_1&theme=tokyonight" />
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=NOME_DO_REPO_2&theme=tokyonight" />
-</div>
-
----
-
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=00d2ff&height=100&section=footer" />
-</div>
+    <td width="35%" align="center" valign="middle">
+      <img src="
