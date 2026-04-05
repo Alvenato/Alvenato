@@ -16,11 +16,11 @@
   <tr>
     <td width="60%" style="border: none;">
       <p>🎯 <b>Analista de Dados & Operações</b> focado na intersecção entre eficiência técnica e visão estratégica.</p>
-      <p>Atualmente, aprofundo meus conhecimentos em <b>Ciência de Dados e Inteligência Artificial</b> pelo IESB, transformando dados brutos em ativos inteligentes para tomada de decisão.</p>
+      <p>Atualmente, aprofundo meus conhecimentos em <b>Ciência de Dados e Inteligência Artificial</b> pelo IESB, utilizando ferramentas avançadas para transformar dados em ativos inteligentes.</p>
       <ul>
         <li>🎓 Graduando em Ciência de Dados e IA (IESB).</li>
         <li>🎗️ Lean Six Sigma Yellow Belt (FM2S).</li>
-        <li>🧩 Especialista em otimização de processos e análise diagnóstica.</li>
+        <li>🧠 Especialista em extrair valor de bases complexas com SQL, Python e Machine Learning.</li>
       </ul>
     </td>
     <td width="40%" align="center" style="border: none;">
@@ -31,15 +31,18 @@
 
 ---
 
-## 🧪 Stack Técnica
+## 🛠️ Tecnologias & Ferramentas
 
 <div align="center">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" />
+  <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" />
   <img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <br/>
   <img src="https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=microsoftpowerbi&logoColor=black" />
   <img src="https://img.shields.io/badge/Tableau-E97627?style=for-the-badge&logo=Tableau&logoColor=white" />
   <img src="https://img.shields.io/badge/GIT-F05033?style=for-the-badge&logo=git&logoColor=white" />
-  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+  <img src="https://img.shields.io/badge/Machine_Learning-FF6F00?style=for-the-badge&logo=google-cloud&logoColor=white" />
 </div>
 
 ---
@@ -62,10 +65,10 @@
 ## 📁 Repositórios Estratégicos
 
 <div align="center">
-  <a href="https://github.com/Alvenato/SEU_PROJETO_1">
+  <a href="https://github.com/Alvenato/NOME_DO_REPO_1">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=NOME_DO_REPO_1&theme=tokyonight&border_radius=10" />
   </a>
-  <a href="https://github.com/Alvenato/SEU_PROJETO_2">
+  <a href="https://github.com/Alvenato/NOME_DO_REPO_2">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=NOME_DO_REPO_2&theme=tokyonight&border_radius=10" />
   </a>
 </div>
