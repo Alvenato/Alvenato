@@ -1,81 +1,60 @@
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=333333&height=250&section=header&text=Cristiano%20Barbosa&fontSize=70&animation=fadeIn&fontAlignY=35" width="100%" />
-</div>
+<h1 align="center">Cristiano Barbosa</h1>
+<p align="center">
+  <b>Data Science & Operations</b><br>
+  <sub>Transformando dados em decisões estratégicas.</sub>
+</p>
 
 <div align="center">
-  <a href="https://linkedin.com/in/cristiano-alves-barbosa" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Linkedin">
-  </a>
-  <a href="mailto:analytics.barbosa@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail">
-  </a>
-  <a href="https://alvenato.github.io/Alvenato/" target="_blank">
-    <img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=about.me&logoColor=white" alt="Portfolio">
-  </a>
+  <a href="https://linkedin.com/in/cristiano-alves-barbosa">LinkedIn</a> • 
+  <a href="mailto:analytics.barbosa@gmail.com">Gmail</a> • 
+  <a href="https://alvenato.github.io/Alvenato/">Portfolio</a>
 </div>
 
-<br/>
+---
 
 <table>
   <tr>
-    <td width="50%" style="vertical-align: top;">
-      <h2>✨ Sobre Mim</h2>
-      <p>
-        Olá! Eu sou <b>Cristiano Barbosa</b>, profissional focado em <b>Operações e Ciência de Dados</b>. 
-        Transformo dados complexos em inteligência estratégica e eficiência operacional.
-      </p>
-      <ul>
-        <li>🎓 Cursando <b>Ciência de Dados e IA no IESB</b>.</li>
-        <li>🎗️ Certificado <b>Lean Six Sigma Yellow Belt</b>.</li>
-        <li>🧠 Especialista em <b>SQL e Python</b> para automação.</li>
-        <li>🚀 Focado em gerar valor através de modelos analíticos.</li>
-      </ul>
+    <td width="50%" valign="top">
+      <h3>🚀 Sobre</h3>
+      <p>Profissional focado em operações e ciência de dados. Acredito que os dados são o combustível para a eficiência operacional.</p>
       
-      <h2>🛠️ Tecnologias</h2>
-      <p>
-        <a href="https://skillicons.dev">
-          <img src="https://skillicons.dev/icons?i=py,postgres,dbeaver,docker,vscode,github,figma,powerbi,tableau,excel&theme=dark" />
-        </a>
-      </p>
+      <h3>🎯 Foco Atual</h3>
+      <ul>
+        <li>🎓 Ciência de Dados e IA (IESB)</li>
+        <li>🎗️ Lean Six Sigma Yellow Belt</li>
+        <li>⚡ Automação com Python & SQL</li>
+      </ul>
     </td>
-    <td width="50%" align="center">
-      <img src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&border_radius=10" width="100%" />
-      <br/>
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&border_radius=10" width="100%" />
+    <td width="50%" valign="top">
+      <h3>🛠️ Tech Stack</h3>
+      <p align="center">
+        <img src="https://skillicons.dev/icons?i=py,postgres,dbeaver,docker,github,powerbi,tableau,excel&theme=dark" />
+      </p>
     </td>
   </tr>
 </table>
 
 ---
 
-## 📈 Atividade & Performance
-
+<h3>📈 GitHub Stats</h3>
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&border_radius=10" width="48.5%" />
-  <img src="https://github-profile-trophy.vercel.app/?username=Alvenato&theme=tokyonight&column=3&margin-w=15" width="48.5%" />
+  <img src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&hide_border=true" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true" />
 </div>
 
-<br/>
+<br>
 
+<h3>🚀 Projetos</h3>
 <div align="center">
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&area=true&hide_border=true&border_radius=10" />
+  <a href="https://github.com/Alvenato/REPO_1">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=REPO_1&theme=tokyonight&hide_border=true" />
+  </a>
+  <a href="https://github.com/Alvenato/REPO_2">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=REPO_2&theme=tokyonight&hide_border=true" />
+  </a>
 </div>
 
 ---
-
-## 🚀 Projetos em Destaque
-
 <div align="center">
-  <a href="https://github.com/Alvenato/SEU_PROJETO_1">
-    <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=SEU_PROJETO_1&theme=tokyonight&border_radius=10" />
-  </a>
-  <a href="https://github.com/Alvenato/SEU_PROJETO_2">
-    <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=SEU_PROJETO_2&theme=tokyonight&border_radius=10" />
-  </a>
-</div>
-
-<br/>
-
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=333333&height=100&section=footer" width="100%" />
+  <p>Obrigado por visitar meu perfil! 👋</p>
 </div>
