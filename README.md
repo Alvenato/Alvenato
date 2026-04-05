@@ -53,7 +53,7 @@
 </div>
 
 <div align="center" style="margin-top: 10px;">
-  <img src="https://github-profile-trophy.vercel.app/?username=Alvenato&theme=tokyonight&column=7&margin-w=15&no-bg=false&no-frame=false" width="100%" />
+  <img src="https://github-profile-trophy.vercel.app/?username=Alvenato&theme=tokyonight&column=7&margin-w=15" />
 </div>
 
 <br/>
