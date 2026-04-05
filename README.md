@@ -2,27 +2,30 @@
 
 ### Analista de Dados | Estudante de Ciência de Dados e IA
 
-Sou apaixonado por transformar números em narrativas que impulsionam decisões. Atualmente, foco meus estudos e projetos em **Machine Learning**, **Análise Estatística** e **Business Intelligence**, buscando extrair o valor máximo dos dados através de storytelling e visualizações estratégicas.
+Sou apaixonado por transformar dados brutos em narrativas estratégicas (**Storytelling**) que impulsionam a tomada de decisão. Com background em Sistemas de Informação e Pós-graduação em Análise de Dados, foco em extrair insights valiosos utilizando Python, SQL e ferramentas de BI.
 
 ---
 
 ### 🛠️ Tecnologias e Ferramentas
 
-- **Linguagens:** Python (Pandas, Numpy, Scikit-learn), SQL
-- **Visualização de Dados:** Power BI, Matplotlib, Seaborn
-- **Frameworks/Metodologias:** Lean Six Sigma, Clustering (K-Means), ETL
-- **Ferramentas:** Git/GitHub, Excel Avançado, Jupyter Notebook
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![SQL](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![Power BI](https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=microsoftpowerbi&logoColor=black)
+![Tableau](https://img.shields.io/badge/Tableau-E97627?style=for-the-badge&logo=Tableau&logoColor=white)
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 
 ---
 
-### 🚀 Projetos em Destaque
+### 🚀 O que eu desenvolvo:
 
-* **[Nome do seu principal projeto]:** Descrição curta de uma frase sobre o problema que resolveu.
-* **[Estudos de Clustering]:** Implementação de algoritmos de agrupamento para segmentação de dados.
+- **Análise Exploratória:** Transformação de dados com Pandas e NumPy.
+- **Machine Learning:** Modelos de agrupamento (Clustering/K-Means) e análise preditiva.
+- **Business Intelligence:** Dashboards interativos em Power BI e Tableau Server.
+- **Processos:** Melhoria contínua baseada na metodologia Lean Six Sigma (Yellow Belt).
 
 ---
 
-### 📈 Estatísticas de Contribuição
+### 📊 Estatísticas do GitHub
 
 <p align="left">
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=dark&include_all_commits=true&count_private=true"/>
@@ -31,6 +34,16 @@ Sou apaixonado por transformar números em narrativas que impulsionam decisões.
 
 ---
 
-### 📫 Como me encontrar
-- **LinkedIn:** [linkedin.com/in/seu-perfil](https://linkedin.com/in/seu-perfil)
+### 🎓 Certificações & Formação
+- **Graduando em Ciência de Dados e IA** - IESB
+- **Pós-graduado em Análise de Dados** - Descomplica
+- **Lean Six Sigma Yellow Belt**
+
+---
+
+### 📫 Vamos nos conectar?
+- **LinkedIn:** [linkedin.com/in/cristiano-alves-barbosa](https://linkedin.com/in/seu-perfil-aqui) 
 - **E-mail:** analytics.barbosa@gmail.com
+- **Portfólio:** [https://alvenato.github.io/Alvenato/](https://alvenato.github.io/Alvenato/)
+
+---
