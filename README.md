@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=000000&height=250&section=header&text=Cristiano%20A.%20Barbosa&fontSize=70&animation=fadeIn&fontAlignY=35&desc=Analista%20de%20Dados%20|%20Cientista%20de%20Dados%20em%20IA&descSize=20&descAlignY=60&reversal=true&bgImg=https://raw.githubusercontent.com/alvenato/Alvenato/main/header-grid-bg.png" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=00d2ff&height=250&section=header&text=Cristiano%20Barbosa&fontSize=70&animation=fadeIn&fontAlignY=35" width="100%" />
 
   <p align="center">
     <a href="https://linkedin.com/in/cristiano-alves-barbosa" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
@@ -35,7 +35,7 @@
 
 <div align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=py,postgres,docker,vscode,github,figma,powerbi,tableau&theme=dark" />
+    <img src="https://skillicons.dev/icons?i=py,postgres,docker,vscode,github,figma,pandas,powerbi,tableau&theme=dark" />
   </a>
 </div>
 
@@ -53,7 +53,7 @@
 </div>
 
 <div align="center" style="margin-top: 10px;">
-  <img src="https://github-profile-trophy.vercel.app/?username=Alvenato&theme=tokyonight&column=7&margin-w=15" />
+  <img src="https://github-profile-trophy.vercel.app/?username=Alvenato&theme=tokyonight&column=7&margin-w=15" width="100%" />
 </div>
 
 <br/>
