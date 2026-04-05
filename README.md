@@ -50,7 +50,10 @@
 
 <div align="center" style="margin-top: 10px;">
   <img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&border_radius=10" />
-  <img height="180em" src="https://github-profile-trophy.vercel.app/?username=Alvenato&theme=tokyonight&column=3&margin-w=15&no-bg=true&no-frame=false" />
+</div>
+
+<div align="center" style="margin-top: 10px;">
+  <img src="https://github-profile-trophy.vercel.app/?username=Alvenato&theme=tokyonight&column=7&margin-w=15&no-bg=false&no-frame=false" width="100%" />
 </div>
 
 <br/>
