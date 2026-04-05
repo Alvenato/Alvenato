@@ -35,9 +35,9 @@
 
 <div align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=py,postgres,mysql,docker,vscode,git,github&theme=dark" />
+    <img src="https://skillicons.dev/icons?i=py,postgres,docker,vscode,github&theme=dark" />
     <br>
-    <img src="https://skillicons.dev/icons?i=pandas,sklearn,tensorflow,powerbi,tableau,figma&theme=dark" />
+    <img src="https://skillicons.dev/icons?i=pandas,sklearn,tensorflow,figma&theme=dark" />
   </a>
 </div>
 
