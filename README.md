@@ -12,19 +12,19 @@
 
 ## 🧑‍💻 Sobre Mim
 
-<table align="center" style="border-spacing: 20px;">
+<table align="center">
   <tr>
-    <td width="65%" style="vertical-align: top;">
+    <td width="65%" style="vertical-align: top; padding: 20px;">
       <p>🚀 Olá! Sou <b>Cristiano Barbosa</b>, Analista de Dados em transição para Ciência de Dados e IA. Utilizo o poder dos dados para contar histórias e gerar impacto estratégico através de modelos inteligentes e análises precisas.</p>
-      <ul>
+      <ul style="line-height: 1.6;">
         <li>🎓 <b>Formação:</b> Cursando Ciência de Dados e IA no IESB.</li>
         <li>🎗️ <b>Certificação:</b> Lean Six Sigma Yellow Belt.</li>
         <li>🧠 <b>Expertise:</b> Especialista em extrair valor de bases complexas com SQL, Python e Machine Learning.</li>
       </ul>
-      <p><i>"Dados são o novo petróleo, mas a inteligência é a refinaria."</i></p>
+      <p style="margin-top: 15px;"><i>"Dados são o novo petróleo, mas a inteligência é a refinaria."</i></p>
     </td>
     <td width="35%" align="center">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJmZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif" width="220px" style="border-radius: 20px; border: 2px solid #00d2ff;"/>
+      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJmZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif" width="200px" style="border-radius: 50%; border: 3px solid #00d2ff; box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);"/>
     </td>
   </tr>
 </table>
