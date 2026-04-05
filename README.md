@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=1a0033&customColorList=10,00d2ff,9200ff&height=300&section=header&text=CRISTIANO%20BARBOSA&fontSize=80&animation=fadeIn&fontAlignY=35&desc=OPERATIONS%20&%20DATA%20SCIENCE%20ARCHITECT&descSize=30&descAlignY=60" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=1a0033&customColorList=10,00d2ff,9200ff&height=350&section=header&text=CRISTIANO%20BARBOSA&fontSize=70&animation=fadeIn&fontAlignY=40&desc=OPERATIONS%20&%20DATA%20SCIENCE%20ARCHITECT&descSize=30&descAlignY=70&descAlign=left&descCustomPadding=30&bgImage=https://raw.githubusercontent.com/Alvenato/Alvenato/main/assets/img/programmer.png" width="100%" />
 
   <br/>
 
@@ -23,11 +23,11 @@
     <td width="60%" style="vertical-align: top; padding: 20px;">
       <h2 align="left" style="color: #00d2ff;">/ philosophy</h2>
       <p align="left">
-        Engenheiro de dados focado em <b>eficiência</b> e <b>arquitetura</b>. Minha missão não é apenas processar dados, mas construir as bases invisíveis que sustentam decisões estratégicas de alto impacto. Combinando a precisão do <b>Lean Six Sigma Yellow Belt</b> com a inteligência da <b>Ciência de Dados</b>, crio soluções que otimizam operações e desbloqueiam o valor latente em bases complexas.
+        Engenheiro de dados focado em <b>eficiência</b> e <b>arquitetura</b>. Minha missão é construir as bases que sustentam decisões estratégicas de alto impacto, unindo <b>Lean Six Sigma Yellow Belt</b> e <b>Ciência de Dados</b>.
       </p>
     </td>
     <td width="40%" align="center">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJmZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif" alt="Minimalist Core Icon" width="180px" style="border-radius: 5px; border: 2px solid #9200ff; box-shadow: 0 0 20px rgba(146, 0, 255, 0.4);"/>
+      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJmZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif" width="180px" style="border-radius: 5px; border: 2px solid #9200ff; box-shadow: 0 0 20px rgba(146, 0, 255, 0.4);"/>
     </td>
   </tr>
 </table>
@@ -36,7 +36,7 @@
 
 <div align="center">
   <h2 style="color: #9200ff;">/ technologist</h2>
-  <p><i>Curated tools for data architecture and operational intelligence</i></p>
+  <p><i>Stack focada em Power BI, Tableau e DBeaver</i></p>
   
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=py,postgres,dbeaver,docker,vscode,github,powerbi,tableau,excel&theme=dark" />
@@ -50,16 +50,12 @@
 </div>
 
 <div align="center">
-  <img height="200px" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&border_radius=10&hide_border=true&title_color=00d2ff&icon_color=9200ff&text_color=fff" alt="Cristiano's Stats" />
-  <img height="200px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&border_radius=10&hide_border=true&title_color=00d2ff&text_color=fff" alt="Cristiano's Top Langs" />
+  <img height="190px" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&border_radius=10&hide_border=true&title_color=00d2ff&icon_color=9200ff&text_color=fff" />
+  <img height="190px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&border_radius=10&hide_border=true&title_color=00d2ff" />
 </div>
 
 <div align="center" style="margin-top: 15px;">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" alt="Cristiano's Streak" />
-</div>
-
-<div align="center" style="margin-top: 15px;">
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&area=true&hide_border=true&border_radius=10&hide_title=true&line=00d2ff&point=9200ff" alt="Cristiano's Activity Graph" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" />
 </div>
 
 ---
@@ -69,11 +65,8 @@
 </div>
 
 <div align="center">
-  <a href="https://github.com/Alvenato/NOME_DO_REPO_1">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=NOME_DO_REPO_1&theme=tokyonight&border_radius=10&hide_border=true&title_color=00d2ff" />
-  </a>
-  <a href="https://github.com/Alvenato/NOME_DO_REPO_2">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=NOME_DO_REPO_2&theme=tokyonight&border_radius=10&hide_border=true&title_color=9200ff" />
+  <a href="https://github.com/Alvenato/NOME_DO_REPO">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=NOME_DO_REPO&theme=tokyonight&border_radius=10&hide_border=true&title_color=00d2ff" />
   </a>
 </div>
 
