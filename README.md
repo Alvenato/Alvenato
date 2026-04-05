@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=auto&height=250&section=header&text=Cristiano%20A.%20Barbosa&fontSize=70&animation=fadeIn&fontAlignY=35&desc=Analista%20de%20Dados%20|%20Cientista%20de%20Dados%20em%20IA&descSize=20&descAlignY=60&reversal=true&bgImg=https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3VxdXAzOHBkOHl3YXo1dDN3ZWZ4ZHRmYW56YXUzeGpwY3IzaHFkNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zy/vVk6m3S3C4V6E98IUX/giphy.gif" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=000000&height=250&section=header&text=Cristiano%20A.%20Barbosa&fontSize=70&animation=fadeIn&fontAlignY=35&desc=Analista%20de%20Dados%20|%20Cientista%20de%20Dados%20em%20IA&descSize=20&descAlignY=60&reversal=true&bgImg=https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3VxdXAzOHBkOHl3YXo1dDN3ZWZ4ZHRmYW56YXUzeGpwY3IzaHFkNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zy/vVk6m3S3C4V6E98IUX/giphy.gif" width="100%" />
 
   <p align="center">
     <a href="https://linkedin.com/in/cristiano-alves-barbosa" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
