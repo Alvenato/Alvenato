@@ -19,7 +19,7 @@
       <ul>
         <li>🎓 <b>Formação:</b> Cursando Ciência de Dados e IA no IESB.</li>
         <li>🎗️ <b>Certificação:</b> Lean Six Sigma Yellow Belt.</li>
-        <li>🧠 <b>Expertise:</b> Especialista em extrair valor de bases complexas com SQL e Python.</li>
+        <li>🧠 <b>Expertise:</b> Especialista em extrair valor de bases complexas com SQL, Python e Machine Learning.</li>
       </ul>
       <p><i>"Dados são o novo petróleo, mas a inteligência é a refinaria."</i></p>
     </td>
@@ -37,9 +37,12 @@
   <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" />
   <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" />
   <img src="https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white" />
+  <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" />
+  <br/>
   <img src="https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=microsoftpowerbi&logoColor=black" />
   <img src="https://img.shields.io/badge/Tableau-E97627?style=for-the-badge&logo=Tableau&logoColor=white" />
   <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" />
+  <img src="https://img.shields.io/badge/Machine_Learning-FF6F00?style=for-the-badge&logo=google-cloud&logoColor=white" />
 </div>
 
 ---
@@ -53,6 +56,7 @@
 
 <div align="center" style="margin-top: 10px;">
   <img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&border_radius=10" />
+  <img height="180em" src="https://github-profile-trophy.vercel.app/?username=Alvenato&theme=tokyonight&column=3&margin-w=15&no-bg=true&no-frame=false" />
 </div>
 
 <br/>
