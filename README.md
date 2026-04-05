@@ -15,11 +15,11 @@
 <table align="center">
   <tr>
     <td width="65%" style="vertical-align: top; padding: 20px;">
-      <p>🚀 Olá! Sou <b>Cristiano Barbosa</b>, Analista de Dados em transição para Ciência de Dados e IA. Utilizo o poder dos dados para contar histórias e gerar impacto estratégico através de modelos inteligentes e análises precisas.</p>
+      <p>🚀 Olá! Sou <b>Cristiano Barbosa</b>, profissional focado em Operações e Ciência de Dados. Utilizo o poder dos dados para contar histórias e gerar impacto estratégico através de modelos inteligentes e análises precisas.</p>
       <ul style="line-height: 1.6;">
         <li>🎓 <b>Formação:</b> Cursando Ciência de Dados e IA no IESB.</li>
         <li>🎗️ <b>Certificação:</b> Lean Six Sigma Yellow Belt.</li>
-        <li>🧠 <b>Expertise:</b> Especialista em extrair valor de bases complexas com SQL, Python e Machine Learning.</li>
+        <li>🧠 <b>Expertise:</b> Especialista em extrair valor de bases complexas com SQL e Python aplicados à eficiência operacional.</li>
       </ul>
       <p style="margin-top: 15px;"><i>"Dados são o novo petróleo, mas a inteligência é a refinaria."</i></p>
     </td>
@@ -35,7 +35,7 @@
 
 <div align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=py,postgres,docker,vscode,github,figma,pandas,powerbi,tableau&theme=dark" />
+    <img src="https://skillicons.dev/icons?i=py,postgres,docker,vscode,github,figma,powerbi,tableau,linux,excel&theme=dark" />
   </a>
 </div>
 
