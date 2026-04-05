@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=00d2ff&height=250&section=header&text=Cristiano%20Barbosa&fontSize=70&animation=fadeIn&fontAlignY=35" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=auto&height=250&section=header&text=Cristiano%20Barbosa&fontSize=70&animation=twinkling&fontAlignY=35&desc=Analista%20de%20Dados%20|%20Cientista%20de%20Dados%20em%20IA&descSize=20&descAlignY=60&reversal=true&bgAnimate=true&bgAnimateColor=000000,404040,000000" width="100%" />
 
   <p align="center">
     <a href="https://linkedin.com/in/cristiano-alves-barbosa" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
