@@ -1,82 +1,67 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=00d2ff&height=250&section=header&text=Cristiano%20Barbosa&fontSize=70&animation=fadeIn&fontAlignY=35" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=333333&height=250&section=header&text=Bem-vindo%20ao%20GitHub%20de%20[SEU%20NOME]&fontSize=50&animation=fadeIn&fontAlignY=35&desc=<%2F>&descSize=30&descAlignY=60" width="100%" />
+</div>
 
-  <p align="center">
-    <a href="https://linkedin.com/in/cristiano-alves-barbosa" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
-    <a href="mailto:analytics.barbosa@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"></a>
-    <a href="https://alvenato.github.io/Alvenato/" target="_blank"><img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=about.me&logoColor=white"></a>
+<div align="center">
+  <a href="[LINK_DO_SEU_LINKEDIN]"><img src="https://img.shields.io/badge/-LINKEDIN-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+  <a href="[LINK_DO_SEU_CODEFORCES]"><img src="https://img.shields.io/badge/-CODEFORCES-%23FFCC00?style=for-the-badge&logo=codeforces&logoColor=black" /></a>
+  <a href="[LINK_DO_SEU_CODECHEF]"><img src="https://img.shields.io/badge/-CODECHEF-%23000000?style=for-the-badge&logo=codechef&logoColor=white" /></a>
+  <a href="[LINK_DO_SEU_PINTEREST]"><img src="https://img.shields.io/badge/-PINTEREST-%23BD081C?style=for-the-badge&logo=pinterest&logoColor=white" /></a>
+  <a href="[LINK_DO_SEU_CHESS]"><img src="https://img.shields.io/badge/-CHESS.COM-%2381B441?style=for-the-badge&logo=chess.com&logoColor=white" /></a>
+</div>
+
+---
+
+<div align="left">
+  <h2 align="center">👨‍🚀 Sobre mim</h2>
+
+  <table width="100%">
+    <tr>
+      <td width="65%" style="vertical-align: top;">
+        <p>Olá! Eu sou <b>[SEU NOME COMPLETO]</b>, estudante de <b>Engenharia [SEU CURSO]</b>. Eu gosto de aprender novas tecnologias e resolver problemas. Atualmente estou trabalhando em projetos para praticar meu conhecimento sobre <b>[SUAS PRINCIPAIS SKILLS]</b>.</p>
+        <ul>
+          <li>🎓 Estudando na <b>[SUA UNIVERSIDADE]</b></li>
+          <li>🎯 [SUA META PRINCIPAL - ex: Competidor de ICPC (2025)]</li>
+          <li>[OUTRA ATIVIDADE - ex: Tutor de C++ na Universidade]</li>
+          <li>[HOBBY OU OUTRO INTERESSE - ex: Jogador de Xadrez]</li>
+        </ul>
+      </td>
+      <td width="35%" align="center">
+        <img src="https://raw.githubusercontent.com/username/username/main/astronaut.gif" alt="GIF de Astronauta" width="200px" style="border-radius: 5px;" />
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
+<div align="center">
+  <h2>🛠️ Tecnologias</h2>
+  
+  <p>
+    <a href="https://skillicons.dev">
+      <img src="https://skillicons.dev/icons?i=cpp,java,py,c,js,html,css,react,bootstrap,ruby,angular,nodejs,git,postgres,mysql&theme=dark" />
+    </a>
   </p>
 </div>
 
 ---
 
-## 🧑‍💻 Sobre Mim
-
-<table align="center">
-  <tr>
-    <td width="65%" style="vertical-align: top; padding: 20px;">
-      <p>🚀 Olá! Sou <b>Cristiano Barbosa</b>, profissional focado em Operações e Ciência de Dados. Utilizo o poder dos dados para contar histórias e gerar impacto estratégico através de modelos inteligentes e análises precisas.</p>
-      <ul style="line-height: 1.6;">
-        <li>🎓 <b>Formação:</b> Cursando Ciência de Dados e IA no IESB.</li>
-        <li>🎗️ <b>Certificação:</b> Lean Six Sigma Yellow Belt.</li>
-        <li>🧠 <b>Expertise:</b> Especialista em extrair valor de bases complexas com SQL e Python aplicados à eficiência operacional.</li>
-      </ul>
-      <p style="margin-top: 15px;"><i>"Dados são o novo petróleo, mas a inteligência é a refinaria."</i></p>
-    </td>
-    <td width="35%" align="center">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJmZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif" width="200px" style="border-radius: 50%; border: 3px solid #00d2ff; box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);"/>
-    </td>
-  </tr>
-</table>
-
----
-
-## 🛠️ Tecnologias & Ferramentas
+<div align="center">
+  <h2>📈 Estatísticas</h2>
+</div>
 
 <div align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=py,postgres,dbeaver,docker,vscode,github,figma,powerbi,tableau,excel&theme=dark" />
-  </a>
+  <img height="220px" src="https://github-readme-stats.vercel.app/api?username=[SEU_NOME_DE_USUARIO_GITHUB]&show_icons=true&theme=tokyonight&border_radius=10" alt="Estatísticas do GitHub de [SEU NOME]" />
+  <img height="220px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=[SEU_NOME_DE_USUARIO_GITHUB]&layout=compact&theme=tokyonight&border_radius=10" alt="Linguagens Principais de [SEU NOME]" />
+</div>
+
+<div align="center" style="margin-top: 15px;">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=[SEU_NOME_DE_USUARIO_GITHUB]&theme=tokyonight&border_radius=10" alt="Streak do GitHub de [SEU NOME]" />
+</div>
+
+<div align="center" style="margin-top: 15px;">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=[SEU_NOME_DE_USUARIO_GITHUB]&theme=tokyonight&area=true&border_radius=10&hide_border=true&hide_title=true" alt="Gráfico de Atividade de [SEU NOME]" width="100%" />
 </div>
 
 ---
-
-## 📈 Estatísticas & Performance
-
-<div align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&border_radius=10" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&border_radius=10" />
-</div>
-
-<div align="center" style="margin-top: 10px;">
-  <img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&border_radius=10" />
-</div>
-
-<div align="center" style="margin-top: 10px;">
-  <img src="https://github-profile-trophy.vercel.app/?username=Alvenato&theme=tokyonight&column=7&margin-w=15" width="100%" />
-</div>
-
-<br/>
-
-<div align="center">
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&area=true&hide_border=true&border_radius=10" />
-</div>
-
----
-
-## 🚀 Projetos em Destaque
-
-<div align="center">
-  <a href="https://github.com/Alvenato/NOME_DO_REPO_1">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=NOME_DO_REPO_1&theme=tokyonight&border_radius=10" />
-  </a>
-  <a href="https://github.com/Alvenato/NOME_DO_REPO_2">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=NOME_DO_REPO_2&theme=tokyonight&border_radius=10" />
-  </a>
-</div>
-
----
-
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=00d2ff&height=100&section=footer" />
-</div>
