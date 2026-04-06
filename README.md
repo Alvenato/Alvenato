@@ -46,9 +46,8 @@
   <h2 style="color: #9200ff;">Tecnologia</h2>
   <p style="color: #c9d1d9;"><i>Stack tecnológica voltada para pipelines de dados e visualização analítica</i></p>
   
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=py,postgres,mysql,beaver,docker,vscode,github,figma,powerbi,tableau,excel&theme=dark" />
-  </a>
+  <img src="https://skillicons.dev/icons?i=py,postgres,mysql,sqlite,beaver&theme=dark" />
+  <img src="https://skillicons.dev/icons?i=docker,vscode,github,figma,powerbi,tableau,excel&theme=dark" />
 </div>
 
 <br/>
@@ -60,8 +59,10 @@
 <div align="center">
   <h2 style="color: #00d2ff;">Métrica de Desempenho</h2>
   
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&icon_color=9200ff&text_color=fff" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&text_color=fff" />
+  <div align="center">
+    <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&icon_color=9200ff&text_color=fff" />
+    <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&text_color=fff" />
+  </div>
   
   <br/>
 
