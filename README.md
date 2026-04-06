@@ -25,7 +25,7 @@
 <table align="center" width="100%" style="background-color: #0d1117; border-collapse: collapse; border: none;">
   <tr style="border: none;">
     <td width="55%" style="vertical-align: top; padding: 20px; background-color: #0d1117; border: none;">
-      <h2 align="left" style="color: #00d2ff; border-bottom: none;">/ philosophy</h2>
+      <h2 align="left" style="color: #00d2ff; border-bottom: none;">PHILOSOPHY</h2>
       <p align="left" style="color: #c9d1d9;">
         Focado na <b>integridade e visualização de dados</b>. Atuo na linha de frente do processamento de informações (ETL), transformando dados brutos de APIs e bancos SQL em <b>dashboards estratégicos</b> no Power BI e Tableau. Minha missão é garantir o monitoramento preciso de fluxos técnicos e entregar indicadores que facilitem a tomada de decisão em cenários de alta complexidade.
       </p>
@@ -43,7 +43,7 @@
 <br/>
 
 <div align="center">
-  <h2 style="color: #9200ff;">/ technologist</h2>
+  <h2 style="color: #9200ff;">TECHNOLOGIST</h2>
   <p style="color: #c9d1d9;"><i>Curated tools for data architecture and operational intelligence</i></p>
   
   <a href="https://skillicons.dev">
@@ -58,7 +58,7 @@
 <br/>
 
 <div align="center">
-  <h2 style="color: #00d2ff;">performance metric</h2>
+  <h2 style="color: #00d2ff;">PERFORMANCE METRIC</h2>
 </div>
 
 <div align="center">
