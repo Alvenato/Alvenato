@@ -59,19 +59,17 @@
 
 <div align="center">
   <h2 style="color: #00d2ff;">Métrica de Desempenho</h2>
-</div>
+  
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&icon_color=9200ff&text_color=fff" />
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&text_color=fff" />
+  
+  <br/>
 
-<div align="center">
-  <img height="190px" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&icon_color=9200ff&text_color=fff" />
-  <img height="190px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&text_color=fff" />
-</div>
+  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&bg_color=0d1117&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff" style="margin-top: 10px;" />
 
-<div align="center" style="margin-top: 15px;">
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&bg_color=0d1117&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff" alt="Activity Graph" />
-</div>
+  <br/>
 
-<div align="center" style="margin-top: 15px;">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&background=0d1117&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&background=0d1117&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" style="margin-top: 10px;" />
 </div>
 
 <br/>
