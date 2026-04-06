@@ -44,7 +44,7 @@
 
 <div align="center">
   <h2 style="color: #9200ff;">Tecnologia</h2>
-  <p style="color: #c9d1d9;"><i>Curated tools for data architecture and operational intelligence</i></p>
+  <p style="color: #c9d1d9;"><i>Stack tecnológica voltada para pipelines de dados e visualização analítica</i></p>
   
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=py,postgres,dbeaver,docker,vscode,github,powerbi,tableau,excel&theme=dark" />
