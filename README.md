@@ -46,36 +46,5 @@
 ---
 
 <div align="center">
-  <h2 style="color: #00d2ff;">/ performance metric</h2>
-</div>
-
-<div align="center">
-  <img height="190px" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&icon_color=9200ff&text_color=fff" />
-  <img height="190px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&text_color=fff" />
-</div>
-
-<div align="center" style="margin-top: 15px;">
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&bg_color=0d1117&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff" alt="Activity Graph" />
-</div>
-
-<div align="center" style="margin-top: 15px;">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&background=0d1117&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" />
-</div>
-
----
-
-<div align="center">
-  <h2 style="color: #9200ff;">/ architecture solutions</h2>
-</div>
-
-<div align="center">
-  <a href="https://github.com/Alvenato/NOME_DO_REPO">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=NOME_DO_REPO&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&text_color=fff" />
-  </a>
-</div>
-
----
-
-<div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0d1117&customColorList=10,9200ff,00d2ff&height=80&section=footer" width="100%" />
 </div>
