@@ -47,7 +47,7 @@
   <p style="color: #c9d1d9;"><i>Stack tecnológica voltada para pipelines de dados e visualização analítica</i></p>
   
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=py,postgres,mysql,beaver,docker,vscode,github,apple,figma,powerbi,tableau,excel&theme=dark" />
+    <img src="https://skillicons.dev/icons?i=py,postgres,mysql,beaver,docker,vscode,github,figma,powerbi,tableau,excel&theme=dark" />
   </a>
 </div>
 
