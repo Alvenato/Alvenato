@@ -22,14 +22,14 @@
 
 <table align="center" width="100%" style="background-color: #0d1117; border-collapse: collapse;">
   <tr>
-    <td width="60%" style="vertical-align: top; padding: 20px; background-color: #0d1117;">
+    <td width="55%" style="vertical-align: top; padding: 20px; background-color: #0d1117;">
       <h2 align="left" style="color: #00d2ff; border-bottom: none;">/ philosophy</h2>
       <p align="left" style="color: #c9d1d9;">
         Focado na <b>integridade e visualização de dados</b>. Atuo na linha de frente do processamento de informações (ETL), transformando dados brutos de APIs e bancos SQL em <b>dashboards estratégicos</b> no Power BI e Tableau. Minha missão é garantir o monitoramento preciso de fluxos técnicos e entregar indicadores que facilitem a tomada de decisão em cenários de alta complexidade.
       </p>
     </td>
-    <td width="40%" align="center" style="background-color: #0d1117;">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJmZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif" width="180px" style="border-radius: 5px; border: 2px solid #9200ff; box-shadow: 0 0 20px rgba(146, 0, 255, 0.4);"/>
+    <td width="45%" align="center" style="background-color: #0d1117; padding: 10px;">
+      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZkNzZ5amY4dzFmZmx4dWljZmlscW9hYmdmeWRxdnExMmdobGN1NiZlcD12MV9pbnGVcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPnAiaMCws8nruE/giphy.gif" width="280px" style="border-radius: 10px; border: 3px solid #00d2ff; box-shadow: 0 0 30px rgba(0, 210, 255, 0.5);"/>
     </td>
   </tr>
 </table>
