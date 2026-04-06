@@ -31,7 +31,7 @@
       </p>
     </td>
     <td width="45%" align="center" style="background-color: #0d1117; padding: 10px; border: none;">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3N6YnV3dGZ4OHB0ZTVyeXF6ZXZ4Znh4Znh4Znh4Znh4Znh4Znh4ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKSjPqcK7YpXpW8/giphy.gif" width="100%" style="border-radius: 10px; border: 2px solid #00d2ff; display: block;"/>
+      <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/136810374/261141708-3f5f3e9b-9831-4c13-a4e9-0b1a0e980a37.gif" width="100%" style="border-radius: 10px; border: 3px solid #00d2ff; box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); display: block;"/>
     </td>
   </tr>
 </table>
@@ -61,7 +61,7 @@
   
   <div align="center">
     <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&icon_color=9200ff&text_color=fff" />
-    <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&text_color=fff" />
+    <img height="180em" src="https://github-readme-stats.vercelapp/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&text_color=fff" />
   </div>
   
   <br/>
