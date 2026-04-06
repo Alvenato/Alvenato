@@ -31,7 +31,7 @@
       </p>
     </td>
     <td width="45%" align="center" style="background-color: #0d1117; padding: 10px; border: none;">
-      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJndXp4bmZybmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKSjPqcK0pLSTVC/giphy.gif" width="100%" style="border-radius: 10px; border: 3px solid #9200ff; box-shadow: 0 0 20px rgba(146, 0, 255, 0.4); display: block;"/>
+      <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGNmNXFibWZ4a2Vna210bjIzYjA1bmZham5jcnM5b3pic3pud3Z5MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WmBl8pvjfyYUszw1TS/giphy.gif" width="100%" style="border-radius: 10px; border: 3px solid #00d2ff; box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); display: block;"/>
     </td>
   </tr>
 </table>
