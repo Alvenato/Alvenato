@@ -5,15 +5,15 @@
 
   <p align="center">
     <a href="https://linkedin.com/in/cristiano-alves-barbosa" target="_blank">
-      <img src="https://img.shields.io/badge/LinkedIn-00d2ff?style=social&logo=linkedin" alt="Linkedin" />
+      <img src="https://img.shields.io/badge/-LinkedIn-00d2ff?style=for-the-badge&logo=linkedin&logoColor=0d1117" alt="Linkedin" />
     </a>
     &nbsp;
     <a href="mailto:analytics.barbosa@gmail.com">
-      <img src="https://img.shields.io/badge/Email-9200ff?style=social&logo=gmail" alt="Email" />
+      <img src="https://img.shields.io/badge/-Email-9200ff?style=for-the-badge&logo=gmail&logoColor=ffffff" alt="Email" />
     </a>
     &nbsp;
     <a href="https://alvenato.github.io/Alvenato/" target="_blank">
-      <img src="https://img.shields.io/badge/Portfolio-00d2ff?style=social&logo=about.me" alt="Portfolio" />
+      <img src="https://img.shields.io/badge/-Portfolio-00d2ff?style=for-the-badge&logo=about.me&logoColor=0d1117" alt="Portfolio" />
     </a>
   </p>
 </div>
