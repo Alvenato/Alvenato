@@ -18,7 +18,7 @@
   </p>
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=00d2ff&height=2&section=header" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=soft&color=00d2ff&height=3&section=header" width="100%" />
 
 <br/>
 
@@ -38,7 +38,7 @@
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=00d2ff&height=2&section=header" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=soft&color=00d2ff&height=3&section=header" width="100%" />
 
 <br/>
 
@@ -53,12 +53,12 @@
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=00d2ff&height=2&section=header" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=soft&color=00d2ff&height=3&section=header" width="100%" />
 
 <br/>
 
 <div align="center">
-  <h2 style="color: #00d2ff;">Performance Metric</h2>
+  <h2 style="color: #00d2ff;">Desempenho</h2>
 </div>
 
 <div align="center">
