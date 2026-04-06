@@ -43,7 +43,7 @@
 <br/>
 
 <div align="center">
-  <h2 style="color: #9200ff;">Technology</h2>
+  <h2 style="color: #9200ff;">Tecnologia</h2>
   <p style="color: #c9d1d9;"><i>Curated tools for data architecture and operational intelligence</i></p>
   
   <a href="https://skillicons.dev">
@@ -58,7 +58,7 @@
 <br/>
 
 <div align="center">
-  <h2 style="color: #00d2ff;">Desempenho</h2>
+  <h2 style="color: #00d2ff;">Métrica de Desempenho</h2>
 </div>
 
 <div align="center">
