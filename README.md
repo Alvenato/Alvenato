@@ -13,7 +13,7 @@
     </a>
     &nbsp;
     <a href="https://alvenato.github.io/Alvenato/" target="_blank">
-      <img src="https://img.shields.io/badge/-Portfolio-00d2ff?style=for-the-badge&logo=about.me&logoColor=00d2ff" alt="Portfolio" />
+      <img src="https://img.shields.io/badge/-Portfolio-00d2ff?style=for-the-badge&logo=about.me&logoColor=0d1117" alt="Portfolio" />
     </a>
   </p>
 </div>
@@ -25,7 +25,7 @@
     <td width="60%" style="vertical-align: top; padding: 20px; background-color: #0d1117;">
       <h2 align="left" style="color: #00d2ff; border-bottom: none;">/ philosophy</h2>
       <p align="left" style="color: #c9d1d9;">
-        Especialista em converter <b>caos operacional em inteligência estratégica</b>. Com background em Sistemas de Informação e vasta experiência em logística, utilizo <b>Python, SQL e Lean Six Sigma</b> para arquitetar soluções de dados que não apenas descrevem o passado, mas otimizam o futuro. Meu foco é a <b>eficiência de processos</b> através da Ciência de Dados e IA.
+        Focado na <b>integridade e visualização de dados</b>. Atuo na linha de frente do processamento de informações (ETL), transformando dados brutos de APIs e bancos SQL em <b>dashboards estratégicos</b> no Power BI e Tableau. Minha missão é garantir o monitoramento preciso de fluxos técnicos e entregar indicadores que facilitem a tomada de decisão em cenários de alta complexidade.
       </p>
     </td>
     <td width="40%" align="center" style="background-color: #0d1117;">
