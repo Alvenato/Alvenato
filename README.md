@@ -5,15 +5,15 @@
 
   <p align="center">
     <a href="https://linkedin.com/in/cristiano-alves-barbosa" target="_blank">
-      <img src="https://img.shields.io/static/v1?label=&message=LinkedIn&color=00d2ff&style=flat-square&logo=linkedin&logoColor=0d1117" alt="Linkedin" />
+      <img src="https://img.shields.io/badge/LinkedIn-00d2ff?style=social&logo=linkedin" alt="Linkedin" />
     </a>
     &nbsp;
     <a href="mailto:analytics.barbosa@gmail.com">
-      <img src="https://img.shields.io/static/v1?label=&message=Email&color=9200ff&style=flat-square&logo=gmail&logoColor=ffffff" alt="Email" />
+      <img src="https://img.shields.io/badge/Email-9200ff?style=social&logo=gmail" alt="Email" />
     </a>
     &nbsp;
     <a href="https://alvenato.github.io/Alvenato/" target="_blank">
-      <img src="https://img.shields.io/static/v1?label=&message=Portfolio&color=00d2ff&style=flat-square&logo=about.me&logoColor=0d1117" alt="Portfolio" />
+      <img src="https://img.shields.io/badge/Portfolio-00d2ff?style=social&logo=about.me" alt="Portfolio" />
     </a>
   </p>
 </div>
@@ -48,7 +48,7 @@
 ---
 
 <div align="center">
-  <h2 style="color: #00d2ff;">/ performance metric</h2>
+  <h2 style="color: #00d2ff;">performance metric</h2>
 </div>
 
 <div align="center">
