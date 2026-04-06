@@ -57,7 +57,14 @@
 <br/>
 
 <div align="center">
-  <h2 style="color: #00d2ff;">Métrica de Desempenho</h2>
+  <h2 style="color: #00d2ff;">Reconhecimento e Conquistas</h2>
+  <img src="https://github-profile-trophy.vercel.app/?username=Alvenato&theme=tokyonight&no-frame=true&margin-w=15&margin-h=15&column=7" alt="Troféus do GitHub" />
+</div>
+
+<br/>
+
+<div align="center">
+  <h2 style="color: #9200ff;">Métrica de Desempenho</h2>
   
   <div align="center">
     <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&icon_color=9200ff&text_color=fff" />
