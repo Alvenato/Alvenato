@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=1a0033&customColorList=10,00d2ff,9200ff&height=350&section=header&text=CRISTIANO%20BARBOSA&fontSize=70&animation=fadeIn&fontAlignY=40&desc=OPERATIONS%20&%20DATA%20SCIENCE%20ARCHITECT&descSize=30&descAlignY=70&descAlign=left&descCustomPadding=30&bgImage=https://raw.githubusercontent.com/Alvenato/Alvenato/main/assets/img/programmer.png" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=1a0033&customColorList=10,00d2ff,9200ff&height=250&section=header&text=CRISTIANO%20BARBOSA&fontSize=70&animation=fadeIn&fontAlignY=35&desc=OPERATIONS%20&%20DATA%20SCIENCE%20ARCHITECT&descSize=30&descAlignY=60" width="100%" />
 
   <br/>
 
@@ -36,21 +36,10 @@
 
 <div align="center">
   <h2 style="color: #9200ff;">/ technologist</h2>
-  <p><i>Stack exclusiva baseada em análise de dados e ferramentas de BI</i></p>
-  
-  <br/>
-  
-  <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/python-logo.jpg" width="55" height="55" alt="Python" /> &nbsp;
-  <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/power-bi.jpg" width="55" height="55" alt="Power BI" /> &nbsp;
-  <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/tableau-software.jpg" width="55" height="55" alt="Tableau" /> &nbsp;
-  <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/DBeaver_logo.jpg" width="55" height="55" alt="DBeaver" /> &nbsp;
-  <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/vs%20código.jpg" width="55" height="55" alt="VS Code" /> &nbsp;
-  <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/figma.jpg" width="55" height="55" alt="Figma" />
-  
-  <br/><br/>
+  <p><i>Curated tools for data architecture and operational intelligence</i></p>
   
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=postgres,docker,github,excel&theme=dark" />
+    <img src="https://skillicons.dev/icons?i=py,postgres,dbeaver,docker,vscode,github,powerbi,tableau,excel&theme=dark" />
   </a>
 </div>
 
