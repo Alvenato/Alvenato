@@ -36,10 +36,21 @@
 
 <div align="center">
   <h2 style="color: #9200ff;">/ technologist</h2>
-  <p><i>Stack focada em Power BI, Tableau e DBeaver</i></p>
+  <p><i>Stack exclusiva baseada em análise de dados e ferramentas de BI</i></p>
+  
+  <br/>
+  
+  <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/python-logo.jpg" width="55" height="55" alt="Python" /> &nbsp;
+  <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/power-bi.jpg" width="55" height="55" alt="Power BI" /> &nbsp;
+  <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/tableau-software.jpg" width="55" height="55" alt="Tableau" /> &nbsp;
+  <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/DBeaver_logo.jpg" width="55" height="55" alt="DBeaver" /> &nbsp;
+  <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/vs%20código.jpg" width="55" height="55" alt="VS Code" /> &nbsp;
+  <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/figma.jpg" width="55" height="55" alt="Figma" />
+  
+  <br/><br/>
   
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=py,postgres,dbeaver,docker,vscode,github,powerbi,tableau,excel&theme=dark" />
+    <img src="https://skillicons.dev/icons?i=postgres,docker,github,excel&theme=dark" />
   </a>
 </div>
 
