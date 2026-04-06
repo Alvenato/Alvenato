@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=1a0033&customColorList=10,00d2ff,9200ff&height=250&section=header&text=CRISTIANO%20BARBOSA&fontSize=70&animation=fadeIn&fontAlignY=35&desc=OPERATIONS%20&%20DATA%20SCIENCE%20ARCHITECT&descSize=30&descAlignY=60" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0d1117&customColorList=10,00d2ff,9200ff&height=250&section=header&text=CRISTIANO%20BARBOSA&fontSize=70&animation=fadeIn&fontAlignY=35&desc=OPERATIONS%20&%20DATA%20SCIENCE%20ARCHITECT&descSize=30&descAlignY=60" width="100%" />
 
   <br/>
 
@@ -18,15 +18,15 @@
 
 ---
 
-<table align="center" width="100%">
+<table align="center" width="100%" style="background-color: #0d1117; border-collapse: collapse;">
   <tr>
-    <td width="60%" style="vertical-align: top; padding: 20px;">
-      <h2 align="left" style="color: #00d2ff;">/ philosophy</h2>
-      <p align="left">
+    <td width="60%" style="vertical-align: top; padding: 20px; background-color: #0d1117;">
+      <h2 align="left" style="color: #00d2ff; border-bottom: none;">/ philosophy</h2>
+      <p align="left" style="color: #c9d1d9;">
         Engenheiro de dados focado em <b>eficiência</b> e <b>arquitetura</b>. Minha missão é construir as bases que sustentam decisões estratégicas de alto impacto, unindo <b>Lean Six Sigma Yellow Belt</b> e <b>Ciência de Dados</b>.
       </p>
     </td>
-    <td width="40%" align="center">
+    <td width="40%" align="center" style="background-color: #0d1117;">
       <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJmZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6ZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif" width="180px" style="border-radius: 5px; border: 2px solid #9200ff; box-shadow: 0 0 20px rgba(146, 0, 255, 0.4);"/>
     </td>
   </tr>
@@ -51,11 +51,11 @@
 
 <div align="center">
   <img height="190px" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&icon_color=9200ff&text_color=fff" />
-  <img height="190px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff" />
+  <img height="190px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&text_color=fff" />
 </div>
 
 <div align="center" style="margin-top: 15px;">
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&bg_color=0d1117&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff" alt="Cristiano's Activity Graph" />
+  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&bg_color=0d1117&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff" alt="Activity Graph" />
 </div>
 
 <div align="center" style="margin-top: 15px;">
@@ -70,12 +70,12 @@
 
 <div align="center">
   <a href="https://github.com/Alvenato/NOME_DO_REPO">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=NOME_DO_REPO&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff" />
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alvenato&repo=NOME_DO_REPO&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&text_color=fff" />
   </a>
 </div>
 
 ---
 
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=1a0033&customColorList=10,9200ff,00d2ff&height=80&section=footer" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0d1117&customColorList=10,9200ff,00d2ff&height=80&section=footer" width="100%" />
 </div>
