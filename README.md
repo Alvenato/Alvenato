@@ -31,7 +31,7 @@
       </p>
     </td>
     <td width="45%" align="center" style="background-color: #0d1117; padding: 10px; border: none;">
-      <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/assets/data-analysis.gif" width="100%" style="border-radius: 10px; border: 3px solid #00d2ff; box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); display: block;"/>
+      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3N6YnV3dGZ4OHB0ZTVyeXF6ZXZ4Znh4Znh4Znh4Znh4Znh4Znh4ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKSjPqcK7YpXpW8/giphy.gif" width="100%" style="border-radius: 10px; border: 2px solid #00d2ff; display: block;"/>
     </td>
   </tr>
 </table>
