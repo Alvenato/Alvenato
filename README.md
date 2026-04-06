@@ -58,7 +58,9 @@
 
 <div align="center">
   <h2 style="color: #00d2ff;">Reconhecimento e Conquistas</h2>
-  <img src="https://github-profile-trophy.vercel.app/?username=Alvenato&theme=tokyonight&no-frame=true&margin-w=15&margin-h=15&column=7" alt="Troféus do GitHub" />
+  <a href="https://github.com/ryo-ma/github-profile-trophy">
+    <img src="https://github-profile-trophy.vercel.app/?username=Alvenato&theme=tokyonight&no-frame=true&margin-w=15&margin-h=15&column=7" alt="GitHub Trophies" />
+  </a>
 </div>
 
 <br/>
