@@ -18,34 +18,34 @@
   </p>
 </div>
 
----
+<br/>
 
-<table align="center" width="100%" style="background-color: #0d1117; border-collapse: collapse;">
-  <tr>
-    <td width="55%" style="vertical-align: top; padding: 20px; background-color: #0d1117;">
+<table align="center" width="100%" style="background-color: #0d1117; border-collapse: collapse; border: none;">
+  <tr style="border: none;">
+    <td width="55%" style="vertical-align: top; padding: 20px; background-color: #0d1117; border: none;">
       <h2 align="left" style="color: #00d2ff; border-bottom: none;">/ philosophy</h2>
       <p align="left" style="color: #c9d1d9;">
         Focado na <b>integridade e visualização de dados</b>. Atuo na linha de frente do processamento de informações (ETL), transformando dados brutos de APIs e bancos SQL em <b>dashboards estratégicos</b> no Power BI e Tableau. Minha missão é garantir o monitoramento preciso de fluxos técnicos e entregar indicadores que facilitem a tomada de decisão em cenários de alta complexidade.
       </p>
     </td>
-    <td width="45%" align="center" style="background-color: #0d1117; padding: 10px;">
+    <td width="45%" align="center" style="background-color: #0d1117; padding: 10px; border: none;">
       <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZkNzZ5amY4dzFmZmx4dWljZmlscW9hYmdmeWRxdnExMmdobGN1NiZlcD12MV9pbnGVcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPnAiaMCws8nruE/giphy.gif" width="280px" style="border-radius: 10px; border: 3px solid #00d2ff; box-shadow: 0 0 30px rgba(0, 210, 255, 0.5);"/>
     </td>
   </tr>
 </table>
 
----
+<br/>
 
 <div align="center">
   <h2 style="color: #9200ff;">/ technologist</h2>
-  <p><i>Curated tools for data architecture and operational intelligence</i></p>
+  <p style="color: #c9d1d9;"><i>Curated tools for data architecture and operational intelligence</i></p>
   
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=py,postgres,dbeaver,docker,vscode,github,powerbi,tableau,excel&theme=dark" />
   </a>
 </div>
 
----
+<br/>
 
 <div align="center">
   <h2 style="color: #00d2ff;">performance metric</h2>
@@ -64,7 +64,7 @@
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&background=0d1117&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" />
 </div>
 
----
+<br/>
 
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0d1117&customColorList=10,9200ff,00d2ff&height=80&section=footer" width="100%" />
