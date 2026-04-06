@@ -13,7 +13,7 @@
     </a>
     &nbsp;
     <a href="https://alvenato.github.io/Alvenato/" target="_blank">
-      <img src="https://img.shields.io/badge/-Portfolio-00d2ff?style=for-the-badge&logo=about.me&logoColor=0d1117" alt="Portfolio" />
+      <img src="https://img.shields.io/badge/-Portfolio-00d2ff?style=for-the-badge&logo=about.me&logoColor=00d2ff" alt="Portfolio" />
     </a>
   </p>
 </div>
@@ -25,7 +25,7 @@
     <td width="60%" style="vertical-align: top; padding: 20px; background-color: #0d1117;">
       <h2 align="left" style="color: #00d2ff; border-bottom: none;">/ philosophy</h2>
       <p align="left" style="color: #c9d1d9;">
-        Engenheiro de dados focado em <b>eficiência</b> e <b>arquitetura</b>. Minha missão é construir as bases que sustentam decisões estratégicas de alto impacto, unindo <b>Lean Six Sigma Yellow Belt</b> e <b>Ciência de Dados</b>.
+        Especialista em converter <b>caos operacional em inteligência estratégica</b>. Com background em Sistemas de Informação e vasta experiência em logística, utilizo <b>Python, SQL e Lean Six Sigma</b> para arquitetar soluções de dados que não apenas descrevem o passado, mas otimizam o futuro. Meu foco é a <b>eficiência de processos</b> através da Ciência de Dados e IA.
       </p>
     </td>
     <td width="40%" align="center" style="background-color: #0d1117;">
