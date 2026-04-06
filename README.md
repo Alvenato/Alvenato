@@ -55,6 +55,10 @@
 </div>
 
 <div align="center" style="margin-top: 15px;">
+  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff" alt="Cristiano's Activity Graph" />
+</div>
+
+<div align="center" style="margin-top: 15px;">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" />
 </div>
 
