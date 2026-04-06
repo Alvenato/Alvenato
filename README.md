@@ -5,7 +5,7 @@
 
   <p align="center">
     <a href="https://linkedin.com/in/cristiano-alves-barbosa" target="_blank">
-      <img src="https://img.shields.io/badge/LinkedIn-00d2ff?style=for-the-badge&logo=linkedin&logoColor=0d1117" alt="Linkedin" />
+      <img src="https://img.shields.io/badge/LinkedIn-9200ff?style=for-the-badge&logo=linkedin&logoColor=ffffff" alt="Linkedin" />
     </a>
     &nbsp;
     <a href="mailto:analytics.barbosa@gmail.com">
@@ -13,7 +13,7 @@
     </a>
     &nbsp;
     <a href="https://alvenato.github.io/Alvenato/" target="_blank">
-      <img src="https://img.shields.io/badge/Portfolio-00d2ff?style=for-the-badge&logo=about.me&logoColor=0d1117" alt="Portfolio" />
+      <img src="https://img.shields.io/badge/Portfolio-9200ff?style=for-the-badge&logo=about.me&logoColor=ffffff" alt="Portfolio" />
     </a>
   </p>
 </div>
@@ -31,7 +31,7 @@
       </p>
     </td>
     <td width="45%" align="center" style="background-color: #0d1117; padding: 10px; border: none;">
-      <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/136810374/261141708-3f5f3e9b-9831-4c13-a4e9-0b1a0e980a37.gif" width="100%" style="border-radius: 10px; border: 3px solid #00d2ff; box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); display: block;"/>
+      <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/assets/data-analysis.gif" width="100%" style="border-radius: 10px; border: 3px solid #00d2ff; box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); display: block;"/>
     </td>
   </tr>
 </table>
