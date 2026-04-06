@@ -18,6 +18,8 @@
   </p>
 </div>
 
+<img src="https://capsule-render.vercel.app/api?type=rect&color=00d2ff&height=2&section=header" width="100%" />
+
 <br/>
 
 <table align="center" width="100%" style="background-color: #0d1117; border-collapse: collapse; border: none;">
@@ -36,6 +38,10 @@
 
 <br/>
 
+<img src="https://capsule-render.vercel.app/api?type=rect&color=00d2ff&height=2&section=header" width="100%" />
+
+<br/>
+
 <div align="center">
   <h2 style="color: #9200ff;">/ technologist</h2>
   <p style="color: #c9d1d9;"><i>Curated tools for data architecture and operational intelligence</i></p>
@@ -44,6 +50,10 @@
     <img src="https://skillicons.dev/icons?i=py,postgres,dbeaver,docker,vscode,github,powerbi,tableau,excel&theme=dark" />
   </a>
 </div>
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=00d2ff&height=2&section=header" width="100%" />
 
 <br/>
 
