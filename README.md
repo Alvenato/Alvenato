@@ -57,11 +57,22 @@
 <br/>
 
 <div align="center">
-  <h2 style="color: #00d2ff;">Reconhecimento e Conquistas</h2>
+  <h2 style="color: #00d2ff;">🏆 Reconhecimento e Conquistas</h2>
+  
   <a href="https://github.com/ryo-ma/github-profile-trophy">
     <img src="https://github-profile-trophy.vercel.app/?username=Alvenato&theme=tokyonight&no-frame=true&margin-w=15&margin-h=15&column=7" alt="GitHub Trophies" />
   </a>
+
+  <br/><br/>
+
+  <img src="https://github-profile-badges.vercel.app/api/badges?username=Alvenato&theme=tokyonight&columns=5" width="400px" />
+  
+  <p style="color: #c9d1d9; font-size: 14px;"><i>Reconhecimento por contribuições e marcos na comunidade GitHub</i></p>
 </div>
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=soft&color=00d2ff&height=3&section=header" width="100%" />
 
 <br/>
 
