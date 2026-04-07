@@ -65,9 +65,13 @@
 
   <br/><br/>
 
-  <img src="https://github-profile-badges.vercel.app/api/badges?username=Alvenato&theme=tokyonight&columns=5" width="400px" />
+  <div style="display: inline-block; background-color: #0d1117; padding: 10px; border-radius: 15px; border: 1px solid #30363d;">
+    <img src="https://github-profile-badges.vercel.app/api/badges?username=Alvenato&theme=tokyonight&columns=5" width="450px" />
+  </div>
   
-  <p style="color: #c9d1d9; font-size: 14px;"><i>Reconhecimento por contribuições e marcos na comunidade GitHub</i></p>
+  <p style="color: #c9d1d9; font-size: 14px; margin-top: 10px;">
+    <i>Reconhecimento por contribuições e marcos na comunidade GitHub</i>
+  </p>
 </div>
 
 <br/>
