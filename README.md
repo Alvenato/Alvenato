@@ -65,12 +65,15 @@
 
   <br/><br/>
 
-  <div style="display: inline-block; background-color: #0d1117; padding: 10px; border-radius: 15px; border: 1px solid #30363d;">
+  <div style="display: inline-block; background-color: #0d1117; padding: 15px; border-radius: 15px; border: 1px solid #30363d;">
+    <h3 style="color: #9200ff; margin-bottom: 15px;">Certificações & Educação</h3>
+    <img src="https://assets.dio.me/c_6-enx_gsCjBqdsEtj4RN1yYCoEx9voHbg9U74chJ0/f:webp/q:80/w:120/L2NvdXJzZXMvYmFkZ2UvZDdlNmRkNGQtOTMyNi00OTUwLTgxZWUtNzJjNTc4NTY1M2E1LnBuZw" width="100px" alt="DIO Badge" style="margin-bottom: 10px;" />
+    <br/>
     <img src="https://github-profile-badges.vercel.app/api/badges?username=Alvenato&theme=tokyonight&columns=5" width="450px" />
   </div>
   
   <p style="color: #c9d1d9; font-size: 14px; margin-top: 10px;">
-    <i>Reconhecimento por contribuições e marcos na comunidade GitHub</i>
+    <i>Reconhecimento por contribuições, formação contínua e marcos na comunidade</i>
   </p>
 </div>
 
