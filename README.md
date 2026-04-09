@@ -27,7 +27,7 @@
     <td width="55%" style="vertical-align: top; padding: 20px; background-color: #0d1117; border: none;">
       <h2 align="left" style="color: #00d2ff; border-bottom: none;">Filosofia</h2>
       <p align="left" style="color: #c9d1d9;">
-        Focado na <b>integridade e visualização de dados</b>. Atuo na linha de frente do processamento de informações (ETL), transformando dados brutos de APIs e bancos SQL em <b>dashboards estratégicos</b> no Power BI e Tableau. Minha missão é garantir o monitoramento preciso de fluxos técnicos e entregar indicadores que facilitem a tomada de decisão em cenários de alta complexidade.
+        Focado na <b>integridade e visualização de dados</b>. Atuo na linha de frente do processamento de informações (ETL), transformando dados brutos de APIs e bancos SQL em <b>dashboards estratégicos</b> no Power BI e Tableau. Minha missão é garantir o monitoramento preciso de fluxos técnicos e entregar indicadores que facilitem a tomada de decision em cenários de alta complexidade.
       </p>
     </td>
     <td width="45%" align="center" style="background-color: #0d1117; padding: 10px; border: none;">
@@ -78,12 +78,12 @@
 <div align="center">
   <h2 style="color: #9200ff;">Análise de Proficiência</h2>
   
-  <h3 style="color: #00d2ff; margin-bottom: 15px; font-size: 20px;">Linguagens mais utilizadas</h3>
-  <img width="75%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=0d1117&langs_count=10&hide_title=true&locale=pt-br&v=5" />
+  <h3 style="color: #00d2ff; margin-bottom: 15px;">Linguagens mais utilizadas</h3>
+  <img width="60%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=0d1117&langs_count=10&hide_title=true&locale=pt-br&v=6" />
 
   <br/><br/><br/>
 
-  <h3 style="color: #00d2ff; margin-bottom: 15px; font-size: 20px;">Frequência de Atividade</h3>
+  <h3 style="color: #00d2ff; margin-bottom: 15px;">Frequência de Atividade</h3>
   <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&bg_color=0d1117&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff" />
 
   <br/>
