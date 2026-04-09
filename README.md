@@ -78,7 +78,7 @@
 <div align="center">
   <h2 style="color: #9200ff;">Análise de Proficiência</h2>
 
-  <img width="100%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=0d1117&langs_count=8&cache_seconds=1800" />
+  <img width="100%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=0d1117&langs_count=10&locale=pt-br&cache_seconds=1800" />
 
   <br/><br/>
 
