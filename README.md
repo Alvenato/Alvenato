@@ -18,16 +18,14 @@
   </p>
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=00d2ff&height=3&section=header" width="100%" />
-
-<br/>
+<br/><br/>
 
 <table align="center" width="100%" style="background-color: #0d1117; border-collapse: collapse; border: none;">
   <tr style="border: none;">
     <td width="55%" style="vertical-align: top; padding: 20px; background-color: #0d1117; border: none;">
       <h2 align="left" style="color: #00d2ff; border-bottom: none;">Filosofia</h2>
       <p align="left" style="color: #c9d1d9;">
-        Focado na <b>integridade e visualização de dados</b>. Atuo na linha de frente do processamento de informações (ETL), transformando dados brutos de APIs e bancos SQL em <b>dashboards estratégicos</b> no Power BI e Tableau. Minha missão é garantir o monitoramento preciso de fluxos técnicos e entregar indicadores que facilitem a tomada de decision em cenários de alta complexidade.
+        Focado na <b>integridade e visualização de dados</b>. Atuo na linha de frente do processamento de informações (ETL), transformando dados brutos de APIs e bancos SQL em <b>dashboards estratégicos</b> no Power BI e Tableau. Minha missão é garantir o monitoramento preciso de fluxos técnicos e entregar indicadores que facilitem a tomada de decisão em cenários de alta complexidade.
       </p>
     </td>
     <td width="45%" align="center" style="background-color: #0d1117; padding: 10px; border: none;">
@@ -36,11 +34,7 @@
   </tr>
 </table>
 
-<br/>
-
-<img src="https://capsule-render.vercel.app/api?type=soft&color=00d2ff&height=3&section=header" width="100%" />
-
-<br/>
+<br/><br/>
 
 <div align="center">
   <h2 style="color: #9200ff;">Tecnologia</h2>
@@ -49,11 +43,7 @@
   <img src="https://skillicons.dev/icons?i=py,postgres,mysql,sqlite,beaver,docker,vscode,github,figma,powerbi,tableau,excel&theme=dark" />
 </div>
 
-<br/>
-
-<img src="https://capsule-render.vercel.app/api?type=soft&color=00d2ff&height=3&section=header" width="100%" />
-
-<br/>
+<br/><br/>
 
 <div align="center">
   <div style="display: inline-block; background-color: #0d1117; padding: 25px; border-radius: 15px; border: 1px solid #30363d; min-width: 500px; width: 100%; max-width: 700px;">
@@ -69,11 +59,7 @@
   </div>
 </div>
 
-<br/>
-
-<img src="https://capsule-render.vercel.app/api?type=soft&color=00d2ff&height=3&section=header" width="100%" />
-
-<br/>
+<br/><br/>
 
 <div align="center">
   <h2 style="color: #9200ff;">Análise de Proficiência</h2>
