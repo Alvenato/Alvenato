@@ -64,7 +64,6 @@
       <img src="https://hermes.dio.me/courses/badge/2cd42ffc-5a40-42d3-b4eb-572d16249cba.png" width="110px" alt="DIO Badge 2" />
     </p>
     <p style="color: #c9d1d9; font-size: 15px; line-height: 1.6; margin-top: 15px;">
-      Desenvolvimento contínuo em <b>Ciência de Dados, Inteligência Artificial e Engenharia de Analytics</b> através da Digital Innovation One. Foco constante na atualização técnica para as demandas mais complexas do mercado de dados.
     </p>
   </div>
 </div>
