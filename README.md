@@ -56,9 +56,12 @@
 <br/>
 
 <div align="center">
-  <div style="display: inline-block; background-color: #0d1117; padding: 20px; border-radius: 15px; border: 1px solid #30363d; max-width: 500px;">
+  <div style="display: inline-block; background-color: #0d1117; padding: 20px; border-radius: 15px; border: 1px solid #30363d; max-width: 600px;">
     <h3 style="color: #9200ff; margin-bottom: 15px;">Certificações & Educação</h3>
-    <img src="https://assets.dio.me/c_6-enx_gsCjBqdsEtj4RN1yYCoEx9voHbg9U74chJ0/f:webp/q:80/w:120/L2NvdXJzZXMvYmFkZ2UvZDdlNmRkNGQtOTMyNi00OTUwLTgxZWUtNzJjNTc4NTY1M2E1LnBuZw" width="100px" alt="DIO Badge" style="margin-bottom: 15px;" />
+    <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 15px;">
+      <img src="https://assets.dio.me/c_6-enx_gsCjBqdsEtj4RN1yYCoEx9voHbg9U74chJ0/f:webp/q:80/w:120/L2NvdXJzZXMvYmFkZ2UvZDdlNmRkNGQtOTMyNi00OTUwLTgxZWUtNzJjNTc4NTY1M2E1LnBuZw" width="100px" alt="DIO Badge 1" />
+      <img src="https://hermes.dio.me/courses/badge/2cd42ffc-5a40-42d3-b4eb-572d16249cba.png" width="100px" alt="DIO Badge 2" />
+    </div>
     <p style="color: #c9d1d9; font-size: 15px; line-height: 1.6; margin: 0;">
       Desenvolvimento contínuo em <b>Ciência de Dados, Inteligência Artificial e Engenharia de Analytics</b> através da Digital Innovation One. Foco constante na atualização técnica para as demandas mais complexas do mercado de dados.
     </p>
