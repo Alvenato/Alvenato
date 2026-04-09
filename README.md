@@ -79,8 +79,8 @@
   <h2 style="color: #9200ff;">Métrica de Desempenho</h2>
   
   <div align="center">
-    <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&icon_color=9200ff&text_color=fff" alt="GitHub Stats" />
-    <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&text_color=fff" alt="Top Languages" />
+    <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&icon_color=9200ff&text_color=ffffff&count_private=true" alt="GitHub Stats" />
+    <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&bg_color=0d1117&border_radius=10&hide_border=true&title_color=00d2ff&text_color=ffffff&hide_progress=false" alt="Top Languages" />
   </div>
   
   <br/>
