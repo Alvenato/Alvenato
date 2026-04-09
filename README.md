@@ -76,17 +76,17 @@
 <br/>
 
 <div align="center">
-  <h2 style="color: #9200ff;">Métricas de Desenvolvimento</h2>
+  <h2 style="color: #9200ff;">Análise de Proficiência</h2>
 
-  <img width="100%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=0d1117&langs_count=8" alt="Linguagens mais utilizadas" />
+  <img width="100%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=0d1117&langs_count=8&cache_seconds=1800" />
 
   <br/><br/>
 
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&bg_color=0d1117&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff" alt="Activity Graph" />
+  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&bg_color=0d1117&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff" />
 
   <br/>
 
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&background=0d1117&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" alt="Streak Stats" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&background=0d1117&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" />
 </div>
 
 <br/>
