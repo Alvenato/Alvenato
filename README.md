@@ -78,12 +78,12 @@
 <div align="center">
   <h2 style="color: #9200ff;">Análise de Proficiência</h2>
   
-  <h3 style="color: #00d2ff; margin-bottom: 10px;">Linguagens mais utilizadas</h3>
-  <img width="100%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=0d1117&langs_count=15&hide_title=true&locale=pt-br&v=4" />
+  <h3 style="color: #00d2ff; margin-bottom: 15px; font-size: 20px;">Linguagens mais utilizadas</h3>
+  <img width="75%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=0d1117&langs_count=10&hide_title=true&locale=pt-br&v=5" />
 
-  <br/><br/>
+  <br/><br/><br/>
 
-  <h3 style="color: #00d2ff; margin-bottom: 10px;">Frequência de Atividade</h3>
+  <h3 style="color: #00d2ff; margin-bottom: 15px; font-size: 20px;">Frequência de Atividade</h3>
   <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&bg_color=0d1117&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff" />
 
   <br/>
