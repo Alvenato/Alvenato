@@ -1,8 +1,6 @@
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0d1117&customColorList=10,00d2ff,9200ff&height=280&section=header&text=Cristiano%20A.%20Barbosa&fontSize=75&animation=fadeIn&fontAlignY=35&fontColor=00d2ff&desc=CIÊNCIA%20DE%20DADOS%20E%20IA&descSize=30&descAlignY=65&font=Orbitron" width="100%" />
-  
   <br/>
-
   <p align="center">
     <a href="https://linkedin.com/in/cristiano-alves-barbosa" target="_blank">
       <img src="https://img.shields.io/badge/LinkedIn-00d2ff?style=for-the-badge&logo=linkedin&logoColor=000000" alt="Linkedin" />
@@ -26,9 +24,8 @@
   <tr style="border: none;">
     <td width="60%" style="vertical-align: top; padding: 20px; background-color: #0d1117; border: none;">
       <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=600&size=28&pause=1000&color=00D2FF&width=435&lines=Filosofia+de+Aprendizado" alt="Filosofia" />
-      
       <p align="left" style="color: #c9d1d9; font-size: 16px; line-height: 1.6; font-family: 'Segoe UI', Helvetica, Arial, sans-serif;">
-        Estudante apaixonado por <b>Ciência de Dados e IA</b> em constante evolução. Atualmente focado no aprendizado prático de arquiteturas de <b>pipelines (ETL)</b>, buscando transformar fluxos complexos de APIs e bancos SQL em <b>dashboards estratégicos</b> através de Power BI e Tableau. 
+        Estudante apaixonado por <b>Ciência de Dados e IA</b> em constante evolução. Atualmente focado no aprendizado prático de arquiteturas de <b>pipelines (ETL)</b>, buscando transformar fluxos complexos de APIs e bancos SQL em <b>dashboards estratégicos</b> através de Power BI e Tableau.
         <br><br>
         Meu objetivo central é dominar a conversão de dados brutos em inteligência para suporte à tomada de decisão.
       </p>
@@ -54,7 +51,7 @@
 <br/>
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=600&size=28&pause=1000&color=9200FF&center=true&vCenter=true&width=435&lines=Data+Insight+Dashboard" alt="Dashboard" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=600&size=28&pause=1000&color=9200FF&center=true&vCenter=true&width=500&lines=Data+Insight+Dashboard" alt="Dashboard" />
 </div>
 
 <table align="center" width="100%" style="background-color: #0d1117; border-collapse: collapse; border: none;">
@@ -86,7 +83,7 @@
 
 <div align="center">
   <div style="background-color: #0d1117; padding: 30px; border-radius: 20px; border: 1px solid #9200ff; width: 100%; max-width: 800px;">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=600&size=24&pause=1000&color=9200FF&center=true&vCenter=true&width=435&lines=Credenciais+&+Educação" alt="Educação" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=600&size=24&pause=1000&color=9200FF&center=true&vCenter=true&width=500&lines=Credenciais+&+Educação" alt="Educação" />
     <br/><br/>
     <p align="center">
       <img src="https://assets.dio.me/c_6-enx_gsCjBqdsEtj4RN1yYCoEx9voHbg9U74chJ0/f:webp/q:80/w:120/L2NvdXJzZXMvYmFkZ2UvZDdlNmRkNGQtOTMyNi00OTUwLTgxZWUtNzJjNTc4NTY1M2E1LnBuZw" width="90px" style="margin: 0 10px;" />
