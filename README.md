@@ -25,9 +25,9 @@
 <table align="center" width="100%" style="background-color: #0d1117; border-collapse: collapse; border: none;">
   <tr style="border: none;">
     <td width="60%" style="vertical-align: top; padding: 20px; background-color: #0d1117; border: none;">
-      <h2 align="left" style="color: #00d2ff; border-bottom: 2px solid #9200ff; display: inline-block; padding-bottom: 5px;">🧬 Filosofia de Dados</h2>
+      <h2 align="left" style="color: #00d2ff; border-bottom: 2px solid #9200ff; display: inline-block; padding-bottom: 5px;">🧬 Filosofia de Aprendizado</h2>
       <p align="left" style="color: #c9d1d9; font-size: 16px; line-height: 1.6;">
-        Especialista focado na <b>integridade e visualização estratégica</b>. Atuo na arquitetura de pipelines (ETL), convertendo fluxos complexos em <b>dashboards de alto impacto</b> no Power BI e Tableau. Minha missão é traduzir dados brutos em inteligência competitiva.
+        Estudante apaixonado por <b>Ciência de Dados e IA</b> em constante evolução. Focado no aprendizado e aplicação prática de arquitetura de pipelines (ETL), buscando transformar fluxos brutos de APIs e bancos SQL em <b>dashboards estratégicos</b> no Power BI e Tableau. Meu objetivo é dominar a arte de converter dados em inteligência para a tomada de decisão.
       </p>
     </td>
     <td width="40%" align="center" style="background-color: #0d1117; padding: 10px; border: none; vertical-align: middle;">
@@ -42,7 +42,7 @@
 
 <div align="center">
   <h2 style="color: #9200ff;">🛠️ Tech Stack</h2>
-  <p style="color: #8b949e; margin-bottom: 20px;"><i>Engenharia de Analytics e Modelagem de IA</i></p>
+  <p style="color: #8b949e; margin-bottom: 20px;"><i>Desenvolvendo competências em Engenharia de Analytics e IA</i></p>
   <img src="https://skillicons.dev/icons?i=py,postgres,mysql,sqlite,beaver,docker,vscode,github,figma,powerbi,tableau,excel&theme=dark" />
 </div>
 
@@ -58,21 +58,21 @@
   <tr>
     <td width="48%" align="center" valign="top" style="border: none; background-color: #0d1117; padding: 15px;">
       <h3 style="color: #00d2ff; font-size: 14px; margin-bottom: 15px;">📊 Performance Geral</h3>
-      <img width="100%" src="https://github-readme-stats-sigma-five.vercel.app/api?username=Alvenato&show_icons=true&hide_border=true&count_private=true&include_all_commits=true&bg_color=0d1117&title_color=00d2ff&text_color=ffffff&icon_color=9200ff&v=2" />
+      <img width="100%" src="https://github-readme-stats-sigma-five.vercel.app/api?username=Alvenato&show_icons=true&hide_border=true&count_private=true&include_all_commits=true&bg_color=0d1117&title_color=00d2ff&icon_color=9200ff&v=3" />
     </td>
     <td width="52%" align="center" valign="top" style="border: none; background-color: #0d1117; padding: 15px;">
       <h3 style="color: #00d2ff; font-size: 14px; margin-bottom: 15px;">📈 Fluxo de Atividade</h3>
-      <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&bg_color=0d1117&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff&v=2" />
+      <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&bg_color=0d1117&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff&v=3" />
     </td>
   </tr>
   <tr>
     <td width="48%" align="center" valign="top" style="border: none; background-color: #0d1117; padding: 15px;">
       <h3 style="color: #00d2ff; font-size: 14px; margin-bottom: 15px;">🚀 Linguagens Dominantes</h3>
-      <img width="100%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=0d1117&langs_count=8&v=2" />
+      <img width="100%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=0d1117&langs_count=8&v=3" />
     </td>
     <td width="52%" align="center" valign="top" style="border: none; background-color: #0d1117; padding: 15px;">
       <h3 style="color: #00d2ff; font-size: 14px; margin-bottom: 15px;">🔥 Consistência (Streak)</h3>
-      <img width="100%" src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&background=0d1117&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff&currStreakNum=ffffff&sideLabels=ffffff&dates=ffffff&currStreakLabel=00d2ff&v=2" />
+      <img width="100%" src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&background=0d1117&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff&currStreakNum=ffffff&sideLabels=ffffff&dates=ffffff&currStreakLabel=00d2ff&v=3" />
     </td>
   </tr>
 </table>
