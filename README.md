@@ -30,7 +30,7 @@
     </td>
     <td width="45%" align="center" style="background-color: #0d1117; padding: 10px; border: none; vertical-align: middle;">
       <div style="border-radius: 12px; border: 3px solid #00d2ff; box-shadow: 0 0 45px rgba(0, 210, 255, 0.6); display: inline-block; padding: 5px; background: #0d1117;">
-        <img src="https://assets10.lottiefiles.com/packages/lf20_m6cu98v2.json" width="100%" style="border-radius: 8px; display: block; border: 1px solid #1a1f26;" onerror="this.src='https://raw.githubusercontent.com/krish-devs/Lottie-GIFs/main/Data%20Analysis.gif'"/>
+        <img src="https://cdn.dribbble.com/users/2121936/screenshots/4294401/media/0674251df6c88825832a826456a0669b.gif" width="100%" style="border-radius: 8px; display: block; border: 1px solid #1a1f26;"/>
       </div>
     </td>
   </tr>
