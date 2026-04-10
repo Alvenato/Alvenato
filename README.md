@@ -29,8 +29,8 @@
       </p>
     </td>
     <td width="45%" align="center" style="background-color: #0d1117; padding: 10px; border: none; vertical-align: middle;">
-      <div style="border-radius: 12px; border: 3px solid #00d2ff; box-shadow: 0 0 45px rgba(0, 210, 255, 0.6); display: inline-block; padding: 5px; background: #0d1117;">
-        <img src="https://i.imgur.com/8N9B95H.gif" width="100%" style="border-radius: 8px; display: block; border: 1px solid #1a1f26;"/>
+      <div style="border-radius: 12px; border: 3px solid #00d2ff; box-shadow: 0 0 45px rgba(0, 210, 255, 0.4); display: inline-block; padding: 5px; background: #0d1117;">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZ3bmZueXp3eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif" width="100%" style="border-radius: 8px; display: block;"/>
       </div>
     </td>
   </tr>
