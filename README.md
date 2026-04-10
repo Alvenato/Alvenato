@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0d1117&customColorList=10,00d2ff,9200ff&height=280&section=header&text=Cristiano%20A.%20Barbosa&fontSize=75&animation=fadeIn&fontAlignY=35&fontColor=00d2ff&desc=CIÊNCIA%20DE%20DADOS%20E%20IA&descSize=30&descAlignY=65" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=000000&customColorList=10,00d2ff,9200ff&height=280&section=header&text=Cristiano%20A.%20Barbosa&fontSize=75&animation=fadeIn&fontAlignY=35&fontColor=00d2ff&desc=CIÊNCIA%20DE%20DADOS%20E%20IA&descSize=30&descAlignY=65" width="100%" />
   <br/>
   <p align="center">
     <a href="https://linkedin.com/in/cristiano-alves-barbosa" target="_blank">
@@ -18,16 +18,16 @@
 
 <br/><br/>
 
-<table align="center" width="100%" style="background-color: #0d1117; border-collapse: collapse; border: none;">
+<table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: none;">
   <tr style="border: none;">
-    <td width="55%" style="vertical-align: top; padding: 20px; background-color: #0d1117; border: none;">
+    <td width="55%" style="vertical-align: top; padding: 20px; background-color: #000000; border: none;">
       <h2 align="left" style="color: #00d2ff; border-bottom: none;">Filosofia</h2>
       <p align="left" style="color: #c9d1d9;">
         Focado na <b>integridade e visualização de dados</b>. Atuo na linha de frente do processamento de informações (ETL), transformando dados brutos de APIs e bancos SQL em <b>dashboards estratégicos</b> no Power BI e Tableau. Minha missão é garantir o monitoramento preciso de fluxos técnicos e entregar indicadores que facilitem a tomada de decisão em cenários de alta complexidade.
       </p>
     </td>
-    <td width="45%" align="center" style="background-color: #0d1117; padding: 10px; border: none; vertical-align: middle;">
-      <div style="border-radius: 12px; border: 3px solid #00d2ff; box-shadow: 0 0 45px rgba(0, 210, 255, 0.4); display: inline-block; padding: 5px; background: #0d1117;">
+    <td width="45%" align="center" style="background-color: #000000; padding: 10px; border: none; vertical-align: middle;">
+      <div style="border-radius: 12px; border: 3px solid #00d2ff; box-shadow: 0 0 45px rgba(0, 210, 255, 0.4); display: inline-block; padding: 5px; background: #000000;">
         <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZ3bmZueXp3eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif" width="100%" style="border-radius: 8px; display: block;"/>
       </div>
     </td>
@@ -44,15 +44,23 @@
 
 <br/><br/>
 
-<div align="center">
-  <h2 style="color: #00d2ff;">Volume de Trabalho & GitHub Stats</h2>
-  <img width="85%" src="https://github-readme-stats-sigma-five.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true" />
-</div>
+<table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: none;">
+  <tr>
+    <td width="48%" align="center" valign="top" style="border: none; background-color: #000000; padding: 5px;">
+      <h3 style="color: #00d2ff; margin-bottom: 10px;">Volume de Trabalho & Stats</h3>
+      <img width="100%" src="https://github-readme-stats-sigma-five.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true&bg_color=000000" />
+    </td>
+    <td width="52%" align="center" valign="top" style="border: none; background-color: #000000; padding: 5px;">
+      <h3 style="color: #00d2ff; margin-bottom: 10px;">Frequência de Atividade</h3>
+      <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&bg_color=000000&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff" />
+    </td>
+  </tr>
+</table>
 
 <br/><br/>
 
 <div align="center">
-  <div style="display: inline-block; background-color: #0d1117; padding: 25px; border-radius: 15px; border: 1px solid #30363d; min-width: 500px; width: 100%; max-width: 700px;">
+  <div style="display: inline-block; background-color: #000000; padding: 25px; border-radius: 15px; border: 1px solid #30363d; min-width: 500px; width: 100%; max-width: 700px;">
     <h3 style="color: #9200ff; margin-bottom: 20px; white-space: nowrap;">Certificações & Educação</h3>
     <p align="center">
       <img src="https://assets.dio.me/c_6-enx_gsCjBqdsEtj4RN1yYCoEx9voHbg9U74chJ0/f:webp/q:80/w:120/L2NvdXJzZXMvYmFkZ2UvZDdlNmRkNGQtOTMyNi00OTUwLTgxZWUtNzJjNTc4NTY1M2E1LnBuZw" width="110px" alt="DIO Badge 1" />
@@ -72,14 +80,13 @@
 <div align="center">
   <h2 style="color: #9200ff;">Análise de Proficiência</h2>
   <h3 style="color: #00d2ff; margin-bottom: 15px;">Linguagens mais utilizadas</h3>
-  <img width="60%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=0d1117&langs_count=10&hide_title=true&locale=pt-br&v=6" />
-  <br/><br/><br/>
-  <h3 style="color: #00d2ff; margin-bottom: 15px;">Frequência de Atividade</h3>
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&bg_color=0d1117&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff" />
+  <img width="60%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=000000&langs_count=10&hide_title=true&locale=pt-br&v=6" />
+  <br/><br/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&background=000000&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" />
 </div>
 
 <br/>
 
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0d1117&customColorList=10,9200ff,00d2ff&height=80&section=footer" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=000000&customColorList=10,9200ff,00d2ff&height=80&section=footer" width="100%" />
 </div>
