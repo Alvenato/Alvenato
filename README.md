@@ -50,19 +50,36 @@
 <div style="height: 1px; background-color: #00d2ff; margin: 30px 0;"></div>
 <br/>
 
+<div align="center">
+  <h2 style="color: #9200ff;">🔍 Data Insight Dashboard</h2>
+  <p style="color: #8b949e;"><i>Métricas de produtividade, atividade e proficiência técnica</i></p>
+</div>
+
 <table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: none;">
   <tr>
     <td width="48%" align="center" valign="top" style="border: none; background-color: #000000; padding: 15px;">
-      <h3 style="color: #00d2ff; margin-bottom: 15px;">📊 Performance Geral</h3>
+      <h3 style="color: #00d2ff; font-size: 14px; margin-bottom: 15px;">📊 Performance Geral</h3>
       <img width="100%" src="https://github-readme-stats-sigma-five.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true&bg_color=000000&title_color=00d2ff&icon_color=9200ff" />
     </td>
     <td width="52%" align="center" valign="top" style="border: none; background-color: #000000; padding: 15px;">
-      <h3 style="color: #00d2ff; margin-bottom: 15px;">📈 Fluxo de Atividade</h3>
+      <h3 style="color: #00d2ff; font-size: 14px; margin-bottom: 15px;">📈 Fluxo de Atividade</h3>
       <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&bg_color=000000&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff" />
+    </td>
+  </tr>
+  <tr>
+    <td width="48%" align="center" valign="top" style="border: none; background-color: #000000; padding: 15px;">
+      <h3 style="color: #00d2ff; font-size: 14px; margin-bottom: 15px;">🚀 Linguagens Dominantes</h3>
+      <img width="100%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=000000&langs_count=8" />
+    </td>
+    <td width="52%" align="center" valign="top" style="border: none; background-color: #000000; padding: 15px;">
+      <h3 style="color: #00d2ff; font-size: 14px; margin-bottom: 15px;">🔥 Consistência (Streak)</h3>
+      <img width="100%" src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&background=000000&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" />
     </td>
   </tr>
 </table>
 
+<br/>
+<div style="height: 1px; background-color: #00d2ff; margin: 30px 0;"></div>
 <br/>
 
 <div align="center">
@@ -74,24 +91,6 @@
       <img src="https://hermes.dio.me/courses/badge/406684a4-396d-4160-94b9-ead934e18564.png" width="90px" style="margin: 0 10px;" />
     </p>
   </div>
-</div>
-
-<br/>
-
-<div align="center">
-  <h2 style="color: #9200ff;">🔍 Análise de Skills</h2>
-  <table width="100%" border="0">
-    <tr>
-      <td width="50%" align="center">
-        <h3 style="color: #00d2ff; font-size: 14px;">Linguagens Dominantes</h3>
-        <img width="90%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=000000&langs_count=8" />
-      </td>
-      <td width="50%" align="center">
-        <h3 style="color: #00d2ff; font-size: 14px;">Consistência (Streak)</h3>
-        <img width="90%" src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&background=000000&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" />
-      </td>
-    </tr>
-  </table>
 </div>
 
 <br/>
