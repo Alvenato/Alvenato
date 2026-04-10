@@ -29,7 +29,7 @@
       </p>
     </td>
     <td width="45%" align="center" style="background-color: #0d1117; padding: 10px; border: none;">
-      <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/Painel%20de%20controle.lottie" width="100%" style="border-radius: 10px; border: 3px solid #00d2ff; box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); display: block;" onerror="this.src='https://lottie.host/804a5525-4702-466d-a11c-2200427845ba/b1f9zM7A6P.gif'"/>
+      <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/Dashboard.lottie.gif" width="100%" style="border-radius: 10px; border: 3px solid #00d2ff; box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); display: block;"/>
     </td>
   </tr>
 </table>
