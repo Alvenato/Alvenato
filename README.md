@@ -18,7 +18,7 @@
   </p>
 </div>
 
-<div style="height: 1px; background-color: #00d2ff; margin: 20px 0;"></div>
+<br/>
 
 <table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: 1px solid #00d2ff;">
   <tr style="border: none;">
@@ -38,13 +38,17 @@
 
 <br/>
 
-<div align="center">
-  <h2 style="color: #9200ff;">🛠️ Tech Stack</h2>
-  <p style="color: #8b949e; margin-bottom: 20px;"><i>Engenharia de Analytics e Modelagem de IA</i></p>
-  <img src="https://skillicons.dev/icons?i=py,postgres,mysql,sqlite,beaver,docker,vscode,github,figma,powerbi,tableau,excel&theme=dark" />
-</div>
+<table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: 1px solid #00d2ff;">
+  <tr>
+    <td align="center" style="padding: 25px; background-color: #000000;">
+      <h2 style="color: #9200ff; margin-top: 0;">🛠️ Tech Stack</h2>
+      <p style="color: #8b949e; margin-bottom: 20px;"><i>Engenharia de Analytics e Modelagem de IA</i></p>
+      <img src="https://skillicons.dev/icons?i=py,postgres,mysql,sqlite,beaver,docker,vscode,github,figma,powerbi,tableau,excel&theme=dark" />
+    </td>
+  </tr>
+</table>
 
-<div style="height: 1px; background-color: #00d2ff; margin: 30px 0;"></div>
+<br/>
 
 <table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: 1px solid #00d2ff;">
   <tr>
@@ -62,35 +66,39 @@
 
 <br/>
 
-<div align="center">
-  <div style="background-color: #000000; padding: 30px; border: 1px solid #00d2ff; width: 100%; max-width: 800px;">
-    <h3 style="color: #9200ff; margin-bottom: 25px; letter-spacing: 3px;">🎓 CREDENCIAIS & EDUCAÇÃO</h3>
-    <p align="center">
-      <img src="https://assets.dio.me/c_6-enx_gsCjBqdsEtj4RN1yYCoEx9voHbg9U74chJ0/f:webp/q:80/w:120/L2NvdXJzZXMvYmFkZ2UvZDdlNmRkNGQtOTMyNi00OTUwLTgxZWUtNzJjNTc4NTY1M2E1LnBuZw" width="85px" style="margin: 0 10px;" />
-      <img src="https://hermes.dio.me/courses/badge/2cd42ffc-5a40-42d3-b4eb-572d16249cba.png" width="85px" style="margin: 0 10px;" />
-      <img src="https://hermes.dio.me/courses/badge/406684a4-396d-4160-94b9-ead934e18564.png" width="85px" style="margin: 0 10px;" />
-    </p>
-  </div>
-</div>
+<table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: 1px solid #00d2ff;">
+  <tr>
+    <td align="center" style="padding: 30px; background-color: #000000;">
+      <h3 style="color: #9200ff; margin-bottom: 25px; letter-spacing: 3px; margin-top: 0;">🎓 CREDENCIAIS & EDUCAÇÃO</h3>
+      <p align="center">
+        <img src="https://assets.dio.me/c_6-enx_gsCjBqdsEtj4RN1yYCoEx9voHbg9U74chJ0/f:webp/q:80/w:120/L2NvdXJzZXMvYmFkZ2UvZDdlNmRkNGQtOTMyNi00OTUwLTgxZWUtNzJjNTc4NTY1M2E1LnBuZw" width="85px" style="margin: 0 10px;" />
+        <img src="https://hermes.dio.me/courses/badge/2cd42ffc-5a40-42d3-b4eb-572d16249cba.png" width="85px" style="margin: 0 10px;" />
+        <img src="https://hermes.dio.me/courses/badge/406684a4-396d-4160-94b9-ead934e18564.png" width="85px" style="margin: 0 10px;" />
+      </p>
+    </td>
+  </tr>
+</table>
 
 <br/>
 
-<div align="center">
-  <h2 style="color: #9200ff;">🔍 Análise de Skills</h2>
-  <table width="100%" style="border-collapse: collapse; border: 1px solid #00d2ff;">
-    <tr>
-      <td width="50%" align="center" style="padding: 15px; border: none;">
-        <h3 style="color: #00d2ff; font-size: 14px;">Linguagens Dominantes</h3>
-        <img width="90%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=000000&langs_count=8" />
-      </td>
-      <td style="width: 1px; background-color: #00d2ff; padding: 0;"></td>
-      <td width="50%" align="center" style="padding: 15px; border: none;">
-        <h3 style="color: #00d2ff; font-size: 14px;">Consistência (Streak)</h3>
-        <img width="90%" src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&background=000000&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" />
-      </td>
-    </tr>
-  </table>
-</div>
+<table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: 1px solid #00d2ff;">
+  <tr>
+    <td colspan="3" align="center" style="padding-top: 15px;">
+      <h2 style="color: #9200ff; margin-bottom: 0;">🔍 Análise de Skills</h2>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center" style="padding: 20px; border: none;">
+      <h3 style="color: #00d2ff; font-size: 14px; margin-bottom: 10px;">Linguagens Dominantes</h3>
+      <img width="90%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=000000&langs_count=8" />
+    </td>
+    <td style="width: 1px; background-color: #00d2ff; padding: 0;"></td>
+    <td width="50%" align="center" style="padding: 20px; border: none;">
+      <h3 style="color: #00d2ff; font-size: 14px; margin-bottom: 10px;">Consistência (Streak)</h3>
+      <img width="90%" src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&background=000000&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" />
+    </td>
+  </tr>
+</table>
 
 <br/>
 
