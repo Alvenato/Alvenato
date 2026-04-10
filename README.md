@@ -45,8 +45,8 @@
 <br/><br/>
 
 <div align="center">
-  <h2 style="color: #00d2ff;">Volume de Trabalho & Stats</h2>
-  <img width="80%" src="https://github-readme-stats.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00d2ff&text_color=ffffff&icon_color=9200ff&count_private=true&include_all_commits=true" />
+  <h2 style="color: #00d2ff;">Volume de Trabalho & GitHub Stats</h2>
+  <img width="85%" src="https://github-readme-stats-sigma-five.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true" />
 </div>
 
 <br/><br/>
@@ -62,7 +62,7 @@
       <img src="https://hermes.dio.me/courses/badge/406684a4-396d-4160-94b9-ead934e18564.png" width="110px" alt="DIO Badge 3" />
     </p>
     <p style="color: #c9d1d9; font-size: 15px; line-height: 1.6; margin-top: 15px;">
-      <i>Desenvolvimento contínuo em <b>Ciência de Dados, Inteligência Artificial e Engenharia de Analytics</b> através da Digital Innovation One.</i>
+      <i>Desenvolvimento contínuo através da Digital Innovation One.</i>
     </p>
   </div>
 </div>
@@ -76,8 +76,6 @@
   <br/><br/><br/>
   <h3 style="color: #00d2ff; margin-bottom: 15px;">Frequência de Atividade</h3>
   <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&bg_color=0d1117&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff" />
-  <br/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&background=0d1117&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" />
 </div>
 
 <br/>
