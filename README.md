@@ -29,8 +29,7 @@
       </p>
     </td>
     <td width="45%" align="center" style="background-color: #0d1117; padding: 10px; border: none;">
-      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-      <lottie-player src="https://lottie.host/9b7f69a5-d20d-4dc4-9ef9-34f24c8a6746/YpZ8sS9t9A.json" background="transparent" speed="1" style="width: 100%; height: auto;" loop autoplay></lottie-player>
+      <img src="https://lottie.host/804a5525-4702-466d-a11c-2200427845ba/b1f9zM7A6P.gif" width="100%" style="border-radius: 10px; border: 3px solid #00d2ff; box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); display: block;"/>
     </td>
   </tr>
 </table>
