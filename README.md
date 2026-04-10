@@ -19,18 +19,20 @@
 </div>
 
 <br/>
+<div style="height: 1px; background-color: #00d2ff; margin: 20px 0;"></div>
+<br/>
 
-<table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: 1px solid #00d2ff;">
+<table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: none;">
   <tr style="border: none;">
-    <td width="60%" style="vertical-align: top; padding: 25px; background-color: #000000; border: none;">
-      <h2 align="left" style="color: #00d2ff; margin-top: 0;">🧬 Filosofia de Dados</h2>
+    <td width="60%" style="vertical-align: top; padding: 20px; background-color: #000000; border: none;">
+      <h2 align="left" style="color: #00d2ff; border-bottom: 2px solid #9200ff; display: inline-block; padding-bottom: 5px;">🧬 Filosofia de Dados</h2>
       <p align="left" style="color: #c9d1d9; font-size: 16px; line-height: 1.6;">
-        Especialista focado na <b>integridade e visualização estratégica</b>. Atuo na arquitetura de pipelines (ETL), convertendo fluxos complexos em <b>dashboards de alto impacto</b>. Minha missão é traduzir dados brutos em inteligência competitiva.
+        Especialista focado na <b>integridade e visualização estratégica</b>. Atuo na arquitetura de pipelines (ETL), convertendo fluxos complexos em <b>dashboards de alto impacto</b> no Power BI e Tableau. Minha missão é traduzir dados brutos em inteligência competitiva.
       </p>
     </td>
-    <td width="40%" align="center" style="background-color: #000000; padding: 15px; border: none; vertical-align: middle;">
-      <div style="border: 1px solid #00d2ff; padding: 5px; display: inline-block; border-radius: 10px;">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZ3bmZueXp3eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif" width="100%" style="border-radius: 5px; display: block;"/>
+    <td width="40%" align="center" style="background-color: #000000; padding: 10px; border: none; vertical-align: middle;">
+      <div style="border-radius: 15px; border: 2px solid #00d2ff; box-shadow: 0 0 20px rgba(0, 210, 255, 0.2); display: inline-block; padding: 5px; background: #000000;">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZ3bmZueXp3eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif" width="100%" style="border-radius: 10px; display: block;"/>
       </div>
     </td>
   </tr>
@@ -38,26 +40,23 @@
 
 <br/>
 
-<table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: 1px solid #00d2ff;">
-  <tr>
-    <td align="center" style="padding: 25px; background-color: #000000;">
-      <h2 style="color: #9200ff; margin-top: 0;">🛠️ Tech Stack</h2>
-      <p style="color: #8b949e; margin-bottom: 20px;"><i>Engenharia de Analytics e Modelagem de IA</i></p>
-      <img src="https://skillicons.dev/icons?i=py,postgres,mysql,sqlite,beaver,docker,vscode,github,figma,powerbi,tableau,excel&theme=dark" />
-    </td>
-  </tr>
-</table>
+<div align="center">
+  <h2 style="color: #9200ff;">🛠️ Tech Stack</h2>
+  <p style="color: #8b949e; margin-bottom: 20px;"><i>Engenharia de Analytics e Modelagem de IA</i></p>
+  <img src="https://skillicons.dev/icons?i=py,postgres,mysql,sqlite,beaver,docker,vscode,github,figma,powerbi,tableau,excel&theme=dark" />
+</div>
 
 <br/>
+<div style="height: 1px; background-color: #00d2ff; margin: 30px 0;"></div>
+<br/>
 
-<table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: 1px solid #00d2ff;">
+<table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: none;">
   <tr>
-    <td width="48%" align="center" valign="top" style="border: none; padding: 15px;">
+    <td width="48%" align="center" valign="top" style="border: none; background-color: #000000; padding: 15px;">
       <h3 style="color: #00d2ff; margin-bottom: 15px;">📊 Performance Geral</h3>
       <img width="100%" src="https://github-readme-stats-sigma-five.vercel.app/api?username=Alvenato&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true&bg_color=000000&title_color=00d2ff&icon_color=9200ff" />
     </td>
-    <td style="width: 1px; background-color: #00d2ff; padding: 0;"></td>
-    <td width="52%" align="center" valign="top" style="border: none; padding: 15px;">
+    <td width="52%" align="center" valign="top" style="border: none; background-color: #000000; padding: 15px;">
       <h3 style="color: #00d2ff; margin-bottom: 15px;">📈 Fluxo de Atividade</h3>
       <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Alvenato&theme=tokyonight&bg_color=000000&area=true&hide_border=true&border_radius=10&line=00d2ff&point=9200ff&color=ffffff" />
     </td>
@@ -66,39 +65,34 @@
 
 <br/>
 
-<table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: 1px solid #00d2ff;">
-  <tr>
-    <td align="center" style="padding: 30px; background-color: #000000;">
-      <h3 style="color: #9200ff; margin-bottom: 25px; letter-spacing: 3px; margin-top: 0;">🎓 CREDENCIAIS & EDUCAÇÃO</h3>
-      <p align="center">
-        <img src="https://assets.dio.me/c_6-enx_gsCjBqdsEtj4RN1yYCoEx9voHbg9U74chJ0/f:webp/q:80/w:120/L2NvdXJzZXMvYmFkZ2UvZDdlNmRkNGQtOTMyNi00OTUwLTgxZWUtNzJjNTc4NTY1M2E1LnBuZw" width="85px" style="margin: 0 10px;" />
-        <img src="https://hermes.dio.me/courses/badge/2cd42ffc-5a40-42d3-b4eb-572d16249cba.png" width="85px" style="margin: 0 10px;" />
-        <img src="https://hermes.dio.me/courses/badge/406684a4-396d-4160-94b9-ead934e18564.png" width="85px" style="margin: 0 10px;" />
-      </p>
-    </td>
-  </tr>
-</table>
+<div align="center">
+  <div style="background-color: #000000; padding: 30px; border-radius: 20px; border: 1px solid #9200ff; width: 100%; max-width: 800px;">
+    <h3 style="color: #9200ff; margin-bottom: 25px; letter-spacing: 2px;">🎓 CREDENCIAIS & EDUCAÇÃO</h3>
+    <p align="center">
+      <img src="https://assets.dio.me/c_6-enx_gsCjBqdsEtj4RN1yYCoEx9voHbg9U74chJ0/f:webp/q:80/w:120/L2NvdXJzZXMvYmFkZ2UvZDdlNmRkNGQtOTMyNi00OTUwLTgxZWUtNzJjNTc4NTY1M2E1LnBuZw" width="90px" style="margin: 0 10px;" />
+      <img src="https://hermes.dio.me/courses/badge/2cd42ffc-5a40-42d3-b4eb-572d16249cba.png" width="90px" style="margin: 0 10px;" />
+      <img src="https://hermes.dio.me/courses/badge/406684a4-396d-4160-94b9-ead934e18564.png" width="90px" style="margin: 0 10px;" />
+    </p>
+  </div>
+</div>
 
 <br/>
 
-<table align="center" width="100%" style="background-color: #000000; border-collapse: collapse; border: 1px solid #00d2ff;">
-  <tr>
-    <td colspan="3" align="center" style="padding-top: 15px;">
-      <h2 style="color: #9200ff; margin-bottom: 0;">🔍 Análise de Skills</h2>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center" style="padding: 20px; border: none;">
-      <h3 style="color: #00d2ff; font-size: 14px; margin-bottom: 10px;">Linguagens Dominantes</h3>
-      <img width="90%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=000000&langs_count=8" />
-    </td>
-    <td style="width: 1px; background-color: #00d2ff; padding: 0;"></td>
-    <td width="50%" align="center" style="padding: 20px; border: none;">
-      <h3 style="color: #00d2ff; font-size: 14px; margin-bottom: 10px;">Consistência (Streak)</h3>
-      <img width="90%" src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&background=000000&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" />
-    </td>
-  </tr>
-</table>
+<div align="center">
+  <h2 style="color: #9200ff;">🔍 Análise de Skills</h2>
+  <table width="100%" border="0">
+    <tr>
+      <td width="50%" align="center">
+        <h3 style="color: #00d2ff; font-size: 14px;">Linguagens Dominantes</h3>
+        <img width="90%" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Alvenato&layout=compact&theme=tokyonight&hide_border=true&title_color=00d2ff&text_color=ffffff&bg_color=000000&langs_count=8" />
+      </td>
+      <td width="50%" align="center">
+        <h3 style="color: #00d2ff; font-size: 14px;">Consistência (Streak)</h3>
+        <img width="90%" src="https://github-readme-streak-stats.herokuapp.com/?user=Alvenato&theme=tokyonight&background=000000&border_radius=10&hide_border=true&stroke=00d2ff&ring=9200ff&fire=00d2ff" />
+      </td>
+    </tr>
+  </table>
+</div>
 
 <br/>
 
