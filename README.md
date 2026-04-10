@@ -28,8 +28,10 @@
         Focado na <b>integridade e visualização de dados</b>. Atuo na linha de frente do processamento de informações (ETL), transformando dados brutos de APIs e bancos SQL em <b>dashboards estratégicos</b> no Power BI e Tableau. Minha missão é garantir o monitoramento preciso de fluxos técnicos e entregar indicadores que facilitem a tomada de decisão em cenários de alta complexidade.
       </p>
     </td>
-    <td width="45%" align="center" style="background-color: #0d1117; padding: 10px; border: none;">
-      <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/Dashboard.lottie.gif" width="100%" style="border-radius: 10px; border: 3px solid #00d2ff; box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); display: block;"/>
+    <td width="45%" align="center" style="background-color: #0d1117; padding: 10px; border: none; vertical-align: middle;">
+      <div style="border-radius: 12px; border: 3px solid #00d2ff; box-shadow: 0 0 45px rgba(0, 210, 255, 0.6); display: inline-block; padding: 5px; background: #0d1117;">
+        <img src="https://raw.githubusercontent.com/Alvenato/Alvenato/main/Dashboard.lottie.gif" width="100%" style="border-radius: 8px; display: block; border: 1px solid #1a1f26;"/>
+      </div>
     </td>
   </tr>
 </table>
