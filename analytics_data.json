@@ -163,6 +163,14 @@
         "date": "20260420",
         "city": "Cidade Ocidental",
         "country": "Brazil",
+        "device": "desktop",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260420",
+        "city": "Cidade Ocidental",
+        "country": "Brazil",
         "device": "mobile",
         "page": "Cristiano A. Barbosa — Data Science & IA",
         "users": 1
