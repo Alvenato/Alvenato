@@ -2,8 +2,8 @@ name: Update Analytics Data
 
 on:
   schedule:
-    - cron: '0 * * * *' # Roda a cada hora (no minuto 0)
-  workflow_dispatch: # Permite que você rode manualmente se quiser testar
+    - cron: '0 * * * *' # Executa a cada hora
+  workflow_dispatch: # Permite execução manual para testes
 
 jobs:
   build:
@@ -23,12 +23,10 @@ jobs:
 
       - name: Run update script
         env:
-          # Aqui usamos uma "Secret" para proteger sua chave
-          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GA_KEY_JSON }}
+          GA_JSON: ${{ secrets.GA_KEY_JSON }}
         run: |
-          # Criamos o arquivo temporário da chave a partir da Secret
-          echo "$GOOGLE_APPLICATION_CREDENTIALS_JSON" > credentials.json
-          export GOOGLE_APPLICATION_CREDENTIALS=credentials.json
+          # Cria o arquivo de credenciais preservando o formato JSON
+          printf "%s" "$GA_JSON" > credentials.json
           python update_stats.py
 
       - name: Commit and Push changes
