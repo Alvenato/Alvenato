@@ -1,326 +1,193 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMEQZZ86BY"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-MMEQZZ86BY');
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cristiano A. Barbosa — Data Science & IA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <style>
-        :root {
-            --bg: #050a0f;
-            --surface: #0d1620;
-            --surface2: #111d2c;
-            --accent: #00d4ff;
-            --accent2: #7b5cfa;
-            --accent3: #00ffaa;
-            --text: #e8f4fd;
-            --muted: #6b8fa8;
-            --border: rgba(0,212,255,0.15);
-            --nav-bg: rgba(5, 10, 15, 0.8);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background: var(--bg);
-            font-family: 'Syne', sans-serif;
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-            position: relative;
-            padding: 100px 20px 20px 20px;
-        }
-
-        /* --- ELEMENTOS VISUAIS ORIGINAIS --- */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: gridMove 20s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(40px); }
-        }
-
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.18;
-            animation: orbFloat 8s ease-in-out infinite alternate;
-            pointer-events: none;
-        }
-        .orb-1 { width: 400px; height: 400px; background: var(--accent); top: -100px; left: -100px; }
-        .orb-2 { width: 350px; height: 350px; background: var(--accent2); bottom: -80px; right: -80px; }
-
-        /* --- NAVBAR --- */
-        .navbar {
-            position: fixed;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 100px;
-            padding: 10px 25px;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            z-index: 1000;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
-
-        .nav-item {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-item:hover {
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .nav-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.1); margin: 0 5px; }
-
-        .sobre-btn {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent3);
-        }
-
-        /* --- CARD --- */
-        .card {
-            position: relative;
-            width: 880px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            animation: cardReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-            z-index: 10;
-        }
-
-        @keyframes cardReveal {
-            from { opacity: 0; transform: translateY(32px) scale(0.96); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        .left {
-            padding: 60px 24px;
-            background: var(--surface2);
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        .avatar-wrapper { position: relative; width: 130px; height: 130px; }
-        .avatar-ring {
-            position: absolute; inset: -6px; border-radius: 50%;
-            background: conic-gradient(var(--accent), var(--accent2), var(--accent3), var(--accent));
-            animation: spin 4s linear infinite;
-            filter: blur(2px);
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        
-        .avatar {
-            position: relative; width: 130px; height: 130px; border-radius: 50%;
-            overflow: hidden; border: 3px solid var(--bg); z-index: 1;
-        }
-        .avatar img { width: 100%; height: 100%; object-fit: cover; }
-
-        .name { font-size: 1.3rem; font-weight: 800; text-align: center; }
-        .name span { display: block; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Space Mono', monospace; margin-top: 8px; }
-
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 15px; }
-        .skill-tag {
-            padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 600;
-            font-family: 'Space Mono', monospace; border: 1px solid rgba(0,212,255,0.3); color: var(--accent);
-        }
-
-        .right { padding: 40px 32px; display: flex; flex-direction: column; gap: 24px; }
-
-        /* --- PIPELINES DE DADOS --- */
-        .charts-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .chart-widget { 
-            background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); 
-            border-radius: 12px; padding: 12px 8px; display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; gap: 10px; min-height: 100px;
-        }
-        .chart-title { font-size: 0.5rem; font-family: 'Space Mono', monospace; color: var(--muted); text-transform: uppercase; }
-
-        /* Histograma */
-        .bar-chart { display: flex; align-items: flex-end; gap: 3px; height: 35px; min-width: 40px; justify-content: center;}
-        .bar { width: 6px; background: var(--accent); border-radius: 1px; transition: height 0.5s ease; }
-
-        /* Contador */
-        .counter-val { font-family: 'Space Mono', monospace; font-size: 1.2rem; font-weight: bold; color: var(--accent3); }
-
-        /* Mapa de Cidades */
-        .geo-widget {
-            background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); 
-            border-radius: 12px; padding: 15px; display: flex; flex-direction: column; gap: 8px;
-        }
-        .city-item { display: flex; justify-content: space-between; font-family: 'Space Mono'; font-size: 0.65rem; color: var(--text); }
-        .city-bar-bg { width: 100%; height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px; }
-        .city-bar-fill { height: 100%; background: var(--accent3); border-radius: 2px; width: 0%; transition: width 1s ease; }
-
-        /* Blocos de Código e Texto */
-        .code-block { background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; font-family: 'Space Mono', monospace; font-size: 0.72rem; }
-        .code-header { padding: 8px 16px; background: rgba(0,212,255,0.05); border-bottom: 1px solid var(--border); display: flex; gap: 6px; }
-        .dot { width: 8px; height: 8px; border-radius: 50%; }
-        .dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
-        .code-body { padding: 14px 18px; line-height: 1.5; }
-        .kw { color: #7b5cfa; } .str { color: #00d4ff; } .key { color: #00ffaa; }
-
-        .goal { padding: 14px; background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(123,92,250,0.06)); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: var(--accent); font-family: 'Space Mono', monospace; text-align: center; }
-
-        @media (max-width: 900px) {
-            .card { grid-template-columns: 1fr; width: 100%; }
-            .left { border-right: none; border-bottom: 1px solid var(--border); }
-        }
-    </style>
-</head>
-<body>
-
-<nav class="navbar">
-    <a href="https://www.linkedin.com/in/cristianoalves-ca/" target="_blank" class="nav-item" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/Alvenato" target="_blank" class="nav-item" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://wa.me/5561981830780" target="_blank" class="nav-item" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <a href="mailto:analytics.barbosa@gmail.com" class="nav-item" title="E-mail"><i class="fas fa-envelope"></i></a>
-    <div class="nav-divider"></div>
-    <a href="https://alvenato.github.io/curriculo.html" target="_blank" class="nav-item sobre-btn">Sobre</a>
-</nav>
-
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-
-<div class="card">
-    <div class="left">
-        <div class="avatar-wrapper">
-            <div class="avatar-ring"></div>
-            <div class="avatar">
-                <img src="https://github.com/Alvenato.png" alt="Cristiano A. Barbosa">
-            </div>
+<div class="right">
+    <div class="code-block">
+        <div class="code-header">
+            <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
         </div>
-
-        <div class="name">
-            Cristiano A. Barbosa
-            <span>Cientista de Dados · IA</span>
-        </div>
-
-        <div class="skills-grid">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">Tableau</span>
-            <span class="skill-tag">ML</span>
+        <div class="code-body">
+            <div><span class="kw">const</span> <span class="key">pipeline</span> = <span class="str">"GA4 → Python → GitHub"</span>;</div>
+            <div><span class="kw">const</span> <span class="key">status</span> = <span class="str">"Live Data Active"</span>;</div>
         </div>
     </div>
 
-    <div class="right">
-        <div class="code-block">
-            <div class="code-header">
-                <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
-            </div>
-            <div class="code-body">
-                <div><span class="kw">const</span> <span class="key">pipeline</span> = <span class="str">"GA4 → Python → Portfolio"</span>;</div>
-                <div><span class="kw">const</span> <span class="key">status</span> = <span class="str">"Real-time Data Active"</span>;</div>
-            </div>
+    <div class="charts-grid">
+        
+        <div class="chart-widget">
+            <span class="chart-title"><i class="fas fa-users"></i> Usuários (30d)</span>
+            <div class="counter-val" id="total-users">0</div>
         </div>
 
-        <div class="charts-container">
-            <div class="chart-widget"><span class="chart-title">Histograma (7d)</span><div class="bar-chart" id="histograma"></div></div>
-            <div class="chart-widget"><span class="chart-title">Total Usuários</span><div class="counter-val" id="total-users">0</div></div>
-            <div class="chart-widget"><span class="chart-title">Sinal</span><div style="font-size:0.5rem; color:var(--accent3); font-family:'Space Mono';">● ONLINE</div></div>
+        <div class="chart-widget">
+            <span class="chart-title"><i class="fas fa-laptop"></i> Tech Stack</span>
+            <div id="device-info" class="mini-data">Carregando...</div>
         </div>
 
-        <div class="geo-widget">
-            <span class="chart-title">Global Reach (Top Cidades)</span>
-            <div id="city-list">
-                <div style="font-size:0.6rem; color:var(--muted); font-family:'Space Mono';">Monitorando tráfego...</div>
-            </div>
+        <div class="chart-widget">
+            <span class="chart-title"><i class="fas fa-chart-line"></i> Volume Diário</span>
+            <div class="bar-chart" id="histograma"></div>
         </div>
 
-        <div class="goal">
-            ▶ <b>Refinando</b> dados, entregando <b>clareza</b>. 💡
+        <div class="chart-widget row-span-2">
+            <span class="chart-title"><i class="fas fa-map-marker-alt"></i> Top Localidades</span>
+            <div id="city-ranking" style="margin-top:10px;"></div>
         </div>
+
+        <div class="chart-widget">
+            <span class="chart-title"><i class="fas fa-file-alt"></i> Top Content</span>
+            <div id="top-pages" class="mini-data"></div>
+        </div>
+
+        <div class="chart-widget">
+            <span class="chart-title"><i class="fas fa-globe"></i> Alcance Global</span>
+            <div id="country-stats" class="mini-data"></div>
+        </div>
+    </div>
+
+    <div class="goal">
+        ▶ <b>Data Pipeline Status:</b> <span style="color: #00ff00;">Operational</span> | Atualizado automaticamente via GitHub Bot.
     </div>
 </div>
 
-<script>
-    async function updateDashboard() {
-        try {
-            const res = await fetch('analytics_data.json');
-            const data = await res.json();
-
-            // 1. Histograma
-            const recent = data.slice(-7);
-            const maxVal = Math.max(...recent.map(d => d.users), 1);
-            const hist = document.getElementById('histograma');
-            hist.innerHTML = '';
-            recent.forEach(d => {
-                hist.innerHTML += `<div class="bar" style="height:${(d.users/maxVal)*100}%" title="${d.date}"></div>`;
-            });
-
-            // 2. Contador Total
-            const total = data.reduce((sum, d) => sum + d.users, 0);
-            document.getElementById('total-users').innerText = total;
-
-            // 3. Geolocalização
-            const cityMap = {};
-            data.forEach(d => { if(d.city) cityMap[d.city] = (cityMap[d.city] || 0) + d.users; });
-            const sorted = Object.entries(cityMap).sort((a,b) => b[1] - a[1]).slice(0, 2);
-            
-            const cityList = document.getElementById('city-list');
-            cityList.innerHTML = '';
-            sorted.forEach(([city, count]) => {
-                const perc = (count / total) * 100;
-                cityList.innerHTML += `
-                    <div class="city-item"><span>${city}</span><span>${count}</span></div>
-                    <div class="city-bar-bg"><div class="city-bar-fill" style="width:${perc}%"></div></div>
-                `;
-            });
-
-        } catch (e) {
-            console.log("Aguardando JSON...");
-        }
+<style>
+    /* Estilos para o Grid de 6 Áreas */
+    .charts-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 15px;
     }
-    updateDashboard();
-</script>
 
-</body>
-</html>
+    .chart-widget {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 12px;
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
+    .chart-widget:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--accent);
+    }
+
+    .chart-title {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #888;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .counter-val {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--accent);
+        font-family: 'Space Mono', monospace;
+    }
+
+    .mini-data {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.7rem;
+        color: #ccc;
+        line-height: 1.4;
+    }
+
+    .bar-chart {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        height: 40px;
+        padding-top: 5px;
+    }
+
+    .bar {
+        width: 12%;
+        background: var(--accent3);
+        border-radius: 2px 2px 0 0;
+        min-height: 2px;
+    }
+
+    /* Estilos das barras de progresso de cidades */
+    .progress-container { margin-bottom: 10px; }
+    .progress-info { display: flex; justify-content: space-between; font-size: 0.6rem; margin-bottom: 3px; color: #aaa; }
+    .progress-bar-bg { background: #222; height: 4px; width: 100%; border-radius: 2px; }
+    .progress-bar-fill { background: var(--accent); height: 100%; border-radius: 2px; transition: width 1s ease-in-out; }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .charts-grid { grid-template-columns: 1fr 1fr; }
+        .row-span-2 { grid-column: span 2; }
+    }
+</style>
+
+<script>
+async function updateDashboard() {
+    try {
+        const res = await fetch('analytics_data.json?t=' + Date.now());
+        const data = await res.json();
+        
+        if (!data || data.length === 0) return;
+
+        const totalUsers = data.reduce((sum, d) => sum + d.users, 0);
+
+        // 1. KPI Usuários
+        document.getElementById('total-users').innerText = totalUsers;
+
+        // 2. Dispositivos (Desktop vs Mobile)
+        const devices = { desktop: 0, mobile: 0 };
+        data.forEach(d => {
+            const type = d.device.toLowerCase();
+            if(devices.hasOwnProperty(type)) devices[type] += d.users;
+        });
+        document.getElementById('device-info').innerHTML = `
+            <span style="color:var(--accent)">DESKTOP:</span> ${Math.round(devices.desktop/totalUsers*100 || 0)}%<br>
+            <span style="color:var(--accent3)">MOBILE:</span> ${Math.round(devices.mobile/totalUsers*100 || 0)}%
+        `;
+
+        // 3. Histograma (Últimos 7 períodos com dados)
+        const dateMap = {};
+        data.forEach(d => { dateMap[d.date] = (dateMap[d.date] || 0) + d.users; });
+        const lastDays = Object.values(dateMap).slice(-7);
+        const maxVal = Math.max(...lastDays, 1);
+        document.getElementById('histograma').innerHTML = lastDays.map(v => 
+            `<div class="bar" style="height:${(v/maxVal)*100}%" title="${v} users"></div>`
+        ).join('');
+
+        // 4. Ranking de Cidades (Top 4)
+        const cityMap = {};
+        data.forEach(d => { 
+            const label = `${d.city}, ${d.country}`;
+            cityMap[label] = (cityMap[label] || 0) + d.users; 
+        });
+        const topCities = Object.entries(cityMap).sort((a,b) => b[1]-a[1]).slice(0, 4);
+        document.getElementById('city-ranking').innerHTML = topCities.map(([loc, count]) => `
+            <div class="progress-container">
+                <div class="progress-info"><span>${loc}</span><span>${count}</span></div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${(count/totalUsers)*100}%"></div></div>
+            </div>
+        `).join('');
+
+        // 5. Páginas Mais Vistas
+        const pageMap = {};
+        data.forEach(d => { pageMap[d.page] = (pageMap[d.page] || 0) + d.users; });
+        const topPage = Object.entries(pageMap).sort((a,b) => b[1]-a[1])[0];
+        document.getElementById('top-pages').innerHTML = `
+            Mais acessada:<br>
+            <span style="color:white; font-size:0.6rem;">${topPage ? topPage[0].substring(0,25) + '...' : 'N/A'}</span>
+        `;
+
+        // 6. Alcance por Países
+        const countries = new Set(data.map(d => d.country));
+        document.getElementById('country-stats').innerHTML = `
+            <span style="font-size:1.5rem; color:white;">${countries.size}</span><br>
+            Países alcançados
+        `;
+
+    } catch (e) {
+        console.error("Erro no fetch dos dados:", e);
+    }
+}
+
+// Executa ao carregar
+updateDashboard();
+</script>
