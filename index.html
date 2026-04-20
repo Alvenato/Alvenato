@@ -45,6 +45,7 @@
             padding: 100px 20px 20px 20px;
         }
 
+        /* --- NAVBAR --- */
         .navbar {
             position: fixed;
             top: 30px;
@@ -59,62 +60,14 @@
             align-items: center;
             gap: 18px;
             z-index: 1000;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        .nav-item {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-item:hover {
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
+        .nav-item { color: var(--text); text-decoration: none; font-size: 1.1rem; transition: 0.3s; }
+        .nav-item:hover { color: var(--accent); transform: translateY(-2px); }
         .nav-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.1); margin: 0 5px; }
+        .sobre-btn { font-family: 'Space Mono', monospace; font-size: 0.8rem; font-weight: bold; color: var(--accent3); text-transform: uppercase; }
 
-        .sobre-btn {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent3);
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: gridMove 20s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(40px); }
-        }
-
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.18;
-            animation: orbFloat 8s ease-in-out infinite alternate;
-            pointer-events: none;
-        }
-        .orb-1 { width: 400px; height: 400px; background: var(--accent); top: -100px; left: -100px; }
-        .orb-2 { width: 350px; height: 350px; background: var(--accent2); bottom: -80px; right: -80px; }
-
+        /* --- CARD --- */
         .card {
             position: relative;
             width: 880px;
@@ -124,14 +77,8 @@
             overflow: hidden;
             display: grid;
             grid-template-columns: 300px 1fr;
-            animation: cardReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
             box-shadow: 0 40px 80px rgba(0,0,0,0.6);
             z-index: 10;
-        }
-
-        @keyframes cardReveal {
-            from { opacity: 0; transform: translateY(32px) scale(0.96); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .left {
@@ -141,7 +88,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             gap: 30px;
         }
 
@@ -150,7 +96,6 @@
             position: absolute; inset: -6px; border-radius: 50%;
             background: conic-gradient(var(--accent), var(--accent2), var(--accent3), var(--accent));
             animation: spin 4s linear infinite;
-            filter: blur(2px);
         }
         @keyframes spin { to { transform: rotate(360deg); } }
         
@@ -163,30 +108,27 @@
         .name { font-size: 1.3rem; font-weight: 800; text-align: center; }
         .name span { display: block; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Space Mono', monospace; margin-top: 8px; }
 
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 15px; }
-        .skill-tag {
-            padding: 4px 10px; border-radius: 6px; font-size: 0.65rem; font-weight: 600;
-            font-family: 'Space Mono', monospace; border: 1px solid rgba(0,212,255,0.3); color: var(--accent);
-        }
-
         .right { padding: 40px 32px; display: flex; flex-direction: column; gap: 24px; }
 
+        /* --- DASHBOARD WIDGETS --- */
         .charts-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
         .chart-widget { 
             background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); 
-            border-radius: 12px; padding: 12px 8px; display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; gap: 10px; min-height: 100px;
+            border-radius: 12px; padding: 15px 10px; display: flex; flex-direction: column; 
+            align-items: center; justify-content: space-between; min-height: 120px;
         }
-        .chart-title { font-size: 0.5rem; font-family: 'Space Mono', monospace; color: var(--muted); text-transform: uppercase; }
+        .chart-title { font-size: 0.55rem; font-family: 'Space Mono', monospace; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
 
-        .pie-chart { width: 35px; height: 35px; border-radius: 50%; background: conic-gradient(var(--accent) 0% 40%, var(--accent2) 40% 70%, var(--accent3) 70% 100%); animation: spin 4s linear infinite; }
-        
-        .bar-chart { display: flex; align-items: flex-end; gap: 3px; height: 35px; min-width: 40px; justify-content: center;}
-        .bar { width: 6px; background: var(--accent); border-radius: 1px; animation: barGrow 1.5s ease-in-out forwards; height: 0%; }
-        @keyframes barGrow { from { height: 0%; } to { height: var(--h); } }
+        /* Bar Chart / Histogram */
+        .bar-chart { display: flex; align-items: flex-end; gap: 4px; height: 45px; }
+        .bar { width: 8px; background: var(--accent); border-radius: 1px; transition: height 0.5s ease; }
 
-        .radar-box { width: 35px; height: 35px; border: 1px solid var(--border); border-radius: 50%; position: relative; overflow: hidden; }
-        .radar-sweep { position: absolute; width: 100%; height: 100%; background: conic-gradient(transparent, var(--accent3)); opacity: 0.3; animation: spin 2s linear infinite; }
+        /* Counter Widget */
+        .counter-val { font-family: 'Space Mono', monospace; font-size: 1.4rem; font-weight: bold; color: var(--accent3); }
+        .counter-unit { font-size: 0.5rem; color: var(--muted); }
+
+        /* Sparkline (Mini Line Chart) */
+        .sparkline { width: 60px; height: 30px; stroke: var(--accent2); stroke-width: 2; fill: none; }
 
         .code-block { background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; font-family: 'Space Mono', monospace; font-size: 0.72rem; }
         .code-header { padding: 8px 16px; background: rgba(0,212,255,0.05); border-bottom: 1px solid var(--border); display: flex; gap: 6px; }
@@ -197,110 +139,108 @@
 
         .goal { padding: 14px; background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(123,92,250,0.06)); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: var(--accent); font-family: 'Space Mono', monospace; text-align: center; }
 
-        @media (max-width: 900px) {
-            .card { grid-template-columns: 1fr; width: 100%; }
-            .left { border-right: none; border-bottom: 1px solid var(--border); }
-        }
+        @media (max-width: 900px) { .card { grid-template-columns: 1fr; width: 100%; } .left { border-right: none; border-bottom: 1px solid var(--border); } }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <a href="https://www.linkedin.com/in/cristianoalves-ca/" target="_blank" class="nav-item" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/Alvenato" target="_blank" class="nav-item" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://wa.me/5561981830780" target="_blank" class="nav-item" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <a href="mailto:analytics.barbosa@gmail.com" class="nav-item" title="E-mail"><i class="fas fa-envelope"></i></a>
+    <a href="https://www.linkedin.com/in/cristianoalves-ca/" target="_blank" class="nav-item"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/Alvenato" target="_blank" class="nav-item"><i class="fab fa-github"></i></a>
+    <a href="https://wa.me/5561981830780" target="_blank" class="nav-item"><i class="fab fa-whatsapp"></i></a>
+    <a href="mailto:analytics.barbosa@gmail.com" class="nav-item"><i class="fas fa-envelope"></i></a>
     <div class="nav-divider"></div>
     <a href="https://alvenato.github.io/curriculo.html" target="_blank" class="nav-item sobre-btn">Sobre</a>
 </nav>
-
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
 
 <div class="card">
     <div class="left">
         <div class="avatar-wrapper">
             <div class="avatar-ring"></div>
-            <div class="avatar">
-                <img src="https://github.com/Alvenato.png" alt="Cristiano A. Barbosa">
-            </div>
+            <div class="avatar"><img src="https://github.com/Alvenato.png"></div>
         </div>
-
-        <div class="name">
-            Cristiano A. Barbosa
-            <span>Cientista de Dados · IA</span>
-        </div>
-
-        <div class="skills-grid">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">Power BI</span>
-            <span class="skill-tag">Machine Learning</span>
+        <div class="name">Cristiano A. Barbosa<span>Cientista de Dados · IA</span></div>
+        <div style="display: flex; gap: 5px; flex-wrap: wrap; justify-content: center;">
+            <span style="font-size: 0.6rem; border: 1px solid var(--accent); padding: 2px 6px; color: var(--accent); border-radius: 4px;">PYTHON</span>
+            <span style="font-size: 0.6rem; border: 1px solid var(--accent3); padding: 2px 6px; color: var(--accent3); border-radius: 4px;">SQL</span>
+            <span style="font-size: 0.6rem; border: 1px solid var(--accent2); padding: 2px 6px; color: var(--accent2); border-radius: 4px;">TABLEAU</span>
         </div>
     </div>
 
     <div class="right">
         <div class="code-block">
-            <div class="code-header">
-                <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
-            </div>
+            <div class="code-header"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
             <div class="code-body">
-                <div><span class="kw">const</span> <span class="key">stack</span> = [<span class="str">"Data Science"</span>, <span class="str">"IA"</span>];</div>
-                <div><span class="kw">const</span> <span class="key">missao</span> = <span class="str">"Extrair valor de dados complexos"</span>;</div>
+                <div><span class="kw">import</span> analytics</div>
+                <div><span class="key">status</span> = <span class="str">"Live Data Stream Active"</span></div>
             </div>
         </div>
 
         <div class="charts-container">
-            <div class="chart-widget"><span class="chart-title">Análise</span><div class="pie-chart"></div></div>
             <div class="chart-widget">
-                <span class="chart-title" id="metric-label">Métricas</span>
-                <div class="bar-chart" id="grafico-acessos">
-                    <div class="bar" style="--h:70%; animation-delay:0.1s"></div>
-                    <div class="bar" style="--h:40%; animation-delay:0.3s"></div>
-                    <div class="bar" style="--h:90%; animation-delay:0.5s"></div>
+                <span class="chart-title">Distribuição (7d)</span>
+                <div class="bar-chart" id="histograma">
+                    <div class="bar" style="height: 20%"></div>
+                    <div class="bar" style="height: 50%"></div>
+                    <div class="bar" style="height: 30%"></div>
+                    <div class="bar" style="height: 80%"></div>
                 </div>
             </div>
-            <div class="chart-widget"><span class="chart-title">Monitor</span><div class="radar-box"><div class="radar-sweep"></div></div></div>
+
+            <div class="chart-widget">
+                <span class="chart-title">Total Usuários</span>
+                <div class="counter-val" id="total-users">0</div>
+                <span class="counter-unit">Últimos 30 dias</span>
+            </div>
+
+            <div class="chart-widget">
+                <span class="chart-title">Tendência</span>
+                <svg class="sparkline" viewBox="0 0 100 30">
+                    <path id="trend-path" d="M0 30 L20 20 L40 25 L60 10 L80 15 L100 5" />
+                </svg>
+            </div>
         </div>
 
-        <div class="goal">
-            ▶ <b>Refinando</b> dados, entregando <b>clareza</b>. 💡
-        </div>
+        <div class="goal">▶ <b>Engenharia de Dados</b>: Automação via Google Cloud API.</div>
     </div>
 </div>
 
 <script>
-    async function fetchAnalytics() {
+    async function updateDashboard() {
         try {
-            const response = await fetch('analytics_data.json');
-            const data = await response.json();
-            
-            const container = document.getElementById('grafico-acessos');
-            const label = document.getElementById('metric-label');
-            
-            // Pega os últimos 6 dias para o gráfico
-            const recentData = data.slice(-6);
-            const maxUsers = Math.max(...recentData.map(d => d.users), 1);
-            
-            container.innerHTML = '';
-            recentData.forEach((day, i) => {
-                const height = (day.users / maxUsers) * 100;
-                const bar = document.createElement('div');
-                bar.className = 'bar';
-                bar.style.setProperty('--h', `${height}%`);
-                bar.style.animationDelay = `${i * 0.1}s`;
-                bar.title = `${day.date}: ${day.users} usuários`;
-                container.appendChild(bar);
+            const res = await fetch('analytics_data.json');
+            const data = await res.json();
+
+            // 1. Histograma (Últimos 7 registros)
+            const recent = data.slice(-7);
+            const maxVal = Math.max(...recent.map(d => d.users), 1);
+            const histContainer = document.getElementById('histograma');
+            histContainer.innerHTML = '';
+            recent.forEach(d => {
+                const h = (d.users / maxVal) * 100;
+                histContainer.innerHTML += `<div class="bar" style="height:${h}%" title="${d.date}: ${d.users}"></div>`;
             });
-            
-            label.innerText = "Acessos Reais";
-            label.style.color = "var(--accent3)";
-            
+
+            // 2. Contador Total
+            const total = data.reduce((sum, d) => sum + d.users, 0);
+            document.getElementById('total-users').innerText = total;
+
+            // 3. Tendência (Sparkline)
+            const path = document.getElementById('trend-path');
+            let points = "";
+            const step = 100 / (recent.length - 1);
+            recent.forEach((d, i) => {
+                const x = i * step;
+                const y = 30 - ((d.users / maxVal) * 25);
+                points += (i === 0 ? "M" : "L") + `${x} ${y} `;
+            });
+            path.setAttribute('d', points);
+
         } catch (e) {
-            console.log("Usando dados estáticos por enquanto...");
+            console.log("Aguardando dados...");
         }
     }
-    fetchAnalytics();
+    updateDashboard();
 </script>
 
 </body>
