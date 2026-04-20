@@ -1,0 +1,40 @@
+name: Update Analytics Data
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Roda a cada hora (no minuto 0)
+  workflow_dispatch: # Permite que você rode manualmente se quiser testar
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install google-analytics-data
+
+      - name: Run update script
+        env:
+          # Aqui usamos uma "Secret" para proteger sua chave
+          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GA_KEY_JSON }}
+        run: |
+          # Criamos o arquivo temporário da chave a partir da Secret
+          echo "$GOOGLE_APPLICATION_CREDENTIALS_JSON" > credentials.json
+          export GOOGLE_APPLICATION_CREDENTIALS=credentials.json
+          python update_stats.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add analytics_data.json
+          git commit -m "Auto update analytics data [skip ci]" || exit 0
+          git push
