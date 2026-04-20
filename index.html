@@ -30,6 +30,12 @@
             --muted: #6b8fa8;
             --border: rgba(0,212,255,0.15);
             --nav-bg: rgba(5, 10, 15, 0.8);
+            
+            /* Cores vibrantes para as skills */
+            --skill-python: #ff0055; /* Rosa Neon */
+            --skill-sql: #ff9f00;    /* Laranja Vibrante */
+            --skill-tableau: #cc00ff; /* Roxo Elétrico */
+            --skill-powerbi: #00ff00; /* Verde Lima */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -145,7 +151,21 @@
         .sub-name { display: block; font-size: 0.7rem; color: var(--accent); font-family: 'Space Mono', monospace; text-transform: uppercase; margin-top: 8px; letter-spacing: 2px; }
 
         .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 15px; }
-        .skill-tag { padding: 5px 12px; border-radius: 6px; font-size: 0.6rem; font-weight: bold; font-family: 'Space Mono', monospace; border: 1px solid rgba(0,212,255,0.2); background: rgba(0,212,255,0.05); color: var(--accent); }
+        .skill-tag { 
+            padding: 5px 12px; 
+            border-radius: 6px; 
+            font-size: 0.6rem; 
+            font-weight: bold; 
+            font-family: 'Space Mono', monospace; 
+            border: 1px solid;
+            background: rgba(0,0,0,0.1); /* Fundo leve para o brilho destacar */
+        }
+        
+        /* Cores vibrantes específicas para cada skill */
+        .skill-python { color: var(--skill-python); border-color: var(--skill-python); box-shadow: 0 0 10px rgba(255, 0, 85, 0.3); }
+        .skill-sql { color: var(--skill-sql); border-color: var(--skill-sql); box-shadow: 0 0 10px rgba(255, 159, 0, 0.3); }
+        .skill-tableau { color: var(--skill-tableau); border-color: var(--skill-tableau); box-shadow: 0 0 10px rgba(204, 0, 255, 0.3); }
+        .skill-powerbi { color: var(--skill-powerbi); border-color: var(--skill-powerbi); box-shadow: 0 0 10px rgba(0, 255, 0, 0.3); }
 
         .right { padding: 40px; display: flex; flex-direction: column; gap: 25px; }
         .code-header-box { background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 12px; padding: 15px; border-left: 4px solid var(--accent3); font-family: 'Space Mono', monospace; font-size: 0.75rem; }
@@ -205,11 +225,10 @@
             <span class="sub-name">Cientista de Dados & IA</span>
         </div>
         <div class="skills-grid">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">Power BI</span>
-            <span class="skill-tag">Tableau</span>
-            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag skill-python">Python</span>
+            <span class="skill-tag skill-sql">SQL</span>
+            <span class="skill-tag skill-powerbi">Power BI</span>
+            <span class="skill-tag skill-tableau">Tableau</span>
         </div>
     </div>
 
