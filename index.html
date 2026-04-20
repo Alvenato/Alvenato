@@ -48,7 +48,6 @@
             padding: 100px 20px 40px 20px;
         }
 
-        /* Grid de fundo */
         body::before {
             content: '';
             position: fixed;
@@ -66,17 +65,20 @@
             100% { transform: translateY(40px); }
         }
 
-        /* Padronização dos Tooltips do Google Charts */
+        /* Tooltips: Arial Preto */
         .google-visualization-tooltip {
-            border: 1px solid var(--accent) !important;
-            background-color: var(--surface2) !important;
-            border-radius: 8px !important;
-            padding: 10px !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
-            font-family: 'Space Mono', monospace !important;
+            border: 1px solid #ccc !important;
+            background-color: #ffffff !important;
+            border-radius: 4px !important;
+            padding: 8px !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
+            font-family: Arial, sans-serif !important;
         }
-        .google-visualization-tooltip-item-list { padding: 0 !important; margin: 0 !important; }
-        .google-visualization-tooltip-item span { color: var(--text) !important; font-size: 12px !important; }
+        .google-visualization-tooltip-item span { 
+            color: #000000 !important; 
+            font-family: Arial, sans-serif !important;
+            font-size: 13px !important; 
+        }
 
         .orb {
             position: fixed;
@@ -132,11 +134,9 @@
         @keyframes cardReveal { from { opacity: 0; transform: translateY(32px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
         .left { padding: 60px 30px; background: var(--surface2); border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 35px; }
-
         .avatar-wrapper { position: relative; width: 140px; height: 140px; }
         .avatar-ring { position: absolute; inset: -5px; border-radius: 50%; background: conic-gradient(var(--accent), var(--accent2), var(--accent3), var(--accent)); animation: spin 4s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
-        
         .avatar { position: relative; width: 140px; height: 140px; border-radius: 50%; overflow: hidden; border: 4px solid var(--surface2); z-index: 1; }
         .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -148,11 +148,9 @@
         .skill-tag { padding: 5px 12px; border-radius: 6px; font-size: 0.6rem; font-weight: bold; font-family: 'Space Mono', monospace; border: 1px solid rgba(0,212,255,0.2); background: rgba(0,212,255,0.05); color: var(--accent); }
 
         .right { padding: 40px; display: flex; flex-direction: column; gap: 25px; }
-
         .code-header-box { background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 12px; padding: 15px; border-left: 4px solid var(--accent3); font-family: 'Space Mono', monospace; font-size: 0.75rem; }
 
         .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-
         .metric-card { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; transition: 0.3s; position: relative; }
         .metric-card:hover { background: rgba(0, 212, 255, 0.05); border-color: var(--accent); }
 
@@ -171,7 +169,6 @@
         .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent3)); height: 100%; transition: width 1s ease-out; }
 
         #regions_div { width: 100%; height: 180px; margin-top: 5px; }
-
         .footer-status { margin-top: 10px; padding: 12px; background: rgba(0, 255, 170, 0.05); border-radius: 10px; font-size: 0.7rem; color: var(--accent3); font-family: 'Space Mono', monospace; text-align: center; }
 
         @media (max-width: 900px) {
@@ -203,12 +200,10 @@
                 <img src="https://github.com/Alvenato.png" alt="Cristiano A. Barbosa">
             </div>
         </div>
-
         <div class="name-container">
             <h1 class="name">Cristiano A. Barbosa</h1>
             <span class="sub-name">Cientista de Dados & IA</span>
         </div>
-
         <div class="skills-grid">
             <span class="skill-tag">Python</span>
             <span class="skill-tag">SQL</span>
@@ -229,28 +224,23 @@
                 <span class="label">Visitantes (30D)</span>
                 <div class="value" id="total-users">0</div>
             </div>
-
             <div class="metric-card">
                 <span class="label">Dispositivos</span>
                 <div id="tech_stack_pie"></div>
             </div>
-
             <div class="metric-card">
-                <span class="label">Trend (7D)</span>
+                <span class="label">Tendência (7 Dias)</span>
                 <div class="bar-chart" id="histograma"></div>
             </div>
-
             <div class="metric-card map-container" style="grid-column: span 3; min-height: 240px;">
                 <span class="label">Distribuição Global de Acessos</span>
                 <div id="regions_div"></div>
             </div>
-
             <div class="metric-card full-bottom" style="grid-column: span 3;">
                 <span class="label">Top Localidades Detectadas</span>
                 <div id="city-ranking"></div>
             </div>
         </div>
-
         <div class="footer-status">
             ▶ <b>Real-Time Insight:</b> Geo-distribuição e Tech Stack via Google Charts.
         </div>
@@ -258,21 +248,18 @@
 </div>
 
 <script>
-google.charts.load('current', {
-  'packages':['geochart', 'corechart'],
-});
+google.charts.load('current', {'packages':['geochart', 'corechart']});
 
 async function updateDashboard() {
     try {
         const response = await fetch('analytics_data.json?t=' + Date.now());
         const data = await response.json();
-        
         if (!data || data.length === 0) return;
 
         const totalUsers = data.reduce((sum, d) => sum + d.users, 0);
         document.getElementById('total-users').innerText = totalUsers;
 
-        // 1. Trend 7D
+        // Histograma (Tendência 7 Dias)
         const dateMap = {};
         data.forEach(d => { 
             let rawDate = d.date.toString();
@@ -284,12 +271,11 @@ async function updateDashboard() {
         const last7Entries = Object.entries(dateMap).slice(-7);
         const maxUsers = Math.max(...last7Entries.map(e => e[1]), 1);
         
-        // Tooltip nativo para o histograma customizado (CSS styled)
         document.getElementById('histograma').innerHTML = last7Entries.map(([fullDate, count]) => 
             `<div class="bar" style="height:${(count/maxUsers)*100}%" title="Data: ${fullDate} | Usuários: ${count}"></div>`
         ).join('');
 
-        // 2. Ranking de Cidades
+        // Cidades
         const cities = {};
         data.forEach(d => { 
             const loc = `${d.city}, ${d.country}`;
@@ -303,15 +289,11 @@ async function updateDashboard() {
             </div>
         `).join('');
 
-        // 3. Desenhar Gráficos do Google
         google.charts.setOnLoadCallback(() => {
             drawMap(data);
             drawPie(data);
         });
-
-    } catch (e) {
-        console.error("Erro no processamento de dados:", e);
-    }
+    } catch (e) { console.error("Erro:", e); }
 }
 
 function drawPie(data) {
@@ -320,13 +302,7 @@ function drawPie(data) {
         const type = d.device.charAt(0).toUpperCase() + d.device.slice(1).toLowerCase();
         if(devices.hasOwnProperty(type)) devices[type] += d.users;
     });
-
-    const pieData = google.visualization.arrayToDataTable([
-        ['Device', 'Users'],
-        ['Desktop', devices.Desktop],
-        ['Mobile', devices.Mobile]
-    ]);
-
+    const pieData = google.visualization.arrayToDataTable([['Device', 'Users'],['Desktop', devices.Desktop],['Mobile', devices.Mobile]]);
     const options = {
         backgroundColor: 'transparent',
         colors: ['#00d4ff', '#7b5cfa'],
@@ -335,15 +311,9 @@ function drawPie(data) {
         pieSliceBorderColor: 'transparent',
         pieSliceText: 'none',
         chartArea: {width: '90%', height: '90%'},
-        tooltip: { 
-            textStyle: { fontName: 'Space Mono', fontSize: 12, color: '#e8f4fd' },
-            showColorCode: false,
-            trigger: 'focus'
-        }
+        tooltip: { textStyle: { fontName: 'Arial', fontSize: 13, color: '#000000' }, showColorCode: false, trigger: 'focus' }
     };
-
-    const chart = new google.visualization.PieChart(document.getElementById('tech_stack_pie'));
-    chart.draw(pieData, options);
+    new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(pieData, options);
 }
 
 function drawMap(data) {
@@ -351,22 +321,15 @@ function drawMap(data) {
     data.forEach(d => { countryMap[d.country] = (countryMap[d.country] || 0) + d.users; });
     const chartData = [['Country', 'Visitantes']];
     for (const [country, users] of Object.entries(countryMap)) { chartData.push([country, users]); }
-    const dataTable = google.visualization.arrayToDataTable(chartData);
-
     const options = {
         backgroundColor: 'transparent',
         datalessRegionColor: '#111d2c',
         defaultColor: '#0d1620',
         colorAxis: {colors: ['#004455', '#00d4ff']},
         legend: 'none',
-        tooltip: {
-            textStyle: { fontName: 'Space Mono', fontSize: 12, color: '#050a0f' },
-            showColorCode: false
-        }
+        tooltip: { textStyle: { fontName: 'Arial', fontSize: 13, color: '#000000' }, showColorCode: false }
     };
-
-    const chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-    chart.draw(dataTable, options);
+    new google.visualization.GeoChart(document.getElementById('regions_div')).draw(google.visualization.arrayToDataTable(chartData), options);
 }
 
 updateDashboard();
