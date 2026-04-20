@@ -45,7 +45,6 @@
             padding: 100px 20px 20px 20px;
         }
 
-        /* --- MENU ORIGINAL --- */
         .navbar {
             position: fixed;
             top: 30px;
@@ -88,7 +87,6 @@
             color: var(--accent3);
         }
 
-        /* Fundo Animado Grid */
         body::before {
             content: '';
             position: fixed;
@@ -117,7 +115,6 @@
         .orb-1 { width: 400px; height: 400px; background: var(--accent); top: -100px; left: -100px; }
         .orb-2 { width: 350px; height: 350px; background: var(--accent2); bottom: -80px; right: -80px; }
 
-        /* Card Layout */
         .card {
             position: relative;
             width: 880px;
@@ -174,7 +171,6 @@
 
         .right { padding: 40px 32px; display: flex; flex-direction: column; gap: 24px; }
 
-        /* Widgets Gráficos Originais */
         .charts-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
         .chart-widget { 
             background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); 
@@ -185,9 +181,9 @@
 
         .pie-chart { width: 35px; height: 35px; border-radius: 50%; background: conic-gradient(var(--accent) 0% 40%, var(--accent2) 40% 70%, var(--accent3) 70% 100%); animation: spin 4s linear infinite; }
         
-        .bar-chart { display: flex; align-items: flex-end; gap: 3px; height: 35px; }
-        .bar { width: 6px; background: var(--accent); border-radius: 1px; animation: barGrow 1.5s ease-in-out infinite alternate; }
-        @keyframes barGrow { from { height: 30%; } to { height: 100%; } }
+        .bar-chart { display: flex; align-items: flex-end; gap: 3px; height: 35px; min-width: 40px; justify-content: center;}
+        .bar { width: 6px; background: var(--accent); border-radius: 1px; animation: barGrow 1.5s ease-in-out forwards; height: 0%; }
+        @keyframes barGrow { from { height: 0%; } to { height: var(--h); } }
 
         .radar-box { width: 35px; height: 35px; border: 1px solid var(--border); border-radius: 50%; position: relative; overflow: hidden; }
         .radar-sweep { position: absolute; width: 100%; height: 100%; background: conic-gradient(transparent, var(--accent3)); opacity: 0.3; animation: spin 2s linear infinite; }
@@ -257,11 +253,11 @@
         <div class="charts-container">
             <div class="chart-widget"><span class="chart-title">Análise</span><div class="pie-chart"></div></div>
             <div class="chart-widget">
-                <span class="chart-title">Métricas</span>
-                <div class="bar-chart">
-                    <div class="bar" style="height:70%; animation-delay:0.1s"></div>
-                    <div class="bar" style="height:40%; animation-delay:0.3s"></div>
-                    <div class="bar" style="height:90%; animation-delay:0.5s"></div>
+                <span class="chart-title" id="metric-label">Métricas</span>
+                <div class="bar-chart" id="grafico-acessos">
+                    <div class="bar" style="--h:70%; animation-delay:0.1s"></div>
+                    <div class="bar" style="--h:40%; animation-delay:0.3s"></div>
+                    <div class="bar" style="--h:90%; animation-delay:0.5s"></div>
                 </div>
             </div>
             <div class="chart-widget"><span class="chart-title">Monitor</span><div class="radar-box"><div class="radar-sweep"></div></div></div>
@@ -272,6 +268,40 @@
         </div>
     </div>
 </div>
+
+<script>
+    async function fetchAnalytics() {
+        try {
+            const response = await fetch('analytics_data.json');
+            const data = await response.json();
+            
+            const container = document.getElementById('grafico-acessos');
+            const label = document.getElementById('metric-label');
+            
+            // Pega os últimos 6 dias para o gráfico
+            const recentData = data.slice(-6);
+            const maxUsers = Math.max(...recentData.map(d => d.users), 1);
+            
+            container.innerHTML = '';
+            recentData.forEach((day, i) => {
+                const height = (day.users / maxUsers) * 100;
+                const bar = document.createElement('div');
+                bar.className = 'bar';
+                bar.style.setProperty('--h', `${height}%`);
+                bar.style.animationDelay = `${i * 0.1}s`;
+                bar.title = `${day.date}: ${day.users} usuários`;
+                container.appendChild(bar);
+            });
+            
+            label.innerText = "Acessos Reais";
+            label.style.color = "var(--accent3)";
+            
+        } catch (e) {
+            console.log("Usando dados estáticos por enquanto...");
+        }
+    }
+    fetchAnalytics();
+</script>
 
 </body>
 </html>
