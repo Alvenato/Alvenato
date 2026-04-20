@@ -12,6 +12,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cristiano A. Barbosa — Data Science & IA</title>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -79,7 +82,7 @@
             100% { transform: translate(30px, 20px) scale(1.1); }
         }
 
-        /* --- MENU --- */
+        /* MENU */
         .navbar {
             position: fixed;
             top: 30px;
@@ -194,7 +197,7 @@
             color: var(--accent);
         }
 
-        /* --- DASHBOARD LADO DIREITO --- */
+        /* DASHBOARD LADO DIREITO */
         .right { padding: 40px; display: flex; flex-direction: column; gap: 25px; }
 
         .code-header-box {
@@ -232,11 +235,17 @@
         .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 45px; margin-top: 5px; }
         .bar { width: 10%; background: var(--accent); border-radius: 2px 2px 0 0; min-height: 2px; }
 
-        /* Ranking de Cidades */
+        /* Cidades */
         .city-row { margin-bottom: 12px; }
         .city-meta { display: flex; justify-content: space-between; font-size: 0.65rem; margin-bottom: 5px; }
         .progress-bg { background: rgba(0,0,0,0.3); height: 6px; border-radius: 3px; width: 100%; overflow: hidden; }
         .progress-fill { background: var(--accent); height: 100%; transition: width 1s ease-out; }
+
+        #regions_div {
+            width: 100%;
+            height: 180px;
+            margin-top: 5px;
+        }
 
         .footer-status {
             margin-top: 10px;
@@ -255,6 +264,7 @@
             .dashboard-grid { grid-template-columns: 1fr 1fr; }
             .full-row { grid-column: span 2; }
             .navbar { width: 90%; justify-content: space-around; }
+            .map-container { grid-column: span 2 !important; }
         }
     </style>
 </head>
@@ -316,29 +326,34 @@
                 <div class="bar-chart" id="histograma"></div>
             </div>
 
-            <div class="metric-card" style="grid-column: span 3;">
+            <div class="metric-card map-container" style="grid-column: span 3; min-height: 240px;">
+                <span class="label">Distribuição Global de Acessos</span>
+                <div id="regions_div"></div>
+            </div>
+
+            <div class="metric-card" style="grid-column: span 2;">
                 <span class="label">Top Localidades Detectadas</span>
                 <div id="city-ranking"></div>
             </div>
 
-            <div class="metric-card" style="grid-column: span 2;">
-                <span class="label">Conteúdo Mais Acessado</span>
-                <div id="top-pages" class="sub-value">...</div>
-            </div>
-
             <div class="metric-card">
-                <span class="label">Países</span>
-                <div id="country-stats" class="value" style="font-size: 1.5rem;">0</div>
+                <span class="label">Conteúdo</span>
+                <div id="top-pages" class="sub-value" style="font-size: 0.6rem;">...</div>
             </div>
         </div>
 
         <div class="footer-status">
-            ▶ <b>Real-Time Insight:</b> Dados processados em Python integrados via JSON.
+            ▶ <b>Real-Time Insight:</b> Geo-distribuição processada via Google Charts API.
         </div>
     </div>
 </div>
 
 <script>
+// Inicializa o Google Charts
+google.charts.load('current', {
+  'packages':['geochart'],
+});
+
 async function updateDashboard() {
     try {
         const response = await fetch('analytics_data.json?t=' + Date.now());
@@ -348,10 +363,10 @@ async function updateDashboard() {
 
         const totalUsers = data.reduce((sum, d) => sum + d.users, 0);
 
-        // 1. Usuários
+        // 1. Total de Usuários
         document.getElementById('total-users').innerText = totalUsers;
 
-        // 2. Tech Stack
+        // 2. Tech Stack (Devices)
         const devices = { desktop: 0, mobile: 0 };
         data.forEach(d => {
             const type = d.device.toLowerCase();
@@ -362,7 +377,7 @@ async function updateDashboard() {
             📱 Mobile: ${Math.round(devices.mobile/totalUsers*100 || 0)}%
         `;
 
-        // 3. Histograma
+        // 3. Histograma (Trend 7D)
         const dateMap = {};
         data.forEach(d => { dateMap[d.date] = (dateMap[d.date] || 0) + d.users; });
         const values = Object.values(dateMap).slice(-7);
@@ -371,16 +386,16 @@ async function updateDashboard() {
             `<div class="bar" style="height:${(v/max)*100}%" title="${v} users"></div>`
         ).join('');
 
-        // 4. Cidades
+        // 4. Ranking de Cidades
         const cities = {};
         data.forEach(d => { 
             const loc = `${d.city}, ${d.country}`;
             cities[loc] = (cities[loc] || 0) + d.users; 
         });
-        const topCities = Object.entries(cities).sort((a,b) => b[1]-a[1]).slice(0, 3);
+        const topCities = Object.entries(cities).sort((a,b) => b[1]-a[1]).slice(0, 2);
         document.getElementById('city-ranking').innerHTML = topCities.map(([loc, count]) => `
             <div class="city-row">
-                <div class="city-meta"><span>${loc}</span><span>${count} users</span></div>
+                <div class="city-meta"><span>${loc}</span><span>${count}</span></div>
                 <div class="progress-bg"><div class="progress-fill" style="width:${(count/totalUsers)*100}%"></div></div>
             </div>
         `).join('');
@@ -390,18 +405,48 @@ async function updateDashboard() {
         data.forEach(d => { pages[d.page] = (pages[d.page] || 0) + d.users; });
         const topPage = Object.entries(pages).sort((a,b) => b[1]-a[1])[0];
         document.getElementById('top-pages').innerHTML = topPage 
-            ? `Página Principal:<br><span style="color:#00ffaa; font-size:0.6rem;">${topPage[0]}</span>` 
+            ? `Mais visto:<br><span style="color:#00ffaa;">${topPage[0]}</span>` 
             : 'N/A';
 
-        // 6. Países
-        const countries = new Set(data.map(d => d.country));
-        document.getElementById('country-stats').innerText = countries.size;
+        // 6. MAPA (Chamada do Google Charts)
+        google.charts.setOnLoadCallback(() => drawMap(data));
 
     } catch (e) {
-        console.error("Erro no fetch:", e);
+        console.error("Erro no processamento de dados:", e);
     }
 }
+
+function drawMap(data) {
+    const countryMap = {};
+    data.forEach(d => {
+        countryMap[d.country] = (countryMap[d.country] || 0) + d.users;
+    });
+
+    const chartData = [['Country', 'Visitantes']];
+    for (const [country, users] of Object.entries(countryMap)) {
+        chartData.push([country, users]);
+    }
+
+    const dataTable = google.visualization.arrayToDataTable(chartData);
+
+    const options = {
+        backgroundColor: 'transparent',
+        datalessRegionColor: '#111d2c',
+        defaultColor: '#0d1620',
+        colorAxis: {colors: ['#004455', '#00d4ff']}, // Gradiente para combinar com o tema
+        legend: 'none',
+        tooltip: {textStyle: {color: '#050a0f'}, showColorCode: false}
+    };
+
+    const chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+    chart.draw(dataTable, options);
+}
+
+// Execução inicial
 updateDashboard();
+
+// Responsividade do Mapa
+window.addEventListener('resize', updateDashboard);
 </script>
 
 </body>
