@@ -227,8 +227,17 @@
         .value { font-size: 2rem; font-weight: 800; color: var(--accent3); font-family: 'Space Mono', monospace; }
         .sub-value { font-size: 0.7rem; color: var(--text); line-height: 1.5; }
 
-        .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 45px; margin-top: 5px; }
-        .bar { width: 10%; background: var(--accent); border-radius: 2px 2px 0 0; min-height: 2px; }
+        /* Histograma com Tooltip */
+        .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 45px; margin-top: 5px; gap: 4px; }
+        .bar { 
+            flex: 1; 
+            background: var(--accent); 
+            border-radius: 2px 2px 0 0; 
+            min-height: 2px; 
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .bar:hover { background: var(--accent3); }
 
         .city-row { margin-bottom: 12px; }
         .city-meta { display: flex; justify-content: space-between; font-size: 0.65rem; margin-bottom: 5px; }
@@ -256,9 +265,8 @@
             .card { grid-template-columns: 1fr; width: 100%; }
             .left { border-right: none; border-bottom: 1px solid var(--border); }
             .dashboard-grid { grid-template-columns: 1fr 1fr; }
-            .full-row { grid-column: span 2; }
-            .navbar { width: 90%; justify-content: space-around; }
             .map-container { grid-column: span 2 !important; }
+            .full-bottom { grid-column: span 2 !important; }
         }
     </style>
 </head>
@@ -325,19 +333,14 @@
                 <div id="regions_div"></div>
             </div>
 
-            <div class="metric-card" style="grid-column: span 2;">
+            <div class="metric-card full-bottom" style="grid-column: span 3;">
                 <span class="label">Top Localidades Detectadas</span>
                 <div id="city-ranking"></div>
-            </div>
-
-            <div class="metric-card">
-                <span class="label">Navegador</span>
-                <div id="top-browser" class="sub-value" style="font-size: 0.65rem;">...</div>
             </div>
         </div>
 
         <div class="footer-status">
-            ▶ <b>Real-Time Insight:</b> Métricas extraídas diretamente do GA4 via JSON.
+            ▶ <b>Real-Time Insight:</b> Dados processados dinamicamente via GitHub Pages.
         </div>
     </div>
 </div>
@@ -359,7 +362,7 @@ async function updateDashboard() {
         // 1. Total de Usuários
         document.getElementById('total-users').innerText = totalUsers;
 
-        // 2. Tech Stack (Devices)
+        // 2. Tech Stack
         const devices = { desktop: 0, mobile: 0 };
         data.forEach(d => {
             const type = d.device.toLowerCase();
@@ -370,13 +373,26 @@ async function updateDashboard() {
             📱 Mobile: ${Math.round(devices.mobile/totalUsers*100 || 0)}%
         `;
 
-        // 3. Histograma (Trend 7D)
+        // 3. Histograma (Trend 7D) com DATAS no Mouse Over
         const dateMap = {};
-        data.forEach(d => { dateMap[d.date] = (dateMap[d.date] || 0) + d.users; });
-        const values = Object.values(dateMap).slice(-7);
-        const max = Math.max(...values, 1);
-        document.getElementById('histograma').innerHTML = values.map(v => 
-            `<div class="bar" style="height:${(v/max)*100}%" title="${v} users"></div>`
+        data.forEach(d => { 
+            // Formata a data para algo legível (DD/MM) se vier como YYYYMMDD
+            let rawDate = d.date.toString();
+            let formattedDate = rawDate.length === 8 
+                ? `${rawDate.substring(6,8)}/${rawDate.substring(4,6)}`
+                : rawDate;
+            
+            dateMap[formattedDate] = (dateMap[formattedDate] || 0) + d.users; 
+        });
+
+        const last7Days = Object.entries(dateMap).slice(-7);
+        const maxUsers = Math.max(...last7Days.map(d => d[1]), 1);
+        
+        document.getElementById('histograma').innerHTML = last7Days.map(([date, count]) => 
+            `<div class="bar" 
+                  style="height:${(count/maxUsers)*100}%" 
+                  title="Data: ${date} | Usuários: ${count}">
+             </div>`
         ).join('');
 
         // 4. Ranking de Cidades
@@ -385,23 +401,15 @@ async function updateDashboard() {
             const loc = `${d.city}, ${d.country}`;
             cities[loc] = (cities[loc] || 0) + d.users; 
         });
-        const topCities = Object.entries(cities).sort((a,b) => b[1]-a[1]).slice(0, 2);
+        const topCities = Object.entries(cities).sort((a,b) => b[1]-a[1]).slice(0, 3);
         document.getElementById('city-ranking').innerHTML = topCities.map(([loc, count]) => `
             <div class="city-row">
-                <div class="city-meta"><span>${loc}</span><span>${count}</span></div>
+                <div class="city-meta"><span>${loc}</span><span>${count} vists</span></div>
                 <div class="progress-bg"><div class="progress-fill" style="width:${(count/totalUsers)*100}%"></div></div>
             </div>
         `).join('');
 
-        // 5. Navegador mais utilizado (ATUALIZADO)
-        const browsers = {};
-        data.forEach(d => { browsers[d.browser] = (browsers[d.browser] || 0) + d.users; });
-        const topBrowser = Object.entries(browsers).sort((a,b) => b[1]-a[1])[0];
-        document.getElementById('top-browser').innerHTML = topBrowser 
-            ? `Top Browser:<br><span style="color:#00ffaa; font-weight:bold;">${topBrowser[0]}</span>` 
-            : 'N/A';
-
-        // 6. MAPA
+        // 5. MAPA
         google.charts.setOnLoadCallback(() => drawMap(data));
 
     } catch (e) {
