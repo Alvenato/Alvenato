@@ -103,7 +103,7 @@
         .skill-violet { color: var(--accent2); border-color: var(--accent2); }
         .skill-green { color: var(--accent3); border-color: var(--accent3); }
 
-        .right { padding: 40px; display: flex; flex-direction: column; gap: 20px; }
+        .right { padding: 40px; display: flex; flex-direction: column; gap: 20px; max-height: 800px; overflow-y: auto; }
         .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
         .metric-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 18px; }
         
@@ -116,6 +116,7 @@
 
         .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent3)); height: 100%; border-radius: 4px; }
 
+        /* Estilo Tooltip */
         .google-visualization-tooltip {
             border: 1px solid var(--accent) !important;
             background-color: var(--surface2) !important;
@@ -181,11 +182,11 @@
                 <div class="bar-chart" id="histograma"></div>
             </div>
             <div class="metric-card" style="grid-column: span 3; min-height: 220px;">
-                <span class="label">Distribuição Global</span>
+                <span class="label">Distribuição Global (Heatmap)</span>
                 <div id="regions_div" style="height: 180px;"></div>
             </div>
             <div class="metric-card" style="grid-column: span 3;">
-                <span class="label">Top Localidades</span>
+                <span class="label">Todas as Localidades</span>
                 <div id="city-ranking"></div>
             </div>
         </div>
@@ -205,6 +206,7 @@ async function updateDashboard() {
         const totalUsers = data.reduce((sum, d) => sum + (d.users || 0), 0);
         document.getElementById('total-users').innerText = totalUsers;
 
+        // Histograma de Tendência
         const dateMap = {};
         data.forEach(d => {
             const date = d.date.toString().slice(-4);
@@ -216,16 +218,17 @@ async function updateDashboard() {
             `<div class="bar" style="height:${(count/maxUsers)*100}%" title="${date}: ${count} usuários"></div>`
         ).join('');
 
+        // Lista Completa de Localidades
         const cityMap = {};
         data.forEach(d => {
             const city = d.city || "Desconhecido";
             cityMap[city] = (cityMap[city] || 0) + d.users;
         });
-        const topCities = Object.entries(cityMap).sort((a,b) => b[1]-a[1]).slice(0, 3);
-        document.getElementById('city-ranking').innerHTML = topCities.map(([name, count]) => `
+        const allCities = Object.entries(cityMap).sort((a,b) => b[1]-a[1]);
+        document.getElementById('city-ranking').innerHTML = allCities.map(([name, count]) => `
             <div style="margin-bottom:12px;">
                 <div style="display:flex; justify-content:space-between; font-size:0.65rem; color:var(--muted); margin-bottom:4px; font-family:'Space Mono'">
-                    <span>${name}</span><span>${Math.round((count/totalUsers)*100)}%</span>
+                    <span>${name}</span><span>${count} (${Math.round((count/totalUsers)*100)}%)</span>
                 </div>
                 <div style="background:rgba(255,255,255,0.05); height:6px; border-radius:3px; overflow:hidden;">
                     <div class="progress-fill" style="width:${(count/totalUsers)*100}%;"></div>
@@ -238,7 +241,7 @@ async function updateDashboard() {
             drawMap(data);
         });
 
-    } catch (e) { console.error(e); }
+    } catch (e) { console.error("Erro no fetch:", e); }
 }
 
 function drawPie(data) {
@@ -268,7 +271,8 @@ function drawMap(data) {
     const options = {
         backgroundColor: 'transparent',
         datalessRegionColor: '#111d2c',
-        colorAxis: {colors: ['#0d1620', '#00f2ff']},
+        displayMode: 'regions',
+        colorAxis: {colors: ['#0d1620', '#00f2ff']}, // Mapa de calor: do fundo escuro para o Cyan
         legend: 'none',
         tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 10 } }
     };
