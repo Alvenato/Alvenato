@@ -8,11 +8,12 @@
       gtag('js', new Date());
       gtag('config', 'G-MMEQZZ86BY');
     </script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cristiano A. Barbosa — Data Science & IA</title>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -22,9 +23,9 @@
             --bg: #03070a;
             --surface: #0d1620;
             --surface2: #111d2c;
-            --accent: #00f2ff;
-            --accent2: #9d76ff;
-            --accent3: #00ffa2;
+            --accent: #00f2ff;   /* Cyan */
+            --accent2: #9d76ff;  /* Violeta */
+            --accent3: #00ffa2;  /* Verde Neon */
             --text: #e8f4fd;
             --muted: #6b8fa8;
             --border: rgba(0, 242, 255, 0.15);
@@ -42,6 +43,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            overflow-x: hidden;
+            position: relative;
             padding: 100px 20px 40px 20px;
         }
 
@@ -102,15 +105,7 @@
 
         .right { padding: 40px; display: flex; flex-direction: column; gap: 20px; }
         .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        
-        .metric-card { 
-            background: rgba(255, 255, 255, 0.03); 
-            border: 1px solid rgba(255,255,255,0.05); 
-            border-radius: 12px; 
-            padding: 18px; 
-            display: flex;
-            flex-direction: column;
-        }
+        .metric-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 18px; }
         
         /* NOVO: Scroll exclusivo para a lista de localidades */
         .scrollable-metrics {
@@ -134,6 +129,7 @@
 
         .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent3)); height: 100%; border-radius: 4px; }
 
+        /* Estilo Tooltip */
         .google-visualization-tooltip {
             border: 1px solid var(--accent) !important;
             background-color: var(--surface2) !important;
@@ -225,6 +221,7 @@ async function updateDashboard() {
         const totalUsers = data.reduce((sum, d) => sum + (d.users || 0), 0);
         document.getElementById('total-users').innerText = totalUsers;
 
+        // Histograma de Tendência
         const dateMap = {};
         data.forEach(d => {
             const date = d.date.toString().slice(-4);
@@ -236,6 +233,7 @@ async function updateDashboard() {
             `<div class="bar" style="height:${(count/maxUsers)*100}%" title="${date}: ${count} usuários"></div>`
         ).join('');
 
+        // Lista Completa de Localidades
         const cityMap = {};
         data.forEach(d => {
             const city = d.city || "Desconhecido";
@@ -289,7 +287,8 @@ function drawMap(data) {
         backgroundColor: 'transparent',
         datalessRegionColor: '#111d2c',
         displayMode: 'regions',
-        colorAxis: {colors: ['#0d1620', '#00f2ff']},
+        // AJUSTE AQUI: O gradiente começa na cor do card e termina no Cyan Neon puro.
+        colorAxis: {colors: ['#0d1620', '#00f2ff']}, 
         legend: 'none',
         tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 10 } }
     };
