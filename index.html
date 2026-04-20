@@ -23,9 +23,9 @@
             --bg: #03070a;
             --surface: #0d1620;
             --surface2: #111d2c;
-            --accent: #00f2ff;   /* Cyan */
-            --accent2: #9d76ff;  /* Violeta */
-            --accent3: #00ffa2;  /* Verde Neon */
+            --accent: #00f2ff;
+            --accent2: #9d76ff;
+            --accent3: #00ffa2;
             --text: #e8f4fd;
             --muted: #6b8fa8;
             --border: rgba(0, 242, 255, 0.15);
@@ -43,8 +43,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow-x: hidden;
-            position: relative;
             padding: 100px 20px 40px 20px;
         }
 
@@ -107,15 +105,14 @@
         .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
         .metric-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 18px; }
         
-        /* NOVO: Scroll exclusivo para a lista de localidades */
+        /* Contenedor de scroll para ciudades */
         .scrollable-metrics {
-            max-height: 200px; 
+            max-height: 180px; 
             overflow-y: auto;
             padding-right: 10px;
             margin-top: 5px;
         }
 
-        /* Estilização da barra de rolagem para combinar com o tema */
         .scrollable-metrics::-webkit-scrollbar { width: 4px; }
         .scrollable-metrics::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
         .scrollable-metrics::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
@@ -125,11 +122,9 @@
 
         .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 45px; gap: 4px; }
         .bar { flex: 1; background: var(--accent); border-radius: 2px; transition: 0.3s; }
-        .bar:hover { background: var(--accent2); }
 
         .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent3)); height: 100%; border-radius: 4px; }
 
-        /* Estilo Tooltip */
         .google-visualization-tooltip {
             border: 1px solid var(--accent) !important;
             background-color: var(--surface2) !important;
@@ -195,14 +190,13 @@
                 <div class="bar-chart" id="histograma"></div>
             </div>
             <div class="metric-card" style="grid-column: span 3; min-height: 220px;">
-                <span class="label">Distribuição Global (Heatmap)</span>
+                <span class="label">Distribuição Global (Heatmap Neon)</span>
                 <div id="regions_div" style="height: 180px;"></div>
             </div>
             
             <div class="metric-card" style="grid-column: span 3;">
                 <span class="label">Todas as Localidades</span>
-                <div id="city-ranking" class="scrollable-metrics">
-                    </div>
+                <div id="city-ranking" class="scrollable-metrics"></div>
             </div>
         </div>
     </div>
@@ -215,25 +209,24 @@ async function updateDashboard() {
     try {
         const response = await fetch('analytics_data.json?t=' + Date.now());
         const data = await response.json();
-        
         if (!data || data.length === 0) return;
 
         const totalUsers = data.reduce((sum, d) => sum + (d.users || 0), 0);
         document.getElementById('total-users').innerText = totalUsers;
 
-        // Histograma de Tendência
+        // Histograma
         const dateMap = {};
         data.forEach(d => {
             const date = d.date.toString().slice(-4);
             dateMap[date] = (dateMap[date] || 0) + d.users;
         });
         const last7 = Object.entries(dateMap).slice(-7);
-        const maxUsers = Math.max(...last7.map(e => e[1]), 1);
+        const maxVal = Math.max(...last7.map(e => e[1]), 1);
         document.getElementById('histograma').innerHTML = last7.map(([date, count]) => 
-            `<div class="bar" style="height:${(count/maxUsers)*100}%" title="${date}: ${count} usuários"></div>`
+            `<div class="bar" style="height:${(count/maxVal)*100}%" title="${date}: ${count}"></div>`
         ).join('');
 
-        // Lista Completa de Localidades
+        // Cidades
         const cityMap = {};
         data.forEach(d => {
             const city = d.city || "Desconhecido";
@@ -243,7 +236,7 @@ async function updateDashboard() {
         document.getElementById('city-ranking').innerHTML = allCities.map(([name, count]) => `
             <div style="margin-bottom:12px;">
                 <div style="display:flex; justify-content:space-between; font-size:0.65rem; color:var(--muted); margin-bottom:4px; font-family:'Space Mono'">
-                    <span>${name}</span><span>${count} (${Math.round((count/totalUsers)*100)}%)</span>
+                    <span>${name}</span><span>${count}</span>
                 </div>
                 <div style="background:rgba(255,255,255,0.05); height:6px; border-radius:3px; overflow:hidden;">
                     <div class="progress-fill" style="width:${(count/totalUsers)*100}%;"></div>
@@ -255,44 +248,54 @@ async function updateDashboard() {
             drawPie(data);
             drawMap(data);
         });
-
-    } catch (e) { console.error("Erro no fetch:", e); }
+    } catch (e) { console.error(e); }
 }
 
 function drawPie(data) {
     const devices = { Desktop: 0, Mobile: 0 };
-    data.forEach(d => {
-        if (d.device.toLowerCase().includes('mobile')) devices.Mobile += d.users;
-        else devices.Desktop += d.users;
-    });
-
+    data.forEach(d => { if (d.device.toLowerCase().includes('mobile')) devices.Mobile += d.users; else devices.Desktop += d.users; });
     const options = {
-        backgroundColor: 'transparent',
-        colors: ['#00f2ff', '#9d76ff'],
+        backgroundColor: 'transparent', colors: ['#00f2ff', '#9d76ff'],
         pieHole: 0.5, legend: 'none', pieSliceBorderColor: 'transparent',
-        tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 10 } },
         chartArea: {width: '95%', height: '95%'}
     };
-    const pieData = google.visualization.arrayToDataTable([['Device', 'Users'],['Desktop', devices.Desktop],['Mobile', devices.Mobile]]);
-    new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(pieData, options);
+    new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(google.visualization.arrayToDataTable([['D', 'U'],['Desktop', devices.Desktop],['Mobile', devices.Mobile]]), options);
 }
 
 function drawMap(data) {
     const countryMap = {};
-    data.forEach(d => countryMap[d.country] = (countryMap[d.country] || 0) + d.users);
-    const mapArray = [['Country', 'Users']];
-    Object.entries(countryMap).forEach(e => mapArray.push(e));
+    
+    // Normalización de Nombres y Traducción al Inglés
+    const countryLookup = {
+        "Brasil": "Brazil",
+        "BR": "Brazil",
+        "Estados Unidos": "United States",
+        "EUA": "United States",
+        "USA": "United States",
+        "US": "United States"
+    };
+
+    data.forEach(d => {
+        let c = d.country;
+        let normalized = countryLookup[c] || c;
+        if (normalized) countryMap[normalized] = (countryMap[normalized] || 0) + d.users;
+    });
+
+    const mapData = [['Country', 'Users']];
+    Object.entries(countryMap).forEach(e => mapData.push(e));
 
     const options = {
         backgroundColor: 'transparent',
         datalessRegionColor: '#111d2c',
         displayMode: 'regions',
-        // AJUSTE AQUI: O gradiente começa na cor do card e termina no Cyan Neon puro.
-        colorAxis: {colors: ['#0d1620', '#00f2ff']}, 
+        colorAxis: {
+            minValue: 1, 
+            colors: ['#1a3a4a', '#00f2ff'] // Brillo Neon
+        },
         legend: 'none',
         tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 10 } }
     };
-    new google.visualization.GeoChart(document.getElementById('regions_div')).draw(google.visualization.arrayToDataTable(mapArray), options);
+    new google.visualization.GeoChart(document.getElementById('regions_div')).draw(google.visualization.arrayToDataTable(mapData), options);
 }
 
 updateDashboard();
