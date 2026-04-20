@@ -1,1 +1,154 @@
-[{"date": "2026-04-04", "users": 3}, {"date": "2026-04-05", "users": 5}, {"date": "2026-04-06", "users": 1}, {"date": "2026-04-07", "users": 2}, {"date": "2026-04-09", "users": 1}, {"date": "2026-04-10", "users": 1}, {"date": "2026-04-13", "users": 3}, {"date": "2026-04-14", "users": 1}, {"date": "2026-04-17", "users": 1}, {"date": "2026-04-18", "users": 2}, {"date": "2026-04-19", "users": 1}]
+[
+    {
+        "date": "20260405",
+        "city": "Sao Paulo",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 4
+    },
+    {
+        "date": "20260404",
+        "city": "Brasilia",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260404",
+        "city": "Goiania",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260404",
+        "city": "Valparaiso de Goias",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260405",
+        "city": "Miami",
+        "country": "United States",
+        "device": "desktop",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260406",
+        "city": "Brasilia",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260407",
+        "city": "Brasilia",
+        "country": "Brazil",
+        "device": "desktop",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260407",
+        "city": "Brasilia",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260409",
+        "city": "Brasilia",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260409",
+        "city": "Cidade Ocidental",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260410",
+        "city": "Cidade Ocidental",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260413",
+        "city": "Chicago",
+        "country": "United States",
+        "device": "desktop",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260413",
+        "city": "Valparaiso de Goias",
+        "country": "Brazil",
+        "device": "desktop",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260413",
+        "city": "Valparaiso de Goias",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260414",
+        "city": "Brasilia",
+        "country": "Brazil",
+        "device": "desktop",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260417",
+        "city": "Valparaiso de Goias",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260418",
+        "city": "(not set)",
+        "country": "Albania",
+        "device": "desktop",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260418",
+        "city": "Brasilia",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260419",
+        "city": "",
+        "country": "Albania",
+        "device": "desktop",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    }
+]
