@@ -48,6 +48,7 @@
             padding: 100px 20px 40px 20px;
         }
 
+        /* Grid de fundo */
         body::before {
             content: '';
             position: fixed;
@@ -64,6 +65,18 @@
             0% { transform: translateY(0); }
             100% { transform: translateY(40px); }
         }
+
+        /* Padronização dos Tooltips do Google Charts */
+        .google-visualization-tooltip {
+            border: 1px solid var(--accent) !important;
+            background-color: var(--surface2) !important;
+            border-radius: 8px !important;
+            padding: 10px !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
+            font-family: 'Space Mono', monospace !important;
+        }
+        .google-visualization-tooltip-item-list { padding: 0 !important; margin: 0 !important; }
+        .google-visualization-tooltip-item span { color: var(--text) !important; font-size: 12px !important; }
 
         .orb {
             position: fixed;
@@ -150,7 +163,6 @@
         .bar { flex: 1; background: var(--accent); border-radius: 2px 2px 0 0; min-height: 2px; cursor: pointer; transition: background 0.2s; }
         .bar:hover { background: var(--accent3); }
 
-        /* Estilo para o Gráfico de Pizza */
         #tech_stack_pie { width: 100%; height: 60px; margin-top: -10px; }
 
         .city-row { margin-bottom: 15px; }
@@ -246,7 +258,6 @@
 </div>
 
 <script>
-// Carrega pacotes necessários: geochart e corechart (para a pizza)
 google.charts.load('current', {
   'packages':['geochart', 'corechart'],
 });
@@ -259,11 +270,9 @@ async function updateDashboard() {
         if (!data || data.length === 0) return;
 
         const totalUsers = data.reduce((sum, d) => sum + d.users, 0);
-
-        // 1. Total de Usuários
         document.getElementById('total-users').innerText = totalUsers;
 
-        // 2. Trend 7D
+        // 1. Trend 7D
         const dateMap = {};
         data.forEach(d => { 
             let rawDate = d.date.toString();
@@ -274,11 +283,13 @@ async function updateDashboard() {
         });
         const last7Entries = Object.entries(dateMap).slice(-7);
         const maxUsers = Math.max(...last7Entries.map(e => e[1]), 1);
+        
+        // Tooltip nativo para o histograma customizado (CSS styled)
         document.getElementById('histograma').innerHTML = last7Entries.map(([fullDate, count]) => 
             `<div class="bar" style="height:${(count/maxUsers)*100}%" title="Data: ${fullDate} | Usuários: ${count}"></div>`
         ).join('');
 
-        // 3. Ranking de Cidades
+        // 2. Ranking de Cidades
         const cities = {};
         data.forEach(d => { 
             const loc = `${d.city}, ${d.country}`;
@@ -292,7 +303,7 @@ async function updateDashboard() {
             </div>
         `).join('');
 
-        // 4. Desenhar Gráficos (Mapa e Pizza)
+        // 3. Desenhar Gráficos do Google
         google.charts.setOnLoadCallback(() => {
             drawMap(data);
             drawPie(data);
@@ -324,7 +335,11 @@ function drawPie(data) {
         pieSliceBorderColor: 'transparent',
         pieSliceText: 'none',
         chartArea: {width: '90%', height: '90%'},
-        tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 11 } }
+        tooltip: { 
+            textStyle: { fontName: 'Space Mono', fontSize: 12, color: '#e8f4fd' },
+            showColorCode: false,
+            trigger: 'focus'
+        }
     };
 
     const chart = new google.visualization.PieChart(document.getElementById('tech_stack_pie'));
@@ -344,7 +359,10 @@ function drawMap(data) {
         defaultColor: '#0d1620',
         colorAxis: {colors: ['#004455', '#00d4ff']},
         legend: 'none',
-        tooltip: {textStyle: {color: '#050a0f'}, showColorCode: false}
+        tooltip: {
+            textStyle: { fontName: 'Space Mono', fontSize: 12, color: '#050a0f' },
+            showColorCode: false
+        }
     };
 
     const chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
