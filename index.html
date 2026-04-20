@@ -17,129 +17,72 @@
 
     <style>
         :root {
-            --bg: #050a0f;
-            --surface: #0d1620;
-            --surface2: #111d2c;
-            --accent: #00d4ff;
-            --accent2: #7b5cfa;
-            --accent3: #00ffaa;
-            --text: #e8f4fd;
-            --muted: #6b8fa8;
-            --border: rgba(0,212,255,0.15);
+            --bg: #050a0f; --surface: #0d1620; --surface2: #111d2c;
+            --accent: #00d4ff; --accent2: #7b5cfa; --accent3: #00ffaa;
+            --text: #e8f4fd; --muted: #6b8fa8; --border: rgba(0,212,255,0.15);
             --nav-bg: rgba(5, 10, 15, 0.8);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
-            background: var(--bg);
-            font-family: 'Syne', sans-serif;
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-            position: relative;
-            padding: 100px 20px 20px 20px;
+            background: var(--bg); font-family: 'Syne', sans-serif; color: var(--text);
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            padding: 20px;
         }
 
         /* --- NAVBAR --- */
         .navbar {
-            position: fixed;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 100px;
-            padding: 10px 25px;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            z-index: 1000;
+            position: fixed; top: 30px; left: 50%; transform: translateX(-50%);
+            background: var(--nav-bg); backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 100px;
+            padding: 10px 25px; display: flex; gap: 18px; z-index: 1000;
         }
-
-        .nav-item { color: var(--text); text-decoration: none; font-size: 1.1rem; transition: 0.3s; }
-        .nav-item:hover { color: var(--accent); transform: translateY(-2px); }
-        .nav-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.1); margin: 0 5px; }
-        .sobre-btn { font-family: 'Space Mono', monospace; font-size: 0.8rem; font-weight: bold; color: var(--accent3); text-transform: uppercase; }
+        .nav-item { color: var(--text); text-decoration: none; transition: 0.3s; }
+        .nav-item:hover { color: var(--accent); }
 
         /* --- CARD --- */
         .card {
-            position: relative;
-            width: 880px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-            z-index: 10;
+            width: 950px; background: var(--surface); border: 1px solid var(--border);
+            border-radius: 24px; display: grid; grid-template-columns: 300px 1fr;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6); overflow: hidden;
         }
 
         .left {
-            padding: 60px 24px;
-            background: var(--surface2);
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
+            padding: 40px 24px; background: var(--surface2); border-right: 1px solid var(--border);
+            display: flex; flex-direction: column; align-items: center; gap: 20px;
         }
-
-        .avatar-wrapper { position: relative; width: 130px; height: 130px; }
-        .avatar-ring {
-            position: absolute; inset: -6px; border-radius: 50%;
-            background: conic-gradient(var(--accent), var(--accent2), var(--accent3), var(--accent));
-            animation: spin 4s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        
-        .avatar {
-            position: relative; width: 130px; height: 130px; border-radius: 50%;
-            overflow: hidden; border: 3px solid var(--bg); z-index: 1;
-        }
+        .avatar { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--accent); overflow: hidden; }
         .avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .name { text-align: center; font-size: 1.2rem; }
+        .name span { display: block; font-size: 0.7rem; color: var(--accent); font-family: 'Space Mono'; }
 
-        .name { font-size: 1.3rem; font-weight: 800; text-align: center; }
-        .name span { display: block; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Space Mono', monospace; margin-top: 8px; }
+        .right { padding: 30px; display: flex; flex-direction: column; gap: 20px; }
 
-        .right { padding: 40px 32px; display: flex; flex-direction: column; gap: 24px; }
-
-        /* --- DASHBOARD WIDGETS --- */
-        .charts-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .chart-widget { 
-            background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); 
-            border-radius: 12px; padding: 15px 10px; display: flex; flex-direction: column; 
-            align-items: center; justify-content: space-between; min-height: 120px;
+        /* --- DASHBOARD --- */
+        .charts-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 15px; }
+        .geo-widget { 
+            grid-column: span 2; background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: 15px; padding: 15px; min-height: 150px;
         }
-        .chart-title { font-size: 0.55rem; font-family: 'Space Mono', monospace; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+        
+        .chart-mini { 
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: 15px; padding: 15px; display: flex; flex-direction: column; align-items: center;
+        }
 
-        /* Bar Chart / Histogram */
-        .bar-chart { display: flex; align-items: flex-end; gap: 4px; height: 45px; }
-        .bar { width: 8px; background: var(--accent); border-radius: 1px; transition: height 0.5s ease; }
+        .chart-title { font-size: 0.6rem; font-family: 'Space Mono'; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; width: 100%; }
 
-        /* Counter Widget */
-        .counter-val { font-family: 'Space Mono', monospace; font-size: 1.4rem; font-weight: bold; color: var(--accent3); }
-        .counter-unit { font-size: 0.5rem; color: var(--muted); }
+        /* MAPA/LISTA DE CIDADES */
+        .city-list { width: 100%; font-size: 0.75rem; font-family: 'Space Mono'; }
+        .city-item { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .city-bar { height: 4px; background: var(--accent3); border-radius: 2px; margin-top: 4px; transition: width 1s; }
 
-        /* Sparkline (Mini Line Chart) */
-        .sparkline { width: 60px; height: 30px; stroke: var(--accent2); stroke-width: 2; fill: none; }
+        .bar-chart { display: flex; align-items: flex-end; gap: 4px; height: 50px; }
+        .bar { width: 10px; background: var(--accent); border-radius: 1px; }
 
-        .code-block { background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; font-family: 'Space Mono', monospace; font-size: 0.72rem; }
-        .code-header { padding: 8px 16px; background: rgba(0,212,255,0.05); border-bottom: 1px solid var(--border); display: flex; gap: 6px; }
-        .dot { width: 8px; height: 8px; border-radius: 50%; }
-        .dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
-        .code-body { padding: 14px 18px; line-height: 1.5; }
-        .kw { color: #7b5cfa; } .str { color: #00d4ff; } .key { color: #00ffaa; }
+        .counter { font-size: 2rem; font-weight: bold; color: var(--accent3); font-family: 'Space Mono'; }
 
-        .goal { padding: 14px; background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(123,92,250,0.06)); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: var(--accent); font-family: 'Space Mono', monospace; text-align: center; }
-
-        @media (max-width: 900px) { .card { grid-template-columns: 1fr; width: 100%; } .left { border-right: none; border-bottom: 1px solid var(--border); } }
+        .goal { font-size: 0.75rem; color: var(--muted); border-left: 2px solid var(--accent); padding-left: 10px; font-family: 'Space Mono'; }
     </style>
 </head>
 <body>
@@ -148,99 +91,78 @@
     <a href="https://www.linkedin.com/in/cristianoalves-ca/" target="_blank" class="nav-item"><i class="fab fa-linkedin"></i></a>
     <a href="https://github.com/Alvenato" target="_blank" class="nav-item"><i class="fab fa-github"></i></a>
     <a href="https://wa.me/5561981830780" target="_blank" class="nav-item"><i class="fab fa-whatsapp"></i></a>
-    <a href="mailto:analytics.barbosa@gmail.com" class="nav-item"><i class="fas fa-envelope"></i></a>
     <div class="nav-divider"></div>
-    <a href="https://alvenato.github.io/curriculo.html" target="_blank" class="nav-item sobre-btn">Sobre</a>
+    <a href="https://alvenato.github.io/curriculo.html" target="_blank" class="nav-item" style="font-size: 0.7rem; font-family:'Space Mono'; color: var(--accent3)">SOBRE</a>
 </nav>
 
 <div class="card">
     <div class="left">
-        <div class="avatar-wrapper">
-            <div class="avatar-ring"></div>
-            <div class="avatar"><img src="https://github.com/Alvenato.png"></div>
-        </div>
-        <div class="name">Cristiano A. Barbosa<span>Cientista de Dados · IA</span></div>
-        <div style="display: flex; gap: 5px; flex-wrap: wrap; justify-content: center;">
-            <span style="font-size: 0.6rem; border: 1px solid var(--accent); padding: 2px 6px; color: var(--accent); border-radius: 4px;">PYTHON</span>
-            <span style="font-size: 0.6rem; border: 1px solid var(--accent3); padding: 2px 6px; color: var(--accent3); border-radius: 4px;">SQL</span>
-            <span style="font-size: 0.6rem; border: 1px solid var(--accent2); padding: 2px 6px; color: var(--accent2); border-radius: 4px;">TABLEAU</span>
-        </div>
+        <div class="avatar"><img src="https://github.com/Alvenato.png"></div>
+        <div class="name">Cristiano A. Barbosa<span>Data Science & IA Student</span></div>
+        <div class="goal">ETL Pipeline: Google Analytics API → Python → JSON → Portfolio Web</div>
     </div>
 
     <div class="right">
-        <div class="code-block">
-            <div class="code-header"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
-            <div class="code-body">
-                <div><span class="kw">import</span> analytics</div>
-                <div><span class="key">status</span> = <span class="str">"Live Data Stream Active"</span></div>
-            </div>
-        </div>
-
-        <div class="charts-container">
-            <div class="chart-widget">
-                <span class="chart-title">Distribuição (7d)</span>
-                <div class="bar-chart" id="histograma">
-                    <div class="bar" style="height: 20%"></div>
-                    <div class="bar" style="height: 50%"></div>
-                    <div class="bar" style="height: 30%"></div>
-                    <div class="bar" style="height: 80%"></div>
+        <div class="charts-grid">
+            <div class="geo-widget">
+                <span class="chart-title"><i class="fas fa-globe-americas"></i> Localização dos Acessos (Top Cidades)</span>
+                <div id="city-container" class="city-list">
+                    <div class="city-item">Carregando dados globais...</div>
                 </div>
             </div>
 
-            <div class="chart-widget">
-                <span class="chart-title">Total Usuários</span>
-                <div class="counter-val" id="total-users">0</div>
-                <span class="counter-unit">Últimos 30 dias</span>
+            <div class="chart-mini">
+                <span class="chart-title">Acessos/Dia</span>
+                <div class="bar-chart" id="histograma"></div>
             </div>
 
-            <div class="chart-widget">
-                <span class="chart-title">Tendência</span>
-                <svg class="sparkline" viewBox="0 0 100 30">
-                    <path id="trend-path" d="M0 30 L20 20 L40 25 L60 10 L80 15 L100 5" />
-                </svg>
+            <div class="chart-mini">
+                <span class="chart-title">Total Usuários</span>
+                <div class="counter" id="total-users">0</div>
             </div>
         </div>
-
-        <div class="goal">▶ <b>Engenharia de Dados</b>: Automação via Google Cloud API.</div>
     </div>
 </div>
 
 <script>
-    async function updateDashboard() {
+    async function updateDash() {
         try {
             const res = await fetch('analytics_data.json');
             const data = await res.json();
 
-            // 1. Histograma (Últimos 7 registros)
-            const recent = data.slice(-7);
+            // 1. Processar Cidades (Agrupamento)
+            const cityMap = {};
+            data.forEach(d => {
+                cityMap[d.city] = (cityMap[d.city] || 0) + d.users;
+            });
+            const sortedCities = Object.entries(cityMap).sort((a,b) => b[1] - a[1]).slice(0, 3);
+            
+            const cityContainer = document.getElementById('city-container');
+            cityContainer.innerHTML = '';
+            sortedCities.forEach(([name, count]) => {
+                const percentage = (count / data.reduce((a,b) => a + b.users, 0)) * 100;
+                cityContainer.innerHTML += `
+                    <div style="margin-bottom: 10px">
+                        <div class="city-item"><span>${name}</span><span>${count} users</span></div>
+                        <div class="city-bar" style="width: ${percentage}%"></div>
+                    </div>
+                `;
+            });
+
+            // 2. Histograma
+            const recent = data.slice(-8);
             const maxVal = Math.max(...recent.map(d => d.users), 1);
-            const histContainer = document.getElementById('histograma');
-            histContainer.innerHTML = '';
+            const hist = document.getElementById('histograma');
             recent.forEach(d => {
-                const h = (d.users / maxVal) * 100;
-                histContainer.innerHTML += `<div class="bar" style="height:${h}%" title="${d.date}: ${d.users}"></div>`;
+                hist.innerHTML += `<div class="bar" style="height:${(d.users/maxVal)*100}%"></div>`;
             });
 
-            // 2. Contador Total
-            const total = data.reduce((sum, d) => sum + d.users, 0);
-            document.getElementById('total-users').innerText = total;
+            // 3. Total
+            document.getElementById('total-users').innerText = data.reduce((s,d) => s + d.users, 0);
 
-            // 3. Tendência (Sparkline)
-            const path = document.getElementById('trend-path');
-            let points = "";
-            const step = 100 / (recent.length - 1);
-            recent.forEach((d, i) => {
-                const x = i * step;
-                const y = 30 - ((d.users / maxVal) * 25);
-                points += (i === 0 ? "M" : "L") + `${x} ${y} `;
-            });
-            path.setAttribute('d', points);
-
-        } catch (e) {
-            console.log("Aguardando dados...");
-        }
+        } catch(e) { console.log("Erro ao carregar mapa."); }
     }
-    updateDashboard();
+    updateDash();
 </script>
 
 </body>
