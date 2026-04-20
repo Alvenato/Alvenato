@@ -77,7 +77,15 @@
             box-shadow: 0 0 40px rgba(0,0,0,0.6); z-index: 10; overflow: hidden;
         }
 
-        .left { padding: 50px 30px; background: var(--surface2); border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 25px; }
+        .left { 
+            padding: 50px 30px; 
+            background: var(--surface2); 
+            border-right: 1px solid var(--border); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 25px; 
+        }
         
         .avatar-wrapper { position: relative; width: 140px; height: 140px; }
         .avatar-ring { 
@@ -101,74 +109,56 @@
         .skill-violet { color: var(--accent2); border-color: var(--accent2); }
         .skill-green { color: var(--accent3); border-color: var(--accent3); }
 
+        /* Rodapé de Status na coluna Left */
+        .status-left {
+            margin-top: auto; /* Empurra para o final da coluna */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            color: var(--accent3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-top: 20px;
+        }
+
         .data-source-info {
-            background: rgba(0, 242, 255, 0.03);
+            background: rgba(0, 242, 255, 0.05);
             border: 1px dashed var(--border);
             border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            width: 100%;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 5px;
         }
-        .data-source-info i { color: var(--accent); margin-bottom: 8px; font-size: 0.9rem; }
+        .data-source-info i { color: var(--accent); font-size: 1.1rem; }
         .data-source-info p { 
-            font-size: 0.65rem; 
+            font-size: 0.7rem; 
             color: var(--text); 
             line-height: 1.4; 
             font-family: 'Space Mono', monospace;
         }
 
-        .right { padding: 40px; display: flex; flex-direction: column; gap: 20px; }
+        .right { padding: 40px; display: flex; flex-direction: column; gap: 15px; }
         .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
         .metric-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 18px; position: relative; }
         
-        .scrollable-metrics {
-            max-height: 160px; 
-            overflow-y: auto;
-            padding-right: 10px;
-            margin-top: 5px;
-        }
-
+        .scrollable-metrics { max-height: 160px; overflow-y: auto; padding-right: 10px; margin-top: 5px; }
         .scrollable-metrics::-webkit-scrollbar { width: 4px; }
-        .scrollable-metrics::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
         .scrollable-metrics::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
 
         .label { font-size: 0.55rem; color: var(--muted); text-transform: uppercase; font-family: 'Space Mono', monospace; margin-bottom: 10px; }
         .value { font-size: 2.2rem; font-weight: 800; color: var(--accent3); font-family: 'Space Mono', monospace; }
 
         .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 45px; gap: 4px; }
-        .bar { flex: 1; background: var(--accent); border-radius: 2px; transition: 0.3s; cursor: pointer; }
+        .bar { flex: 1; border-radius: 2px; transition: 0.3s; cursor: pointer; }
 
-        .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent3)); height: 100%; border-radius: 4px; }
+        .pulse-dot { width: 6px; height: 6px; background-color: var(--accent3); border-radius: 50%; box-shadow: 0 0 8px var(--accent3); animation: pulse 1.5s ease-in-out infinite; }
 
-        .real-time-footer {
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 8px;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.6rem;
-            color: var(--accent3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
 
-        .pulse-dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent3);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent3);
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.4); opacity: 0.5; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        /* Ajuste global para os tooltips do Google Charts */
         .google-visualization-tooltip {
             border: 1px solid var(--accent) !important;
             background-color: var(--surface2) !important;
@@ -176,13 +166,12 @@
             font-family: Arial, sans-serif !important;
             font-size: 10px !important;
             color: var(--text) !important;
-            border-radius: 6px !important;
-            pointer-events: none !important;
         }
 
         @media (max-width: 900px) {
             .card { grid-template-columns: 1fr; width: 100%; }
-            .dashboard-grid { grid-template-columns: 1fr; }
+            .left { height: auto; }
+            .status-left { margin-top: 20px; margin-bottom: 20px; }
         }
     </style>
 </head>
@@ -219,13 +208,18 @@
             </div>
         </div>
 
-        <div class="data-source-info">
-            <i class="fas fa-satellite-dish"></i>
-            <p>Os métricos exibidos ao lado refletem o tráfego global de visitantes deste portfólio em tempo real.</p>
+        <div class="status-left">
+            <div class="pulse-dot"></div>
+            <span>Atualização de hora em hora</span>
         </div>
     </div>
 
     <div class="right">
+        <div class="data-source-info">
+            <i class="fas fa-satellite-dish"></i>
+            <p>Os métricos abaixo refletem o tráfego global de visitantes deste portfólio, integrados via GA4.</p>
+        </div>
+
         <div class="dashboard-grid">
             <div class="metric-card">
                 <span class="label">Total Visitantes</span>
@@ -249,15 +243,15 @@
                 <div id="city-ranking" class="scrollable-metrics"></div>
             </div>
         </div>
-        
-        <div class="real-time-footer">
-            <div class="pulse-dot"></div>
-            <span>Status: Atualização de hora em hora</span>
-        </div>
     </div>
 </div>
 
 <script>
+const GA4_ACCENT_CYAN = '#00f2ff';
+const GA4_ACCENT_VIOLET = '#9d76ff';
+const GA4_ACCENT_GREEN = '#00ffa2';
+const GA4_DARK_BLUE = '#1a3a4a';
+
 google.charts.load('current', {'packages':['geochart', 'corechart']});
 
 async function updateDashboard() {
@@ -269,10 +263,9 @@ async function updateDashboard() {
         const totalUsers = data.reduce((sum, d) => sum + (d.users || 0), 0);
         document.getElementById('total-users').innerText = totalUsers;
 
-        // Histograma com Data formatada dd/mm/aaaa
         const dateMap = {};
         data.forEach(d => {
-            const raw = d.date.toString(); // Ex: 20260420
+            const raw = d.date.toString();
             const formattedDate = `${raw.substring(6,8)}/${raw.substring(4,6)}/${raw.substring(0,4)}`;
             dateMap[formattedDate] = (dateMap[formattedDate] || 0) + d.users;
         });
@@ -280,10 +273,9 @@ async function updateDashboard() {
         const last7 = Object.entries(dateMap).slice(-7);
         const maxVal = Math.max(...last7.map(e => e[1]), 1);
         document.getElementById('histograma').innerHTML = last7.map(([date, count]) => 
-            `<div class="bar" style="height:${(count/maxVal)*100}%" title="${date}: ${count} usuários"></div>`
+            `<div class="bar" style="height:${(count/maxVal)*100}%; background: ${GA4_ACCENT_CYAN}" title="${date}: ${count} usuários"></div>`
         ).join('');
 
-        // Cidades
         const cityMap = {};
         data.forEach(d => {
             const city = d.city || "Desconhecido";
@@ -296,7 +288,7 @@ async function updateDashboard() {
                     <span>${name}</span><span>${count}</span>
                 </div>
                 <div style="background:rgba(255,255,255,0.05); height:6px; border-radius:3px; overflow:hidden;">
-                    <div class="progress-fill" style="width:${(count/totalUsers)*100}%;"></div>
+                    <div style="width:${(count/totalUsers)*100}%; height:100%; background: linear-gradient(90deg, ${GA4_ACCENT_CYAN}, ${GA4_ACCENT_GREEN})"></div>
                 </div>
             </div>
         `).join('');
@@ -312,7 +304,7 @@ function drawPie(data) {
     const devices = { Desktop: 0, Mobile: 0 };
     data.forEach(d => { if (d.device.toLowerCase().includes('mobile')) devices.Mobile += d.users; else devices.Desktop += d.users; });
     const options = {
-        backgroundColor: 'transparent', colors: ['#00f2ff', '#9d76ff'],
+        backgroundColor: 'transparent', colors: [GA4_ACCENT_CYAN, GA4_ACCENT_VIOLET],
         pieHole: 0.5, legend: 'none', pieSliceBorderColor: 'transparent',
         chartArea: {width: '95%', height: '95%'},
         tooltip: { textStyle: { fontName: 'Arial', fontSize: 10 } }
@@ -322,34 +314,12 @@ function drawPie(data) {
 
 function drawMap(data) {
     const countryMap = {};
-    const countryLookup = {
-        "Brasil": "Brazil",
-        "BR": "Brazil",
-        "Estados Unidos": "United States",
-        "EUA": "United States",
-        "USA": "United States",
-        "US": "United States"
-    };
-
-    data.forEach(d => {
-        let c = d.country;
-        let normalized = countryLookup[c] || c;
-        if (normalized) countryMap[normalized] = (countryMap[normalized] || 0) + d.users;
-    });
-
-    const mapData = [['Country', 'Users']];
-    Object.entries(countryMap).forEach(e => mapData.push(e));
-
+    data.forEach(d => { countryMap[d.country] = (countryMap[d.country] || 0) + d.users; });
+    const mapData = [['Country', 'Users'], ...Object.entries(countryMap)];
     const options = {
-        backgroundColor: 'transparent',
-        datalessRegionColor: '#111d2c',
-        displayMode: 'regions',
-        colorAxis: {
-            minValue: 1, 
-            colors: ['#1a3a4a', '#00f2ff']
-        },
-        legend: 'none',
-        tooltip: { textStyle: { fontName: 'Arial', fontSize: 10 } }
+        backgroundColor: 'transparent', datalessRegionColor: '#111d2c',
+        colorAxis: { colors: [GA4_DARK_BLUE, GA4_ACCENT_CYAN] },
+        legend: 'none', tooltip: { textStyle: { fontName: 'Arial', fontSize: 10 } }
     };
     new google.visualization.GeoChart(document.getElementById('regions_div')).draw(google.visualization.arrayToDataTable(mapData), options);
 }
