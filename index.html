@@ -227,7 +227,6 @@
         .value { font-size: 2rem; font-weight: 800; color: var(--accent3); font-family: 'Space Mono', monospace; }
         .sub-value { font-size: 0.7rem; color: var(--text); line-height: 1.5; }
 
-        /* Histograma com Tooltip */
         .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 45px; margin-top: 5px; gap: 4px; }
         .bar { 
             flex: 1; 
@@ -239,10 +238,10 @@
         }
         .bar:hover { background: var(--accent3); }
 
-        .city-row { margin-bottom: 12px; }
-        .city-meta { display: flex; justify-content: space-between; font-size: 0.65rem; margin-bottom: 5px; }
-        .progress-bg { background: rgba(0,0,0,0.3); height: 6px; border-radius: 3px; width: 100%; overflow: hidden; }
-        .progress-fill { background: var(--accent); height: 100%; transition: width 1s ease-out; }
+        .city-row { margin-bottom: 15px; }
+        .city-meta { display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 6px; color: var(--text); }
+        .progress-bg { background: rgba(255,255,255,0.05); height: 8px; border-radius: 4px; width: 100%; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+        .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent3)); height: 100%; transition: width 1s ease-out; }
 
         #regions_div {
             width: 100%;
@@ -373,39 +372,47 @@ async function updateDashboard() {
             📱 Mobile: ${Math.round(devices.mobile/totalUsers*100 || 0)}%
         `;
 
-        // 3. Histograma (Trend 7D) com DATAS no Mouse Over
+        // 3. Histograma (Trend 7D) - DATA COMPLETA NO TOOLTIP
         const dateMap = {};
         data.forEach(d => { 
-            // Formata a data para algo legível (DD/MM) se vier como YYYYMMDD
-            let rawDate = d.date.toString();
-            let formattedDate = rawDate.length === 8 
-                ? `${rawDate.substring(6,8)}/${rawDate.substring(4,6)}`
-                : rawDate;
+            let rawDate = d.date.toString(); // Esperado: YYYYMMDD
+            let formattedDate = rawDate;
+            
+            if (rawDate.length === 8) {
+                const y = rawDate.substring(0, 4);
+                const m = rawDate.substring(4, 6);
+                const d_ = rawDate.substring(6, 8);
+                formattedDate = `${d_}/${m}/${y}`;
+            }
             
             dateMap[formattedDate] = (dateMap[formattedDate] || 0) + d.users; 
         });
 
-        const last7Days = Object.entries(dateMap).slice(-7);
-        const maxUsers = Math.max(...last7Days.map(d => d[1]), 1);
+        const last7Entries = Object.entries(dateMap).slice(-7);
+        const maxUsers = Math.max(...last7Entries.map(entry => entry[1]), 1);
         
-        document.getElementById('histograma').innerHTML = last7Days.map(([date, count]) => 
+        document.getElementById('histograma').innerHTML = last7Entries.map(([fullDate, count]) => 
             `<div class="bar" 
                   style="height:${(count/maxUsers)*100}%" 
-                  title="Data: ${date} | Usuários: ${count}">
+                  title="Data: ${fullDate} | Usuários: ${count}">
              </div>`
         ).join('');
 
-        // 4. Ranking de Cidades
+        // 4. Ranking de Cidades (APENAS BARRAS, SEM NÚMEROS)
         const cities = {};
         data.forEach(d => { 
             const loc = `${d.city}, ${d.country}`;
             cities[loc] = (cities[loc] || 0) + d.users; 
         });
+        
         const topCities = Object.entries(cities).sort((a,b) => b[1]-a[1]).slice(0, 3);
+        
         document.getElementById('city-ranking').innerHTML = topCities.map(([loc, count]) => `
             <div class="city-row">
-                <div class="city-meta"><span>${loc}</span><span>${count} vists</span></div>
-                <div class="progress-bg"><div class="progress-fill" style="width:${(count/totalUsers)*100}%"></div></div>
+                <div class="city-meta"><span>${loc}</span></div>
+                <div class="progress-bg">
+                    <div class="progress-fill" style="width:${(count/totalUsers)*100}%"></div>
+                </div>
             </div>
         `).join('');
 
