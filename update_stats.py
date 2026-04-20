@@ -3,26 +3,22 @@ import json
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import RunReportRequest, DateRange, Dimension, Metric
 
-# --- CONFIGURAÇÃO DE AMBIENTE HÍBRIDA ---
-# Tenta o caminho do seu PC. Se não existir, usa o arquivo temporário do GitHub.
-local_key_path = r"C:\Users\Cristiano A. Barbosa\OneDrive\Desktop\unidade-visual-code-studio-9dbbd743890a.json"
+# --- LOGICA DE CREDENCIAIS ---
+local_key = r"C:\Users\Cristiano A. Barbosa\OneDrive\Desktop\unidade-visual-code-studio-9dbbd743890a.json"
 
-if os.path.exists(local_key_path):
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = local_key_path
+if os.path.exists(local_key):
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = local_key
+    print("🏠 Rodando em ambiente local.")
 else:
-    # O GitHub Actions criará este arquivo automaticamente a partir da Secret
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "credentials.json"
+    print("🤖 Rodando no GitHub Actions.")
 
-# ID da sua propriedade do GA4
 property_id = "473359623"
 
 def get_full_analytics():
-    print("🚀 Iniciando extração de dados do Google Analytics...")
-    
     try:
         client = BetaAnalyticsDataClient()
 
-        # Requisitando dimensões completas (Data, Cidade, País, Dispositivo e Página)
         request = RunReportRequest(
             property=f"properties/{property_id}",
             dimensions=[
@@ -39,11 +35,6 @@ def get_full_analytics():
         response = client.run_report(request)
         
         report_data = []
-        
-        # Processando os dados da resposta
-        if not response.rows:
-            print("⚠️ Nenhum dado encontrado no período selecionado.")
-        
         for row in response.rows:
             report_data.append({
                 "date": row.dimension_values[0].value,
@@ -54,16 +45,14 @@ def get_full_analytics():
                 "users": int(row.metric_values[0].value)
             })
 
-        # Salvando o JSON na raiz do repositório
-        # O GitHub Action usará este arquivo para fazer o Push
+        # Salva o JSON com suporte a caracteres acentuados (UTF-8)
         with open('analytics_data.json', 'w', encoding='utf-8') as f:
             json.dump(report_data, f, ensure_ascii=False, indent=4)
         
-        print(f"✅ Sucesso! {len(report_data)} linhas de dados foram salvas em analytics_data.json.")
+        print(f"✅ Sucesso: {len(report_data)} registros atualizados.")
 
     except Exception as e:
-        print(f"❌ ERRO CRÍTICO no pipeline: {str(e)}")
-        # Levanta o erro para que o GitHub Actions marque a tarefa como falha
+        print(f"❌ Erro durante a execução: {e}")
         raise e
 
 if __name__ == "__main__":
