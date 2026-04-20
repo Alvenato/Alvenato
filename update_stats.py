@@ -13,7 +13,7 @@ else:
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "credentials.json"
     print("🤖 Rodando no GitHub Actions.")
 
-property_id = "473359623"
+property_id = "513962275"
 
 def get_full_analytics():
     try:
