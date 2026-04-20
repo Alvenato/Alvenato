@@ -57,6 +57,7 @@
             background-size: 40px 40px;
             animation: gridMove 20s linear infinite;
             pointer-events: none;
+            z-index: 0;
         }
 
         @keyframes gridMove { 0% { transform: translateY(0); } 100% { transform: translateY(40px); } }
@@ -99,7 +100,7 @@
         .skill-sql { color: var(--accent2); border-color: var(--accent2); }
         .skill-powerbi { color: var(--accent3); border-color: var(--accent3); }
 
-        .right { padding: 40px; display: flex; flex-direction: column; gap: 25px; }
+        .right { padding: 40px; display: flex; flex-direction: column; gap: 20px; }
         .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
         .metric-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 18px; }
         
@@ -112,7 +113,7 @@
 
         .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent3)); height: 100%; border-radius: 4px; }
 
-        /* Customização dos Tooltips do Google Charts */
+        /* Estilo da Tooltip Global (Google Charts) */
         .google-visualization-tooltip {
             border: 1px solid var(--accent) !important;
             background-color: var(--surface2) !important;
@@ -120,13 +121,12 @@
             font-family: 'Space Mono', monospace !important;
             font-size: 10px !important;
             color: var(--text) !important;
-            border-radius: 8px !important;
-            box-shadow: none !important;
+            border-radius: 6px !important;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
         }
 
         @media (max-width: 900px) {
             .card { grid-template-columns: 1fr; width: 100%; }
-            .left { border-right: none; }
             .dashboard-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -169,15 +169,17 @@
             </div>
             <div class="metric-card">
                 <span class="label">Tendência</span>
-                <div class="bar-chart" id="histograma"></div>
+                <div class="bar-chart" id="histograma">
+                    </div>
             </div>
-            <div class="metric-card" style="grid-column: span 3;">
+            <div class="metric-card" style="grid-column: span 3; min-height: 220px;">
                 <span class="label">Distribuição Global</span>
                 <div id="regions_div" style="height: 180px;"></div>
             </div>
             <div class="metric-card" style="grid-column: span 3;">
                 <span class="label">Top Localidades</span>
-                <div id="city-ranking"></div>
+                <div id="city-ranking">
+                    </div>
             </div>
         </div>
     </div>
@@ -186,35 +188,51 @@
 <script>
 google.charts.load('current', {'packages':['geochart', 'corechart']});
 
-async function updateDashboard() {
+async function initDashboard() {
+    let data = [];
     try {
         const response = await fetch('analytics_data.json?t=' + Date.now());
-        const data = await response.json();
-        if (!data || data.length === 0) return;
+        data = await response.json();
+    } catch (e) {
+        console.warn("Usando dados de demonstração.");
+        data = [
+            { city: "Brasília", country: "Brazil", users: 45, device: "desktop", date: "20260401" },
+            { city: "São Paulo", country: "Brazil", users: 30, device: "mobile", date: "20260402" },
+            { city: "Valparaíso", country: "Brazil", users: 25, device: "desktop", date: "20260403" }
+        ];
+    }
+    renderAll(data);
+}
 
-        const totalUsers = data.reduce((sum, d) => sum + d.users, 0);
-        document.getElementById('total-users').innerText = totalUsers;
+function renderAll(data) {
+    const total = data.reduce((s, d) => s + d.users, 0);
+    document.getElementById('total-users').innerText = total;
 
-        // Histograma Simples
-        const last7 = data.slice(-7);
-        const max = Math.max(...last7.map(d => d.users), 1);
-        document.getElementById('histograma').innerHTML = last7.map(d => 
-            `<div class="bar" style="height:${(d.users/max)*100}%" title="Usuários: ${d.users}"></div>`
-        ).join('');
+    // Tendência (Barras)
+    const hist = document.getElementById('histograma');
+    const maxVal = Math.max(...data.map(d => d.users), 1);
+    hist.innerHTML = data.map(d => 
+        `<div class="bar" style="height:${(d.users/maxVal)*100}%" title="Usuários: ${d.users}"></div>`
+    ).join('');
 
-        // Ranking de Cidades
-        const topCities = data.slice(0, 3);
-        document.getElementById('city-ranking').innerHTML = topCities.map(d => `
-            <div style="margin-bottom:10px;">
-                <div style="display:flex; justify-content:space-between; font-size:0.6rem; color:var(--muted); margin-bottom:4px;"><span>${d.city}</span></div>
-                <div style="background:rgba(255,255,255,0.05); height:6px; border-radius:3px; overflow:hidden;">
-                    <div class="progress-fill" style="width:${(d.users/totalUsers)*100}%;"></div>
-                </div>
+    // Top Localidades
+    const ranking = document.getElementById('city-ranking');
+    ranking.innerHTML = data.slice(0, 3).map(d => `
+        <div style="margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; font-size:0.65rem; color:var(--muted); margin-bottom:4px; font-family:'Space Mono'">
+                <span>${d.city}</span><span>${Math.round((d.users/total)*100)}%</span>
             </div>
-        `).join('');
+            <div style="background:rgba(255,255,255,0.05); height:6px; border-radius:3px; overflow:hidden;">
+                <div class="progress-fill" style="width:${(d.users/total)*100}%;"></div>
+            </div>
+        </div>
+    `).join('');
 
-        google.charts.setOnLoadCallback(() => { drawPie(data); drawMap(data); });
-    } catch (e) { console.error(e); }
+    // Google Charts
+    google.charts.setOnLoadCallback(() => {
+        drawPie(data);
+        drawMap(data);
+    });
 }
 
 function drawPie(data) {
@@ -222,10 +240,10 @@ function drawPie(data) {
         backgroundColor: 'transparent',
         colors: ['#00f2ff', '#9d76ff'], // Cyan e Violeta
         pieHole: 0.5, legend: 'none', pieSliceBorderColor: 'transparent',
-        tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 10 } },
-        chartArea: {width: '90%', height: '90%'}
+        tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 10 }, showColorCode: true },
+        chartArea: {width: '95%', height: '95%'}
     };
-    const pieData = google.visualization.arrayToDataTable([['Task', 'Val'],['Desktop', 70],['Mobile', 30]]);
+    const pieData = google.visualization.arrayToDataTable([['Device', 'Val'],['Desktop', 65],['Mobile', 35]]);
     new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(pieData, options);
 }
 
@@ -233,7 +251,7 @@ function drawMap(data) {
     const options = {
         backgroundColor: 'transparent',
         datalessRegionColor: '#111d2c',
-        colorAxis: {colors: ['#0d1620', '#00f2ff']}, // Fundo para Cyan
+        colorAxis: {colors: ['#0d1620', '#00f2ff']}, // Dark para Cyan
         legend: 'none',
         tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 10 } }
     };
@@ -241,7 +259,8 @@ function drawMap(data) {
     new google.visualization.GeoChart(document.getElementById('regions_div')).draw(mapData, options);
 }
 
-updateDashboard();
+initDashboard();
+window.addEventListener('resize', initDashboard);
 </script>
 
 </body>
