@@ -79,7 +79,7 @@
             box-shadow: 0 0 40px rgba(0,0,0,0.6); z-index: 10; overflow: hidden;
         }
 
-        .left { padding: 60px 30px; background: var(--surface2); border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 35px; }
+        .left { padding: 60px 30px; background: var(--surface2); border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 30px; }
         
         .avatar-wrapper { position: relative; width: 140px; height: 140px; }
         .avatar-ring { 
@@ -94,11 +94,14 @@
         .name { font-size: 1.4rem; font-weight: 800; text-align: center; }
         .sub-name { display: block; font-size: 0.7rem; color: var(--accent); font-family: 'Space Mono', monospace; text-transform: uppercase; margin-top: 8px; letter-spacing: 2px; text-align: center; }
 
+        .skills-container { width: 100%; text-align: center; }
+        .skills-title { font-size: 0.6rem; color: var(--muted); text-transform: uppercase; font-family: 'Space Mono', monospace; letter-spacing: 1px; margin-bottom: 15px; display: block; }
         .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-        .skill-tag { padding: 5px 12px; border-radius: 6px; font-size: 0.65rem; font-weight: bold; font-family: 'Space Mono', monospace; border: 1px solid; background: rgba(0,0,0,0.4); text-transform: uppercase; }
-        .skill-python { color: var(--accent); border-color: var(--accent); }
-        .skill-sql { color: var(--accent2); border-color: var(--accent2); }
-        .skill-powerbi { color: var(--accent3); border-color: var(--accent3); }
+        .skill-tag { padding: 5px 10px; border-radius: 6px; font-size: 0.6rem; font-weight: bold; font-family: 'Space Mono', monospace; border: 1px solid; background: rgba(0,0,0,0.4); text-transform: uppercase; }
+        
+        .skill-cyan { color: var(--accent); border-color: var(--accent); }
+        .skill-violet { color: var(--accent2); border-color: var(--accent2); }
+        .skill-green { color: var(--accent3); border-color: var(--accent3); }
 
         .right { padding: 40px; display: flex; flex-direction: column; gap: 20px; }
         .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
@@ -113,7 +116,6 @@
 
         .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent3)); height: 100%; border-radius: 4px; }
 
-        /* Estilo da Tooltip Global (Google Charts) */
         .google-visualization-tooltip {
             border: 1px solid var(--accent) !important;
             background-color: var(--surface2) !important;
@@ -122,7 +124,6 @@
             font-size: 10px !important;
             color: var(--text) !important;
             border-radius: 6px !important;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
         }
 
         @media (max-width: 900px) {
@@ -150,10 +151,18 @@
             <h1 class="name">Cristiano A. Barbosa</h1>
             <span class="sub-name">Cientista de Dados & IA</span>
         </div>
-        <div class="skills-grid">
-            <span class="skill-tag skill-python">Python</span>
-            <span class="skill-tag skill-sql">SQL</span>
-            <span class="skill-tag skill-powerbi">Power BI</span>
+        
+        <div class="skills-container">
+            <span class="skills-title">Habilidades</span>
+            <div class="skills-grid">
+                <span class="skill-tag skill-cyan">Python</span>
+                <span class="skill-tag skill-violet">SQL</span>
+                <span class="skill-tag skill-green">ETL</span>
+                <span class="skill-tag skill-cyan">Power BI</span>
+                <span class="skill-tag skill-violet">Tableau</span>
+                <span class="skill-tag skill-green">Docker</span>
+                <span class="skill-tag skill-cyan">Figma</span>
+            </div>
         </div>
     </div>
 
@@ -161,16 +170,15 @@
         <div class="dashboard-grid">
             <div class="metric-card">
                 <span class="label">Visitantes (30D)</span>
-                <div class="value" id="total-users">0</div>
+                <div class="value" id="total-users">--</div>
             </div>
             <div class="metric-card">
                 <span class="label">Dispositivos</span>
                 <div id="tech_stack_pie" style="height: 60px;"></div>
             </div>
             <div class="metric-card">
-                <span class="label">Tendência</span>
-                <div class="bar-chart" id="histograma">
-                    </div>
+                <span class="label">Tendência (7d)</span>
+                <div class="bar-chart" id="histograma"></div>
             </div>
             <div class="metric-card" style="grid-column: span 3; min-height: 220px;">
                 <span class="label">Distribuição Global</span>
@@ -178,8 +186,7 @@
             </div>
             <div class="metric-card" style="grid-column: span 3;">
                 <span class="label">Top Localidades</span>
-                <div id="city-ranking">
-                    </div>
+                <div id="city-ranking"></div>
             </div>
         </div>
     </div>
@@ -188,79 +195,88 @@
 <script>
 google.charts.load('current', {'packages':['geochart', 'corechart']});
 
-async function initDashboard() {
-    let data = [];
+async function updateDashboard() {
     try {
         const response = await fetch('analytics_data.json?t=' + Date.now());
-        data = await response.json();
-    } catch (e) {
-        console.warn("Usando dados de demonstração.");
-        data = [
-            { city: "Brasília", country: "Brazil", users: 45, device: "desktop", date: "20260401" },
-            { city: "São Paulo", country: "Brazil", users: 30, device: "mobile", date: "20260402" },
-            { city: "Valparaíso", country: "Brazil", users: 25, device: "desktop", date: "20260403" }
-        ];
-    }
-    renderAll(data);
-}
+        const data = await response.json();
+        
+        if (!data || data.length === 0) return;
 
-function renderAll(data) {
-    const total = data.reduce((s, d) => s + d.users, 0);
-    document.getElementById('total-users').innerText = total;
+        const totalUsers = data.reduce((sum, d) => sum + (d.users || 0), 0);
+        document.getElementById('total-users').innerText = totalUsers;
 
-    // Tendência (Barras)
-    const hist = document.getElementById('histograma');
-    const maxVal = Math.max(...data.map(d => d.users), 1);
-    hist.innerHTML = data.map(d => 
-        `<div class="bar" style="height:${(d.users/maxVal)*100}%" title="Usuários: ${d.users}"></div>`
-    ).join('');
+        const dateMap = {};
+        data.forEach(d => {
+            const date = d.date.toString().slice(-4);
+            dateMap[date] = (dateMap[date] || 0) + d.users;
+        });
+        const last7 = Object.entries(dateMap).slice(-7);
+        const maxUsers = Math.max(...last7.map(e => e[1]), 1);
+        document.getElementById('histograma').innerHTML = last7.map(([date, count]) => 
+            `<div class="bar" style="height:${(count/maxUsers)*100}%" title="${date}: ${count} usuários"></div>`
+        ).join('');
 
-    // Top Localidades
-    const ranking = document.getElementById('city-ranking');
-    ranking.innerHTML = data.slice(0, 3).map(d => `
-        <div style="margin-bottom:12px;">
-            <div style="display:flex; justify-content:space-between; font-size:0.65rem; color:var(--muted); margin-bottom:4px; font-family:'Space Mono'">
-                <span>${d.city}</span><span>${Math.round((d.users/total)*100)}%</span>
+        const cityMap = {};
+        data.forEach(d => {
+            const city = d.city || "Desconhecido";
+            cityMap[city] = (cityMap[city] || 0) + d.users;
+        });
+        const topCities = Object.entries(cityMap).sort((a,b) => b[1]-a[1]).slice(0, 3);
+        document.getElementById('city-ranking').innerHTML = topCities.map(([name, count]) => `
+            <div style="margin-bottom:12px;">
+                <div style="display:flex; justify-content:space-between; font-size:0.65rem; color:var(--muted); margin-bottom:4px; font-family:'Space Mono'">
+                    <span>${name}</span><span>${Math.round((count/totalUsers)*100)}%</span>
+                </div>
+                <div style="background:rgba(255,255,255,0.05); height:6px; border-radius:3px; overflow:hidden;">
+                    <div class="progress-fill" style="width:${(count/totalUsers)*100}%;"></div>
+                </div>
             </div>
-            <div style="background:rgba(255,255,255,0.05); height:6px; border-radius:3px; overflow:hidden;">
-                <div class="progress-fill" style="width:${(d.users/total)*100}%;"></div>
-            </div>
-        </div>
-    `).join('');
+        `).join('');
 
-    // Google Charts
-    google.charts.setOnLoadCallback(() => {
-        drawPie(data);
-        drawMap(data);
-    });
+        google.charts.setOnLoadCallback(() => {
+            drawPie(data);
+            drawMap(data);
+        });
+
+    } catch (e) { console.error(e); }
 }
 
 function drawPie(data) {
+    const devices = { Desktop: 0, Mobile: 0 };
+    data.forEach(d => {
+        if (d.device.toLowerCase().includes('mobile')) devices.Mobile += d.users;
+        else devices.Desktop += d.users;
+    });
+
     const options = {
         backgroundColor: 'transparent',
-        colors: ['#00f2ff', '#9d76ff'], // Cyan e Violeta
+        colors: ['#00f2ff', '#9d76ff'],
         pieHole: 0.5, legend: 'none', pieSliceBorderColor: 'transparent',
-        tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 10 }, showColorCode: true },
+        tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 10 } },
         chartArea: {width: '95%', height: '95%'}
     };
-    const pieData = google.visualization.arrayToDataTable([['Device', 'Val'],['Desktop', 65],['Mobile', 35]]);
+    const pieData = google.visualization.arrayToDataTable([['Device', 'Users'],['Desktop', devices.Desktop],['Mobile', devices.Mobile]]);
     new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(pieData, options);
 }
 
 function drawMap(data) {
+    const countryMap = {};
+    data.forEach(d => countryMap[d.country] = (countryMap[d.country] || 0) + d.users);
+    const mapArray = [['Country', 'Users']];
+    Object.entries(countryMap).forEach(e => mapArray.push(e));
+
     const options = {
         backgroundColor: 'transparent',
         datalessRegionColor: '#111d2c',
-        colorAxis: {colors: ['#0d1620', '#00f2ff']}, // Dark para Cyan
+        colorAxis: {colors: ['#0d1620', '#00f2ff']},
         legend: 'none',
         tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 10 } }
     };
-    const mapData = google.visualization.arrayToDataTable([['Country', 'Users'],['Brazil', 100]]);
-    new google.visualization.GeoChart(document.getElementById('regions_div')).draw(mapData, options);
+    new google.visualization.GeoChart(document.getElementById('regions_div')).draw(google.visualization.arrayToDataTable(mapArray), options);
 }
 
-initDashboard();
-window.addEventListener('resize', initDashboard);
+updateDashboard();
+window.addEventListener('resize', updateDashboard);
 </script>
 
 </body>
