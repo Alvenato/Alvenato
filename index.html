@@ -17,16 +17,18 @@
 
     <style>
         :root {
-            --bg: #050a0f;
-            --surface: #0d1620;
-            --surface2: #111d2c;
-            --accent: #00d4ff;
-            --accent2: #7b5cfa;
-            --accent3: #00ffaa;
-            --text: #e8f4fd;
-            --muted: #6b8fa8;
-            --border: rgba(0,212,255,0.15);
-            --nav-bg: rgba(5, 10, 15, 0.8);
+            /* Cores extraídas do seu ícone */
+            --bg: #030712;
+            --surface: #0a1120;
+            --surface2: #0f1a2e;
+            --accent: #4ade80; /* Verde Água / Ciano claro */
+            --accent2: #3b82f6; /* Azul Médio */
+            --accent3: #6366f1; /* Azul Indigo/Royal */
+            --text: #f0f9ff;
+            --muted: #94a3b8;
+            --border: rgba(74, 222, 128, 0.2);
+            --nav-bg: rgba(10, 17, 32, 0.85);
+            --gradient-main: linear-gradient(135deg, #4ade80, #3b82f6, #6366f1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -52,74 +54,92 @@
             left: 50%;
             transform: translateX(-50%);
             background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(74, 222, 128, 0.3);
             border-radius: 100px;
-            padding: 10px 25px;
+            padding: 8px 20px;
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 20px;
             z-index: 1000;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .nav-item {
             color: var(--text);
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: 0.3s;
+            font-size: 1.2rem;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
-            gap: 8px; /* Espaço para o texto no botão Sobre */
+            opacity: 0.8;
         }
 
         .nav-item:hover {
             color: var(--accent);
             transform: translateY(-2px);
+            opacity: 1;
         }
 
-        .nav-item.sobre-btn {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.9rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        /* Botão Sobre Personalizado com a Imagem */
+        .sobre-container {
+            display: flex;
+            align-items: center;
             border-left: 1px solid rgba(255,255,255,0.1);
             padding-left: 15px;
         }
 
-        /* Fundo Animado */
+        .sobre-icon-img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            transition: 0.3s;
+        }
+
+        .nav-item.sobre-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .navbar:hover .sobre-icon-img {
+            filter: brightness(1.2);
+        }
+
+        /* Fundo Animado inspirado no ícone */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
-            background-image:
-                linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: gridMove 20s linear infinite;
+            background-image: 
+                linear-gradient(rgba(74, 222, 128, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 25s linear infinite;
             pointer-events: none;
         }
 
         @keyframes gridMove {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(40px); }
+            from { background-position: 0 0; }
+            to { background-position: 50px 50px; }
         }
 
         .orb {
             position: fixed;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.18;
-            animation: orbFloat 8s ease-in-out infinite alternate;
+            filter: blur(100px);
+            opacity: 0.15;
+            animation: orbFloat 10s ease-in-out infinite alternate;
             pointer-events: none;
         }
-        .orb-1 { width: 400px; height: 400px; background: var(--accent); top: -100px; left: -100px; }
-        .orb-2 { width: 350px; height: 350px; background: var(--accent2); bottom: -80px; right: -80px; }
+        .orb-1 { width: 500px; height: 500px; background: var(--accent); top: -150px; left: -100px; }
+        .orb-2 { width: 450px; height: 450px; background: var(--accent3); bottom: -100px; right: -50px; }
 
         @keyframes orbFloat {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, 20px) scale(1.1); }
+            100% { transform: translate(50px, 40px) scale(1.2); }
         }
 
         /* Card Layout */
@@ -128,168 +148,129 @@
             width: 880px;
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 24px;
+            border-radius: 28px;
             overflow: hidden;
             display: grid;
-            grid-template-columns: 300px 1fr;
-            animation: cardReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+            grid-template-columns: 320px 1fr;
+            animation: cardReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.7);
             z-index: 10;
         }
 
         @keyframes cardReveal {
-            from { opacity: 0; transform: translateY(32px) scale(0.96); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .left {
-            padding: 60px 24px;
+            padding: 60px 30px;
             background: var(--surface2);
             border-right: 1px solid var(--border);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 30px;
+            gap: 35px;
         }
 
         .avatar-wrapper {
             position: relative;
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
         }
 
         .avatar-ring {
             position: absolute;
             inset: -6px;
             border-radius: 50%;
-            background: conic-gradient(var(--accent), var(--accent2), var(--accent3), var(--accent));
-            animation: spin 4s linear infinite;
-            filter: blur(2px);
+            background: conic-gradient(from 0deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+            animation: spin 6s linear infinite;
         }
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
         .avatar {
             position: relative;
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             overflow: hidden;
-            border: 3px solid var(--bg);
+            border: 4px solid var(--bg);
             z-index: 1;
         }
 
         .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-        .name { font-size: 1.3rem; font-weight: 800; text-align: center; line-height: 1.2; }
+        .name { font-size: 1.4rem; font-weight: 800; text-align: center; }
         .name span {
             display: block;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: var(--accent);
-            letter-spacing: 0.12em;
+            letter-spacing: 2px;
             text-transform: uppercase;
             font-family: 'Space Mono', monospace;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
-        .skills-container-left { width: 100%; display: flex; flex-direction: column; gap: 15px; }
-        .skills-label {
+        .skill-tag {
+            padding: 5px 12px;
+            border-radius: 8px;
             font-size: 0.65rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--muted);
+            font-weight: 700;
             font-family: 'Space Mono', monospace;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            background: rgba(74, 222, 128, 0.05);
+            color: var(--accent);
+        }
+
+        .right { padding: 45px; display: flex; flex-direction: column; gap: 30px; }
+
+        .code-block { 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid var(--border); 
+            border-radius: 16px; 
+            font-family: 'Space Mono', monospace; 
+            font-size: 0.75rem; 
+        }
+
+        .code-header { padding: 10px 16px; border-bottom: 1px solid var(--border); display: flex; gap: 8px; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
+        
+        .code-body { padding: 20px; line-height: 1.6; }
+        .kw { color: var(--accent); }
+        .str { color: var(--accent2); }
+        .key { color: var(--text); }
+
+        .chart-widget { 
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid var(--border); 
+            border-radius: 15px; 
+            padding: 15px; 
             text-align: center;
         }
 
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-        .skill-tag {
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.65rem;
-            font-weight: 600;
-            font-family: 'Space Mono', monospace;
-            border: 1px solid;
+        .pie-chart { 
+            width: 40px; height: 40px; margin: 10px auto; border-radius: 50%; 
+            background: conic-gradient(var(--accent) 0% 30%, var(--accent2) 30% 70%, var(--accent3) 70% 100%);
+            animation: pieRotate 5s linear infinite;
         }
 
-        .tag-blue { color: #58b5f5; border-color: rgba(88,181,245,0.3); background: rgba(88,181,245,0.08); }
-        .tag-purple { color: #d4a0ff; border-color: rgba(212,160,255,0.3); background: rgba(212,160,255,0.08); }
-        .tag-cyan { color: var(--accent); border-color: rgba(0,212,255,0.3); background: rgba(0,212,255,0.08); }
-        .tag-green { color: var(--accent3); border-color: rgba(0,255,170,0.3); background: rgba(0,255,170,0.08); }
-        .tag-orange { color: #ff9f43; border-color: rgba(255,159,67,0.3); background: rgba(255,159,67,0.08); }
-
-        .views-container {
-            margin-top: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
+        .goal { 
+            padding: 18px; 
+            background: linear-gradient(90deg, rgba(74, 222, 128, 0.1), rgba(99, 102, 241, 0.1)); 
+            border: 1px solid var(--border); 
+            border-radius: 15px; 
+            font-size: 0.8rem; 
+            color: var(--accent); 
+            font-family: 'Space Mono', monospace; 
+            text-align: center;
         }
-        .sparkline-svg { filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4)); }
-        .sparkline-path {
-            fill: none;
-            stroke: var(--accent);
-            stroke-width: 2.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            stroke-dasharray: 100;
-            stroke-dashoffset: 100;
-            animation: drawLine 2.5s ease-out forwards;
-        }
-        @keyframes drawLine { to { stroke-dashoffset: 0; } }
-        
-        .views-count {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: var(--text);
-        }
-
-        .right { padding: 40px 32px; display: flex; flex-direction: column; gap: 24px; }
-
-        .code-block { background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; font-family: 'Space Mono', monospace; font-size: 0.72rem; }
-        .code-header { padding: 8px 16px; background: rgba(0,212,255,0.05); border-bottom: 1px solid var(--border); display: flex; gap: 6px; }
-        .dot { width: 8px; height: 8px; border-radius: 50%; }
-        .dot-r { background: #ff5f57; }
-        .dot-y { background: #febc2e; }
-        .dot-g { background: #28c840; }
-        .code-body { padding: 14px 18px; line-height: 1.5; }
-        .kw { color: #7b5cfa; }
-        .str { color: #00d4ff; }
-        .key { color: #00ffaa; }
-
-        .charts-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .chart-widget { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 12px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: 100px; }
-        .chart-title { font-size: 0.5rem; font-family: 'Space Mono', monospace; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
-        .pie-chart { width: 35px; height: 35px; border-radius: 50%; background: conic-gradient(var(--accent) 0% 40%, var(--accent2) 40% 70%, var(--accent3) 70% 100%); animation: pieRotate 4s linear infinite; }
-        @keyframes pieRotate { to { transform: rotate(360deg); } }
-
-        .bar-chart { display: flex; align-items: flex-end; gap: 3px; height: 35px; }
-        .bar { width: 6px; background: var(--accent); border-radius: 1px; animation: barGrow 1.5s ease-in-out infinite alternate; }
-        @keyframes barGrow { from { height: 30%; } to { height: 100%; } }
-
-        .line-viz { display: flex; gap: 2px; }
-        .dot-node { width: 5px; height: 5px; background: var(--accent3); border-radius: 50%; animation: dotPulse 1.2s infinite; }
-        @keyframes dotPulse { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); } }
-
-        .boxplot-viz { width: 50px; height: 30px; position: relative; display: flex; align-items: center; justify-content: center; }
-        .box-whisker { position: absolute; width: 40px; height: 1px; background: var(--muted); }
-        .box-main { width: 18px; height: 12px; background: rgba(123, 92, 250, 0.3); border: 1px solid var(--accent2); animation: boxAnim 2s infinite alternate; }
-        @keyframes boxAnim { from { transform: translateX(-8px); } to { transform: translateX(8px); } }
-
-        .trend-path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 100; stroke-dashoffset: 100; animation: trendDraw 3s linear infinite; }
-        @keyframes trendDraw { 0% { stroke-dashoffset: 100; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -100; } }
-
-        .density-viz { width: 35px; height: 35px; border: 1px solid var(--border); border-radius: 50%; position: relative; overflow: hidden; }
-        .radar-sweep { position: absolute; width: 100%; height: 100%; background: conic-gradient(transparent, var(--accent3)); opacity: 0.3; animation: spin 2s linear infinite; }
-
-        .goal { padding: 14px; background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(123,92,250,0.06)); border: 1px solid rgba(0,212,255,0.15); border-radius: 12px; font-size: 0.75rem; color: var(--accent); font-family: 'Space Mono', monospace; text-align: center; }
 
         @media (max-width: 900px) {
             .card { grid-template-columns: 1fr; width: 100%; }
-            .left { border-right: none; border-bottom: 1px solid var(--border); padding: 40px 20px; }
-            .navbar { width: 90%; justify-content: space-around; gap: 5px; }
+            .left { border-right: none; border-bottom: 1px solid var(--border); }
+            .navbar { width: 95%; gap: 12px; }
         }
     </style>
 </head>
@@ -300,7 +281,11 @@
     <a href="https://github.com/Alvenato" target="_blank" class="nav-item" title="GitHub"><i class="fab fa-github"></i></a>
     <a href="https://wa.me/5561981830780" target="_blank" class="nav-item" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     <a href="mailto:analytics.barbosa@gmail.com" class="nav-item" title="E-mail"><i class="fas fa-envelope"></i></a>
-    <a href="https://alvenato.github.io/curriculo.html" target="_blank" class="nav-item sobre-btn">Sobre</a>
+    
+    <div class="sobre-container">
+        <img src="image_ce8163.png" class="sobre-icon-img" alt="Sobre ícone">
+        <a href="https://alvenato.github.io/curriculo.html" target="_blank" class="nav-item sobre-text">Sobre</a>
+    </div>
 </nav>
 
 <div class="orb orb-1"></div>
@@ -311,7 +296,7 @@
         <div class="avatar-wrapper">
             <div class="avatar-ring"></div>
             <div class="avatar">
-                <img src="https://github.com/Alvenato.png" alt="Cristiano Alves Barbosa">
+                <img src="https://github.com/Alvenato.png" alt="Cristiano A. Barbosa">
             </div>
         </div>
 
@@ -321,23 +306,19 @@
         </div>
 
         <div class="skills-container-left">
-            <p class="skills-label">Ferramentas</p>
-            <div class="skills-grid">
-                <span class="skill-tag tag-blue">Python</span>
-                <span class="skill-tag tag-cyan">SQL</span>
-                <span class="skill-tag tag-orange">Tableau</span>
-                <span class="skill-tag tag-purple">Power BI</span>
-                <span class="skill-tag tag-green">Data Analysis</span>
+            <p class="skills-label">Tech Stack</p>
+            <div class="skills-grid" style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 10px;">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Tableau</span>
+                <span class="skill-tag">Power BI</span>
             </div>
+        </div>
 
-            <div class="views-container">
-                <p class="skills-label">Tráfego do Perfil</p>
-                <svg class="sparkline-svg" width="80" height="25" viewBox="0 0 100 30">
-                    <path class="sparkline-path" d="M0,25 L15,18 L30,22 L45,5 L65,15 L85,2 L100,10" />
-                </svg>
-                <div class="views-count">
-                    <span style="color: var(--accent3);">▲</span> <span id="count">...</span> views
-                </div>
+        <div class="views-container">
+            <p class="skills-label">Live Traffic</p>
+            <div class="views-count" style="margin-top: 10px;">
+                <span style="color: var(--accent);">●</span> <span id="count">...</span> views
             </div>
         </div>
     </div>
@@ -348,40 +329,21 @@
                 <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
             </div>
             <div class="code-body">
-                <div><span class="kw">const</span> <span class="key">stack</span> = [<span class="str">"Ciência de Dados"</span>, <span class="str">"Deep Learning"</span>];</div>
-                <div><span class="kw">const</span> <span class="key">missao</span> = <span class="str">"Transformar dados em estratégia"</span>;</div>
+                <div><span class="kw">const</span> <span class="key">perfil</span> = {</div>
+                <div style="padding-left: 20px;"><span class="key">foco</span>: <span class="str">"Data Analytics & Machine Learning"</span>,</div>
+                <div style="padding-left: 20px;"><span class="key">status</span>: <span class="str">"Construindo o futuro com IA"</span></div>
+                <div>};</div>
             </div>
         </div>
 
-        <p class="skills-label" style="text-align: left;">Motor de Analytics</p>
-        <div class="charts-container">
-            <div class="chart-widget"><span class="chart-title">Distribuição</span><div class="pie-chart"></div></div>
-            <div class="chart-widget">
-                <span class="chart-title">Desempenho</span>
-                <div class="bar-chart">
-                    <div class="bar" style="height:60%; animation-delay:0.1s"></div>
-                    <div class="bar" style="height:90%; animation-delay:0.3s"></div>
-                    <div class="bar" style="height:40%; animation-delay:0.5s"></div>
-                </div>
-            </div>
-            <div class="chart-widget">
-                <span class="chart-title">Frequência</span>
-                <div class="line-viz">
-                    <div class="dot-node" style="animation-delay:0.1s"></div>
-                    <div class="dot-node" style="animation-delay:0.2s"></div>
-                    <div class="dot-node" style="animation-delay:0.3s"></div>
-                </div>
-            </div>
-            <div class="chart-widget"><span class="chart-title">Outliers</span><div class="boxplot-viz"><div class="box-whisker"></div><div class="box-main"></div></div></div>
-            <div class="chart-widget">
-                <span class="chart-title">Tendência</span>
-                <svg width="40" height="20" viewBox="0 0 50 25"><path class="trend-path" d="M0,20 Q12,5 25,15 T50,5" /></svg>
-            </div>
-            <div class="chart-widget"><span class="chart-title">Densidade</span><div class="density-viz"><div class="radar-sweep"></div></div></div>
+        <div class="charts-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+            <div class="chart-widget"><div class="pie-chart"></div></div>
+            <div class="chart-widget"><div class="pie-chart" style="animation-delay: -1s; filter: hue-rotate(90deg);"></div></div>
+            <div class="chart-widget"><div class="pie-chart" style="animation-delay: -2s; filter: hue-rotate(180deg);"></div></div>
         </div>
 
         <div class="goal">
-            ▶ <b>Refinando</b> dados, entregando <b>clareza</b>. 💡
+            ⚡ Decifrando padrões. Gerando insights. ⚡
         </div>
     </div>
 </div>
@@ -390,20 +352,11 @@
     async function updateCounter() {
         const countElement = document.getElementById('count');
         const namespace = "cristiano_alves_stats"; 
-        
         try {
             const response = await fetch(`https://api.counterapi.dev/v1/${namespace}/visits/up`);
             const data = await response.json();
-            
-            if (data.count) {
-                animateCount(countElement, data.count);
-            } else {
-                throw new Error();
-            }
-        } catch (error) {
-            console.log("Servidor de contagem ocupado. Usando cache local.");
-            countElement.innerText = "1.4k"; 
-        }
+            if (data.count) { animateCount(countElement, data.count); }
+        } catch (e) { countElement.innerText = "1,450"; }
     }
 
     function animateCount(el, target) {
@@ -419,7 +372,6 @@
             }
         }, 30);
     }
-
     updateCounter();
 </script>
 
