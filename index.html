@@ -48,7 +48,6 @@
             padding: 100px 20px 40px 20px;
         }
 
-        /* Fundo Animado */
         body::before {
             content: '';
             position: fixed;
@@ -82,7 +81,6 @@
             100% { transform: translate(30px, 20px) scale(1.1); }
         }
 
-        /* MENU */
         .navbar {
             position: fixed;
             top: 30px;
@@ -122,7 +120,6 @@
             padding-left: 15px;
         }
 
-        /* Card Layout Principal */
         .card {
             position: relative;
             width: 900px;
@@ -197,7 +194,6 @@
             color: var(--accent);
         }
 
-        /* DASHBOARD LADO DIREITO */
         .right { padding: 40px; display: flex; flex-direction: column; gap: 25px; }
 
         .code-header-box {
@@ -231,11 +227,9 @@
         .value { font-size: 2rem; font-weight: 800; color: var(--accent3); font-family: 'Space Mono', monospace; }
         .sub-value { font-size: 0.7rem; color: var(--text); line-height: 1.5; }
 
-        /* Histograma */
         .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 45px; margin-top: 5px; }
         .bar { width: 10%; background: var(--accent); border-radius: 2px 2px 0 0; min-height: 2px; }
 
-        /* Cidades */
         .city-row { margin-bottom: 12px; }
         .city-meta { display: flex; justify-content: space-between; font-size: 0.65rem; margin-bottom: 5px; }
         .progress-bg { background: rgba(0,0,0,0.3); height: 6px; border-radius: 3px; width: 100%; overflow: hidden; }
@@ -337,19 +331,18 @@
             </div>
 
             <div class="metric-card">
-                <span class="label">Conteúdo</span>
-                <div id="top-pages" class="sub-value" style="font-size: 0.6rem;">...</div>
+                <span class="label">Navegador</span>
+                <div id="top-browser" class="sub-value" style="font-size: 0.65rem;">...</div>
             </div>
         </div>
 
         <div class="footer-status">
-            ▶ <b>Real-Time Insight:</b> Geo-distribuição processada via Google Charts API.
+            ▶ <b>Real-Time Insight:</b> Métricas extraídas diretamente do GA4 via JSON.
         </div>
     </div>
 </div>
 
 <script>
-// Inicializa o Google Charts
 google.charts.load('current', {
   'packages':['geochart'],
 });
@@ -400,15 +393,15 @@ async function updateDashboard() {
             </div>
         `).join('');
 
-        // 5. Top Page
-        const pages = {};
-        data.forEach(d => { pages[d.page] = (pages[d.page] || 0) + d.users; });
-        const topPage = Object.entries(pages).sort((a,b) => b[1]-a[1])[0];
-        document.getElementById('top-pages').innerHTML = topPage 
-            ? `Mais visto:<br><span style="color:#00ffaa;">${topPage[0]}</span>` 
+        // 5. Navegador mais utilizado (ATUALIZADO)
+        const browsers = {};
+        data.forEach(d => { browsers[d.browser] = (browsers[d.browser] || 0) + d.users; });
+        const topBrowser = Object.entries(browsers).sort((a,b) => b[1]-a[1])[0];
+        document.getElementById('top-browser').innerHTML = topBrowser 
+            ? `Top Browser:<br><span style="color:#00ffaa; font-weight:bold;">${topBrowser[0]}</span>` 
             : 'N/A';
 
-        // 6. MAPA (Chamada do Google Charts)
+        // 6. MAPA
         google.charts.setOnLoadCallback(() => drawMap(data));
 
     } catch (e) {
@@ -433,7 +426,7 @@ function drawMap(data) {
         backgroundColor: 'transparent',
         datalessRegionColor: '#111d2c',
         defaultColor: '#0d1620',
-        colorAxis: {colors: ['#004455', '#00d4ff']}, // Gradiente para combinar com o tema
+        colorAxis: {colors: ['#004455', '#00d4ff']},
         legend: 'none',
         tooltip: {textStyle: {color: '#050a0f'}, showColorCode: false}
     };
@@ -442,10 +435,7 @@ function drawMap(data) {
     chart.draw(dataTable, options);
 }
 
-// Execução inicial
 updateDashboard();
-
-// Responsividade do Mapa
 window.addEventListener('resize', updateDashboard);
 </script>
 
