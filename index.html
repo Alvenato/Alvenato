@@ -98,27 +98,9 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        .nav-item {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
+        .nav-item { color: var(--text); text-decoration: none; font-size: 1.1rem; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
         .nav-item:hover { color: var(--accent); transform: translateY(-2px); }
-
-        .nav-item.sobre-btn {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-left: 1px solid rgba(255,255,255,0.1);
-            padding-left: 15px;
-        }
+        .nav-item.sobre-btn { font-family: 'Space Mono', monospace; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 15px; }
 
         .card {
             position: relative;
@@ -134,138 +116,57 @@
             z-index: 10;
         }
 
-        @keyframes cardReveal {
-            from { opacity: 0; transform: translateY(32px) scale(0.96); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
+        @keyframes cardReveal { from { opacity: 0; transform: translateY(32px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-        .left {
-            padding: 60px 30px;
-            background: var(--surface2);
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 35px;
-        }
+        .left { padding: 60px 30px; background: var(--surface2); border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 35px; }
 
         .avatar-wrapper { position: relative; width: 140px; height: 140px; }
-        .avatar-ring {
-            position: absolute;
-            inset: -5px;
-            border-radius: 50%;
-            background: conic-gradient(var(--accent), var(--accent2), var(--accent3), var(--accent));
-            animation: spin 4s linear infinite;
-        }
+        .avatar-ring { position: absolute; inset: -5px; border-radius: 50%; background: conic-gradient(var(--accent), var(--accent2), var(--accent3), var(--accent)); animation: spin 4s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
         
-        .avatar {
-            position: relative;
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid var(--surface2);
-            z-index: 1;
-        }
+        .avatar { position: relative; width: 140px; height: 140px; border-radius: 50%; overflow: hidden; border: 4px solid var(--surface2); z-index: 1; }
         .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
         .name-container { text-align: center; }
         .name { font-size: 1.4rem; font-weight: 800; line-height: 1.2; }
-        .sub-name { 
-            display: block; 
-            font-size: 0.7rem; 
-            color: var(--accent); 
-            font-family: 'Space Mono', monospace; 
-            text-transform: uppercase; 
-            margin-top: 8px;
-            letter-spacing: 2px;
-        }
+        .sub-name { display: block; font-size: 0.7rem; color: var(--accent); font-family: 'Space Mono', monospace; text-transform: uppercase; margin-top: 8px; letter-spacing: 2px; }
 
         .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 15px; }
-        .skill-tag {
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-size: 0.6rem;
-            font-weight: bold;
-            font-family: 'Space Mono', monospace;
-            border: 1px solid rgba(0,212,255,0.2);
-            background: rgba(0,212,255,0.05);
-            color: var(--accent);
-        }
+        .skill-tag { padding: 5px 12px; border-radius: 6px; font-size: 0.6rem; font-weight: bold; font-family: 'Space Mono', monospace; border: 1px solid rgba(0,212,255,0.2); background: rgba(0,212,255,0.05); color: var(--accent); }
 
         .right { padding: 40px; display: flex; flex-direction: column; gap: 25px; }
 
-        .code-header-box {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 15px;
-            border-left: 4px solid var(--accent3);
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-        }
+        .code-header-box { background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 12px; padding: 15px; border-left: 4px solid var(--accent3); font-family: 'Space Mono', monospace; font-size: 0.75rem; }
 
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
+        .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
 
-        .metric-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 18px;
-            display: flex;
-            flex-direction: column;
-            transition: 0.3s;
-        }
+        .metric-card { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; transition: 0.3s; position: relative; }
         .metric-card:hover { background: rgba(0, 212, 255, 0.05); border-color: var(--accent); }
 
         .label { font-size: 0.55rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-family: 'Space Mono', monospace; }
         .value { font-size: 2rem; font-weight: 800; color: var(--accent3); font-family: 'Space Mono', monospace; }
-        .sub-value { font-size: 0.7rem; color: var(--text); line-height: 1.5; }
 
         .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 45px; margin-top: 5px; gap: 4px; }
-        .bar { 
-            flex: 1; 
-            background: var(--accent); 
-            border-radius: 2px 2px 0 0; 
-            min-height: 2px; 
-            cursor: pointer;
-            transition: background 0.2s;
-        }
+        .bar { flex: 1; background: var(--accent); border-radius: 2px 2px 0 0; min-height: 2px; cursor: pointer; transition: background 0.2s; }
         .bar:hover { background: var(--accent3); }
+
+        /* Estilo para o Gráfico de Pizza */
+        #tech_stack_pie { width: 100%; height: 60px; margin-top: -10px; }
 
         .city-row { margin-bottom: 15px; }
         .city-meta { display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 6px; color: var(--text); }
         .progress-bg { background: rgba(255,255,255,0.05); height: 8px; border-radius: 4px; width: 100%; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent3)); height: 100%; transition: width 1s ease-out; }
 
-        #regions_div {
-            width: 100%;
-            height: 180px;
-            margin-top: 5px;
-        }
+        #regions_div { width: 100%; height: 180px; margin-top: 5px; }
 
-        .footer-status {
-            margin-top: 10px;
-            padding: 12px;
-            background: rgba(0, 255, 170, 0.05);
-            border-radius: 10px;
-            font-size: 0.7rem;
-            color: var(--accent3);
-            font-family: 'Space Mono', monospace;
-            text-align: center;
-        }
+        .footer-status { margin-top: 10px; padding: 12px; background: rgba(0, 255, 170, 0.05); border-radius: 10px; font-size: 0.7rem; color: var(--accent3); font-family: 'Space Mono', monospace; text-align: center; }
 
         @media (max-width: 900px) {
             .card { grid-template-columns: 1fr; width: 100%; }
             .left { border-right: none; border-bottom: 1px solid var(--border); }
             .dashboard-grid { grid-template-columns: 1fr 1fr; }
-            .map-container { grid-column: span 2 !important; }
-            .full-bottom { grid-column: span 2 !important; }
+            .map-container, .full-bottom { grid-column: span 2 !important; }
         }
     </style>
 </head>
@@ -318,8 +219,8 @@
             </div>
 
             <div class="metric-card">
-                <span class="label">Tech Stack</span>
-                <div id="device-info" class="sub-value">Carregando...</div>
+                <span class="label">Dispositivos</span>
+                <div id="tech_stack_pie"></div>
             </div>
 
             <div class="metric-card">
@@ -339,14 +240,15 @@
         </div>
 
         <div class="footer-status">
-            ▶ <b>Real-Time Insight:</b> Dados processados dinamicamente via GitHub Pages.
+            ▶ <b>Real-Time Insight:</b> Geo-distribuição e Tech Stack via Google Charts.
         </div>
     </div>
 </div>
 
 <script>
+// Carrega pacotes necessários: geochart e corechart (para a pizza)
 google.charts.load('current', {
-  'packages':['geochart'],
+  'packages':['geochart', 'corechart'],
 });
 
 async function updateDashboard() {
@@ -361,80 +263,79 @@ async function updateDashboard() {
         // 1. Total de Usuários
         document.getElementById('total-users').innerText = totalUsers;
 
-        // 2. Tech Stack
-        const devices = { desktop: 0, mobile: 0 };
-        data.forEach(d => {
-            const type = d.device.toLowerCase();
-            if(devices.hasOwnProperty(type)) devices[type] += d.users;
-        });
-        document.getElementById('device-info').innerHTML = `
-            💻 Desktop: ${Math.round(devices.desktop/totalUsers*100 || 0)}%<br>
-            📱 Mobile: ${Math.round(devices.mobile/totalUsers*100 || 0)}%
-        `;
-
-        // 3. Histograma (Trend 7D) - DATA COMPLETA NO TOOLTIP
+        // 2. Trend 7D
         const dateMap = {};
         data.forEach(d => { 
-            let rawDate = d.date.toString(); // Esperado: YYYYMMDD
-            let formattedDate = rawDate;
-            
-            if (rawDate.length === 8) {
-                const y = rawDate.substring(0, 4);
-                const m = rawDate.substring(4, 6);
-                const d_ = rawDate.substring(6, 8);
-                formattedDate = `${d_}/${m}/${y}`;
-            }
-            
+            let rawDate = d.date.toString();
+            let formattedDate = rawDate.length === 8 
+                ? `${rawDate.substring(6,8)}/${rawDate.substring(4,6)}/${rawDate.substring(0,4)}` 
+                : rawDate;
             dateMap[formattedDate] = (dateMap[formattedDate] || 0) + d.users; 
         });
-
         const last7Entries = Object.entries(dateMap).slice(-7);
-        const maxUsers = Math.max(...last7Entries.map(entry => entry[1]), 1);
-        
+        const maxUsers = Math.max(...last7Entries.map(e => e[1]), 1);
         document.getElementById('histograma').innerHTML = last7Entries.map(([fullDate, count]) => 
-            `<div class="bar" 
-                  style="height:${(count/maxUsers)*100}%" 
-                  title="Data: ${fullDate} | Usuários: ${count}">
-             </div>`
+            `<div class="bar" style="height:${(count/maxUsers)*100}%" title="Data: ${fullDate} | Usuários: ${count}"></div>`
         ).join('');
 
-        // 4. Ranking de Cidades (APENAS BARRAS, SEM NÚMEROS)
+        // 3. Ranking de Cidades
         const cities = {};
         data.forEach(d => { 
             const loc = `${d.city}, ${d.country}`;
             cities[loc] = (cities[loc] || 0) + d.users; 
         });
-        
         const topCities = Object.entries(cities).sort((a,b) => b[1]-a[1]).slice(0, 3);
-        
         document.getElementById('city-ranking').innerHTML = topCities.map(([loc, count]) => `
             <div class="city-row">
                 <div class="city-meta"><span>${loc}</span></div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width:${(count/totalUsers)*100}%"></div>
-                </div>
+                <div class="progress-bg"><div class="progress-fill" style="width:${(count/totalUsers)*100}%"></div></div>
             </div>
         `).join('');
 
-        // 5. MAPA
-        google.charts.setOnLoadCallback(() => drawMap(data));
+        // 4. Desenhar Gráficos (Mapa e Pizza)
+        google.charts.setOnLoadCallback(() => {
+            drawMap(data);
+            drawPie(data);
+        });
 
     } catch (e) {
         console.error("Erro no processamento de dados:", e);
     }
 }
 
-function drawMap(data) {
-    const countryMap = {};
+function drawPie(data) {
+    const devices = { Desktop: 0, Mobile: 0 };
     data.forEach(d => {
-        countryMap[d.country] = (countryMap[d.country] || 0) + d.users;
+        const type = d.device.charAt(0).toUpperCase() + d.device.slice(1).toLowerCase();
+        if(devices.hasOwnProperty(type)) devices[type] += d.users;
     });
 
-    const chartData = [['Country', 'Visitantes']];
-    for (const [country, users] of Object.entries(countryMap)) {
-        chartData.push([country, users]);
-    }
+    const pieData = google.visualization.arrayToDataTable([
+        ['Device', 'Users'],
+        ['Desktop', devices.Desktop],
+        ['Mobile', devices.Mobile]
+    ]);
 
+    const options = {
+        backgroundColor: 'transparent',
+        colors: ['#00d4ff', '#7b5cfa'],
+        pieHole: 0.4,
+        legend: 'none',
+        pieSliceBorderColor: 'transparent',
+        pieSliceText: 'none',
+        chartArea: {width: '90%', height: '90%'},
+        tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 11 } }
+    };
+
+    const chart = new google.visualization.PieChart(document.getElementById('tech_stack_pie'));
+    chart.draw(pieData, options);
+}
+
+function drawMap(data) {
+    const countryMap = {};
+    data.forEach(d => { countryMap[d.country] = (countryMap[d.country] || 0) + d.users; });
+    const chartData = [['Country', 'Visitantes']];
+    for (const [country, users] of Object.entries(countryMap)) { chartData.push([country, users]); }
     const dataTable = google.visualization.arrayToDataTable(chartData);
 
     const options = {
