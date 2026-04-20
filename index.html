@@ -17,110 +17,161 @@
 
     <style>
         :root {
-            --bg: #050a0f; --surface: #0d1620; --surface2: #111d2c;
-            --accent: #00d4ff; --accent2: #7b5cfa; --accent3: #00ffaa;
-            --text: #e8f4fd; --muted: #6b8fa8; --border: rgba(0,212,255,0.15);
+            --bg: #050a0f;
+            --surface: #0d1620;
+            --surface2: #111d2c;
+            --accent: #00d4ff;
+            --accent2: #7b5cfa;
+            --accent3: #00ffaa;
+            --text: #e8f4fd;
+            --muted: #6b8fa8;
+            --border: rgba(0,212,255,0.15);
             --nav-bg: rgba(5, 10, 15, 0.8);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            background: var(--bg); font-family: 'Syne', sans-serif; color: var(--text);
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            padding: 20px;
+            background: var(--bg);
+            font-family: 'Syne', sans-serif;
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 100px 20px 20px 20px;
         }
+
+        /* --- BACKGROUND ANIMADO (RECUPERADO) --- */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes gridMove { 0% { transform: translateY(0); } 100% { transform: translateY(40px); } }
+
+        .orb {
+            position: fixed; border-radius: 50%; filter: blur(80px);
+            opacity: 0.18; animation: orbFloat 8s ease-in-out infinite alternate; pointer-events: none;
+        }
+        .orb-1 { width: 400px; height: 400px; background: var(--accent); top: -100px; left: -100px; }
+        .orb-2 { width: 350px; height: 350px; background: var(--accent2); bottom: -80px; right: -80px; }
 
         /* --- NAVBAR --- */
         .navbar {
             position: fixed; top: 30px; left: 50%; transform: translateX(-50%);
             background: var(--nav-bg); backdrop-filter: blur(10px);
             border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 100px;
-            padding: 10px 25px; display: flex; gap: 18px; z-index: 1000;
+            padding: 10px 25px; display: flex; align-items: center; gap: 18px; z-index: 1000;
         }
-        .nav-item { color: var(--text); text-decoration: none; transition: 0.3s; }
-        .nav-item:hover { color: var(--accent); }
+        .nav-item { color: var(--text); text-decoration: none; font-size: 1.1rem; transition: 0.3s; }
+        .nav-item:hover { color: var(--accent); transform: translateY(-2px); }
+        .nav-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.1); }
+        .sobre-btn { font-family: 'Space Mono', monospace; font-size: 0.8rem; font-weight: bold; color: var(--accent3); text-transform: uppercase; }
 
-        /* --- CARD --- */
+        /* --- CARD PRINCIPAL --- */
         .card {
-            width: 950px; background: var(--surface); border: 1px solid var(--border);
-            border-radius: 24px; display: grid; grid-template-columns: 300px 1fr;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.6); overflow: hidden;
+            position: relative; width: 880px; background: var(--surface);
+            border: 1px solid var(--border); border-radius: 24px;
+            overflow: hidden; display: grid; grid-template-columns: 300px 1fr;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6); z-index: 10;
         }
 
         .left {
-            padding: 40px 24px; background: var(--surface2); border-right: 1px solid var(--border);
-            display: flex; flex-direction: column; align-items: center; gap: 20px;
+            padding: 60px 24px; background: var(--surface2); border-right: 1px solid var(--border);
+            display: flex; flex-direction: column; align-items: center; gap: 30px;
         }
-        .avatar { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--accent); overflow: hidden; }
+        .avatar-wrapper { position: relative; width: 130px; height: 130px; }
+        .avatar-ring {
+            position: absolute; inset: -6px; border-radius: 50%;
+            background: conic-gradient(var(--accent), var(--accent2), var(--accent3), var(--accent));
+            animation: spin 4s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .avatar { position: relative; width: 130px; height: 130px; border-radius: 50%; overflow: hidden; border: 3px solid var(--bg); z-index: 1; }
         .avatar img { width: 100%; height: 100%; object-fit: cover; }
-        .name { text-align: center; font-size: 1.2rem; }
-        .name span { display: block; font-size: 0.7rem; color: var(--accent); font-family: 'Space Mono'; }
 
-        .right { padding: 30px; display: flex; flex-direction: column; gap: 20px; }
+        .name { font-size: 1.3rem; font-weight: 800; text-align: center; }
+        .name span { display: block; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Space Mono'; margin-top: 8px; }
+
+        .right { padding: 40px 32px; display: flex; flex-direction: column; gap: 24px; }
 
         /* --- DASHBOARD --- */
-        .charts-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 15px; }
-        .geo-widget { 
-            grid-column: span 2; background: rgba(255,255,255,0.02); border: 1px solid var(--border);
-            border-radius: 15px; padding: 15px; min-height: 150px;
+        .charts-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .chart-widget { 
+            background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); 
+            border-radius: 12px; padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100px;
         }
+        .geo-full-widget { 
+            background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); 
+            border-radius: 12px; padding: 15px; margin-top: 10px;
+        }
+        .chart-title { font-size: 0.55rem; font-family: 'Space Mono'; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; display: block; width: 100%; }
+
+        /* Estilos dos Gráficos */
+        .bar-chart { display: flex; align-items: flex-end; gap: 4px; height: 40px; }
+        .bar { width: 7px; background: var(--accent); border-radius: 1px; transition: height 0.5s ease; }
+        .counter-val { font-family: 'Space Mono'; font-size: 1.2rem; font-weight: bold; color: var(--accent3); }
         
-        .chart-mini { 
-            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
-            border-radius: 15px; padding: 15px; display: flex; flex-direction: column; align-items: center;
-        }
+        .city-item { display: flex; justify-content: space-between; font-family: 'Space Mono'; font-size: 0.7rem; margin-bottom: 5px; }
+        .city-bar-bg { width: 100%; height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px; margin-bottom: 10px; overflow: hidden; }
+        .city-bar-fill { height: 100%; background: var(--accent); width: 0%; transition: width 1s ease-out; }
 
-        .chart-title { font-size: 0.6rem; font-family: 'Space Mono'; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; width: 100%; }
+        .goal { padding: 14px; background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(123,92,250,0.06)); border: 1px solid var(--border); border-radius: 12px; font-size: 0.75rem; color: var(--accent); font-family: 'Space Mono'; text-align: center; }
 
-        /* MAPA/LISTA DE CIDADES */
-        .city-list { width: 100%; font-size: 0.75rem; font-family: 'Space Mono'; }
-        .city-item { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .city-bar { height: 4px; background: var(--accent3); border-radius: 2px; margin-top: 4px; transition: width 1s; }
-
-        .bar-chart { display: flex; align-items: flex-end; gap: 4px; height: 50px; }
-        .bar { width: 10px; background: var(--accent); border-radius: 1px; }
-
-        .counter { font-size: 2rem; font-weight: bold; color: var(--accent3); font-family: 'Space Mono'; }
-
-        .goal { font-size: 0.75rem; color: var(--muted); border-left: 2px solid var(--accent); padding-left: 10px; font-family: 'Space Mono'; }
+        @media (max-width: 900px) { .card { grid-template-columns: 1fr; width: 100%; } .left { border-right: none; border-bottom: 1px solid var(--border); } }
     </style>
 </head>
 <body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
 
 <nav class="navbar">
     <a href="https://www.linkedin.com/in/cristianoalves-ca/" target="_blank" class="nav-item"><i class="fab fa-linkedin"></i></a>
     <a href="https://github.com/Alvenato" target="_blank" class="nav-item"><i class="fab fa-github"></i></a>
     <a href="https://wa.me/5561981830780" target="_blank" class="nav-item"><i class="fab fa-whatsapp"></i></a>
     <div class="nav-divider"></div>
-    <a href="https://alvenato.github.io/curriculo.html" target="_blank" class="nav-item" style="font-size: 0.7rem; font-family:'Space Mono'; color: var(--accent3)">SOBRE</a>
+    <a href="https://alvenato.github.io/curriculo.html" target="_blank" class="nav-item sobre-btn">Sobre</a>
 </nav>
 
 <div class="card">
     <div class="left">
-        <div class="avatar"><img src="https://github.com/Alvenato.png"></div>
-        <div class="name">Cristiano A. Barbosa<span>Data Science & IA Student</span></div>
-        <div class="goal">ETL Pipeline: Google Analytics API → Python → JSON → Portfolio Web</div>
+        <div class="avatar-wrapper">
+            <div class="avatar-ring"></div>
+            <div class="avatar"><img src="https://github.com/Alvenato.png" alt="Cristiano A. Barbosa"></div>
+        </div>
+        <div class="name">Cristiano A. Barbosa<span>Cientista de Dados · IA</span></div>
+        <div style="display:flex; gap:6px;">
+            <span style="font-size:0.6rem; border:1px solid var(--accent); padding:2px 5px; color:var(--accent); border-radius:3px;">PYTHON</span>
+            <span style="font-size:0.6rem; border:1px solid var(--accent3); padding:2px 5px; color:var(--accent3); border-radius:3px;">SQL</span>
+        </div>
     </div>
 
     <div class="right">
-        <div class="charts-grid">
-            <div class="geo-widget">
-                <span class="chart-title"><i class="fas fa-globe-americas"></i> Localização dos Acessos (Top Cidades)</span>
-                <div id="city-container" class="city-list">
-                    <div class="city-item">Carregando dados globais...</div>
-                </div>
-            </div>
+        <div class="charts-container">
+            <div class="chart-widget"><span class="chart-title">Acessos/7d</span><div class="bar-chart" id="histograma"></div></div>
+            <div class="chart-widget"><span class="chart-title">Usuários</span><div class="counter-val" id="total-users">0</div></div>
+            <div class="chart-widget"><span class="chart-title">Status</span><div style="font-size:0.6rem; color:var(--accent3); font-family:'Space Mono';">● LIVE DATA</div></div>
+        </div>
 
-            <div class="chart-mini">
-                <span class="chart-title">Acessos/Dia</span>
-                <div class="bar-chart" id="histograma"></div>
-            </div>
-
-            <div class="chart-mini">
-                <span class="chart-title">Total Usuários</span>
-                <div class="counter" id="total-users">0</div>
+        <div class="geo-full-widget">
+            <span class="chart-title"><i class="fas fa-map-marker-alt"></i> Top Geo-Locations</span>
+            <div id="city-list">
+                <div style="font-size:0.7rem; color:var(--muted); font-family:'Space Mono';">Aguardando coordenadas...</div>
             </div>
         </div>
+
+        <div class="goal">▶ <b>Pipeline</b>: GA4 API → Python → JSON → Portfolio</div>
     </div>
 </div>
 
@@ -130,37 +181,36 @@
             const res = await fetch('analytics_data.json');
             const data = await res.json();
 
-            // 1. Processar Cidades (Agrupamento)
-            const cityMap = {};
-            data.forEach(d => {
-                cityMap[d.city] = (cityMap[d.city] || 0) + d.users;
+            // 1. Histograma
+            const recent = data.slice(-7);
+            const maxVal = Math.max(...recent.map(d => d.users), 1);
+            const hist = document.getElementById('histograma');
+            hist.innerHTML = '';
+            recent.forEach(d => {
+                hist.innerHTML += `<div class="bar" style="height:${(d.users/maxVal)*100}%" title="${d.date}"></div>`;
             });
-            const sortedCities = Object.entries(cityMap).sort((a,b) => b[1] - a[1]).slice(0, 3);
+
+            // 2. Total
+            document.getElementById('total-users').innerText = data.reduce((s,d) => s + d.users, 0);
+
+            // 3. Geolocalização (Agrupar cidades)
+            const cityMap = {};
+            data.forEach(d => { if(d.city) cityMap[d.city] = (cityMap[d.city] || 0) + d.users; });
+            const sorted = Object.entries(cityMap).sort((a,b) => b[1] - a[1]).slice(0, 2);
             
-            const cityContainer = document.getElementById('city-container');
-            cityContainer.innerHTML = '';
-            sortedCities.forEach(([name, count]) => {
-                const percentage = (count / data.reduce((a,b) => a + b.users, 0)) * 100;
-                cityContainer.innerHTML += `
-                    <div style="margin-bottom: 10px">
-                        <div class="city-item"><span>${name}</span><span>${count} users</span></div>
-                        <div class="city-bar" style="width: ${percentage}%"></div>
-                    </div>
+            const cityList = document.getElementById('city-list');
+            cityList.innerHTML = '';
+            const totalUsers = data.reduce((s,d) => s + d.users, 0);
+
+            sorted.forEach(([city, count]) => {
+                const perc = (count / totalUsers) * 100;
+                cityList.innerHTML += `
+                    <div class="city-item"><span>${city}</span><span>${count} users</span></div>
+                    <div class="city-bar-bg"><div class="city-bar-fill" style="width:${perc}%"></div></div>
                 `;
             });
 
-            // 2. Histograma
-            const recent = data.slice(-8);
-            const maxVal = Math.max(...recent.map(d => d.users), 1);
-            const hist = document.getElementById('histograma');
-            recent.forEach(d => {
-                hist.innerHTML += `<div class="bar" style="height:${(d.users/maxVal)*100}%"></div>`;
-            });
-
-            // 3. Total
-            document.getElementById('total-users').innerText = data.reduce((s,d) => s + d.users, 0);
-
-        } catch(e) { console.log("Erro ao carregar mapa."); }
+        } catch(e) { console.log("Carregando..."); }
     }
     updateDash();
 </script>
