@@ -23,9 +23,9 @@
             --bg: #03070a;
             --surface: #0d1620;
             --surface2: #111d2c;
-            --accent: #00f2ff;   /* Cyan */
-            --accent2: #9d76ff;  /* Violeta */
-            --accent3: #00ffa2;  /* Verde Neon */
+            --accent: #00f2ff;
+            --accent2: #9d76ff;
+            --accent3: #00ffa2;
             --text: #e8f4fd;
             --muted: #6b8fa8;
             --border: rgba(0, 242, 255, 0.15);
@@ -39,25 +39,14 @@
             font-family: 'Syne', sans-serif;
             color: var(--text);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-            position: relative;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
             padding: 100px 20px 40px 20px;
         }
 
         body::before {
-            content: '';
-            position: fixed; inset: 0;
-            background-image:
-                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: gridMove 20s linear infinite;
-            pointer-events: none;
-            z-index: 0;
+            content: ''; position: fixed; inset: 0;
+            background-image: linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px; animation: gridMove 20s linear infinite; pointer-events: none; z-index: 0;
         }
 
         @keyframes gridMove { 0% { transform: translateY(0); } 100% { transform: translateY(40px); } }
@@ -103,7 +92,7 @@
         .skill-violet { color: var(--accent2); border-color: var(--accent2); }
         .skill-green { color: var(--accent3); border-color: var(--accent3); }
 
-        .right { padding: 40px; display: flex; flex-direction: column; gap: 20px; max-height: 800px; overflow-y: auto; }
+        .right { padding: 40px; display: flex; flex-direction: column; gap: 20px; }
         .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
         .metric-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 18px; }
         
@@ -112,11 +101,7 @@
 
         .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 45px; gap: 4px; }
         .bar { flex: 1; background: var(--accent); border-radius: 2px; transition: 0.3s; }
-        .bar:hover { background: var(--accent2); }
 
-        .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent3)); height: 100%; border-radius: 4px; }
-
-        /* Estilo Tooltip */
         .google-visualization-tooltip {
             border: 1px solid var(--accent) !important;
             background-color: var(--surface2) !important;
@@ -181,13 +166,13 @@
                 <span class="label">Tendência (7d)</span>
                 <div class="bar-chart" id="histograma"></div>
             </div>
-            <div class="metric-card" style="grid-column: span 3; min-height: 220px;">
+            <div class="metric-card" style="grid-column: span 3; min-height: 200px;">
                 <span class="label">Distribuição Global (Heatmap)</span>
-                <div id="regions_div" style="height: 180px;"></div>
+                <div id="regions_div" style="height: 160px;"></div>
             </div>
-            <div class="metric-card" style="grid-column: span 3;">
-                <span class="label">Todas as Localidades</span>
-                <div id="city-ranking"></div>
+            <div class="metric-card" style="grid-column: span 3; min-height: 200px;">
+                <span class="label">Cidades Ativas (Marcadores)</span>
+                <div id="city_map_div" style="height: 160px;"></div>
             </div>
         </div>
     </div>
@@ -200,83 +185,63 @@ async function updateDashboard() {
     try {
         const response = await fetch('analytics_data.json?t=' + Date.now());
         const data = await response.json();
-        
         if (!data || data.length === 0) return;
 
-        const totalUsers = data.reduce((sum, d) => sum + (d.users || 0), 0);
-        document.getElementById('total-users').innerText = totalUsers;
+        document.getElementById('total-users').innerText = data.reduce((sum, d) => sum + (d.users || 0), 0);
 
-        // Histograma de Tendência
+        // Tendência
         const dateMap = {};
-        data.forEach(d => {
-            const date = d.date.toString().slice(-4);
-            dateMap[date] = (dateMap[date] || 0) + d.users;
-        });
+        data.forEach(d => { const date = d.date.toString().slice(-4); dateMap[date] = (dateMap[date] || 0) + d.users; });
         const last7 = Object.entries(dateMap).slice(-7);
         const maxUsers = Math.max(...last7.map(e => e[1]), 1);
         document.getElementById('histograma').innerHTML = last7.map(([date, count]) => 
             `<div class="bar" style="height:${(count/maxUsers)*100}%" title="${date}: ${count} usuários"></div>`
         ).join('');
 
-        // Lista Completa de Localidades
-        const cityMap = {};
-        data.forEach(d => {
-            const city = d.city || "Desconhecido";
-            cityMap[city] = (cityMap[city] || 0) + d.users;
-        });
-        const allCities = Object.entries(cityMap).sort((a,b) => b[1]-a[1]);
-        document.getElementById('city-ranking').innerHTML = allCities.map(([name, count]) => `
-            <div style="margin-bottom:12px;">
-                <div style="display:flex; justify-content:space-between; font-size:0.65rem; color:var(--muted); margin-bottom:4px; font-family:'Space Mono'">
-                    <span>${name}</span><span>${count} (${Math.round((count/totalUsers)*100)}%)</span>
-                </div>
-                <div style="background:rgba(255,255,255,0.05); height:6px; border-radius:3px; overflow:hidden;">
-                    <div class="progress-fill" style="width:${(count/totalUsers)*100}%;"></div>
-                </div>
-            </div>
-        `).join('');
-
         google.charts.setOnLoadCallback(() => {
             drawPie(data);
-            drawMap(data);
+            drawCountryMap(data);
+            drawCityMap(data);
         });
-
-    } catch (e) { console.error("Erro no fetch:", e); }
+    } catch (e) { console.error(e); }
 }
 
 function drawPie(data) {
     const devices = { Desktop: 0, Mobile: 0 };
-    data.forEach(d => {
-        if (d.device.toLowerCase().includes('mobile')) devices.Mobile += d.users;
-        else devices.Desktop += d.users;
-    });
-
+    data.forEach(d => { if (d.device.toLowerCase().includes('mobile')) devices.Mobile += d.users; else devices.Desktop += d.users; });
     const options = {
-        backgroundColor: 'transparent',
-        colors: ['#00f2ff', '#9d76ff'],
+        backgroundColor: 'transparent', colors: ['#00f2ff', '#9d76ff'],
         pieHole: 0.5, legend: 'none', pieSliceBorderColor: 'transparent',
         tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 10 } },
         chartArea: {width: '95%', height: '95%'}
     };
-    const pieData = google.visualization.arrayToDataTable([['Device', 'Users'],['Desktop', devices.Desktop],['Mobile', devices.Mobile]]);
-    new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(pieData, options);
+    new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(google.visualization.arrayToDataTable([['Device', 'Users'],['Desktop', devices.Desktop],['Mobile', devices.Mobile]]), options);
 }
 
-function drawMap(data) {
+function drawCountryMap(data) {
     const countryMap = {};
     data.forEach(d => countryMap[d.country] = (countryMap[d.country] || 0) + d.users);
     const mapArray = [['Country', 'Users']];
     Object.entries(countryMap).forEach(e => mapArray.push(e));
-
     const options = {
-        backgroundColor: 'transparent',
-        datalessRegionColor: '#111d2c',
-        displayMode: 'regions',
-        colorAxis: {colors: ['#0d1620', '#00f2ff']}, // Mapa de calor: do fundo escuro para o Cyan
-        legend: 'none',
+        backgroundColor: 'transparent', datalessRegionColor: '#111d2c',
+        colorAxis: {colors: ['#0d1620', '#00f2ff']}, legend: 'none',
         tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 10 } }
     };
     new google.visualization.GeoChart(document.getElementById('regions_div')).draw(google.visualization.arrayToDataTable(mapArray), options);
+}
+
+function drawCityMap(data) {
+    const cityData = [['City', 'Users']];
+    data.forEach(d => cityData.push([d.city, d.users]));
+    const options = {
+        backgroundColor: 'transparent', datalessRegionColor: '#111d2c',
+        displayMode: 'markers',
+        colorAxis: {colors: ['#9d76ff', '#00ffa2']}, // De Violeta para Verde Neon
+        legend: 'none',
+        tooltip: { textStyle: { fontName: 'Space Mono', fontSize: 10 } }
+    };
+    new google.visualization.GeoChart(document.getElementById('city_map_div')).draw(google.visualization.arrayToDataTable(cityData), options);
 }
 
 updateDashboard();
