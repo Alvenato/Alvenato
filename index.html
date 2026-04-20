@@ -1,193 +1,115 @@
+<style>
+    /* RESET E CORES DO DASHBOARD */
+    :root {
+        --accent: #00ff00; /* Verde Neon */
+        --accent3: #0088ff; /* Azul */
+        --bg-card: rgba(255, 255, 255, 0.05);
+        --text-dim: #888;
+    }
+
+    .right {
+        padding: 20px;
+        color: white;
+        font-family: 'Space Mono', monospace;
+    }
+
+    .charts-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .chart-widget {
+        background: var(--bg-card);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .chart-title {
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .counter-val {
+        font-size: 2rem;
+        color: var(--accent);
+        font-weight: bold;
+    }
+
+    /* BARRAS DE CIDADES */
+    .progress-container { margin-bottom: 12px; }
+    .progress-info { display: flex; justify-content: space-between; font-size: 0.6rem; margin-bottom: 4px; }
+    .progress-bar-bg { background: #222; height: 6px; width: 100%; border-radius: 3px; }
+    .progress-bar-fill { background: var(--accent); height: 100%; border-radius: 3px; }
+
+    /* HISTOGRAMA */
+    .bar-chart {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        height: 50px;
+    }
+    .bar { width: 10%; background: var(--accent3); border-radius: 2px 2px 0 0; }
+
+    .mini-data { font-size: 0.7rem; line-height: 1.6; }
+    
+    /* Layout para as cidades ocuparem mais espaço */
+    .full-row { grid-column: span 3; }
+
+    .goal {
+        margin-top: 20px;
+        font-size: 0.7rem;
+        border-top: 1px solid #333;
+        padding-top: 10px;
+    }
+</style>
+
 <div class="right">
-    <div class="code-block">
-        <div class="code-header">
-            <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
-        </div>
-        <div class="code-body">
-            <div><span class="kw">const</span> <span class="key">pipeline</span> = <span class="str">"GA4 → Python → GitHub"</span>;</div>
-            <div><span class="kw">const</span> <span class="key">status</span> = <span class="str">"Live Data Active"</span>;</div>
+    <div class="code-block" style="background: #111; padding: 10px; border-radius: 5px; border-left: 3px solid var(--accent); margin-bottom: 20px;">
+        <div style="color: var(--text-dim); font-size: 0.7rem;">
+            const pipeline = <span style="color: var(--accent)">"GA4 → Python → GitHub"</span>;<br>
+            const status = <span style="color: var(--accent)">"Live Data Active"</span>;
         </div>
     </div>
 
     <div class="charts-grid">
-        
         <div class="chart-widget">
-            <span class="chart-title"><i class="fas fa-users"></i> Usuários (30d)</span>
+            <span class="chart-title">USUÁRIOS (30D)</span>
             <div class="counter-val" id="total-users">0</div>
         </div>
 
         <div class="chart-widget">
-            <span class="chart-title"><i class="fas fa-laptop"></i> Tech Stack</span>
-            <div id="device-info" class="mini-data">Carregando...</div>
+            <span class="chart-title">TECH STACK</span>
+            <div id="device-info" class="mini-data"></div>
         </div>
 
         <div class="chart-widget">
-            <span class="chart-title"><i class="fas fa-chart-line"></i> Volume Diário</span>
+            <span class="chart-title">VOLUME DIÁRIO</span>
             <div class="bar-chart" id="histograma"></div>
         </div>
 
-        <div class="chart-widget row-span-2">
-            <span class="chart-title"><i class="fas fa-map-marker-alt"></i> Top Localidades</span>
-            <div id="city-ranking" style="margin-top:10px;"></div>
+        <div class="chart-widget full-row">
+            <span class="chart-title">TOP LOCALIDADES</span>
+            <div id="city-ranking"></div>
         </div>
 
         <div class="chart-widget">
-            <span class="chart-title"><i class="fas fa-file-alt"></i> Top Content</span>
+            <span class="chart-title">TOP CONTENT</span>
             <div id="top-pages" class="mini-data"></div>
         </div>
 
         <div class="chart-widget">
-            <span class="chart-title"><i class="fas fa-globe"></i> Alcance Global</span>
+            <span class="chart-title">ALCANCE GLOBAL</span>
             <div id="country-stats" class="mini-data"></div>
         </div>
     </div>
 
     <div class="goal">
-        ▶ <b>Data Pipeline Status:</b> <span style="color: #00ff00;">Operational</span> | Atualizado automaticamente via GitHub Bot.
+        <span style="color: var(--accent)">▶</span> <b>Data Pipeline Status:</b> <span style="color: #00ff00;">Operational</span> | Atualizado automaticamente.
     </div>
 </div>
-
-<style>
-    /* Estilos para o Grid de 6 Áreas */
-    .charts-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-        margin-top: 15px;
-    }
-
-    .chart-widget {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 12px;
-        border-radius: 8px;
-        transition: 0.3s;
-    }
-
-    .chart-widget:hover {
-        background: rgba(255, 255, 255, 0.06);
-        border-color: var(--accent);
-    }
-
-    .chart-title {
-        font-size: 0.65rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #888;
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    .counter-val {
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: var(--accent);
-        font-family: 'Space Mono', monospace;
-    }
-
-    .mini-data {
-        font-family: 'Space Mono', monospace;
-        font-size: 0.7rem;
-        color: #ccc;
-        line-height: 1.4;
-    }
-
-    .bar-chart {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        height: 40px;
-        padding-top: 5px;
-    }
-
-    .bar {
-        width: 12%;
-        background: var(--accent3);
-        border-radius: 2px 2px 0 0;
-        min-height: 2px;
-    }
-
-    /* Estilos das barras de progresso de cidades */
-    .progress-container { margin-bottom: 10px; }
-    .progress-info { display: flex; justify-content: space-between; font-size: 0.6rem; margin-bottom: 3px; color: #aaa; }
-    .progress-bar-bg { background: #222; height: 4px; width: 100%; border-radius: 2px; }
-    .progress-bar-fill { background: var(--accent); height: 100%; border-radius: 2px; transition: width 1s ease-in-out; }
-
-    /* Responsividade */
-    @media (max-width: 768px) {
-        .charts-grid { grid-template-columns: 1fr 1fr; }
-        .row-span-2 { grid-column: span 2; }
-    }
-</style>
-
-<script>
-async function updateDashboard() {
-    try {
-        const res = await fetch('analytics_data.json?t=' + Date.now());
-        const data = await res.json();
-        
-        if (!data || data.length === 0) return;
-
-        const totalUsers = data.reduce((sum, d) => sum + d.users, 0);
-
-        // 1. KPI Usuários
-        document.getElementById('total-users').innerText = totalUsers;
-
-        // 2. Dispositivos (Desktop vs Mobile)
-        const devices = { desktop: 0, mobile: 0 };
-        data.forEach(d => {
-            const type = d.device.toLowerCase();
-            if(devices.hasOwnProperty(type)) devices[type] += d.users;
-        });
-        document.getElementById('device-info').innerHTML = `
-            <span style="color:var(--accent)">DESKTOP:</span> ${Math.round(devices.desktop/totalUsers*100 || 0)}%<br>
-            <span style="color:var(--accent3)">MOBILE:</span> ${Math.round(devices.mobile/totalUsers*100 || 0)}%
-        `;
-
-        // 3. Histograma (Últimos 7 períodos com dados)
-        const dateMap = {};
-        data.forEach(d => { dateMap[d.date] = (dateMap[d.date] || 0) + d.users; });
-        const lastDays = Object.values(dateMap).slice(-7);
-        const maxVal = Math.max(...lastDays, 1);
-        document.getElementById('histograma').innerHTML = lastDays.map(v => 
-            `<div class="bar" style="height:${(v/maxVal)*100}%" title="${v} users"></div>`
-        ).join('');
-
-        // 4. Ranking de Cidades (Top 4)
-        const cityMap = {};
-        data.forEach(d => { 
-            const label = `${d.city}, ${d.country}`;
-            cityMap[label] = (cityMap[label] || 0) + d.users; 
-        });
-        const topCities = Object.entries(cityMap).sort((a,b) => b[1]-a[1]).slice(0, 4);
-        document.getElementById('city-ranking').innerHTML = topCities.map(([loc, count]) => `
-            <div class="progress-container">
-                <div class="progress-info"><span>${loc}</span><span>${count}</span></div>
-                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${(count/totalUsers)*100}%"></div></div>
-            </div>
-        `).join('');
-
-        // 5. Páginas Mais Vistas
-        const pageMap = {};
-        data.forEach(d => { pageMap[d.page] = (pageMap[d.page] || 0) + d.users; });
-        const topPage = Object.entries(pageMap).sort((a,b) => b[1]-a[1])[0];
-        document.getElementById('top-pages').innerHTML = `
-            Mais acessada:<br>
-            <span style="color:white; font-size:0.6rem;">${topPage ? topPage[0].substring(0,25) + '...' : 'N/A'}</span>
-        `;
-
-        // 6. Alcance por Países
-        const countries = new Set(data.map(d => d.country));
-        document.getElementById('country-stats').innerHTML = `
-            <span style="font-size:1.5rem; color:white;">${countries.size}</span><br>
-            Países alcançados
-        `;
-
-    } catch (e) {
-        console.error("Erro no fetch dos dados:", e);
-    }
-}
-
-// Executa ao carregar
-updateDashboard();
-</script>
