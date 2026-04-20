@@ -1,115 +1,408 @@
-<style>
-    /* RESET E CORES DO DASHBOARD */
-    :root {
-        --accent: #00ff00; /* Verde Neon */
-        --accent3: #0088ff; /* Azul */
-        --bg-card: rgba(255, 255, 255, 0.05);
-        --text-dim: #888;
-    }
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMEQZZ86BY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MMEQZZ86BY');
+    </script>
 
-    .right {
-        padding: 20px;
-        color: white;
-        font-family: 'Space Mono', monospace;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristiano A. Barbosa — Data Science & IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    .charts-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-        margin-top: 20px;
-    }
+    <style>
+        :root {
+            --bg: #050a0f;
+            --surface: #0d1620;
+            --surface2: #111d2c;
+            --accent: #00d4ff;
+            --accent2: #7b5cfa;
+            --accent3: #00ffaa;
+            --text: #e8f4fd;
+            --muted: #6b8fa8;
+            --border: rgba(0,212,255,0.15);
+            --nav-bg: rgba(5, 10, 15, 0.8);
+        }
 
-    .chart-widget {
-        background: var(--bg-card);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 15px;
-        border-radius: 8px;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    .chart-title {
-        font-size: 0.6rem;
-        text-transform: uppercase;
-        color: var(--text-dim);
-        display: block;
-        margin-bottom: 10px;
-    }
+        body {
+            background: var(--bg);
+            font-family: 'Syne', sans-serif;
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 100px 20px 40px 20px;
+        }
 
-    .counter-val {
-        font-size: 2rem;
-        color: var(--accent);
-        font-weight: bold;
-    }
+        /* Fundo Animado */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+        }
 
-    /* BARRAS DE CIDADES */
-    .progress-container { margin-bottom: 12px; }
-    .progress-info { display: flex; justify-content: space-between; font-size: 0.6rem; margin-bottom: 4px; }
-    .progress-bar-bg { background: #222; height: 6px; width: 100%; border-radius: 3px; }
-    .progress-bar-fill { background: var(--accent); height: 100%; border-radius: 3px; }
+        @keyframes gridMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(40px); }
+        }
 
-    /* HISTOGRAMA */
-    .bar-chart {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        height: 50px;
-    }
-    .bar { width: 10%; background: var(--accent3); border-radius: 2px 2px 0 0; }
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.18;
+            animation: orbFloat 8s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+        .orb-1 { width: 400px; height: 400px; background: var(--accent); top: -100px; left: -100px; }
+        .orb-2 { width: 350px; height: 350px; background: var(--accent2); bottom: -80px; right: -80px; }
 
-    .mini-data { font-size: 0.7rem; line-height: 1.6; }
-    
-    /* Layout para as cidades ocuparem mais espaço */
-    .full-row { grid-column: span 3; }
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, 20px) scale(1.1); }
+        }
 
-    .goal {
-        margin-top: 20px;
-        font-size: 0.7rem;
-        border-top: 1px solid #333;
-        padding-top: 10px;
-    }
-</style>
+        /* --- MENU --- */
+        .navbar {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 100px;
+            padding: 10px 25px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
 
-<div class="right">
-    <div class="code-block" style="background: #111; padding: 10px; border-radius: 5px; border-left: 3px solid var(--accent); margin-bottom: 20px;">
-        <div style="color: var(--text-dim); font-size: 0.7rem;">
-            const pipeline = <span style="color: var(--accent)">"GA4 → Python → GitHub"</span>;<br>
-            const status = <span style="color: var(--accent)">"Live Data Active"</span>;
+        .nav-item {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-item:hover { color: var(--accent); transform: translateY(-2px); }
+
+        .nav-item.sobre-btn {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 1px solid rgba(255,255,255,0.1);
+            padding-left: 15px;
+        }
+
+        /* Card Layout Principal */
+        .card {
+            position: relative;
+            width: 900px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            animation: cardReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+            z-index: 10;
+        }
+
+        @keyframes cardReveal {
+            from { opacity: 0; transform: translateY(32px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .left {
+            padding: 60px 30px;
+            background: var(--surface2);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .avatar-wrapper { position: relative; width: 140px; height: 140px; }
+        .avatar-ring {
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent), var(--accent2), var(--accent3), var(--accent));
+            animation: spin 4s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .avatar {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--surface2);
+            z-index: 1;
+        }
+        .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+        .name-container { text-align: center; }
+        .name { font-size: 1.4rem; font-weight: 800; line-height: 1.2; }
+        .sub-name { 
+            display: block; 
+            font-size: 0.7rem; 
+            color: var(--accent); 
+            font-family: 'Space Mono', monospace; 
+            text-transform: uppercase; 
+            margin-top: 8px;
+            letter-spacing: 2px;
+        }
+
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 15px; }
+        .skill-tag {
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            font-family: 'Space Mono', monospace;
+            border: 1px solid rgba(0,212,255,0.2);
+            background: rgba(0,212,255,0.05);
+            color: var(--accent);
+        }
+
+        /* --- DASHBOARD LADO DIREITO --- */
+        .right { padding: 40px; display: flex; flex-direction: column; gap: 25px; }
+
+        .code-header-box {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px;
+            border-left: 4px solid var(--accent3);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s;
+        }
+        .metric-card:hover { background: rgba(0, 212, 255, 0.05); border-color: var(--accent); }
+
+        .label { font-size: 0.55rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-family: 'Space Mono', monospace; }
+        .value { font-size: 2rem; font-weight: 800; color: var(--accent3); font-family: 'Space Mono', monospace; }
+        .sub-value { font-size: 0.7rem; color: var(--text); line-height: 1.5; }
+
+        /* Histograma */
+        .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 45px; margin-top: 5px; }
+        .bar { width: 10%; background: var(--accent); border-radius: 2px 2px 0 0; min-height: 2px; }
+
+        /* Ranking de Cidades */
+        .city-row { margin-bottom: 12px; }
+        .city-meta { display: flex; justify-content: space-between; font-size: 0.65rem; margin-bottom: 5px; }
+        .progress-bg { background: rgba(0,0,0,0.3); height: 6px; border-radius: 3px; width: 100%; overflow: hidden; }
+        .progress-fill { background: var(--accent); height: 100%; transition: width 1s ease-out; }
+
+        .footer-status {
+            margin-top: 10px;
+            padding: 12px;
+            background: rgba(0, 255, 170, 0.05);
+            border-radius: 10px;
+            font-size: 0.7rem;
+            color: var(--accent3);
+            font-family: 'Space Mono', monospace;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .card { grid-template-columns: 1fr; width: 100%; }
+            .left { border-right: none; border-bottom: 1px solid var(--border); }
+            .dashboard-grid { grid-template-columns: 1fr 1fr; }
+            .full-row { grid-column: span 2; }
+            .navbar { width: 90%; justify-content: space-around; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="https://www.linkedin.com/in/cristianoalves-ca/" target="_blank" class="nav-item"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/Alvenato" target="_blank" class="nav-item"><i class="fab fa-github"></i></a>
+    <a href="https://wa.me/5561981830780" target="_blank" class="nav-item"><i class="fab fa-whatsapp"></i></a>
+    <a href="mailto:analytics.barbosa@gmail.com" class="nav-item"><i class="fas fa-envelope"></i></a>
+    <a href="https://alvenato.github.io/curriculo.html" target="_blank" class="nav-item sobre-btn">Sobre</a>
+</nav>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="card">
+    <div class="left">
+        <div class="avatar-wrapper">
+            <div class="avatar-ring"></div>
+            <div class="avatar">
+                <img src="https://github.com/Alvenato.png" alt="Cristiano A. Barbosa">
+            </div>
+        </div>
+
+        <div class="name-container">
+            <h1 class="name">Cristiano A. Barbosa</h1>
+            <span class="sub-name">Cientista de Dados & IA</span>
+        </div>
+
+        <div class="skills-grid">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">Machine Learning</span>
         </div>
     </div>
 
-    <div class="charts-grid">
-        <div class="chart-widget">
-            <span class="chart-title">USUÁRIOS (30D)</span>
-            <div class="counter-val" id="total-users">0</div>
+    <div class="right">
+        <div class="code-header-box">
+            <span style="color: #ff7b72;">const</span> <span style="color: #79c0ff;">pipeline</span> = <span style="color: #a5d6ff;">"GA4 → Python → GitHub Actions"</span>;<br>
+            <span style="color: #ff7b72;">const</span> <span style="color: #79c0ff;">status</span> = <span style="color: #a5d6ff;">"Live Operational"</span>;
         </div>
 
-        <div class="chart-widget">
-            <span class="chart-title">TECH STACK</span>
-            <div id="device-info" class="mini-data"></div>
+        <div class="dashboard-grid">
+            <div class="metric-card">
+                <span class="label">Visitantes (30D)</span>
+                <div class="value" id="total-users">0</div>
+            </div>
+
+            <div class="metric-card">
+                <span class="label">Tech Stack</span>
+                <div id="device-info" class="sub-value">Carregando...</div>
+            </div>
+
+            <div class="metric-card">
+                <span class="label">Trend (7D)</span>
+                <div class="bar-chart" id="histograma"></div>
+            </div>
+
+            <div class="metric-card" style="grid-column: span 3;">
+                <span class="label">Top Localidades Detectadas</span>
+                <div id="city-ranking"></div>
+            </div>
+
+            <div class="metric-card" style="grid-column: span 2;">
+                <span class="label">Conteúdo Mais Acessado</span>
+                <div id="top-pages" class="sub-value">...</div>
+            </div>
+
+            <div class="metric-card">
+                <span class="label">Países</span>
+                <div id="country-stats" class="value" style="font-size: 1.5rem;">0</div>
+            </div>
         </div>
 
-        <div class="chart-widget">
-            <span class="chart-title">VOLUME DIÁRIO</span>
-            <div class="bar-chart" id="histograma"></div>
+        <div class="footer-status">
+            ▶ <b>Real-Time Insight:</b> Dados processados em Python integrados via JSON.
         </div>
-
-        <div class="chart-widget full-row">
-            <span class="chart-title">TOP LOCALIDADES</span>
-            <div id="city-ranking"></div>
-        </div>
-
-        <div class="chart-widget">
-            <span class="chart-title">TOP CONTENT</span>
-            <div id="top-pages" class="mini-data"></div>
-        </div>
-
-        <div class="chart-widget">
-            <span class="chart-title">ALCANCE GLOBAL</span>
-            <div id="country-stats" class="mini-data"></div>
-        </div>
-    </div>
-
-    <div class="goal">
-        <span style="color: var(--accent)">▶</span> <b>Data Pipeline Status:</b> <span style="color: #00ff00;">Operational</span> | Atualizado automaticamente.
     </div>
 </div>
+
+<script>
+async function updateDashboard() {
+    try {
+        const response = await fetch('analytics_data.json?t=' + Date.now());
+        const data = await response.json();
+        
+        if (!data || data.length === 0) return;
+
+        const totalUsers = data.reduce((sum, d) => sum + d.users, 0);
+
+        // 1. Usuários
+        document.getElementById('total-users').innerText = totalUsers;
+
+        // 2. Tech Stack
+        const devices = { desktop: 0, mobile: 0 };
+        data.forEach(d => {
+            const type = d.device.toLowerCase();
+            if(devices.hasOwnProperty(type)) devices[type] += d.users;
+        });
+        document.getElementById('device-info').innerHTML = `
+            💻 Desktop: ${Math.round(devices.desktop/totalUsers*100 || 0)}%<br>
+            📱 Mobile: ${Math.round(devices.mobile/totalUsers*100 || 0)}%
+        `;
+
+        // 3. Histograma
+        const dateMap = {};
+        data.forEach(d => { dateMap[d.date] = (dateMap[d.date] || 0) + d.users; });
+        const values = Object.values(dateMap).slice(-7);
+        const max = Math.max(...values, 1);
+        document.getElementById('histograma').innerHTML = values.map(v => 
+            `<div class="bar" style="height:${(v/max)*100}%" title="${v} users"></div>`
+        ).join('');
+
+        // 4. Cidades
+        const cities = {};
+        data.forEach(d => { 
+            const loc = `${d.city}, ${d.country}`;
+            cities[loc] = (cities[loc] || 0) + d.users; 
+        });
+        const topCities = Object.entries(cities).sort((a,b) => b[1]-a[1]).slice(0, 3);
+        document.getElementById('city-ranking').innerHTML = topCities.map(([loc, count]) => `
+            <div class="city-row">
+                <div class="city-meta"><span>${loc}</span><span>${count} users</span></div>
+                <div class="progress-bg"><div class="progress-fill" style="width:${(count/totalUsers)*100}%"></div></div>
+            </div>
+        `).join('');
+
+        // 5. Top Page
+        const pages = {};
+        data.forEach(d => { pages[d.page] = (pages[d.page] || 0) + d.users; });
+        const topPage = Object.entries(pages).sort((a,b) => b[1]-a[1])[0];
+        document.getElementById('top-pages').innerHTML = topPage 
+            ? `Página Principal:<br><span style="color:#00ffaa; font-size:0.6rem;">${topPage[0]}</span>` 
+            : 'N/A';
+
+        // 6. Países
+        const countries = new Set(data.map(d => d.country));
+        document.getElementById('country-stats').innerText = countries.size;
+
+    } catch (e) {
+        console.error("Erro no fetch:", e);
+    }
+}
+updateDashboard();
+</script>
+
+</body>
+</html>
