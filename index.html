@@ -201,7 +201,8 @@ async function updateDashboard() {
 }
 
 function drawCharts(data) {
-    const tooltipStyle = { fontName: 'Space Mono', fontSize: 11 };
+    // Definição global do estilo do tooltip para todos os gráficos
+    const tooltipStyle = { fontName: 'Arial', fontSize: 12 };
 
     // 1. DISPOSITIVOS
     let dsk = 0, mob = 0;
@@ -212,10 +213,17 @@ function drawCharts(data) {
     });
     new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(
         google.visualization.arrayToDataTable([['Dispositivo', 'Usuários'], ['Desktop', dsk], ['Mobile', mob]]),
-        { backgroundColor: 'transparent', colors: [NEON_BLUE, NEON_PURPLE], pieHole: 0.6, legend: 'none', chartArea: {width: '100%', height: '100%'} }
+        { 
+            backgroundColor: 'transparent', 
+            colors: [NEON_BLUE, NEON_PURPLE], 
+            pieHole: 0.6, 
+            legend: 'none', 
+            chartArea: {width: '100%', height: '100%'},
+            tooltip: { textStyle: tooltipStyle } 
+        }
     );
 
-    // 2. TENDÊNCIA (AGREGADA POR 30 DIAS) - COR ALTERADA PARA ROXO
+    // 2. TENDÊNCIA (AGREGADA POR 30 DIAS)
     const daily = {};
     for (let i = 29; i >= 0; i--) {
         const d = new Date(); d.setDate(d.getDate() - i);
@@ -236,7 +244,8 @@ function drawCharts(data) {
             areaOpacity: 0.25, lineWidth: 2,
             hAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
             vAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
-            chartArea: {width: '100%', height: '100%'}
+            chartArea: {width: '100%', height: '100%'},
+            tooltip: { textStyle: tooltipStyle }
         }
     );
 
