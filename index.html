@@ -71,9 +71,10 @@
         .skill-orange { color: var(--neon-orange); border-color: var(--neon-orange); }
         .skill-green { color: var(--neon-green); border-color: var(--neon-green); }
 
-        .status-left { margin-top: auto; display: flex; align-items: flex-start; gap: 10px; font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--neon-green); text-transform: uppercase; width: 100%; }
-        .pulse-dot { width: 6px; height: 6px; background-color: var(--neon-green); border-radius: 50%; box-shadow: 0 0 10px var(--neon-green); animation: pulse 1.5s infinite; margin-top: 4px; flex-shrink: 0; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        /* Estilo do Status Atualizado */
+        .status-left { margin-top: auto; display: flex; align-items: center; gap: 10px; font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--neon-green); text-transform: uppercase; width: 100%; }
+        .pulse-dot { width: 8px; height: 8px; background-color: var(--neon-green); border-radius: 50%; box-shadow: 0 0 10px var(--neon-green); animation: pulse 1.5s infinite; flex-shrink: 0; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
 
         .right { padding: 40px; display: flex; flex-direction: column; gap: 15px; }
         .data-source-info { background: rgba(0, 0, 0, 0.3); border: 1px dashed var(--neon-purple); border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 12px; }
@@ -125,12 +126,10 @@
                 <span class="skill-tag skill-orange">Figma</span>
             </div>
         </div>
+        
         <div class="status-left">
             <div class="pulse-dot"></div>
-            <div>
-                <div id="last-update">Sincronizando...</div>
-                <div id="next-update" style="color: var(--muted); margin-top: 4px;">--</div>
-            </div>
+            <span>Status: Esse painel é atualizado de hora em hora.</span>
         </div>
     </div>
 
@@ -179,16 +178,6 @@ async function updateDashboard() {
         const data = await response.json();
         if (!data || !Array.isArray(data)) return;
 
-        // --- CÁLCULO DE HORÁRIOS ---
-        const now = new Date();
-        const nextUpdate = new Date(now.getTime() + 60 * 60 * 1000); // Soma 1 hora
-
-        const formatTime = (date) => date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-
-        document.getElementById('last-update').innerText = `Atualizado: ${formatTime(now)}`;
-        document.getElementById('next-update').innerText = `Próxima: ${formatTime(nextUpdate)}`;
-        // ---------------------------
-
         const total = data.reduce((sum, d) => sum + (parseInt(d.users) || 0), 0);
         document.getElementById('total-users').innerText = total;
 
@@ -212,7 +201,6 @@ async function updateDashboard() {
         drawCharts(data);
     } catch (e) { 
         console.error("Erro ao carregar dashboard:", e);
-        document.getElementById('last-update').innerText = "Erro na sincronização";
     }
 }
 
