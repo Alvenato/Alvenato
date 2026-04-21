@@ -42,7 +42,7 @@
         @keyframes gridMove { 0% { transform: translateY(0); } 100% { transform: translateY(45px); } }
 
         .card {
-            position: relative; width: 950px; background: var(--surface); border: 1px solid var(--neon-blue); border-radius: 24px;
+            position: relative; width: 1000px; background: var(--surface); border: 1px solid var(--neon-blue); border-radius: 24px;
             display: grid; grid-template-columns: 320px 1fr; box-shadow: 0 0 40px rgba(0, 242, 255, 0.1); z-index: 10; overflow: hidden;
         }
 
@@ -80,21 +80,19 @@
         
         .metric-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 12px; padding: 15px; }
         .label { font-size: 0.55rem; color: var(--muted); text-transform: uppercase; font-family: 'Space Mono', monospace; display: block; margin-bottom: 8px; }
-        .value { font-size: 2.2rem; font-weight: 800; color: var(--neon-blue); font-family: 'Space Mono', monospace; text-shadow: 0 0 10px rgba(0, 242, 255, 0.3); }
+        .value { font-size: 2rem; font-weight: 800; color: var(--neon-blue); font-family: 'Space Mono', monospace; text-shadow: 0 0 10px rgba(0, 242, 255, 0.3); }
 
         #city-ranking { max-height: 180px; overflow-y: auto; padding-right: 5px; }
         #city-ranking::-webkit-scrollbar { width: 3px; }
         #city-ranking::-webkit-scrollbar-thumb { background: var(--neon-blue); }
 
-        /* GRID PRINCIPAL DO DASHBOARD */
-        .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .span-2 { grid-column: span 2; }
+        .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .col-2 { grid-template-columns: 1fr 1fr; }
 
-        @media (max-width: 900px) { 
+        @media (max-width: 1000px) { 
             .card { grid-template-columns: 1fr; width: 100%; } 
             .left { border-right: none; } 
             .dashboard-grid { grid-template-columns: 1fr; }
-            .span-2 { grid-column: span 1; }
         }
     </style>
 </head>
@@ -142,20 +140,26 @@
 
         <div class="dashboard-grid">
             <div class="metric-card">
-                <span class="label">Total Visitantes</span>
+                <span class="label">Visitantes</span>
                 <div class="value" id="total-users">--</div>
             </div>
             <div class="metric-card">
                 <span class="label">Dispositivos</span>
                 <div id="tech_stack_pie" style="height: 60px;"></div>
             </div>
+            <div class="metric-card">
+                <span class="label">Tendência (7d)</span>
+                <div id="trend_chart" style="height: 60px;"></div>
+            </div>
+        </div>
 
+        <div class="dashboard-grid" style="grid-template-columns: 1fr 1fr; margin-top: 12px;">
             <div class="metric-card">
                 <span class="label">Distribuição Geográfica</span>
                 <div id="regions_div" style="height: 180px;"></div>
             </div>
             <div class="metric-card">
-                <span class="label">Origem Local (Cidades)</span>
+                <span class="label">Origem Local</span>
                 <div id="city-ranking"></div>
             </div>
         </div>
@@ -212,20 +216,42 @@ function drawCharts(data) {
         { backgroundColor: 'transparent', colors: [NEON_BLUE, NEON_PURPLE], pieHole: 0.6, legend: 'none', chartArea: {width: '100%', height: '100%'} }
     );
 
-    // 2. MAPA
+    // 2. TENDÊNCIA (AGREGADA POR DIA)
+    const daily = {};
+    for (let i = 6; i >= 0; i--) {
+        const d = new Date(); d.setDate(d.getDate() - i);
+        daily[d.toISOString().split('T')[0]] = 0;
+    }
+    data.forEach(d => {
+        if (d.date) {
+            let key = d.date.toString();
+            if (key.length === 8) key = `${key.substring(0,4)}-${key.substring(4,6)}-${key.substring(6,8)}`;
+            if (daily.hasOwnProperty(key)) daily[key] += (parseInt(d.users) || 0);
+        }
+    });
+    const trendData = [['Dia', 'Usuários'], ...Object.entries(daily).map(([k, v]) => [k.split('-')[2]+'/'+k.split('-')[1], v])];
+    new google.visualization.AreaChart(document.getElementById('trend_chart')).draw(
+        google.visualization.arrayToDataTable(trendData),
+        {
+            backgroundColor: 'transparent', colors: [NEON_ORANGE], legend: 'none',
+            areaOpacity: 0.2, lineWidth: 2,
+            hAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
+            vAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
+            chartArea: {width: '100%', height: '100%'}
+        }
+    );
+
+    // 3. MAPA
     const geoMap = {};
     data.forEach(d => { 
         const country = d.country || "Brazil";
         geoMap[country] = (geoMap[country] || 0) + (parseInt(d.users) || 0); 
     });
-    
     new google.visualization.GeoChart(document.getElementById('regions_div')).draw(
         google.visualization.arrayToDataTable([['País', 'Usuários'], ...Object.entries(geoMap)]),
         { 
-            backgroundColor: 'transparent', 
-            datalessRegionColor: '#0d1620', 
-            colorAxis: {colors: ['#003344', NEON_BLUE]}, 
-            legend: 'none',
+            backgroundColor: 'transparent', datalessRegionColor: '#0d1620', 
+            colorAxis: {colors: ['#003344', NEON_BLUE]}, legend: 'none',
             tooltip: { textStyle: tooltipStyle }
         }
     );
