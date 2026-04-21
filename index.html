@@ -137,7 +137,7 @@
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
             <div class="metric-card"><span class="label">Total Visitantes</span><div class="value" id="total-users">--</div></div>
             <div class="metric-card"><span class="label">Dispositivos</span><div id="tech_stack_pie" style="height: 60px;"></div></div>
-            <div class="metric-card"><span class="label">Tendência (7d)</span><div id="tendencia_chart" style="height: 45px;"></div></div>
+            <div class="metric-card"><span class="label">Tendência (7d)</span><div id="tendencia_chart" style="height: 60px;"></div></div>
             <div class="metric-card" style="grid-column: span 3;"><span class="label">Distribuição Geográfica</span><div id="regions_div" style="height: 180px;"></div></div>
             <div class="metric-card" style="grid-column: span 3;"><span class="label">Origem Local</span><div id="city-ranking"></div></div>
         </div>
@@ -155,13 +155,15 @@ async function updateDashboard() {
         const data = await response.json();
         if (!data) return;
 
-        // Cálculo do total
         const total = data.reduce((sum, d) => sum + (parseInt(d.users) || 0), 0);
         document.getElementById('total-users').innerText = total;
 
-        // Ranking de Cidades
         const cities = {}; 
-        data.forEach(d => { cities[d.city] = (cities[d.city] || 0) + parseInt(d.users); });
+        data.forEach(d => { 
+            const cityName = d.city || "(not set)";
+            cities[cityName] = (cities[cityName] || 0) + parseInt(d.users); 
+        });
+
         document.getElementById('city-ranking').innerHTML = Object.entries(cities).sort((a,b)=>b[1]-a[1]).map(([n, c]) => `
             <div style="margin-bottom:10px;">
                 <div style="display:flex; justify-content:space-between; font-size:0.6rem; color:var(--muted); font-family:'Space Mono'"><span>${n}</span><span>${c}</span></div>
@@ -178,7 +180,7 @@ async function updateDashboard() {
 function drawCharts(data) {
     const tooltipStyle = { fontName: 'Space Mono', fontSize: 11 };
 
-    // 1. DISPOSITIVOS (PIZZA)
+    // 1. DISPOSITIVOS
     let dsk = 0, mob = 0;
     data.forEach(d => {
         if((d.device||'').toLowerCase().includes('desktop')) dsk += parseInt(d.users);
@@ -189,7 +191,7 @@ function drawCharts(data) {
         { backgroundColor: 'transparent', colors: [NEON_BLUE, NEON_PURPLE], pieHole: 0.6, legend: 'none', pieSliceBorderColor: 'transparent', pieSliceText: 'none', chartArea: {width: '100%', height: '100%'} }
     );
 
-    // 2. TENDÊNCIA (AREA CHART MELHORADO)
+    // 2. TENDÊNCIA (REFINADA)
     const dailyUsers = {};
     data.forEach(d => {
         if (d.date) {
@@ -216,33 +218,27 @@ function drawCharts(data) {
         new google.visualization.AreaChart(document.getElementById('tendencia_chart')).draw(trendTable, { 
             backgroundColor: 'transparent',
             colors: [NEON_ORANGE],
-            areaOpacity: 0.15,
+            areaOpacity: 0.1,
             legend: 'none',
-            chartArea: {width: '100%', height: '80%'},
+            chartArea: {width: '90%', height: '70%'},
             hAxis: { 
-                textStyle: { color: '#5d7a8c', fontSize: 8, fontName: 'Space Mono' },
+                textStyle: { color: '#5d7a8c', fontSize: 7, fontName: 'Space Mono' },
                 gridlines: {color: 'transparent'},
                 baselineColor: 'transparent'
             },
             vAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
-            lineWidth: 3,
-            pointSize: 6,
+            lineWidth: 2,
+            pointSize: 4,
             tooltip: { textStyle: tooltipStyle, trigger: 'focus' }
         });
     }
 
-    // 3. DISTRIBUIÇÃO GEOGRÁFICA (MAPA)
+    // 3. GEOGRÁFICO
     const geoMap = {};
     data.forEach(d => { geoMap[d.country || "Brazil"] = (geoMap[d.country || "Brazil"] || 0) + parseInt(d.users); });
     new google.visualization.GeoChart(document.getElementById('regions_div')).draw(
         google.visualization.arrayToDataTable([['C', 'U'], ...Object.entries(geoMap)]),
-        { 
-            backgroundColor: 'transparent', 
-            datalessRegionColor: '#0d1620', 
-            colorAxis: {colors: ['#003344', NEON_BLUE]}, 
-            legend: 'none',
-            tooltip: { textStyle: tooltipStyle }
-        }
+        { backgroundColor: 'transparent', datalessRegionColor: '#0d1620', colorAxis: {colors: ['#003344', NEON_BLUE]}, legend: 'none', tooltip: { textStyle: tooltipStyle } }
     );
 }
 </script>
