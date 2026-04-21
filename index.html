@@ -22,10 +22,12 @@
             --bg: #03070a;
             --surface: #0a1118;
             --surface2: #0d1620;
+            /* Paleta Neon para os Gráficos */
             --neon-blue: #00f2ff;
             --neon-purple: #7000ff;
             --neon-orange: #ff8c00;
             --neon-green: #39ff14;
+            
             --text: #e8f4fd;
             --muted: #5d7a8c;
             --border: rgba(0, 242, 255, 0.2);
@@ -74,18 +76,8 @@
         .pulse-dot { width: 6px; height: 6px; background-color: var(--neon-green); border-radius: 50%; box-shadow: 0 0 10px var(--neon-green); animation: pulse 1.5s ease-in-out infinite; }
         @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
 
-        /* AJUSTE NO CAMPO DA ANTENA */
         .right { padding: 40px; display: flex; flex-direction: column; gap: 15px; }
-        .data-source-info { 
-            background: rgba(0, 0, 0, 0.2); 
-            border: 1px dashed var(--neon-blue); 
-            border-radius: 12px; 
-            padding: 12px 18px; 
-            display: flex; 
-            align-items: center; 
-            gap: 15px; 
-            margin-bottom: 5px; 
-        }
+        .data-source-info { background: rgba(0, 0, 0, 0.2); border: 1px dashed var(--neon-blue); border-radius: 12px; padding: 12px 18px; display: flex; align-items: center; gap: 15px; margin-bottom: 5px; }
         .data-source-info i { color: var(--neon-blue); font-size: 1.1rem; }
         .data-source-info p { font-size: 0.7rem; color: var(--text); line-height: 1.4; font-family: 'Space Mono', monospace; }
 
@@ -94,6 +86,8 @@
         .metric-card:hover { border-color: var(--neon-blue); background: rgba(0, 242, 255, 0.05); }
 
         .label { font-size: 0.55rem; color: var(--muted); text-transform: uppercase; font-family: 'Space Mono', monospace; margin-bottom: 10px; }
+        
+        /* Valor métrico em Azul Ciano */
         .value { font-size: 2.2rem; font-weight: 800; color: var(--neon-blue); font-family: 'Space Mono', monospace; text-shadow: 0 0 12px rgba(0, 242, 255, 0.4); }
 
         .scrollable-metrics { max-height: 160px; overflow-y: auto; padding-right: 10px; margin-top: 5px; }
@@ -170,7 +164,12 @@
 </div>
 
 <script>
+// Variáveis de cores para os gráficos
 const NEON_BLUE = '#00f2ff';
+const NEON_PURPLE = '#7000ff';
+const NEON_ORANGE = '#ff8c00';
+const NEON_GREEN = '#39ff14';
+
 google.charts.load('current', {'packages':['geochart', 'corechart']});
 google.charts.setOnLoadCallback(updateDashboard);
 
@@ -188,13 +187,15 @@ async function updateDashboard() {
             cityMap[city] = (cityMap[city] || 0) + d.users;
         });
         const allCities = Object.entries(cityMap).sort((a,b) => b[1]-a[1]);
+        
+        // Barras de Ranking com Gradiente Azul e Verde
         document.getElementById('city-ranking').innerHTML = allCities.map(([name, count]) => `
             <div style="margin-bottom:12px;">
                 <div style="display:flex; justify-content:space-between; font-size:0.65rem; color:var(--muted); margin-bottom:4px; font-family:'Space Mono'">
                     <span>${name}</span><span>${count}</span>
                 </div>
                 <div style="background:rgba(255,255,255,0.05); height:6px; border-radius:3px; overflow:hidden;">
-                    <div style="width:${(count/totalUsers)*100}%; height:100%; background: linear-gradient(90deg, ${NEON_BLUE}, #39ff14)"></div>
+                    <div style="width:${(count/totalUsers)*100}%; height:100%; background: linear-gradient(90deg, ${NEON_BLUE}, ${NEON_GREEN})"></div>
                 </div>
             </div>
         `).join('');
@@ -216,11 +217,12 @@ function drawTendencia(data) {
     chartData.addColumn('number', 'Usuários');
     chartData.addRows(last7);
     const options = {
-        backgroundColor: 'transparent', colors: [NEON_BLUE], legend: 'none',
+        backgroundColor: 'transparent', 
+        colors: [NEON_ORANGE], // Linha de tendência em Laranja Neon
+        legend: 'none',
         chartArea: {width: '100%', height: '100%'},
         hAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
         vAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
-        tooltip: { textStyle: { fontName: 'Arial', fontSize: 12 } },
         lineWidth: 3, pointSize: 6, pointShape: 'circle'
     };
     new google.visualization.LineChart(document.getElementById('tendencia_chart')).draw(chartData, options);
@@ -234,10 +236,10 @@ function drawPie(data) {
     });
     const chartData = google.visualization.arrayToDataTable([['Device', 'Users'], ['Desktop', devices.Desktop], ['Mobile', devices.Mobile]]);
     const options = {
-        backgroundColor: 'transparent', colors: [NEON_BLUE, '#05445e'],
+        backgroundColor: 'transparent', 
+        colors: [NEON_BLUE, NEON_PURPLE], // Gráfico de pizza em Azul e Roxo
         pieHole: 0.5, legend: 'none', pieSliceBorderColor: 'transparent',
-        chartArea: {width: '100%', height: '100%'},
-        tooltip: { textStyle: { fontName: 'Arial', fontSize: 12 } }
+        chartArea: {width: '100%', height: '100%'}
     };
     new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(chartData, options);
 }
@@ -248,8 +250,8 @@ function drawMap(data) {
     const chartData = google.visualization.arrayToDataTable([['Country', 'Users'], ...Object.entries(countryMap)]);
     const options = {
         backgroundColor: 'transparent', datalessRegionColor: '#0d1620',
-        colorAxis: {colors: ['#00333d', NEON_BLUE]}, legend: 'none',
-        tooltip: { textStyle: { fontName: 'Arial', fontSize: 12 } }
+        colorAxis: {colors: ['#00333d', NEON_BLUE]}, // Mapa variando até o Azul Ciano
+        legend: 'none'
     };
     new google.visualization.GeoChart(document.getElementById('regions_div')).draw(chartData, options);
 }
