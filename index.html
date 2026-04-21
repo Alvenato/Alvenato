@@ -42,7 +42,7 @@
         @keyframes gridMove { 0% { transform: translateY(0); } 100% { transform: translateY(45px); } }
 
         .card {
-            position: relative; width: 900px; background: var(--surface); border: 1px solid var(--neon-blue); border-radius: 24px;
+            position: relative; width: 950px; background: var(--surface); border: 1px solid var(--neon-blue); border-radius: 24px;
             display: grid; grid-template-columns: 320px 1fr; box-shadow: 0 0 40px rgba(0, 242, 255, 0.1); z-index: 10; overflow: hidden;
         }
 
@@ -82,11 +82,20 @@
         .label { font-size: 0.55rem; color: var(--muted); text-transform: uppercase; font-family: 'Space Mono', monospace; display: block; margin-bottom: 8px; }
         .value { font-size: 2.2rem; font-weight: 800; color: var(--neon-blue); font-family: 'Space Mono', monospace; text-shadow: 0 0 10px rgba(0, 242, 255, 0.3); }
 
-        #city-ranking { max-height: 150px; overflow-y: auto; padding-right: 5px; }
+        #city-ranking { max-height: 180px; overflow-y: auto; padding-right: 5px; }
         #city-ranking::-webkit-scrollbar { width: 3px; }
         #city-ranking::-webkit-scrollbar-thumb { background: var(--neon-blue); }
 
-        @media (max-width: 900px) { .card { grid-template-columns: 1fr; width: 100%; } .left { border-right: none; } }
+        /* GRID PRINCIPAL DO DASHBOARD */
+        .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .span-2 { grid-column: span 2; }
+
+        @media (max-width: 900px) { 
+            .card { grid-template-columns: 1fr; width: 100%; } 
+            .left { border-right: none; } 
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .span-2 { grid-column: span 1; }
+        }
     </style>
 </head>
 <body>
@@ -130,11 +139,25 @@
             <i class="fas fa-satellite-dish" style="color: var(--neon-purple);"></i>
             <p style="font-size: 0.65rem; font-family: 'Space Mono';">Métricas em tempo real coletadas do Google Analytics 4 (GA4).</p>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <div class="metric-card"><span class="label">Total Visitantes</span><div class="value" id="total-users">--</div></div>
-            <div class="metric-card"><span class="label">Dispositivos</span><div id="tech_stack_pie" style="height: 60px;"></div></div>
-            <div class="metric-card" style="grid-column: span 2;"><span class="label">Distribuição Geográfica</span><div id="regions_div" style="height: 180px;"></div></div>
-            <div class="metric-card" style="grid-column: span 2;"><span class="label">Origem Local</span><div id="city-ranking"></div></div>
+
+        <div class="dashboard-grid">
+            <div class="metric-card">
+                <span class="label">Total Visitantes</span>
+                <div class="value" id="total-users">--</div>
+            </div>
+            <div class="metric-card">
+                <span class="label">Dispositivos</span>
+                <div id="tech_stack_pie" style="height: 60px;"></div>
+            </div>
+
+            <div class="metric-card">
+                <span class="label">Distribuição Geográfica</span>
+                <div id="regions_div" style="height: 180px;"></div>
+            </div>
+            <div class="metric-card">
+                <span class="label">Origem Local (Cidades)</span>
+                <div id="city-ranking"></div>
+            </div>
         </div>
     </div>
 </div>
