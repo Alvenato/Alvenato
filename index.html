@@ -155,7 +155,11 @@ async function updateDashboard() {
         document.getElementById('total-users').innerText = total;
 
         const cities = {}; 
-        data.forEach(d => { cities[d.city] = (cities[d.city] || 0) + parseInt(d.users); });
+        data.forEach(d => { 
+            const cityName = d.city || "Desconhecido";
+            cities[cityName] = (cities[cityName] || 0) + (parseInt(d.users) || 0); 
+        });
+        
         document.getElementById('city-ranking').innerHTML = Object.entries(cities).sort((a,b)=>b[1]-a[1]).map(([n, c]) => `
             <div style="margin-bottom:10px;">
                 <div style="display:flex; justify-content:space-between; font-size:0.6rem; color:var(--muted); font-family:'Space Mono'"><span>${n}</span><span>${c}</span></div>
@@ -175,23 +179,25 @@ function drawCharts(data) {
     // 1. DISPOSITIVOS
     let dsk = 0, mob = 0;
     data.forEach(d => {
-        if((d.device||'').toLowerCase().includes('desktop')) dsk += parseInt(d.users);
-        else mob += parseInt(d.users);
+        const dev = (d.device || '').toLowerCase();
+        if(dev.includes('desktop')) dsk += parseInt(d.users) || 0;
+        else mob += parseInt(d.users) || 0;
     });
     new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(
-        google.visualization.arrayToDataTable([['Dev', 'Us'], ['Desktop', dsk||1], ['Mobile', mob||1]]),
+        google.visualization.arrayToDataTable([['Dispositivo', 'Usuários'], ['Desktop', dsk], ['Mobile', mob]]),
         { backgroundColor: 'transparent', colors: [NEON_BLUE, NEON_PURPLE], pieHole: 0.6, legend: 'none', chartArea: {width: '100%', height: '100%'} }
     );
 
-    // 2. TENDÊNCIA (FORMATO BR + LINHA FINA)
+    // 2. TENDÊNCIA (SEM UNDEFINED)
     const dailyUsers = {};
     data.forEach(d => {
-        if (d.date) {
-            let raw = d.date.replace(/\//g, '-');
-            let p = raw.split('-');
-            // Garante ordenação correta interpretando a data
-            let dateKey = p[0].length === 4 ? `${p[0]}-${p[1]}-${p[2]}` : `${p[2]}-${p[1]}-${p[0]}`;
-            dailyUsers[dateKey] = (dailyUsers[dateKey] || 0) + parseInt(d.users);
+        if (d.date && d.date !== "undefined") {
+            let cleanDate = d.date.replace(/\//g, '-');
+            let p = cleanDate.split('-');
+            if(p.length === 3) {
+                let dateKey = p[0].length === 4 ? `${p[0]}-${p[1]}-${p[2]}` : `${p[2]}-${p[1]}-${p[0]}`;
+                dailyUsers[dateKey] = (dailyUsers[dateKey] || 0) + (parseInt(d.users) || 0);
+            }
         }
     });
 
@@ -199,7 +205,7 @@ function drawCharts(data) {
         .sort((a, b) => new Date(a[0]) - new Date(b[0]))
         .map(([date, val]) => {
             const parts = date.split('-');
-            return [`${parts[2]}/${parts[1]}`, val]; // Converte para DD/MM
+            return [`${parts[2]}/${parts[1]}`, val];
         });
 
     if (sortedTrend.length > 0) {
@@ -216,18 +222,28 @@ function drawCharts(data) {
             chartArea: {width: '100%', height: '80%'},
             hAxis: { textStyle: { color: '#5d7a8c', fontSize: 7 }, gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
             vAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
-            lineWidth: 1.5, // LINHA MAIS FINA
-            pointSize: 3,   // PONTOS DISCRETOS
+            lineWidth: 1.5,
+            pointSize: 3,
             tooltip: { textStyle: tooltipStyle, trigger: 'focus' }
         });
     }
 
-    // 3. MAPA
+    // 3. MAPA (MOSTRANDO "USUÁRIOS")
     const geoMap = {};
-    data.forEach(d => { geoMap[d.country || "Brazil"] = (geoMap[d.country || "Brazil"] || 0) + parseInt(d.users); });
+    data.forEach(d => { 
+        const country = d.country || "Brazil";
+        geoMap[country] = (geoMap[country] || 0) + (parseInt(d.users) || 0); 
+    });
+    
     new google.visualization.GeoChart(document.getElementById('regions_div')).draw(
-        google.visualization.arrayToDataTable([['C', 'U'], ...Object.entries(geoMap)]),
-        { backgroundColor: 'transparent', datalessRegionColor: '#0d1620', colorAxis: {colors: ['#003344', NEON_BLUE]}, legend: 'none' }
+        google.visualization.arrayToDataTable([['País', 'Usuários'], ...Object.entries(geoMap)]),
+        { 
+            backgroundColor: 'transparent', 
+            datalessRegionColor: '#0d1620', 
+            colorAxis: {colors: ['#003344', NEON_BLUE]}, 
+            legend: 'none',
+            tooltip: { textStyle: tooltipStyle }
+        }
     );
 }
 </script>
