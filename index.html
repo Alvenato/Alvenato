@@ -169,16 +169,48 @@ async function updateDashboard() {
 }
 
 function drawCharts(data) {
+    const tooltipStyle = { fontName: 'Arial', fontSize: 12 };
+
+    // 1. DISPOSITIVOS
     new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(
         google.visualization.arrayToDataTable([['D', 'U'], ['Desk', 70], ['Mob', 30]]),
-        { backgroundColor: 'transparent', colors: [NEON_BLUE, NEON_PURPLE], pieHole: 0.5, legend: 'none', pieSliceBorderColor: 'transparent', chartArea: {width: '100%', height: '100%'} }
+        { 
+            backgroundColor: 'transparent', 
+            colors: [NEON_BLUE, NEON_PURPLE], 
+            pieHole: 0.5, 
+            legend: 'none', 
+            pieSliceBorderColor: 'transparent', 
+            chartArea: {width: '100%', height: '100%'},
+            tooltip: { textStyle: tooltipStyle }
+        }
     );
+
+    // 2. TENDÊNCIA (Linha com pontos e data completa)
+    // Exemplo de dados com data completa para o tooltip
     new google.visualization.LineChart(document.getElementById('tendencia_chart')).draw(
-        google.visualization.arrayToDataTable([['D', 'U'], ['1', 5], ['2', 15], ['3', 10], ['4', 20], ['5', 18], ['6', 25]]),
-        { backgroundColor: 'transparent', colors: [NEON_ORANGE], legend: 'none', chartArea: {width: '100%', height: '100%'}, hAxis: {textPosition: 'none', gridlines: {color: 'transparent'}}, vAxis: {textPosition: 'none', gridlines: {color: 'transparent'}}, lineWidth: 3 }
+        google.visualization.arrayToDataTable([
+            ['Data', 'Usuários'], 
+            ['15/04/2026', 5], 
+            ['16/04/2026', 15], 
+            ['17/04/2026', 10], 
+            ['18/04/2026', 20], 
+            ['19/04/2026', 18], 
+            ['20/04/2026', 25]
+        ]),
+        { 
+            backgroundColor: 'transparent', 
+            colors: [NEON_ORANGE], 
+            legend: 'none', 
+            chartArea: {width: '100%', height: '100%'}, 
+            hAxis: {textPosition: 'none', gridlines: {color: 'transparent'}}, 
+            vAxis: {textPosition: 'none', gridlines: {color: 'transparent'}}, 
+            lineWidth: 3,
+            pointSize: 6, // Bolinhas nos pontos da linha
+            tooltip: { textStyle: tooltipStyle, trigger: 'focus' }
+        }
     );
     
-    // CORREÇÃO DO MAPA: Ajuste de cores para destacar as regiões de acesso em Azul Neon
+    // 3. DISTRIBUIÇÃO GEOGRÁFICA
     const countryMap = {};
     if (data && data.length > 0) {
         data.forEach(d => { countryMap[d.country || "Brazil"] = (countryMap[d.country || "Brazil"] || 0) + d.users; });
@@ -190,8 +222,9 @@ function drawCharts(data) {
         { 
             backgroundColor: 'transparent', 
             datalessRegionColor: '#0d1620', 
-            colorAxis: {colors: ['#003344', NEON_BLUE]}, // O acesso agora fica azul neon evidente
-            legend: 'none' 
+            colorAxis: {colors: ['#003344', NEON_BLUE]}, 
+            legend: 'none',
+            tooltip: { textStyle: tooltipStyle }
         }
     );
 }
