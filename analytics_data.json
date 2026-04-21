@@ -153,7 +153,7 @@
     },
     {
         "date": "20260420",
-        "city": "",
+        "city": "(not set)",
         "country": "Albania",
         "device": "desktop",
         "page": "Cristiano A. Barbosa — Data Science & IA",
@@ -180,6 +180,14 @@
         "city": "Valparaiso de Goias",
         "country": "Brazil",
         "device": "mobile",
+        "page": "Cristiano A. Barbosa — Data Science & IA",
+        "users": 1
+    },
+    {
+        "date": "20260421",
+        "city": "",
+        "country": "Albania",
+        "device": "desktop",
         "page": "Cristiano A. Barbosa — Data Science & IA",
         "users": 1
     }
