@@ -176,9 +176,22 @@ function drawCharts(data) {
         google.visualization.arrayToDataTable([['D', 'U'], ['1', 5], ['2', 15], ['3', 10], ['4', 20], ['5', 18], ['6', 25]]),
         { backgroundColor: 'transparent', colors: [NEON_ORANGE], legend: 'none', chartArea: {width: '100%', height: '100%'}, hAxis: {textPosition: 'none', gridlines: {color: 'transparent'}}, vAxis: {textPosition: 'none', gridlines: {color: 'transparent'}}, lineWidth: 3 }
     );
+    
+    // CORREÇÃO DO MAPA: Ajuste de cores para destacar as regiões de acesso em Azul Neon
+    const countryMap = {};
+    if (data && data.length > 0) {
+        data.forEach(d => { countryMap[d.country || "Brazil"] = (countryMap[d.country || "Brazil"] || 0) + d.users; });
+    }
+    const mapData = google.visualization.arrayToDataTable([['Country', 'Users'], ...Object.entries(countryMap).length ? Object.entries(countryMap) : [['Brazil', 1]]]);
+
     new google.visualization.GeoChart(document.getElementById('regions_div')).draw(
-        google.visualization.arrayToDataTable([['Country', 'Users'], ['Brazil', 100]]),
-        { backgroundColor: 'transparent', datalessRegionColor: '#0d1620', colorAxis: {colors: ['#002233', NEON_BLUE]}, legend: 'none' }
+        mapData,
+        { 
+            backgroundColor: 'transparent', 
+            datalessRegionColor: '#0d1620', 
+            colorAxis: {colors: ['#003344', NEON_BLUE]}, // O acesso agora fica azul neon evidente
+            legend: 'none' 
+        }
     );
 }
 </script>
