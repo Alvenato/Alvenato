@@ -92,23 +92,10 @@
         .name { font-size: 1.4rem; font-weight: 800; }
         .sub-name { display: block; font-size: 0.7rem; color: var(--accent); font-family: 'Space Mono', monospace; text-transform: uppercase; margin-top: 8px; letter-spacing: 2px; }
 
-        /* Menu de Redes Sociais com Cores Originais */
-        .social-links {
-            display: flex;
-            gap: 20px;
-            margin: 5px 0;
-        }
-        .social-links a {
-            font-size: 1.4rem;
-            transition: 0.3s ease;
-            text-decoration: none;
-            filter: saturate(0.8);
-        }
-        .social-links a:hover {
-            transform: translateY(-3px);
-            filter: saturate(1.2) brightness(1.2);
-        }
-        /* Cores das Marcas */
+        /* Redes Sociais Cores Originais */
+        .social-links { display: flex; gap: 20px; margin: 5px 0; }
+        .social-links a { font-size: 1.4rem; transition: 0.3s ease; text-decoration: none; filter: saturate(0.8); }
+        .social-links a:hover { transform: translateY(-3px); filter: saturate(1.2) brightness(1.2); }
         .fa-linkedin { color: #0077b5; }
         .fa-github { color: #e6edf3; }
         .fa-whatsapp { color: #25d366; }
@@ -124,44 +111,21 @@
         .skill-green { color: var(--accent3); border-color: var(--accent3); }
 
         /* Status */
-        .status-left {
-            margin-top: auto;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.55rem;
-            color: var(--accent3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding-top: 20px;
-        }
+        .status-left { margin-top: auto; display: flex; align-items: center; gap: 8px; font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--accent3); text-transform: uppercase; letter-spacing: 1px; padding-top: 20px; }
         .pulse-dot { width: 6px; height: 6px; background-color: var(--accent3); border-radius: 50%; box-shadow: 0 0 8px var(--accent3); animation: pulse 1.5s ease-in-out infinite; }
         @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
 
-        /* Coluna Direita (Dashboard) */
+        /* Coluna Direita */
         .right { padding: 40px; display: flex; flex-direction: column; gap: 15px; }
-        
-        .data-source-info {
-            background: rgba(0, 242, 255, 0.05);
-            border: 1px dashed var(--border);
-            border-radius: 12px;
-            padding: 12px 18px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 5px;
-        }
+        .data-source-info { background: rgba(0, 242, 255, 0.05); border: 1px dashed var(--border); border-radius: 12px; padding: 12px 18px; display: flex; align-items: center; gap: 15px; margin-bottom: 5px; }
         .data-source-info i { color: var(--accent); font-size: 1.1rem; }
         .data-source-info p { font-size: 0.7rem; color: var(--text); line-height: 1.4; font-family: 'Space Mono', monospace; }
 
         .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
         .metric-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 18px; position: relative; }
-        
         .label { font-size: 0.55rem; color: var(--muted); text-transform: uppercase; font-family: 'Space Mono', monospace; margin-bottom: 10px; }
         .value { font-size: 2.2rem; font-weight: 800; color: var(--accent3); font-family: 'Space Mono', monospace; }
 
-        /* Gráficos */
         .scrollable-metrics { max-height: 160px; overflow-y: auto; padding-right: 10px; margin-top: 5px; }
         .scrollable-metrics::-webkit-scrollbar { width: 4px; }
         .scrollable-metrics::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
@@ -180,19 +144,16 @@
             <div class="avatar-ring"></div>
             <div class="avatar"><img src="https://github.com/Alvenato.png" alt="Cristiano A. Barbosa"></div>
         </div>
-
         <div class="name-container">
             <h1 class="name">Cristiano A. Barbosa</h1>
             <span class="sub-name">Cientista de Dados & IA</span>
         </div>
-
         <div class="social-links">
             <a href="https://www.linkedin.com/in/cristianoalves-ca/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/Alvenato" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
             <a href="https://wa.me/5561981830780" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             <a href="mailto:analytics.barbosa@gmail.com" title="E-mail"><i class="fas fa-envelope"></i></a>
         </div>
-        
         <div class="skills-container">
             <span class="skills-title">Habilidades Técnicas</span>
             <div class="skills-grid">
@@ -205,7 +166,6 @@
                 <span class="skill-tag skill-cyan">Figma</span>
             </div>
         </div>
-
         <div class="status-left">
             <div class="pulse-dot"></div>
             <span>Atualização de hora em hora</span>
@@ -215,9 +175,8 @@
     <div class="right">
         <div class="data-source-info">
             <i class="fas fa-satellite-dish"></i>
-            <p>Os métricos abaixo refletem o tráfego global de visitantes deste portfólio via GA4.</p>
+            <p>Métricas de tráfego integradas via GA4 (Google Analytics).</p>
         </div>
-
         <div class="dashboard-grid">
             <div class="metric-card">
                 <span class="label">Total Visitantes</span>
@@ -231,12 +190,10 @@
                 <span class="label">Tendência (7d)</span>
                 <div id="tendencia_chart" style="height: 45px;"></div>
             </div>
-            
             <div class="metric-card" style="grid-column: span 3; min-height: 220px;">
-                <span class="label">Distribuição Geográfica (Neon Heatmap)</span>
+                <span class="label">Distribuição Geográfica</span>
                 <div id="regions_div" style="height: 180px;"></div>
             </div>
-            
             <div class="metric-card" style="grid-column: span 3;">
                 <span class="label">Origem por Localidade</span>
                 <div id="city-ranking" class="scrollable-metrics"></div>
@@ -248,7 +205,6 @@
 <script>
 const GA4_ACCENT_CYAN = '#00f2ff';
 const GA4_ACCENT_VIOLET = '#9d76ff';
-const GA4_ACCENT_GREEN = '#00ffa2';
 
 google.charts.load('current', {'packages':['geochart', 'corechart']});
 google.charts.setOnLoadCallback(updateDashboard);
@@ -262,7 +218,7 @@ async function updateDashboard() {
         const totalUsers = data.reduce((sum, d) => sum + (d.users || 0), 0);
         document.getElementById('total-users').innerText = totalUsers;
 
-        // Processamento para Cidades
+        // Ranking de Cidades
         const cityMap = {};
         data.forEach(d => {
             const city = d.city || "Desconhecido";
@@ -275,16 +231,14 @@ async function updateDashboard() {
                     <span>${name}</span><span>${count}</span>
                 </div>
                 <div style="background:rgba(255,255,255,0.05); height:6px; border-radius:3px; overflow:hidden;">
-                    <div style="width:${(count/totalUsers)*100}%; height:100%; background: linear-gradient(90deg, ${GA4_ACCENT_CYAN}, ${GA4_ACCENT_GREEN})"></div>
+                    <div style="width:${(count/totalUsers)*100}%; height:100%; background: linear-gradient(90deg, ${GA4_ACCENT_CYAN}, #00ffa2)"></div>
                 </div>
             </div>
         `).join('');
 
-        // Desenhar todos os gráficos
         drawPie(data);
         drawMap(data);
         drawTendencia(data);
-        
     } catch (e) { console.error(e); }
 }
 
@@ -292,7 +246,6 @@ function drawTendencia(data) {
     const dateMap = {};
     data.forEach(d => {
         const raw = d.date.toString();
-        // Formata data completa DD/MM/YYYY
         const fullDate = `${raw.substring(6,8)}/${raw.substring(4,6)}/${raw.substring(0,4)}`;
         dateMap[fullDate] = (dateMap[fullDate] || 0) + d.users;
     });
@@ -308,15 +261,16 @@ function drawTendencia(data) {
         colors: [GA4_ACCENT_CYAN],
         legend: 'none',
         chartArea: {width: '100%', height: '100%'},
-        hAxis: { textPosition: 'none', gridlines: {color: 'transparent'} },
-        vAxis: { textPosition: 'none', gridlines: {color: 'transparent'} },
-        tooltip: { 
-            textStyle: { fontName: 'Arial', fontSize: 12 } 
-        },
-        bar: { groupWidth: '85%' }
+        hAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
+        vAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
+        tooltip: { textStyle: { fontName: 'Arial', fontSize: 12 } },
+        // Configuração da Linha e Bolinhas
+        lineWidth: 3,
+        pointSize: 6,
+        pointShape: 'circle'
     };
 
-    new google.visualization.ColumnChart(document.getElementById('tendencia_chart')).draw(chartData, options);
+    new google.visualization.LineChart(document.getElementById('tendencia_chart')).draw(chartData, options);
 }
 
 function drawPie(data) {
@@ -347,10 +301,8 @@ function drawMap(data) {
         ['Country', 'Users'], ...Object.entries(countryMap)
     ]);
     const options = {
-        backgroundColor: 'transparent',
-        datalessRegionColor: '#16212e',
-        colorAxis: {colors: ['#003c4a', GA4_ACCENT_CYAN]},
-        legend: 'none',
+        backgroundColor: 'transparent', datalessRegionColor: '#16212e',
+        colorAxis: {colors: ['#003c4a', GA4_ACCENT_CYAN]}, legend: 'none',
         tooltip: { textStyle: { fontName: 'Arial', fontSize: 12 } }
     };
     new google.visualization.GeoChart(document.getElementById('regions_div')).draw(chartData, options);
