@@ -149,7 +149,7 @@ async function updateDashboard() {
     try {
         const response = await fetch('analytics_data.json?t=' + Date.now());
         const data = await response.json();
-        if (!data || !Array.isArray(data)) return;
+        if (!data) return;
 
         const total = data.reduce((sum, d) => sum + (parseInt(d.users) || 0), 0);
         document.getElementById('total-users').innerText = total;
@@ -160,9 +160,9 @@ async function updateDashboard() {
             cities[cityName] = (cities[cityName] || 0) + (parseInt(d.users) || 0); 
         });
         
+        // CORREÇÃO: Removido o .slice(0, 5) para mostrar a contagem completa
         document.getElementById('city-ranking').innerHTML = Object.entries(cities)
             .sort((a,b)=>b[1]-a[1])
-            .slice(0, 5)
             .map(([n, c]) => `
                 <div style="margin-bottom:10px;">
                     <div style="display:flex; justify-content:space-between; font-size:0.6rem; color:var(--muted); font-family:'Space Mono'"><span>${n}</span><span>${c}</span></div>
@@ -191,33 +191,24 @@ function drawCharts(data) {
         { backgroundColor: 'transparent', colors: [NEON_BLUE, NEON_PURPLE], pieHole: 0.6, legend: 'none', chartArea: {width: '100%', height: '100%'} }
     );
 
-    // 2. TENDÊNCIA - LOGICA DE DATA REFORÇADA
+    // 2. TENDÊNCIA - CORREÇÃO DE LOGICA E ORDENAÇÃO
     const dailyUsers = {};
     data.forEach(d => {
-        if (d.date && d.date !== "undefined" && d.date !== null) {
-            let cleanDate = d.date.toString().replace(/\//g, '-');
-            let p = cleanDate.split('-');
-            let dateObj;
-
-            if(p.length === 3) {
-                // Tenta YYYY-MM-DD ou DD-MM-YYYY
-                if (p[0].length === 4) dateObj = new Date(p[0], p[1]-1, p[2]);
-                else dateObj = new Date(p[2], p[1]-1, p[0]);
-
-                if (!isNaN(dateObj)) {
-                    let key = dateObj.toISOString().split('T')[0];
-                    dailyUsers[key] = (dailyUsers[key] || 0) + (parseInt(d.users) || 0);
-                }
-            }
+        if (d.date) {
+            let clean = d.date.toString().replace(/\//g, '-');
+            let p = clean.split('-');
+            let key;
+            if(p[0].length === 4) key = `${p[0]}-${p[1]}-${p[2]}`; // YYYY-MM-DD
+            else key = `${p[2]}-${p[1]}-${p[0]}`; // DD-MM-YYYY
+            
+            dailyUsers[key] = (dailyUsers[key] || 0) + (parseInt(d.users) || 0);
         }
     });
 
-    const sortedTrend = Object.entries(dailyUsers)
-        .sort((a, b) => a[0].localeCompare(b[0]))
-        .map(([date, val]) => {
-            const [y, m, d] = date.split('-');
-            return [`${d}/${m}`, val];
-        });
+    const sortedTrend = Object.keys(dailyUsers).sort().map(key => {
+        const parts = key.split('-');
+        return [`${parts[2]}/${parts[1]}`, dailyUsers[key]];
+    });
 
     if (sortedTrend.length > 0) {
         const trendTable = new google.visualization.DataTable();
@@ -231,9 +222,9 @@ function drawCharts(data) {
             areaOpacity: 0.1,
             legend: 'none',
             chartArea: {width: '100%', height: '80%'},
-            hAxis: { textStyle: { color: '#5d7a8c', fontSize: 7 }, gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
+            hAxis: { textStyle: { color: '#5d7a8c', fontSize: 7 }, baselineColor: 'transparent' },
             vAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
-            lineWidth: 1.5,
+            lineWidth: 2,
             pointSize: 4,
             tooltip: { textStyle: tooltipStyle, trigger: 'focus' }
         });
