@@ -153,11 +153,9 @@ async function updateDashboard() {
         const data = await response.json();
         if (!data) return;
 
-        // Total de Usuários
         const total = data.reduce((sum, d) => sum + (d.users || 0), 0);
         document.getElementById('total-users').innerText = total;
 
-        // Ranking de Cidades
         const cities = {}; 
         data.forEach(d => { cities[d.city] = (cities[d.city] || 0) + d.users; });
         document.getElementById('city-ranking').innerHTML = Object.entries(cities).sort((a,b)=>b[1]-a[1]).map(([n, c]) => `
@@ -176,18 +174,34 @@ async function updateDashboard() {
 function drawCharts(data) {
     const tooltipStyle = { fontName: 'Arial', fontSize: 12 };
 
-    // --- PROCESSAMENTO PARA O GRÁFICO DE TENDÊNCIA ---
-    // Agrupa usuários por data do seu JSON original
+    // --- LÓGICA DE TENDÊNCIA COM DATA FORMATADA ---
     const dailyData = {};
     data.forEach(d => {
-        const date = d.date || 'Sem Data';
-        dailyData[date] = (dailyData[date] || 0) + d.users;
+        if(d.date) {
+            // Garante que a data seja lida corretamente (trata hifens e barras)
+            const parts = d.date.split(/[-/]/);
+            // Cria uma string YYYY/MM/DD para ordenação correta
+            const sortableDate = parts.length === 3 ? `${parts[0]}/${parts[1]}/${parts[2]}` : d.date;
+            dailyData[sortableDate] = (dailyData[sortableDate] || 0) + d.users;
+        }
     });
-    // Converte para array e ordena cronologicamente
-    const trendArray = Object.entries(dailyData).sort((a, b) => new Date(a[0]) - new Date(b[0]));
+
+    const trendArray = Object.entries(dailyData)
+        .sort((a, b) => new Date(a[0]) - new Date(b[0]))
+        .map(([date, users]) => {
+            // Formata a exibição para DD/MM/YYYY no Tooltip
+            const d = new Date(date);
+            const formattedDate = d.toLocaleDateString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+            return [formattedDate, users];
+        });
+
     const trendDataTable = google.visualization.arrayToDataTable([['Data', 'Usuários'], ...trendArray]);
 
-    // 1. DISPOSITIVOS (Manteve-se estático 70/30 conforme anterior, ou pode ser dinâmico se houver campo 'device' no JSON)
+    // 1. DISPOSITIVOS
     new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(
         google.visualization.arrayToDataTable([['D', 'U'], ['Desk', 70], ['Mob', 30]]),
         { 
@@ -198,7 +212,7 @@ function drawCharts(data) {
         }
     );
 
-    // 2. TENDÊNCIA DINÂMICA (Com linha e bolinhas)
+    // 2. TENDÊNCIA (Com separadores DD/MM/YYYY e bolinhas)
     new google.visualization.LineChart(document.getElementById('tendencia_chart')).draw(
         trendDataTable,
         { 
@@ -207,7 +221,7 @@ function drawCharts(data) {
             hAxis: {textPosition: 'none', gridlines: {color: 'transparent'}}, 
             vAxis: {textPosition: 'none', gridlines: {color: 'transparent'}}, 
             lineWidth: 3,
-            pointSize: 6, // Bolinhas nos pontos
+            pointSize: 6,
             tooltip: { textStyle: tooltipStyle, trigger: 'focus' }
         }
     );
