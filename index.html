@@ -180,11 +180,15 @@ function drawCharts(data) {
         if(d.date) {
             let dateStr = d.date.replace(/\//g, '-');
             const parts = dateStr.split('-');
-            if (parts[0].length === 2) {
+            if (parts[0].length === 4) {
+                // Formato YYYY-MM-DD
+                dateStr = `${parts[0]}-${parts[1]}-${parts[2]}`;
+            } else if (parts[0].length === 2) {
+                // Formato DD-MM-YYYY
                 dateStr = `${parts[2]}-${parts[1]}-${parts[0]}`;
             }
-            const dateObj = new Date(dateStr + 'T00:00:00');
             
+            const dateObj = new Date(dateStr + 'T00:00:00');
             if (!isNaN(dateObj.getTime())) {
                 const isoDate = dateObj.toISOString().split('T')[0];
                 dailyData[isoDate] = (dailyData[isoDate] || 0) + d.users;
@@ -196,10 +200,14 @@ function drawCharts(data) {
         .sort((a, b) => new Date(a[0]) - new Date(b[0]))
         .map(([date, users]) => {
             const [y, m, d] = date.split('-');
-            return [`${d}/${m}`, users];
+            return [`${d}/${m}`, users]; // Eixo X como String formatada
         });
 
-    const trendDataTable = google.visualization.arrayToDataTable([['Data', 'Usuários'], ...trendArray]);
+    // Criar DataTable e definir explicitamente as colunas
+    const trendDataTable = new google.visualization.DataTable();
+    trendDataTable.addColumn('string', 'Data');
+    trendDataTable.addColumn('number', 'Usuários');
+    trendDataTable.addRows(trendArray);
 
     // 1. DISPOSITIVOS
     new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(
@@ -212,14 +220,22 @@ function drawCharts(data) {
         }
     );
 
-    // 2. TENDÊNCIA (Linha afinada)
+    // 2. TENDÊNCIA (Correção do erro de tipo + Linha fina)
     new google.visualization.LineChart(document.getElementById('tendencia_chart')).draw(
         trendDataTable,
         { 
             backgroundColor: 'transparent', colors: [NEON_ORANGE], legend: 'none', 
             chartArea: {width: '95%', height: '80%'}, 
-            hAxis: {textPosition: 'none', gridlines: {color: 'transparent'}}, 
-            vAxis: {textPosition: 'none', gridlines: {color: 'transparent'}}, 
+            hAxis: {
+                textPosition: 'none', 
+                gridlines: {color: 'transparent'},
+                baselineColor: 'transparent'
+            }, 
+            vAxis: {
+                textPosition: 'none', 
+                gridlines: {color: 'transparent'},
+                baselineColor: 'transparent'
+            }, 
             lineWidth: 1.5,
             pointSize: 4,
             tooltip: { textStyle: tooltipStyle, trigger: 'focus' }
