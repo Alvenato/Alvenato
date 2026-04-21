@@ -174,36 +174,30 @@ async function updateDashboard() {
 function drawCharts(data) {
     const tooltipStyle = { fontName: 'Arial', fontSize: 12 };
 
-    // --- LÓGICA DE TENDÊNCIA CORRIGIDA (SEM INVALID DATE) ---
+    // --- LÓGICA DE TENDÊNCIA COM DATA FORMATADA ---
     const dailyData = {};
     data.forEach(d => {
         if(d.date) {
-            // Normaliza a data independente do separador (- ou /)
+            // Garante que a data seja lida corretamente (trata hifens e barras)
             const parts = d.date.split(/[-/]/);
-            let key;
-            
-            // Se o formato for DD/MM/YYYY ou YYYY/MM/DD, cria uma chave YYYYMMDD para ordenação numérica
-            if (parts[0].length === 4) { // YYYY-MM-DD
-                key = parts[0] + parts[1].padStart(2, '0') + parts[2].padStart(2, '0');
-            } else { // DD-MM-YYYY
-                key = parts[2] + parts[1].padStart(2, '0') + parts[0].padStart(2, '0');
-            }
-            
-            if(!dailyData[key]) dailyData[key] = { label: "", users: 0 };
-            
-            // Cria o label DD/MM/YYYY para o gráfico
-            if (parts[0].length === 4) {
-                dailyData[key].label = `${parts[2]}/${parts[1]}/${parts[0]}`;
-            } else {
-                dailyData[key].label = `${parts[0]}/${parts[1]}/${parts[2]}`;
-            }
-            
-            dailyData[key].users += d.users;
+            // Cria uma string YYYY/MM/DD para ordenação correta
+            const sortableDate = parts.length === 3 ? `${parts[0]}/${parts[1]}/${parts[2]}` : d.date;
+            dailyData[sortableDate] = (dailyData[sortableDate] || 0) + d.users;
         }
     });
 
-    // Ordena as chaves YYYYMMDD e gera o array final
-    const trendArray = Object.keys(dailyData).sort().map(k => [dailyData[k].label, dailyData[k].users]);
+    const trendArray = Object.entries(dailyData)
+        .sort((a, b) => new Date(a[0]) - new Date(b[0]))
+        .map(([date, users]) => {
+            // Formata a exibição para DD/MM/YYYY no Tooltip
+            const d = new Date(date);
+            const formattedDate = d.toLocaleDateString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+            return [formattedDate, users];
+        });
 
     const trendDataTable = google.visualization.arrayToDataTable([['Data', 'Usuários'], ...trendArray]);
 
@@ -218,7 +212,7 @@ function drawCharts(data) {
         }
     );
 
-    // 2. TENDÊNCIA (Formatada)
+    // 2. TENDÊNCIA (Com separadores DD/MM/YYYY e bolinhas)
     new google.visualization.LineChart(document.getElementById('tendencia_chart')).draw(
         trendDataTable,
         { 
