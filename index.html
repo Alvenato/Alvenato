@@ -34,6 +34,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--bg); font-family: 'Syne', sans-serif; color: var(--text); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px; overflow-x: hidden; }
 
+        /* Grid Animada de Fundo */
         body::before {
             content: ''; position: fixed; inset: 0;
             background-image: linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(112, 0, 255, 0.05) 1px, transparent 1px);
@@ -46,6 +47,7 @@
             display: grid; grid-template-columns: 320px 1fr; box-shadow: 0 0 40px rgba(0, 242, 255, 0.1); z-index: 10; overflow: hidden;
         }
 
+        /* Coluna Esquerda - Perfil */
         .left { padding: 40px 30px; background: var(--surface2); border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 20px; }
         
         .avatar-wrapper { position: relative; width: 140px; height: 140px; display: flex; align-items: center; justify-content: center; }
@@ -75,6 +77,7 @@
         .pulse-dot { width: 6px; height: 6px; background-color: var(--neon-green); border-radius: 50%; box-shadow: 0 0 10px var(--neon-green); animation: pulse 1.5s infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
+        /* Coluna Direita - Dashboard */
         .right { padding: 40px; display: flex; flex-direction: column; gap: 15px; }
         .data-source-info { background: rgba(0, 0, 0, 0.3); border: 1px dashed var(--neon-purple); border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 12px; }
         .data-source-info i { color: var(--neon-purple); }
@@ -129,8 +132,7 @@
     <div class="right">
         <div class="data-source-info">
             <i class="fas fa-satellite-dish"></i>
-            <p style="font-size: 0.65rem; font-family: 'Space Mono';">As métricas exibidas neste painel são coletadas diretamente do Google Analytics 4 (GA4).
-Elas apresentam o total de usuários que interagiram com a página, os dias dessas interações, o dispositivo utilizado (desktop ou mobile) e a distribuição geográfica dessas interações.</p>
+            <p style="font-size: 0.65rem; font-family: 'Space Mono';">As métricas exibidas neste painel são coletadas diretamente do Google Analytics 4 (GA4). Elas apresentam o tráfego em tempo real, dispositivos e origem geográfica dos visitantes.</p>
         </div>
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
             <div class="metric-card"><span class="label">Total Visitantes</span><div class="value" id="total-users">--</div></div>
@@ -153,9 +155,11 @@ async function updateDashboard() {
         const data = await response.json();
         if (!data) return;
 
+        // Cálculo do total
         const total = data.reduce((sum, d) => sum + (parseInt(d.users) || 0), 0);
         document.getElementById('total-users').innerText = total;
 
+        // Ranking de Cidades
         const cities = {}; 
         data.forEach(d => { cities[d.city] = (cities[d.city] || 0) + parseInt(d.users); });
         document.getElementById('city-ranking').innerHTML = Object.entries(cities).sort((a,b)=>b[1]-a[1]).map(([n, c]) => `
@@ -168,13 +172,13 @@ async function updateDashboard() {
         `).join('');
 
         drawCharts(data);
-    } catch (e) { console.error("Erro dashboard:", e); }
+    } catch (e) { console.error("Erro ao carregar dashboard:", e); }
 }
 
 function drawCharts(data) {
-    const tooltipStyle = { fontName: 'Arial', fontSize: 11 };
+    const tooltipStyle = { fontName: 'Space Mono', fontSize: 11 };
 
-    // 1. PIZZA - DISPOSITIVOS
+    // 1. DISPOSITIVOS (PIZZA)
     let dsk = 0, mob = 0;
     data.forEach(d => {
         if((d.device||'').toLowerCase().includes('desktop')) dsk += parseInt(d.users);
@@ -185,18 +189,13 @@ function drawCharts(data) {
         { backgroundColor: 'transparent', colors: [NEON_BLUE, NEON_PURPLE], pieHole: 0.6, legend: 'none', pieSliceBorderColor: 'transparent', pieSliceText: 'none', chartArea: {width: '100%', height: '100%'} }
     );
 
-    // 2. LINHA - TENDÊNCIA (Lógica de agrupamento por dia corrigida)
+    // 2. TENDÊNCIA (AREA CHART MELHORADO)
     const dailyUsers = {};
     data.forEach(d => {
         if (d.date) {
-            // Normaliza a data para garantir que o JS entenda
             let raw = d.date.replace(/\//g, '-');
             let p = raw.split('-');
-            let dateKey;
-            
-            if (p[0].length === 4) dateKey = `${p[0]}-${p[1]}-${p[2]}`; // YYYY-MM-DD
-            else dateKey = `${p[2]}-${p[1]}-${p[0]}`; // DD-MM-YYYY -> YYYY-MM-DD
-            
+            let dateKey = p[0].length === 4 ? `${p[0]}-${p[1]}-${p[2]}` : `${p[2]}-${p[1]}-${p[0]}`;
             dailyUsers[dateKey] = (dailyUsers[dateKey] || 0) + parseInt(d.users);
         }
     });
@@ -205,31 +204,45 @@ function drawCharts(data) {
         .sort((a, b) => new Date(a[0]) - new Date(b[0]))
         .map(([date, val]) => {
             const parts = date.split('-');
-            return [`${parts[2]}/${parts[1]}`, val]; // Formato DD/MM para exibição
+            return [`${parts[2]}/${parts[1]}`, val];
         });
 
     if (sortedTrend.length > 0) {
         const trendTable = new google.visualization.DataTable();
         trendTable.addColumn('string', 'Dia');
-        trendTable.addColumn('number', 'Usuários');
+        trendTable.addColumn('number', 'Visitantes');
         trendTable.addRows(sortedTrend);
 
-        new google.visualization.LineChart(document.getElementById('tendencia_chart')).draw(trendTable, { 
-            backgroundColor: 'transparent', colors: [NEON_ORANGE], legend: 'none',
-            chartArea: {width: '90%', height: '70%'},
-            hAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
+        new google.visualization.AreaChart(document.getElementById('tendencia_chart')).draw(trendTable, { 
+            backgroundColor: 'transparent',
+            colors: [NEON_ORANGE],
+            areaOpacity: 0.15,
+            legend: 'none',
+            chartArea: {width: '100%', height: '80%'},
+            hAxis: { 
+                textStyle: { color: '#5d7a8c', fontSize: 8, fontName: 'Space Mono' },
+                gridlines: {color: 'transparent'},
+                baselineColor: 'transparent'
+            },
             vAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
-            lineWidth: 2, pointSize: 5,
+            lineWidth: 3,
+            pointSize: 6,
             tooltip: { textStyle: tooltipStyle, trigger: 'focus' }
         });
     }
 
-    // 3. MAPA
+    // 3. DISTRIBUIÇÃO GEOGRÁFICA (MAPA)
     const geoMap = {};
     data.forEach(d => { geoMap[d.country || "Brazil"] = (geoMap[d.country || "Brazil"] || 0) + parseInt(d.users); });
     new google.visualization.GeoChart(document.getElementById('regions_div')).draw(
         google.visualization.arrayToDataTable([['C', 'U'], ...Object.entries(geoMap)]),
-        { backgroundColor: 'transparent', datalessRegionColor: '#0d1620', colorAxis: {colors: ['#003344', NEON_BLUE]}, legend: 'none' }
+        { 
+            backgroundColor: 'transparent', 
+            datalessRegionColor: '#0d1620', 
+            colorAxis: {colors: ['#003344', NEON_BLUE]}, 
+            legend: 'none',
+            tooltip: { textStyle: tooltipStyle }
+        }
     );
 }
 </script>
