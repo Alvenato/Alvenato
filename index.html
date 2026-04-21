@@ -162,8 +162,6 @@
         .value { font-size: 2.2rem; font-weight: 800; color: var(--accent3); font-family: 'Space Mono', monospace; }
 
         /* Gráficos */
-        .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 45px; gap: 4px; }
-        .bar { flex: 1; border-radius: 2px; transition: 0.3s; cursor: pointer; }
         .scrollable-metrics { max-height: 160px; overflow-y: auto; padding-right: 10px; margin-top: 5px; }
         .scrollable-metrics::-webkit-scrollbar { width: 4px; }
         .scrollable-metrics::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
@@ -231,7 +229,7 @@
             </div>
             <div class="metric-card">
                 <span class="label">Tendência (7d)</span>
-                <div class="bar-chart" id="histograma"></div>
+                <div id="tendencia_chart" style="height: 45px;"></div>
             </div>
             
             <div class="metric-card" style="grid-column: span 3; min-height: 220px;">
@@ -264,20 +262,7 @@ async function updateDashboard() {
         const totalUsers = data.reduce((sum, d) => sum + (d.users || 0), 0);
         document.getElementById('total-users').innerText = totalUsers;
 
-        // Histograma
-        const dateMap = {};
-        data.forEach(d => {
-            const raw = d.date.toString();
-            const formattedDate = `${raw.substring(6,8)}/${raw.substring(4,6)}`;
-            dateMap[formattedDate] = (dateMap[formattedDate] || 0) + d.users;
-        });
-        const last7 = Object.entries(dateMap).slice(-7);
-        const maxVal = Math.max(...last7.map(e => e[1]), 1);
-        document.getElementById('histograma').innerHTML = last7.map(([date, count]) => 
-            `<div class="bar" style="height:${(count/maxVal)*100}%; background: ${GA4_ACCENT_CYAN}" title="${date}: ${count}"></div>`
-        ).join('');
-
-        // Ranking de Cidades
+        // Processamento para Cidades
         const cityMap = {};
         data.forEach(d => {
             const city = d.city || "Desconhecido";
@@ -295,9 +280,43 @@ async function updateDashboard() {
             </div>
         `).join('');
 
+        // Desenhar todos os gráficos
         drawPie(data);
         drawMap(data);
+        drawTendencia(data);
+        
     } catch (e) { console.error(e); }
+}
+
+function drawTendencia(data) {
+    const dateMap = {};
+    data.forEach(d => {
+        const raw = d.date.toString();
+        // Formata data completa DD/MM/YYYY
+        const fullDate = `${raw.substring(6,8)}/${raw.substring(4,6)}/${raw.substring(0,4)}`;
+        dateMap[fullDate] = (dateMap[fullDate] || 0) + d.users;
+    });
+
+    const last7 = Object.entries(dateMap).slice(-7);
+    const chartData = new google.visualization.DataTable();
+    chartData.addColumn('string', 'Data');
+    chartData.addColumn('number', 'Usuários');
+    chartData.addRows(last7);
+
+    const options = {
+        backgroundColor: 'transparent',
+        colors: [GA4_ACCENT_CYAN],
+        legend: 'none',
+        chartArea: {width: '100%', height: '100%'},
+        hAxis: { textPosition: 'none', gridlines: {color: 'transparent'} },
+        vAxis: { textPosition: 'none', gridlines: {color: 'transparent'} },
+        tooltip: { 
+            textStyle: { fontName: 'Arial', fontSize: 12 } 
+        },
+        bar: { groupWidth: '85%' }
+    };
+
+    new google.visualization.ColumnChart(document.getElementById('tendencia_chart')).draw(chartData, options);
 }
 
 function drawPie(data) {
@@ -310,15 +329,10 @@ function drawPie(data) {
         ['Device', 'Users'], ['Desktop', devices.Desktop], ['Mobile', devices.Mobile]
     ]);
     const options = {
-        backgroundColor: 'transparent', 
-        colors: [GA4_ACCENT_CYAN, GA4_ACCENT_VIOLET],
-        pieHole: 0.5, 
-        legend: 'none', 
-        pieSliceBorderColor: 'transparent',
+        backgroundColor: 'transparent', colors: [GA4_ACCENT_CYAN, GA4_ACCENT_VIOLET],
+        pieHole: 0.5, legend: 'none', pieSliceBorderColor: 'transparent',
         chartArea: {width: '100%', height: '100%'},
-        tooltip: { 
-            textStyle: { fontName: 'Arial', fontSize: 12 } 
-        }
+        tooltip: { textStyle: { fontName: 'Arial', fontSize: 12 } }
     };
     new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(chartData, options);
 }
@@ -337,9 +351,7 @@ function drawMap(data) {
         datalessRegionColor: '#16212e',
         colorAxis: {colors: ['#003c4a', GA4_ACCENT_CYAN]},
         legend: 'none',
-        tooltip: { 
-            textStyle: { fontName: 'Arial', fontSize: 12 } 
-        }
+        tooltip: { textStyle: { fontName: 'Arial', fontSize: 12 } }
     };
     new google.visualization.GeoChart(document.getElementById('regions_div')).draw(chartData, options);
 }
