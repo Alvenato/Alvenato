@@ -277,7 +277,7 @@ async function updateDashboard() {
             `<div class="bar" style="height:${(count/maxVal)*100}%; background: ${GA4_ACCENT_CYAN}" title="${date}: ${count}"></div>`
         ).join('');
 
-        // Cidades
+        // Ranking de Cidades
         const cityMap = {};
         data.forEach(d => {
             const city = d.city || "Desconhecido";
@@ -310,9 +310,15 @@ function drawPie(data) {
         ['Device', 'Users'], ['Desktop', devices.Desktop], ['Mobile', devices.Mobile]
     ]);
     const options = {
-        backgroundColor: 'transparent', colors: [GA4_ACCENT_CYAN, GA4_ACCENT_VIOLET],
-        pieHole: 0.5, legend: 'none', pieSliceBorderColor: 'transparent',
-        chartArea: {width: '100%', height: '100%'}
+        backgroundColor: 'transparent', 
+        colors: [GA4_ACCENT_CYAN, GA4_ACCENT_VIOLET],
+        pieHole: 0.5, 
+        legend: 'none', 
+        pieSliceBorderColor: 'transparent',
+        chartArea: {width: '100%', height: '100%'},
+        tooltip: { 
+            textStyle: { fontName: 'Arial', fontSize: 12 } 
+        }
     };
     new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(chartData, options);
 }
@@ -330,7 +336,10 @@ function drawMap(data) {
         backgroundColor: 'transparent',
         datalessRegionColor: '#16212e',
         colorAxis: {colors: ['#003c4a', GA4_ACCENT_CYAN]},
-        legend: 'none'
+        legend: 'none',
+        tooltip: { 
+            textStyle: { fontName: 'Arial', fontSize: 12 } 
+        }
     };
     new google.visualization.GeoChart(document.getElementById('regions_div')).draw(chartData, options);
 }
