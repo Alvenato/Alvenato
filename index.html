@@ -160,7 +160,6 @@ async function updateDashboard() {
             cities[cityName] = (cities[cityName] || 0) + (parseInt(d.users) || 0); 
         });
         
-        // Exibe lista completa ordenada por volume
         document.getElementById('city-ranking').innerHTML = Object.entries(cities)
             .sort((a,b)=>b[1]-a[1])
             .map(([n, c]) => `
@@ -191,56 +190,64 @@ function drawCharts(data) {
         { backgroundColor: 'transparent', colors: [NEON_BLUE, NEON_PURPLE], pieHole: 0.6, legend: 'none', chartArea: {width: '100%', height: '100%'} }
     );
 
-    // 2. TENDÊNCIA - FILTRADO E APRIMORADO
+    // 2. TENDÊNCIA - LÓGICA PADRÃO GA4 (7 DIAS COM PREENCHIMENTO DE ZEROS)
     const dailyUsers = {};
+    for (let i = 6; i >= 0; i--) {
+        const d = new Date();
+        d.setDate(d.getDate() - i);
+        const iso = d.toISOString().split('T')[0];
+        dailyUsers[iso] = 0;
+    }
+
     data.forEach(d => {
-        // Bloqueia 'undefined' ou nulos
         if (d.date && d.date !== "undefined" && d.date !== null) {
-            let clean = d.date.toString().replace(/\//g, '-');
-            let p = clean.split('-');
-            
-            if (p.length === 3) {
-                // Padroniza chave para YYYY-MM-DD para ordenação correta
-                let key = p[0].length === 4 ? `${p[0]}-${p[1]}-${p[2]}` : `${p[2]}-${p[1]}-${p[0]}`;
-                dailyUsers[key] = (dailyUsers[key] || 0) + (parseInt(d.users) || 0);
+            let rawDate = d.date.toString();
+            let formattedKey = "";
+
+            if (rawDate.length === 8 && !rawDate.includes('-') && !rawDate.includes('/')) {
+                formattedKey = `${rawDate.substring(0,4)}-${rawDate.substring(4,6)}-${rawDate.substring(6,8)}`;
+            } else {
+                let p = rawDate.replace(/\//g, '-').split('-');
+                formattedKey = p[0].length === 4 ? `${p[0]}-${p[1]}-${p[2]}` : `${p[2]}-${p[1]}-${p[0]}`;
+            }
+
+            if (dailyUsers.hasOwnProperty(formattedKey)) {
+                dailyUsers[formattedKey] += (parseInt(d.users) || 0);
             }
         }
     });
 
-    const sortedTrend = Object.keys(dailyUsers)
-        .sort()
-        .map(key => {
-            const parts = key.split('-');
-            return [`${parts[2]}/${parts[1]}`, dailyUsers[key]];
-        });
+    const sortedTrend = Object.keys(dailyUsers).sort().map(key => {
+        const parts = key.split('-');
+        return [`${parts[2]}/${parts[1]}`, dailyUsers[key]];
+    });
 
     if (sortedTrend.length > 0) {
         const trendTable = new google.visualization.DataTable();
         trendTable.addColumn('string', 'Dia');
-        trendTable.addColumn('number', 'Visitantes');
+        trendTable.addColumn('number', 'Usuários');
         trendTable.addRows(sortedTrend);
 
         const trendChart = new google.visualization.AreaChart(document.getElementById('tendencia_chart'));
         
-        // Efeito Neon na linha
         google.visualization.events.addListener(trendChart, 'ready', () => {
             const path = document.querySelector('#tendencia_chart svg path[stroke-width="3"]');
-            if(path) path.setAttribute('style', `filter: drop-shadow(0 0 4px ${NEON_ORANGE});`);
+            if(path) path.setAttribute('style', `filter: drop-shadow(0 0 5px ${NEON_ORANGE});`);
         });
 
         trendChart.draw(trendTable, { 
             backgroundColor: 'transparent',
             colors: [NEON_ORANGE],
-            areaOpacity: 0.15,
+            areaOpacity: 0.2,
             legend: 'none',
             chartArea: {width: '95%', height: '80%'},
-            hAxis: { textStyle: { color: '#5d7a8c', fontSize: 7, fontName: 'Space Mono' }, baselineColor: 'transparent' },
-            vAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
+            hAxis: { textStyle: { color: '#5d7a8c', fontSize: 7, fontName: 'Space Mono' }, gridlines: { color: 'transparent' }, baselineColor: 'transparent' },
+            vAxis: { textPosition: 'none', gridlines: { color: 'transparent' }, baselineColor: 'transparent', viewWindow: { min: 0 } },
             lineWidth: 3,
-            pointSize: 5,
+            pointSize: 4,
             focusTarget: 'category',
-            crosshair: { trigger: 'both', color: NEON_ORANGE, opacity: 0.3 },
-            tooltip: { textStyle: tooltipStyle, trigger: 'focus' }
+            crosshair: { trigger: 'both', color: NEON_ORANGE, opacity: 0.4 },
+            tooltip: { isHtml: true, textStyle: tooltipStyle }
         });
     }
 
