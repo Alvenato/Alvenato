@@ -83,7 +83,6 @@
             transform: translateY(-2px);
         }
 
-        /* --- ESTILO DAS CONEXÕES --- */
         .social-links-container {
             display: flex;
             flex-direction: column;
@@ -113,7 +112,6 @@
         .fa-whatsapp { color: var(--neon-green); } 
         .fa-envelope { color: var(--neon-orange); }
 
-        /* Estilo das Tags e Labels */
         .skill-tag { padding: 5px 10px; border-radius: 6px; font-size: 0.6rem; font-weight: bold; font-family: 'Space Mono', monospace; border: 1px solid; background: rgba(0,0,0,0.5); text-transform: uppercase; }
         .skill-blue { color: var(--neon-blue); border-color: var(--neon-blue); }
         .skill-purple { color: var(--neon-purple); border-color: var(--neon-purple); }
@@ -126,14 +124,14 @@
         .pulse-dot { width: 8px; height: 8px; background-color: var(--neon-green); border-radius: 50%; box-shadow: 0 0 10px var(--neon-green); animation: pulse 1.5s infinite; flex-shrink: 0; }
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
 
-        /* Lado Direito */
         .right { padding: 40px; display: flex; flex-direction: column; gap: 15px; }
         .data-source-info { background: rgba(0, 0, 0, 0.3); border: 1px dashed var(--neon-purple); border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 12px; }
         
         .metric-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 12px; padding: 15px; }
         .value { font-size: 2rem; font-weight: 800; color: var(--neon-blue); font-family: 'Space Mono', monospace; text-shadow: 0 0 10px rgba(0, 242, 255, 0.3); }
 
-        #city-ranking { max-height: 180px; overflow-y: auto; padding-right: 5px; }
+        /* AJUSTE NA ALTURA DA ORIGEM LOCAL */
+        #city-ranking { max-height: 280px; overflow-y: auto; padding-right: 5px; }
         #city-ranking::-webkit-scrollbar { width: 3px; }
         #city-ranking::-webkit-scrollbar-thumb { background: var(--neon-blue); }
 
@@ -186,7 +184,7 @@
         
         <div class="status-left">
             <div class="pulse-dot"></div>
-            <span>Status: Atualização do painel de hora em hora.</span>
+            <span>Status: Painel atualizado via GA4</span>
         </div>
     </div>
 
@@ -214,7 +212,7 @@
         <div class="dashboard-grid" style="grid-template-columns: 1fr 1fr; margin-top: 12px;">
             <div class="metric-card">
                 <span class="label">Distribuição Geográfica</span>
-                <div id="regions_div" style="height: 180px;"></div>
+                <div id="regions_div" style="height: 280px;"></div>
             </div>
             <div class="metric-card">
                 <span class="label">Origem Local</span>
