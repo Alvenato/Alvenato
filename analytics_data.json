@@ -257,7 +257,31 @@
     },
     {
         "date": "20260422",
+        "city": "Brasilia",
+        "country": "Brazil",
+        "device": "desktop",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 1
+    },
+    {
+        "date": "20260422",
+        "city": "Brasilia",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 1
+    },
+    {
+        "date": "20260422",
         "city": "Goiania",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 1
+    },
+    {
+        "date": "20260422",
+        "city": "Novo Gama",
         "country": "Brazil",
         "device": "mobile",
         "page": "Cristiano A. Barbosa — Portfolio",
