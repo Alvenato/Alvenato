@@ -9,6 +9,14 @@
     },
     {
         "date": "20260421",
+        "city": "Brasilia",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 2
+    },
+    {
+        "date": "20260421",
         "city": "Sao Paulo",
         "country": "Brazil",
         "device": "mobile",
@@ -212,14 +220,6 @@
         "city": "",
         "country": "Albania",
         "device": "desktop",
-        "page": "Cristiano A. Barbosa — Portfolio",
-        "users": 1
-    },
-    {
-        "date": "20260421",
-        "city": "Brasilia",
-        "country": "Brazil",
-        "device": "mobile",
         "page": "Cristiano A. Barbosa — Portfolio",
         "users": 1
     },
