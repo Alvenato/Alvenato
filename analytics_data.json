@@ -8,6 +8,22 @@
         "users": 4
     },
     {
+        "date": "20260421",
+        "city": "Sao Paulo",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 2
+    },
+    {
+        "date": "20260421",
+        "city": "Valparaiso de Goias",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 2
+    },
+    {
         "date": "20260404",
         "city": "Brasilia",
         "country": "Brazil",
@@ -201,6 +217,22 @@
     },
     {
         "date": "20260421",
+        "city": "Brasilia",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 1
+    },
+    {
+        "date": "20260421",
+        "city": "Porto Alegre",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 1
+    },
+    {
+        "date": "20260421",
         "city": "Riyadh",
         "country": "Saudi Arabia",
         "device": "desktop",
@@ -220,14 +252,6 @@
         "city": "Valparaiso de Goias",
         "country": "Brazil",
         "device": "desktop",
-        "page": "Cristiano A. Barbosa — Portfolio",
-        "users": 1
-    },
-    {
-        "date": "20260421",
-        "city": "Valparaiso de Goias",
-        "country": "Brazil",
-        "device": "mobile",
         "page": "Cristiano A. Barbosa — Portfolio",
         "users": 1
     }
