@@ -8,15 +8,15 @@
         "users": 4
     },
     {
-        "date": "20260421",
+        "date": "20260422",
         "city": "Brasilia",
         "country": "Brazil",
         "device": "mobile",
         "page": "Cristiano A. Barbosa — Portfolio",
-        "users": 3
+        "users": 4
     },
     {
-        "date": "20260422",
+        "date": "20260421",
         "city": "Brasilia",
         "country": "Brazil",
         "device": "mobile",
@@ -308,6 +308,14 @@
         "city": "Toledo",
         "country": "Brazil",
         "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 1
+    },
+    {
+        "date": "20260422",
+        "city": "Toronto",
+        "country": "Canada",
+        "device": "desktop",
         "page": "Cristiano A. Barbosa — Portfolio",
         "users": 1
     },
