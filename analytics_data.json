@@ -1,5 +1,13 @@
 [
     {
+        "date": "20260423",
+        "city": "Sao Paulo",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 5
+    },
+    {
         "date": "20260405",
         "city": "Sao Paulo",
         "country": "Brazil",
@@ -26,14 +34,6 @@
     {
         "date": "20260423",
         "city": "Rio de Janeiro",
-        "country": "Brazil",
-        "device": "mobile",
-        "page": "Cristiano A. Barbosa — Portfolio",
-        "users": 3
-    },
-    {
-        "date": "20260423",
-        "city": "Sao Paulo",
         "country": "Brazil",
         "device": "mobile",
         "page": "Cristiano A. Barbosa — Portfolio",
@@ -97,6 +97,14 @@
     },
     {
         "date": "20260423",
+        "city": "Fortaleza",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 2
+    },
+    {
+        "date": "20260423",
         "city": "Porto Alegre",
         "country": "Brazil",
         "device": "mobile",
@@ -108,6 +116,14 @@
         "city": "Salvador",
         "country": "Brazil",
         "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 2
+    },
+    {
+        "date": "20260423",
+        "city": "Sao Paulo",
+        "country": "Brazil",
+        "device": "desktop",
         "page": "Cristiano A. Barbosa — Portfolio",
         "users": 2
     },
@@ -473,14 +489,6 @@
     },
     {
         "date": "20260423",
-        "city": "Fortaleza",
-        "country": "Brazil",
-        "device": "mobile",
-        "page": "Cristiano A. Barbosa — Portfolio",
-        "users": 1
-    },
-    {
-        "date": "20260423",
         "city": "Goiania",
         "country": "Brazil",
         "device": "mobile",
@@ -620,14 +628,6 @@
         "city": "Sao Jose do Rio Preto",
         "country": "Brazil",
         "device": "mobile",
-        "page": "Cristiano A. Barbosa — Portfolio",
-        "users": 1
-    },
-    {
-        "date": "20260423",
-        "city": "Sao Paulo",
-        "country": "Brazil",
-        "device": "desktop",
         "page": "Cristiano A. Barbosa — Portfolio",
         "users": 1
     },
