@@ -24,16 +24,16 @@
         "users": 4
     },
     {
-        "date": "20260421",
-        "city": "Brasilia",
+        "date": "20260423",
+        "city": "Rio de Janeiro",
         "country": "Brazil",
         "device": "mobile",
         "page": "Cristiano A. Barbosa — Portfolio",
-        "users": 3
+        "users": 4
     },
     {
-        "date": "20260423",
-        "city": "Rio de Janeiro",
+        "date": "20260421",
+        "city": "Brasilia",
         "country": "Brazil",
         "device": "mobile",
         "page": "Cristiano A. Barbosa — Portfolio",
@@ -57,7 +57,7 @@
     },
     {
         "date": "20260423",
-        "city": "",
+        "city": "(not set)",
         "country": "Brazil",
         "device": "mobile",
         "page": "Cristiano A. Barbosa — Portfolio",
@@ -132,6 +132,14 @@
         "city": "Sao Paulo",
         "country": "Brazil",
         "device": "desktop",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 2
+    },
+    {
+        "date": "20260423",
+        "city": "Volta Redonda",
+        "country": "Brazil",
+        "device": "mobile",
         "page": "Cristiano A. Barbosa — Portfolio",
         "users": 2
     },
@@ -537,6 +545,14 @@
     },
     {
         "date": "20260423",
+        "city": "Maringa",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 1
+    },
+    {
+        "date": "20260423",
         "city": "Natal",
         "country": "Brazil",
         "device": "desktop",
@@ -633,6 +649,14 @@
     },
     {
         "date": "20260423",
+        "city": "Sao Joao de Meriti",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 1
+    },
+    {
+        "date": "20260423",
         "city": "Sao Jose do Rio Preto",
         "country": "Brazil",
         "device": "mobile",
@@ -666,14 +690,6 @@
     {
         "date": "20260423",
         "city": "Valparaiso de Goias",
-        "country": "Brazil",
-        "device": "mobile",
-        "page": "Cristiano A. Barbosa — Portfolio",
-        "users": 1
-    },
-    {
-        "date": "20260423",
-        "city": "Volta Redonda",
         "country": "Brazil",
         "device": "mobile",
         "page": "Cristiano A. Barbosa — Portfolio",
