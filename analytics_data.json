@@ -113,6 +113,14 @@
     },
     {
         "date": "20260423",
+        "city": "Recife",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 2
+    },
+    {
+        "date": "20260423",
         "city": "Salvador",
         "country": "Brazil",
         "device": "mobile",
@@ -457,6 +465,14 @@
     },
     {
         "date": "20260423",
+        "city": "Brasilia",
+        "country": "Brazil",
+        "device": "tablet",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 1
+    },
+    {
+        "date": "20260423",
         "city": "Campinas",
         "country": "Brazil",
         "device": "desktop",
@@ -554,14 +570,6 @@
     {
         "date": "20260423",
         "city": "Quadra",
-        "country": "Brazil",
-        "device": "mobile",
-        "page": "Cristiano A. Barbosa — Portfolio",
-        "users": 1
-    },
-    {
-        "date": "20260423",
-        "city": "Recife",
         "country": "Brazil",
         "device": "mobile",
         "page": "Cristiano A. Barbosa — Portfolio",
