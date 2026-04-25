@@ -713,7 +713,23 @@
     },
     {
         "date": "20260425",
+        "city": "Cidade Ocidental",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 1
+    },
+    {
+        "date": "20260425",
         "city": "Goiania",
+        "country": "Brazil",
+        "device": "mobile",
+        "page": "Cristiano A. Barbosa — Portfolio",
+        "users": 1
+    },
+    {
+        "date": "20260425",
+        "city": "Rio de Janeiro",
         "country": "Brazil",
         "device": "mobile",
         "page": "Cristiano A. Barbosa — Portfolio",
