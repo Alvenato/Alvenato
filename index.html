@@ -28,30 +28,61 @@
             --neon-green: #39ff14;
             --text: #e8f4fd;
             --muted: #5d7a8c;
-            --border: rgba(0, 242, 255, 0.3);
+            --border-white: rgba(255, 255, 255, 0.3);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); font-family: 'Syne', sans-serif; color: var(--text); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px; overflow-x: hidden; }
-
-        body::before {
-            content: ''; position: fixed; inset: 0;
-            background-image: linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(112, 0, 255, 0.05) 1px, transparent 1px);
-            background-size: 45px 45px; animation: gridMove 20s linear infinite; pointer-events: none;
+        
+        body { 
+            background: var(--bg); 
+            font-family: 'Syne', sans-serif; 
+            color: var(--text); 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 40px 20px; 
+            overflow-x: hidden; 
         }
-        @keyframes gridMove { 0% { transform: translateY(0); } 100% { transform: translateY(45px); } }
+
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
 
         .card {
-            position: relative; width: 1050px; background: var(--surface); border: 1px solid var(--neon-blue); border-radius: 24px;
-            display: grid; grid-template-columns: 320px 1fr; box-shadow: 0 0 40px rgba(0, 242, 255, 0.1); z-index: 10; overflow: hidden;
+            position: relative; 
+            width: 1050px; 
+            background: var(--surface); 
+            border: 1px solid #ffffff; 
+            border-radius: 24px;
+            display: grid; 
+            grid-template-columns: 320px 1fr; 
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.05); 
+            z-index: 10; 
+            overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
-        .left { padding: 40px 30px; background: var(--surface2); border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .left { 
+            padding: 40px 30px; 
+            background: var(--surface2); 
+            border-right: 1px solid var(--border-white); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 20px; 
+        }
         
         .avatar-wrapper { position: relative; width: 140px; height: 140px; display: flex; align-items: center; justify-content: center; }
         .avatar-ring { 
             position: absolute; width: 150px; height: 150px; border-radius: 50%; 
-            background: conic-gradient(var(--neon-blue), var(--neon-purple), var(--neon-orange), var(--neon-green), var(--neon-blue)); 
+            background: conic-gradient(#ffffff, #888888, #444444, #000000, #444444, #888888, #ffffff); 
             animation: spin 6s linear infinite; filter: blur(4px); z-index: 0;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -65,8 +96,8 @@
             margin-top: 5px;
             padding: 8px 30px;
             background: transparent;
-            border: 1px solid var(--neon-blue);
-            color: var(--neon-blue);
+            border: 1px solid #ffffff;
+            color: #ffffff;
             font-family: 'Space Mono', monospace;
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -78,8 +109,8 @@
             font-weight: bold;
         }
         .btn-about:hover {
-            background: rgba(0, 242, 255, 0.1);
-            box-shadow: 0 0 15px var(--neon-blue);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
             transform: translateY(-2px);
         }
 
@@ -92,15 +123,8 @@
         }
 
         .social-links { display: flex; gap: 20px; margin-top: 10px; }
-        .social-links a { 
-            font-size: 1.4rem; 
-            transition: 0.3s; 
-            display: inline-block;
-        }
-        
-        .social-links a:hover {
-            animation: jumpIcon 0.4s ease-in-out;
-        }
+        .social-links a { font-size: 1.4rem; transition: 0.3s; display: inline-block; }
+        .social-links a:hover { animation: jumpIcon 0.4s ease-in-out; }
 
         @keyframes jumpIcon {
             0%, 100% { transform: translateY(0); }
@@ -108,7 +132,6 @@
         }
 
         .fa-linkedin { color: #0077b5; } 
-        .fa-github { color: #fff; } 
         .fa-whatsapp { color: var(--neon-green); } 
         .fa-envelope { color: var(--neon-orange); }
 
@@ -120,14 +143,37 @@
 
         .label { font-size: 0.55rem; color: var(--muted); text-transform: uppercase; font-family: 'Space Mono', monospace; display: block; }
 
+        /* Estilo solicitado para os títulos das métricas */
+        .metric-title { 
+            font-family: 'Arial', sans-serif; 
+            font-size: 14px; 
+            color: #ffffff; 
+            display: block; 
+            margin-bottom: 8px;
+        }
+
         .status-left { margin-top: auto; display: flex; align-items: center; gap: 10px; font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--neon-green); text-transform: uppercase; width: 100%; }
         .pulse-dot { width: 8px; height: 8px; background-color: var(--neon-green); border-radius: 50%; box-shadow: 0 0 10px var(--neon-green); animation: pulse 1.5s infinite; flex-shrink: 0; }
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
 
         .right { padding: 40px; display: flex; flex-direction: column; gap: 15px; }
-        .data-source-info { background: rgba(0, 0, 0, 0.3); border: 1px dashed var(--neon-purple); border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 12px; }
         
-        .metric-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 12px; padding: 15px; }
+        .data-source-info { 
+            background: rgba(112, 0, 255, 0.03); 
+            border: 1px dashed var(--neon-purple); 
+            border-radius: 12px; 
+            padding: 12px; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+        }
+        
+        .metric-card { 
+            background: rgba(255, 255, 255, 0.02); 
+            border: 1px solid var(--border-white); 
+            border-radius: 12px; 
+            padding: 15px; 
+        }
         .value { font-size: 2rem; font-weight: 800; color: var(--neon-blue); font-family: 'Space Mono', monospace; text-shadow: 0 0 10px rgba(0, 242, 255, 0.3); }
 
         #city-ranking { max-height: 280px; overflow-y: auto; padding-right: 5px; }
@@ -144,6 +190,8 @@
     </style>
 </head>
 <body>
+
+<canvas id="particles-canvas"></canvas>
 
 <div class="card">
     <div class="left">
@@ -162,7 +210,6 @@
             <span class="label">Hub de Conexões</span>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/cristianoalves-ca/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Alvenato" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://wa.me/5561981830780" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 <a href="mailto:analytics.barbosa@gmail.com" title="E-mail"><i class="fas fa-envelope"></i></a>
             </div>
@@ -195,26 +242,26 @@
 
         <div class="dashboard-grid">
             <div class="metric-card">
-                <span class="label">Visitantes</span>
+                <span class="metric-title">Visitantes</span>
                 <div class="value" id="total-users">--</div>
             </div>
             <div class="metric-card">
-                <span class="label">Dispositivos</span>
+                <span class="metric-title">Dispositivos</span>
                 <div id="tech_stack_pie" style="height: 60px;"></div>
             </div>
             <div class="metric-card">
-                <span class="label">Tendência (30d)</span>
+                <span class="metric-title">Tendência (30d)</span>
                 <div id="trend_chart" style="height: 60px;"></div>
             </div>
         </div>
 
         <div class="dashboard-grid" style="grid-template-columns: 1fr 1fr; margin-top: 12px;">
             <div class="metric-card">
-                <span class="label">Distribuição Geográfica</span>
+                <span class="metric-title">Distribuição Geográfica</span>
                 <div id="regions_div" style="height: 280px;"></div>
             </div>
             <div class="metric-card">
-                <span class="label">Origem Local</span>
+                <span class="metric-title">Origem Local</span>
                 <div id="city-ranking"></div>
             </div>
         </div>
@@ -222,6 +269,72 @@
 </div>
 
 <script>
+/* SCRIPT DE PARTÍCULAS - BRANCAS */
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.radius = Math.random() * 1.5;
+    }
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    }
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)'; 
+        ctx.fill();
+    }
+}
+
+function initParticles() {
+    particles = [];
+    for (let i = 0; i < 100; i++) particles.push(new Particle());
+}
+
+function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+        p.update();
+        p.draw();
+    });
+    for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+            let dx = particles[i].x - particles[j].x;
+            let dy = particles[i].y - particles[j].y;
+            let dist = Math.sqrt(dx*dx + dy*dy);
+            if (dist < 150) {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(255, 255, 255, ${0.15 * (1 - dist/150)})`;
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+            }
+        }
+    }
+    requestAnimationFrame(animateParticles);
+}
+
+window.addEventListener('resize', resize);
+resize();
+initParticles();
+animateParticles();
+
+/* DASHBOARD GA4 */
 const NEON_BLUE = '#00f2ff', NEON_PURPLE = '#7000ff', NEON_ORANGE = '#ff8c00', NEON_GREEN = '#39ff14';
 google.charts.load('current', {'packages':['geochart', 'corechart']});
 google.charts.setOnLoadCallback(updateDashboard);
@@ -260,7 +373,6 @@ async function updateDashboard() {
 
 function drawCharts(data) {
     const tooltipStyle = { fontName: 'Arial', fontSize: 12 };
-
     let dsk = 0, mob = 0;
     data.forEach(d => {
         const dev = (d.device || '').toLowerCase();
@@ -269,13 +381,8 @@ function drawCharts(data) {
     });
     new google.visualization.PieChart(document.getElementById('tech_stack_pie')).draw(
         google.visualization.arrayToDataTable([['Dispositivo', 'Usuários'], ['Desktop', dsk], ['Mobile', mob]]),
-        { 
-            backgroundColor: 'transparent', colors: [NEON_BLUE, NEON_PURPLE], pieHole: 0.6, 
-            legend: 'none', chartArea: {width: '100%', height: '100%'},
-            tooltip: { textStyle: tooltipStyle } 
-        }
+        { backgroundColor: 'transparent', colors: [NEON_BLUE, NEON_PURPLE], pieHole: 0.6, legend: 'none', chartArea: {width: '100%', height: '100%'}, tooltip: { textStyle: tooltipStyle } }
     );
-
     const daily = {};
     for (let i = 29; i >= 0; i--) {
         const d = new Date(); d.setDate(d.getDate() - i);
@@ -291,26 +398,13 @@ function drawCharts(data) {
     const trendData = [['Dia', 'Usuários'], ...Object.entries(daily).map(([k, v]) => [k.split('-')[2]+'/'+k.split('-')[1], v])];
     new google.visualization.AreaChart(document.getElementById('trend_chart')).draw(
         google.visualization.arrayToDataTable(trendData),
-        {
-            backgroundColor: 'transparent', colors: [NEON_PURPLE], legend: 'none', areaOpacity: 0.25, lineWidth: 2,
-            hAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
-            vAxis: { textPosition: 'none', gridlines: {color: 'transparent'}, baselineColor: 'transparent' },
-            chartArea: {width: '100%', height: '100%'}, tooltip: { textStyle: tooltipStyle }
-        }
+        { backgroundColor: 'transparent', colors: [NEON_PURPLE], legend: 'none', areaOpacity: 0.25, lineWidth: 2, hAxis: { textPosition: 'none', gridlines: {color: 'transparent'} }, vAxis: { textPosition: 'none', gridlines: {color: 'transparent'} }, chartArea: {width: '100%', height: '100%'}, tooltip: { textStyle: tooltipStyle } }
     );
-
     const geoMap = {};
-    data.forEach(d => { 
-        const country = d.country || "Brazil";
-        geoMap[country] = (geoMap[country] || 0) + (parseInt(d.users) || 0); 
-    });
+    data.forEach(d => { geoMap[d.country || "Brazil"] = (geoMap[d.country || "Brazil"] || 0) + (parseInt(d.users) || 0); });
     new google.visualization.GeoChart(document.getElementById('regions_div')).draw(
         google.visualization.arrayToDataTable([['País', 'Usuários'], ...Object.entries(geoMap)]),
-        { 
-            backgroundColor: 'transparent', datalessRegionColor: '#0d1620', 
-            colorAxis: {colors: ['#003344', NEON_BLUE]}, legend: 'none',
-            tooltip: { textStyle: tooltipStyle }
-        }
+        { backgroundColor: 'transparent', datalessRegionColor: '#0d1620', colorAxis: {colors: ['#003344', NEON_BLUE]}, legend: 'none', tooltip: { textStyle: tooltipStyle } }
     );
 }
 </script>
