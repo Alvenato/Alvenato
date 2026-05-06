@@ -8,14 +8,6 @@
         "users": 5
     },
     {
-        "date": "20260405",
-        "city": "Sao Paulo",
-        "country": "Brazil",
-        "device": "mobile",
-        "page": "Cristiano A. Barbosa — Data Science & IA",
-        "users": 4
-    },
-    {
         "date": "20260422",
         "city": "Brasilia",
         "country": "Brazil",
@@ -142,14 +134,6 @@
         "device": "mobile",
         "page": "Cristiano A. Barbosa — Portfolio",
         "users": 2
-    },
-    {
-        "date": "20260405",
-        "city": "Miami",
-        "country": "United States",
-        "device": "desktop",
-        "page": "Cristiano A. Barbosa — Data Science & IA",
-        "users": 1
     },
     {
         "date": "20260406",
